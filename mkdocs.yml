@@ -1,4 +1,137 @@
-site_name: My Docs
-site_url: https://mydomain.org/mysite
+site_name: ZJUSCT 文档与博客
+site_url: https://zjusct.github.io/docs.zjusct.io/
+repo_name: docs.zjusct.io
+repo_url: https://github.com/ZJUSCT/docs.zjusct.io
+edit_uri: blob/main/docs/
+site_description: ZJUSCT Documents & Blogs
+site_author: ZJUSCT
+copyright: ZJUSCT
+
 theme:
   name: material
+  logo: assets/zjusct.svg
+  favicon: assets/zjusct.png
+  palette:
+    - media: "(prefers-color-scheme)"
+      primary: pink
+      toggle:
+        icon: material/brightness-auto
+        name: 切换至浅色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: zjusct
+      toggle:
+        icon: material/brightness-7
+        name: 切换至深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: 根据系统模式切换主题
+  features:
+    # 代码块操作
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    # 底部导航
+    - navigation.footer
+    # 顶部导航
+    - navigation.tabs
+    # 侧边栏按 section 展开
+    - navigation.sections
+    - navigation.expand
+    # 章节首页 index.md
+    - navigation.indexes
+    # 锚点
+    - navigation.tracking
+    # 路径
+    - navigation.path
+    # 回到顶部
+    - navigation.top
+    - toc.follow
+    # 页面编辑
+    - content.action.edit
+    # 搜索
+    - search.suggest
+    - search.highlight
+    - search.share
+
+markdown_extensions:
+  # Admonition
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      # Mermaid
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format:
+            !!python/name:pymdownx.superfences.fence_code_format # Code Block
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  # Tab Card
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  # Grid, Image
+  - attr_list
+  - md_in_html
+  # Icon
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg # List
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  # TOC
+  - toc:
+      permalink: true
+      # 中文锚点
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  # MathJax
+  - pymdownx.arithmatex:
+      generic: true
+  # Keys
+  - pymdownx.keys
+  # Highlight
+  - pymdownx.critic
+  # 时间轴、甘特图
+  - neoteroi.timeline
+  - neoteroi.projects
+
+extra_javascript:
+  # MathJax
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/polyfill/index.min.js
+  - https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.js
+  # Table Sort
+  - https://cdn.jsdelivr.net/npm/tablesort/dist/tablesort.min.js
+  - javascripts/tablesort.js
+  # mermaid
+  - https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js
+
+extra_css:
+  - stylesheets/fonts.css
+  - stylesheets/counter.css
+  - stylesheets/theme.css
+  # neoteroi
+  - stylesheets/neoteroi-v1.1.2.css
+
+plugins:
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - git-committers:
+      repository: zjusct/docs.zjusct.io
+      branch: main
+  - glightbox
+  - drawio
+  #- tags:
+  #    tags_file: contribute.md
+  - search
+  - include_dir_to_nav:
+      recurse: false
