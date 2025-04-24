@@ -7,6 +7,12 @@ site_description: ZJUSCT Documents & Blogs
 site_author: ZJUSCT
 copyright: ZJUSCT
 
+nav:
+  - 首页:
+      - index.md
+      - contribute.md
+  - 博客: blog
+
 theme:
   name: material
   logo: assets/zjusct.svg
@@ -123,6 +129,7 @@ extra_css:
   - stylesheets/neoteroi-v1.1.2.css
 
 plugins:
+  - blog
   - git-revision-date-localized:
       enable_creation_date: true
   - git-committers:
