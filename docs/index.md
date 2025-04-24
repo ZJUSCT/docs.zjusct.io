@@ -14,7 +14,6 @@ h5:before {content: unset;}
 
 - [集群运维指南](operation/)
 - [应用优化案例](optimization/)
-- [新人入门手册](newcomer/)
 - [贡献文档指引](contribute.md)
 
 ## 📚 文档价值
@@ -61,18 +60,16 @@ HPC 作为系统工程，需要团队协作与技术积累。文档帮助我们�
     - 支持异步自主学习
     - 时间安排灵活高效
 
-## ✍️ 如何贡献
+### 🌐 开放共享
 
-我们欢迎所有团队成员参与文档建设！贡献方式包括但不限于：
+**与社区共建知识生态**
+我们曾从开源社区中受益良多，希望通过文档建设回馈社区：
 
-1. 发现文档中的错误并提出修正
-2. 补充现有文档的内容
-3. 撰写新的技术文档或教程
-4. 优化文档的组织结构和可读性
+- 与国内外 HPC 爱好者交流最佳实践
+- 反哺开源社区的技术发展
+- 高校团队间的方案互鉴
 
-如需贡献，请通过 GitHub 提交 Pull Request，或直接联系文档维护团队。
-
-## 参考文档
+## 📖 参考文档
 
 国内外众多高校、研究机构和企业都有质量不错的 HPC 教程和文档。这里列出一些比较有代表性的文档，供大家参考。
 
@@ -80,18 +77,17 @@ HPC 作为系统工程，需要团队协作与技术积累。文档帮助我们�
 
 | 学校/机构       | 文档                                                                 | 简介                                                                 |
 |------------------|------------------------------------------------------------------------------|----------------------------------------------------------------------|
-| 北京大学         | [hpcwiki.io](https://hpcwiki.io/)                                           | 由北京大学学生 Linux 俱乐部长期运营和维护，目前处于早期阶段。       |
-| 清华大学         | [高性能计算导论实验文档](https://lab.cs.tsinghua.edu.cn/hpc/doc/)           | 清华大学计算机系开设的《高性能计算导论》课程的实验框架。             |
+| 北京大学         | [hpcwiki.io](https://hpcwiki.io/)                                           | LCPU 发起的社区项目，目前处于早期阶段，更新乏力。       |
+| 清华大学         | [高性能计算导论实验文档](https://lab.cs.tsinghua.edu.cn/hpc/doc/)           | 国内最好的 HPC 课程之一。             |
 | 上海交通大学     | [交我算平台](https://docs.hpc.sjtu.edu.cn/index.html)                       | 上海交通大学拥有国内高校最大的超算平台。                             |
+| 上海科技大学 | [GeekPie HPC Wiki](https://hpc.geekpie.club/wiki/) | GeekPie 几乎毫无保留地分享了他们的 HPC 知识。包含 19-22 超算赛题   |
 
 ### 国际
 
 | 学校/机构               | 文档                                                                 | 简介                                                                 |
 |--------------------------|------------------------------------------------------------------------------|----------------------------------------------------------------------|
-| 卢森堡大学               | [ULHPC Technical Documentation](https://hpc-docs.uni.lu/)                   | 卢森堡大学的超算中心文档详细介绍了软硬件配置。                       |
-| 欧洲原子能机构           | [Batch Service User Guide](https://batchdocs.web.cern.ch/index.html)         | CERN 提供的优质文档之一，涵盖批处理服务。                           |
+| 卢森堡大学               | [ULHPC Technical Documentation](https://hpc-docs.uni.lu/)                   | 大规模数据中心文档的典范，详细介绍了软硬件配置。                       |
 | 普林斯顿大学             | [Princeton Research Computing](https://researchcomputing.princeton.edu/support/knowledge-base) | 普林斯顿大学的 HPC 知识库，专题总结质量较高。                       |
 | 美国橡树岭国家实验室     | [OLCF User Documentation](https://docs.olcf.ornl.gov/)                      | 美国能源部下属实验室的文档，详细介绍重要 HPC 软件如 Profiler。       |
-| 威斯康星大学             | [The Center for High Throughput Computing](https://chtc.cs.wisc.edu/uw-research-computing/guides.html) | 提供高吞吐量计算相关指南。                                           |
 | 美国东北大学             | [Northeastern University Research Computing](https://rc-docs.northeastern.edu/en/latest) | 涵盖研究计算的多方面内容。                                           |
-| 德国科学基金会           | [hpc-wiki.info](https://hpc-wiki.info/hpc/HPC_Wiki)                         | 由 German Science Foundation 发起，内容仍在完善中。                 |
+| 德国科学基金会           | [hpc-wiki.info](https://hpc-wiki.info/hpc/HPC_Wiki)                         | 内容完善但较为陈旧。                 |
