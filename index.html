@@ -679,28 +679,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#-开放共享" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌐 开放共享
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#-如何贡献" class="md-nav__link">
+  <a href="#-参考文档" class="md-nav__link">
     <span class="md-ellipsis">
-      ✍️ 如何贡献
+      📖 参考文档
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#参考文档" class="md-nav__link">
-    <span class="md-ellipsis">
-      参考文档
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="参考文档">
+    <nav class="md-nav" aria-label="📖 参考文档">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -764,7 +764,6 @@ h5:before {content: unset;}
 <ul>
 <li><a href="operation/">集群运维指南</a></li>
 <li><a href="optimization/">应用优化案例</a></li>
-<li><a href="newcomer/">新人入门手册</a></li>
 <li><a href="contribute/">贡献文档指引</a></li>
 </ul>
 <h2 id="-文档价值">📚 文档价值<a class="headerlink" href="#-文档价值" title="Permanent link">&para;</a></h2>
@@ -807,16 +806,15 @@ h5:before {content: unset;}
 <li>时间安排灵活高效</li>
 </ul>
 </div>
-<h2 id="-如何贡献">✍️ 如何贡献<a class="headerlink" href="#-如何贡献" title="Permanent link">&para;</a></h2>
-<p>我们欢迎所有团队成员参与文档建设！贡献方式包括但不限于：</p>
-<ol>
-<li>发现文档中的错误并提出修正</li>
-<li>补充现有文档的内容</li>
-<li>撰写新的技术文档或教程</li>
-<li>优化文档的组织结构和可读性</li>
-</ol>
-<p>如需贡献，请通过 GitHub 提交 Pull Request，或直接联系文档维护团队。</p>
-<h2 id="参考文档">参考文档<a class="headerlink" href="#参考文档" title="Permanent link">&para;</a></h2>
+<h3 id="-开放共享">🌐 开放共享<a class="headerlink" href="#-开放共享" title="Permanent link">&para;</a></h3>
+<p><strong>与社区共建知识生态</strong>
+我们曾从开源社区中受益良多，希望通过文档建设回馈社区：</p>
+<ul>
+<li>与国内外 HPC 爱好者交流最佳实践</li>
+<li>反哺开源社区的技术发展</li>
+<li>高校团队间的方案互鉴</li>
+</ul>
+<h2 id="-参考文档">📖 参考文档<a class="headerlink" href="#-参考文档" title="Permanent link">&para;</a></h2>
 <p>国内外众多高校、研究机构和企业都有质量不错的 HPC 教程和文档。这里列出一些比较有代表性的文档，供大家参考。</p>
 <h3 id="国内">国内<a class="headerlink" href="#国内" title="Permanent link">&para;</a></h3>
 <table>
@@ -831,17 +829,22 @@ h5:before {content: unset;}
 <tr>
 <td>北京大学</td>
 <td><a href="https://hpcwiki.io/">hpcwiki.io</a></td>
-<td>由北京大学学生 Linux 俱乐部长期运营和维护，目前处于早期阶段。</td>
+<td>LCPU 发起的社区项目，目前处于早期阶段，更新乏力。</td>
 </tr>
 <tr>
 <td>清华大学</td>
 <td><a href="https://lab.cs.tsinghua.edu.cn/hpc/doc/">高性能计算导论实验文档</a></td>
-<td>清华大学计算机系开设的《高性能计算导论》课程的实验框架。</td>
+<td>国内最好的 HPC 课程之一。</td>
 </tr>
 <tr>
 <td>上海交通大学</td>
 <td><a href="https://docs.hpc.sjtu.edu.cn/index.html">交我算平台</a></td>
 <td>上海交通大学拥有国内高校最大的超算平台。</td>
+</tr>
+<tr>
+<td>上海科技大学</td>
+<td><a href="https://hpc.geekpie.club/wiki/">GeekPie HPC Wiki</a></td>
+<td>GeekPie 几乎毫无保留地分享了他们的 HPC 知识。包含 19-22 超算赛题</td>
 </tr>
 </tbody>
 </table>
@@ -858,12 +861,7 @@ h5:before {content: unset;}
 <tr>
 <td>卢森堡大学</td>
 <td><a href="https://hpc-docs.uni.lu/">ULHPC Technical Documentation</a></td>
-<td>卢森堡大学的超算中心文档详细介绍了软硬件配置。</td>
-</tr>
-<tr>
-<td>欧洲原子能机构</td>
-<td><a href="https://batchdocs.web.cern.ch/index.html">Batch Service User Guide</a></td>
-<td>CERN 提供的优质文档之一，涵盖批处理服务。</td>
+<td>大规模数据中心文档的典范，详细介绍了软硬件配置。</td>
 </tr>
 <tr>
 <td>普林斯顿大学</td>
@@ -876,11 +874,6 @@ h5:before {content: unset;}
 <td>美国能源部下属实验室的文档，详细介绍重要 HPC 软件如 Profiler。</td>
 </tr>
 <tr>
-<td>威斯康星大学</td>
-<td><a href="https://chtc.cs.wisc.edu/uw-research-computing/guides.html">The Center for High Throughput Computing</a></td>
-<td>提供高吞吐量计算相关指南。</td>
-</tr>
-<tr>
 <td>美国东北大学</td>
 <td><a href="https://rc-docs.northeastern.edu/en/latest">Northeastern University Research Computing</a></td>
 <td>涵盖研究计算的多方面内容。</td>
@@ -888,7 +881,7 @@ h5:before {content: unset;}
 <tr>
 <td>德国科学基金会</td>
 <td><a href="https://hpc-wiki.info/hpc/HPC_Wiki">hpc-wiki.info</a></td>
-<td>由 German Science Foundation 发起，内容仍在完善中。</td>
+<td>内容完善但较为陈旧。</td>
 </tr>
 </tbody>
 </table>
@@ -914,7 +907,7 @@ h5:before {content: unset;}
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 24, 2025 21:17:02">April 24, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 24, 2025 21:47:19">April 24, 2025</span>
   </span>
 
     
