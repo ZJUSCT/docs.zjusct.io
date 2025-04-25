@@ -2,14 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://zjusct.github.io/docs.zjusct.io/</loc>
-         <lastmod>2025-04-24</lastmod>
-    </url>
-    <url>
-         <loc>https://zjusct.github.io/docs.zjusct.io/contribute/</loc>
-         <lastmod>2025-04-24</lastmod>
+         <lastmod>2025-04-25</lastmod>
     </url>
     <url>
          <loc>https://zjusct.github.io/docs.zjusct.io/blog/</loc>
-         <lastmod>2025-04-24</lastmod>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
+         <loc>https://zjusct.github.io/docs.zjusct.io/falcon/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
+         <loc>https://zjusct.github.io/docs.zjusct.io/falcon/git/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
+         <loc>https://zjusct.github.io/docs.zjusct.io/falcon/mirror-history/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
+         <loc>https://zjusct.github.io/docs.zjusct.io/falcon/mirror/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
+         <loc>https://zjusct.github.io/docs.zjusct.io/index/contribute/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
+         <loc>https://zjusct.github.io/docs.zjusct.io/index/newcomer/</loc>
+         <lastmod>2025-04-25</lastmod>
     </url>
 </urlset>
