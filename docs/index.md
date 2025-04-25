@@ -8,13 +8,37 @@ h5:before {content: unset;}
 
 # 欢迎来到 ZJUSCT 文档与博客
 
-这是**[浙江大学超算队（ZJUSCT）](https://zjusct.io)**的文档与博客，主要面向**团队成员及 HPC 爱好者**，包含了我们在**高性能计算（HPC）**领域的技术积累和经验。
+这是 **[浙江大学超算队（ZJUSCT）](https://zjusct.io)** 的文档与博客，主要面向 **团队成员及 HPC 爱好者**，包含了我们在 **高性能计算（HPC）** 领域的技术积累和经验。
 
-## 🚀 快速导航
+## 快速导航🚀
 
-- [集群运维指南](operation/)
-- [应用优化案例](optimization/)
-- [贡献文档指引](contribute.md)
+<div class="grid cards" markdown>
+
+!!! warning "[Falcon](falcon)"
+
+    ZJU Mirror 和镜像站文档。
+
+!!! abstract "[Blog](blog)"
+
+    ZJUSCT 博客。
+
+!!! question "[竞赛](competition)"
+
+    竞赛相关文档。
+
+!!! bug "[运维](operation)"
+
+    硬件、软件、网络、可观测性等运维文档。
+
+!!! tip "[优化](optimization)"
+
+    建设中
+
+!!! quote "[内部资料（语雀）](internal)"
+
+    不宜公开的内部资料，仅校内访问。
+
+</div>
 
 ## 📚 文档价值
 
@@ -79,8 +103,9 @@ HPC 作为系统工程，需要团队协作与技术积累。文档帮助我们�
 |------------------|------------------------------------------------------------------------------|----------------------------------------------------------------------|
 | 北京大学         | [hpcwiki.io](https://hpcwiki.io/)                                           | LCPU 发起的社区项目，目前处于早期阶段，更新乏力。       |
 | 清华大学         | [高性能计算导论实验文档](https://lab.cs.tsinghua.edu.cn/hpc/doc/)           | 国内最好的 HPC 课程之一。             |
+| 中国科学技术大学 | [LUG @ USTC](https://docs.ustclug.org/)                                     | USTC LUG 的技术文档。                     |
 | 上海交通大学     | [交我算平台](https://docs.hpc.sjtu.edu.cn/index.html)                       | 上海交通大学拥有国内高校最大的超算平台。                             |
-| 上海科技大学 | [GeekPie HPC Wiki](https://hpc.geekpie.club/wiki/) | GeekPie 几乎毫无保留地分享了他们的 HPC 知识。包含 19-22 超算赛题   |
+| 上海科技大学 | [GeekPie HPC Wiki](https://hpc.geekpie.club/wiki/) | GeekPie 几乎毫无保留地分享了他们的 HPC 知识，包含 19-22 超算赛题。   |
 
 ### 国际
 

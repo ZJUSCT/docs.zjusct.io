@@ -1,16 +1,21 @@
----
-tags:
-  - draft
----
-
 # 贡献
 
-我们欢迎任何人参与文档建设！贡献方式包括但不限于：
+<style>
+h1:before {content: unset;}
+h2:before {content: unset;}
+h3:before {content: unset;}
+h4:before {content: unset;}
+h5:before {content: unset;}
+</style>
 
-1. 发现文档中的错误并提出修正
-2. 补充现有文档的内容
-3. 撰写新的技术文档或教程
-4. 优化文档的组织结构和可读性
+!!! abstract "我们欢迎任何人参与文档建设！"
+
+    贡献方式包括但不限于：
+
+    1. 发现文档中的错误并提出修正
+    2. 补充现有文档的内容
+    3. 撰写新的技术文档或教程
+    4. 优化文档的组织结构和可读性
 
 ## 🚀 本地构建
 

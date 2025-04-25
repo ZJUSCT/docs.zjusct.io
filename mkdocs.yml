@@ -10,8 +10,10 @@ copyright: ZJUSCT
 nav:
   - 首页:
       - index.md
-      - contribute.md
+      - ZJUSCT 简介: https://www.zjusct.io/
+      - index
   - 博客: blog
+  - Falcon: falcon
 
 theme:
   name: material
@@ -137,8 +139,7 @@ plugins:
       branch: main
   - glightbox
   - drawio
-  #- tags:
-  #    tags_file: contribute.md
+  - tags
   - search
   - include_dir_to_nav:
       recurse: false
