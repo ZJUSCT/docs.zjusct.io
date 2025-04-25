@@ -1,0 +1,1875 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ZJUSCT Documents & Blogs">
+      
+      
+        <meta name="author" content="ZJUSCT">
+      
+      
+        <link rel="canonical" href="https://docs.zjusct.io/operation/observability/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="log/">
+      
+      
+      <link rel="icon" href="../../assets/zjusct.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>可观测性 - ZJUSCT 文档与博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/fonts.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/counter.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/theme.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/neoteroi-v1.1.2.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#可观测性" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ZJUSCT 文档与博客" class="md-header__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+      
+  <img src="../../assets/zjusct.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ZJUSCT 文档与博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              可观测性
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="zjusct" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="根据系统模式切换主题"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="根据系统模式切换主题" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ZJUSCT/docs.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docs.zjusct.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../competition/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  竞赛
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../falcon/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Falcon
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  运维
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../blog/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  博客
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ZJUSCT 文档与博客" class="md-nav__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+      
+  <img src="../../assets/zjusct.svg" alt="logo">
+
+    </a>
+    ZJUSCT 文档与博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ZJUSCT/docs.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docs.zjusct.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            首页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index/contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    贡献
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index/newcomer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJUSCT 集群新手指南
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../competition/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    竞赛
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            竞赛
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../falcon/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Falcon
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Falcon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../falcon/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU Git 代码托管服务
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../falcon/mirror-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU Mirror 历史
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../falcon/mirror/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU Mirror 镜像站
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    运维
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            运维
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  
+  <span class="md-ellipsis">
+    可观测性
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            可观测性
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    日志收集
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络观测
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="opentelemetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    数据采集：OpenTelemetry
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../blog/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    博客
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            博客
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    posts
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            posts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/.template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    None
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#运维监控体系的发展历史" class="md-nav__link">
+    <span class="md-ellipsis">
+      运维监控体系的发展历史
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#可观测性概述" class="md-nav__link">
+    <span class="md-ellipsis">
+      可观测性概述
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#数据库概述" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据库概述
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#可观测性系统设计" class="md-nav__link">
+    <span class="md-ellipsis">
+      可观测性系统设计
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="可观测性系统设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#需求分析" class="md-nav__link">
+    <span class="md-ellipsis">
+      需求分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#技术选型与案例调研" class="md-nav__link">
+    <span class="md-ellipsis">
+      技术选型与案例调研
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="技术选型与案例调研">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#成熟方案plg-和-elk" class="md-nav__link">
+    <span class="md-ellipsis">
+      成熟方案：PLG 和 ELK
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#数据采集层opentelemetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据采集层：OpenTelemetry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#数据存储层prometheus-和-clickhouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据存储层：Prometheus 和 ClickHouse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#查询和分析层grafana" class="md-nav__link">
+    <span class="md-ellipsis">
+      查询和分析层：Grafana
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#其他" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#写在最后我们才刚刚开始" class="md-nav__link">
+    <span class="md-ellipsis">
+      写在最后：我们才刚刚开始
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../index/contribute/#tag:完善" class="md-tag">完善</a>
+      
+    
+  </nav>
+
+
+  
+    <a href="https://github.com/ZJUSCT/docs.zjusct.io/blob/main/docs/operation/observability/index.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="可观测性">可观测性<a class="headerlink" href="#可观测性" title="Permanent link">&para;</a></h1>
+<p>本文介绍可观测性的基本概念，解释我们为什么要做可观测性系统（需求），要做什么样的可观测性系统（技术选型）。至于怎么做，见本模块的其他文章。</p>
+<h2 id="运维监控体系的发展历史">运维监控体系的发展历史<a class="headerlink" href="#运维监控体系的发展历史" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/article/1798093">下一代监控运维体系概述 - 腾讯云</a></li>
+</ul>
+</div>
+<blockquote>
+<p>记得在 17 年前，Win XP 上，运行的第一个 pascal 代码是计算几何面积，在没有复杂的业务逻辑中，点击工具的编译，就能把我们需要的所有信息都打印在命令行界面中。我称之为<strong>第一代的监控体系</strong>，一个简单的编译器和一个简单的命令行界面。3 年后，开始用 Delphin 编写软件的时候，相对复杂的各个组件和逻辑代码，简单的编译已经不能告诉你程序到底出了什么问题，后来我们有了打断点调试，逐行代码检查，甚至会 print () 一下输出结果。我称之为<strong>第二代的监控体系</strong>。</p>
+<p>事实上，前两代的监控体系并不能称之为监控，因为信息输出到屏幕后，刷新之后就会马上丢失，所以我们并不知道程序在运行时行为和信息，因为那时候也并不需要，连接断开了，就让用户重新连接；程序报错了，就让用户重新打开。到了<strong>第三代监控体系</strong>，中国互联网时代已经开始进入分布式系统时代，工程师们开始依赖日志信息去发掘服务报错的蛛丝马迹，在第三代监控体系初期，大部分工程师都习惯登录服务器去看系统日志和业务日志，分析系统报错的根本原因。到了后期，随着部署的服务器节点数量变多，<strong>逐一登录排查成为运维的瓶颈，后来就有了统一日志管理</strong>。将不同节点的日志收集到日志管理服务器上，方便工程师们排查问题。再后来，业界上基于这个时代的监控体系下，衍生出了不同的监控产品，比如当时非常有名的 sumo logic，<strong>将日志统一管理后提供了各种数据清洗和 BI 的能力</strong>，这个概念也奠定了下一代监控体系的基础。</p>
+<p>从前面可以看到，监控体系的改变其实是随着需求以及数据量层级的增长而发生变化的。上一个时代是大数据时代，所有就有了以日志管理 + 基础 BI 能力为基础的监控体系。当下的时代是后大数据时代，也是大数据爆炸时代，我们需要处理的数据远高于上一个时代。AWS 的监控系统每分钟需要处理 PB 级别的指标数据，在这么庞大的数据量里，监控系统如何能将有用的目标信息快速给到工程师，是下一代监控体系的核心目标。</p>
+<p>围绕核心目标，我们需要思考以下几个问题：</p>
+<ol>
+<li>从指标里我们可以得到什么？</li>
+<li>自定义指标如何呈现？</li>
+<li>当指标数据很大的时候，如何排除干扰信息？</li>
+<li>当监控的维度很多的时候，如何快速定位目标信息？</li>
+<li>如何做到自动化监控？</li>
+<li>日志其实是用来做什么的？</li>
+<li>结合这套监控体系，如何开展运维工作，将被动运维变成主动运维？</li>
+</ol>
+<p>在现在这个时代，仍有大量的工程师在使用日志的方式去运维服务，但已经有部分工程师已经开始慢慢从日志发现过渡到指标监控来做线上运维了。因为指标监控从采集效率上以及数据精度上都比日志的方式要高效以及精确，指标对于日志而言，在采集的过程中就已经把非结构数据转换成结构数据了，在整个数据源采集上报、清洗聚合、存储和可视化的过程中，都比日志的方式高效精确的多。所以线上信息的实时性也得以大幅度的提高。</p>
+</blockquote>
+<p>可以看出，监控体系发展到如今，早已与数据科学领域的技术深度结合，具备了进行<strong>挖掘、分析、预测的自动化运维</strong>的能力。随着<strong>分布式、云原生、微服务</strong>应用的普及，<strong>可观测性（observability）</strong>这一概念在运维领域也逐渐火热。目前，大多数技术文档将可观测性定义为<strong>针对复杂系统及其产生的海量数据构建的一种能力，用于帮助我们理解系统的行为</strong>。</p>
+<h2 id="可观测性概述">可观测性概述<a class="headerlink" href="#可观测性概述" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<ul>
+<li><a href="https://zh.singlelogin.re/book/26742434/d8d8bc/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7%E5%B7%A5%E7%A8%8B.html">可观测性工程 - O'Reilly</a></li>
+<li><a href="https://academy.broadcom.com/blog/aiops/from-kalman-to-kubernetes-a-history-of-observability-in-it">From Kálmán to Kubernetes: A History of Observability in IT - BoardCom</a></li>
+</ul>
+</div>
+<p>我们的小集群自从更改为无盘系统架构后，也算是在不断向“分布式系统”演进了。目前我们对可观测性的需求并不是很高，但也可以借鉴工业界的做法，优化监控体系，提高运维效率。</p>
+<p>在可观测性领域，<strong>日志（Logs）</strong>、<strong>指标（Metrics）</strong> 和 <strong>追踪（Traces）</strong> 被称为三大支柱，它们共同帮助开发和运维团队对系统进行全面的监控和诊断。每个支柱提供不同的视角，互为补充，帮助团队及时发现、分析和解决问题。</p>
+<table>
+<thead>
+<tr>
+<th><strong>关键方面</strong></th>
+<th><strong>定义</strong></th>
+<th><strong>作用</strong></th>
+<th><strong>特点</strong></th>
+<th><strong>优点</strong></th>
+<th><strong>缺点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>日志（Logs）</strong></td>
+<td>记录特定事件的文本信息</td>
+<td>调试和错误排查</td>
+<td>结构化或非结构化文本，详细的上下文</td>
+<td>提供细粒度的历史记录</td>
+<td>数据量庞大，难以用于实时分析</td>
+</tr>
+<tr>
+<td><strong>指标（Metrics）</strong></td>
+<td>系统性能的定量测量</td>
+<td>实时监控和趋势分析</td>
+<td>数值化，时间序列数据</td>
+<td>易于监控、触发警报</td>
+<td>缺乏具体上下文，较为抽象</td>
+</tr>
+<tr>
+<td><strong>追踪（Traces）</strong></td>
+<td>请求在分布式系统中的路径记录</td>
+<td>性能调优、跨服务可见性</td>
+<td>记录请求生命周期，跨多个服务</td>
+<td>提供端到端的全局视角</td>
+<td>实现复杂，数据量大</td>
+</tr>
+</tbody>
+</table>
+<h2 id="数据库概述">数据库概述<a class="headerlink" href="#数据库概述" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<ul>
+<li><a href="https://juejin.cn/post/7109647301370445832">架构师之路，从「存储选型」起步 - 掘金</a></li>
+<li><a href="https://developer.aliyun.com/article/870365">数据库存储选型经验总结 - 阿里云开发者社区</a></li>
+<li><a href="https://www.szw.org.cn/20230922/63447.html">数据库分类详解：多样化的类型与应用场景 - 数字经济观察网</a></li>
+</ul>
+</div>
+<p>可观测性的每个支柱都可以有一套独立的系统，这些<strong>系统的核心是数据库，也是大数据和分析领域的核心话题</strong>。在课内，我们最多只接触过 MySQL 这样的传统关系型数据库。而随着互联网、物联网等场景发展，有<strong>很多业务需求不是任何单一的数据库能解决的了</strong>。下面对各类数据库的特点做简单概括，以开拓视野：</p>
+<ul>
+<li>
+<p>按是否关系型分类：</p>
+<table>
+<thead>
+<tr>
+<th><strong>分类</strong></th>
+<th><strong>特点</strong></th>
+<th><strong>常见产品</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>关系型数据库</strong></td>
+<td>- 数据以表格形式存储，有固定模式<br>- 使用主键、外键建立关系<br>- 支持事务处理，符合 ACID 特性<br>- 支持复杂查询和数据分析</td>
+<td>- Oracle<br>- MySQL<br>- PostgreSQL<br>- Microsoft SQL Server</td>
+</tr>
+<tr>
+<td><strong>非关系型数据库</strong></td>
+<td>- 不使用固定模式，数据以键值对、文档、列族等形式存储<br>- 支持水平扩展和分布式计算<br>- 高性能、低延迟</td>
+<td>- Redis<br>- MongoDB<br>- Cassandra<br>- Neo4j</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>按按特定场景分类：</p>
+<table>
+<thead>
+<tr>
+<th><strong>数据库类型</strong></th>
+<th><strong>特点</strong></th>
+<th><strong>常见产品</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>键值数据库</strong></td>
+<td>数据以键值对形式存储，支持高性能读写</td>
+<td>Redis, Memcached, Riak</td>
+</tr>
+<tr>
+<td><strong>列式数据库</strong></td>
+<td>数据按列存储，适合大规模数据处理</td>
+<td>HBase, ClickHouse, Cassandra</td>
+</tr>
+<tr>
+<td><strong>文档数据库</strong></td>
+<td>数据以文档（如 JSON、XML）存储，灵活的模型</td>
+<td>MongoDB, Couchbase</td>
+</tr>
+<tr>
+<td><strong>图形数据库</strong></td>
+<td>处理图结构数据，适用于社交网络、知识图谱等</td>
+<td>Neo4j, Amazon Neptune</td>
+</tr>
+<tr>
+<td><strong>时序数据库</strong></td>
+<td>专用于时间序列数据，支持高效写入和查询</td>
+<td>InfluxDB, TimescaleDB</td>
+</tr>
+<tr>
+<td><strong>向量数据库</strong></td>
+<td>处理高维向量数据，适用于 AI 和推荐系统</td>
+<td>Milvus, Faiss</td>
+</tr>
+<tr>
+<td><strong>空间数据库</strong></td>
+<td>处理地理空间数据，支持地理查询</td>
+<td>PostGIS, Oracle Spatial</td>
+</tr>
+<tr>
+<td><strong>搜索引擎数据库</strong></td>
+<td>专为全文搜索设计，支持复杂查询</td>
+<td>Elasticsearch, Apache Lucene, Apache Solr</td>
+</tr>
+<tr>
+<td><strong>多模数据库</strong></td>
+<td>支持多种数据模型，提供灵活的数据处理</td>
+<td>ArangoDB, OrientDB</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p>接下来我们分析两个例子，从原理出发，了解这些数据库的特点和应用场景。</p>
+<div class="admonition example">
+<p class="admonition-title">搜索引擎数据库 Elasticsearch 与日志分析</p>
+<p>观看 <a href="https://www.bilibili.com/video/BV1yb421J7oX"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.813 4.653h.854q2.266.08 3.773 1.574Q23.946 7.72 24 9.987v7.36q-.054 2.266-1.56 3.773c-1.506 1.507-2.262 1.524-3.773 1.56H5.333q-2.266-.054-3.773-1.56C.053 19.614.036 18.858 0 17.347v-7.36q.054-2.267 1.56-3.76t3.773-1.574h.774l-1.174-1.12a1.23 1.23 0 0 1-.373-.906q0-.534.373-.907l.027-.027q.4-.373.92-.373t.92.373L9.653 4.44q.107.106.187.213h4.267a.8.8 0 0 1 .16-.213l2.853-2.747q.4-.373.92-.373c.347 0 .662.151.929.4s.391.551.391.907q0 .532-.373.906zM5.333 7.24q-1.12.027-1.88.773-.76.748-.786 1.894v7.52q.026 1.146.786 1.893t1.88.773h13.334q1.12-.026 1.88-.773t.786-1.893v-7.52q-.026-1.147-.786-1.894t-1.88-.773zM8 11.107q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q0-.56.386-.947.387-.386.947-.386m8 0q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q.025-.586.4-.96.373-.373.933-.373"/></svg></span> Elastic Search是什么？Lucene是什么？架构是怎么样的？- 小白 debug</a>，了解 Elasticsearch 的原理和架构。修读过《高级数据结构与算法分析》的同学应该很容易理解其中<strong>倒排索引</strong>的概念。</p>
+<p>Elasticsearch 将数据组织为文档，这些文档是基于 JSON 的信息单元，用于表示实体。文档根据其特征被归类到索引中。</p>
+<p>举一个具体的例子，这是一条存储在 Elasticsearch 中的日志数据。系统中各个组件每时每刻都在产生这样的海量的日志：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;liberty_message&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="s2">&quot;9e1eceec70c1&quot;</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&quot;ibm_userDir&quot;</span><span class="p">:</span><span class="s2">&quot;\/opt\/ol\/wlp\/usr\/&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">&quot;ibm_serverName&quot;</span><span class="p">:</span><span class="s2">&quot;defaultServer&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;BADAP0004W: BadApp Angry for test&quot;</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">&quot;ibm_threadId&quot;</span><span class="p">:</span><span class="s2">&quot;0000009f&quot;</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nt">&quot;ibm_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2020-05-04T12:33:26.064+0000&quot;</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nt">&quot;ibm_messageId&quot;</span><span class="p">:</span><span class="s2">&quot;BADAP0004W&quot;</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nt">&quot;module&quot;</span><span class="p">:</span><span class="s2">&quot;com.ibm.ws.lumberjack.badness.Angry&quot;</span><span class="p">,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nt">&quot;loglevel&quot;</span><span class="p">:</span><span class="s2">&quot;WARNING&quot;</span><span class="p">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>运维人员如何审计这些日志？最基础的操作就是<strong>过滤</strong>。比如，审计用户的 SSH 登陆行为，就可以通过筛选 <code>sshd</code> 模块的日志，并查询 <code>message</code> 字段是否包含 <code>Invalid user</code> 来实现。</p>
+<p>你可能会觉得：这不就是关系型数据库中的一行数据嘛？使用 MySQL 不就能解决了？上面的数据太简单了，JSON 还可以嵌套，从各种地方收集的日志也具有不同的 schema。如果要在关系型数据库中存储这些数据，就需要设计很多表。<strong>不仅设计复杂，效率也低。</strong>而 Elasticsearch 能直接以文档的形式存储这些数据，并建立索引，方便快速查询。</p>
+<p>因为搜索引擎数据库<strong>高效处理不同格式和类型的数据、提供灵活的搜索和检索功能</strong>的特点，在可观测性领域，Elasticsearch 被广泛应用于<strong>日志分析</strong>等场景。</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">时序数据库 InfluxDB 与指标监控</p>
+<p>时序数据库的需求来源于指标监控场景。监控系统需要<strong>实时收集、存储、查询和分析大量的时间序列数据</strong>，比如 CPU 使用率、内存使用率、网络流量等。这些数据通常以<strong>时间戳和值的形式存储，而且数据量巨大</strong>。指标监控需要一个具备下列特点的数据库：</p>
+<ul>
+<li>极高的写吞吐量</li>
+<li>数据需要高度压缩</li>
+<li>大范围扫描记录</li>
+<li>原生支持聚合等操作</li>
+</ul>
+<p>上面这些是 MySQL 不擅长的。InfluxDB 针对时序数据的特点对存储引擎做了一系列优化，比如降低了事务的要求、从 LSM 演进成 TSM 作为底层数据的存储。这样的改变使得 InfluxDB 的查询性能比 MySQL 快 2.5~45 倍，数据压缩超过 4.5 倍（见 <a href="https://www.influxdata.com/comparison/influxdb-vs-mysql/">Compare InfluxDB vs MySQL</a>）。</p>
+<p>关于 InfluxDB 原理，可以观看 InfluxData 的 CTO Paul Dix 在 2017 年做的分享 <a href="https://www.bilibili.com/video/BV1jY41147AT"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.813 4.653h.854q2.266.08 3.773 1.574Q23.946 7.72 24 9.987v7.36q-.054 2.266-1.56 3.773c-1.506 1.507-2.262 1.524-3.773 1.56H5.333q-2.266-.054-3.773-1.56C.053 19.614.036 18.858 0 17.347v-7.36q.054-2.267 1.56-3.76t3.773-1.574h.774l-1.174-1.12a1.23 1.23 0 0 1-.373-.906q0-.534.373-.907l.027-.027q.4-.373.92-.373t.92.373L9.653 4.44q.107.106.187.213h4.267a.8.8 0 0 1 .16-.213l2.853-2.747q.4-.373.92-.373c.347 0 .662.151.929.4s.391.551.391.907q0 .532-.373.906zM5.333 7.24q-1.12.027-1.88.773-.76.748-.786 1.894v7.52q.026 1.146.786 1.893t1.88.773h13.334q1.12-.026 1.88-.773t.786-1.893v-7.52q-.026-1.147-.786-1.894t-1.88-.773zM8 11.107q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q0-.56.386-.947.387-.386.947-.386m8 0q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q.025-.586.4-.96.373-.373.933-.373"/></svg></span> 【InfluxDB】InfluxDB 存储引擎技术内幕</a>。</p>
+</div>
+<h2 id="可观测性系统设计">可观测性系统设计<a class="headerlink" href="#可观测性系统设计" title="Permanent link">&para;</a></h2>
+<h3 id="需求分析">需求分析<a class="headerlink" href="#需求分析" title="Permanent link">&para;</a></h3>
+<p>在对可观测性有了一些基本的了解后，我们就可以开始评估自己的需求，设计一套系统了。上述的三大支柱中，我们暂时不会用到 trace（后续对 mirror 这样的服务内部进行遥测时可能会使用），所以<strong>目前仅考虑两个方面：日志分析和指标监控</strong>。</p>
+<p>设计观测需求时，应当考虑真正感兴趣的因素，而不是有什么就观测什么，<strong>没有人会整天坐在监控大屏前浏览指标和日志</strong>。我们设计的需求应当能够由观测系统主动响应来满足。</p>
+<p>我们需要考虑的因素有：</p>
+<ul>
+<li><strong>用例</strong>：你能够定义精确的场景，说明系统是如何使用的吗？例如：作为系统的用户，我想要运行一个报告，告诉我过去 24 小时 Windows 服务器上的登陆失败次数。</li>
+<li><strong>驱动因素</strong>：是什么“驱动”你启动这一项目？是因为有趣、必要性还是政府法规或者其他目的？如果你能够回答这个问题，就能为驱动因素指定一个优先级，这有助于你清晰地了解为此分配的时间和资源。</li>
+<li><strong>解决的问题</strong>：部署一个可观测性系统能帮助你解决其他问题吗？例如，由于你收集的信息类型，可观测性系统能够帮助你进行服务器和网络监控。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>需求</th>
+<th>需要观测的数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>我想知道进行的操作是否影响了系统运行，可能是哪些操作造成的</td>
+<td>审计日志（root 权限执行的操作）</td>
+</tr>
+<tr>
+<td>我想知道系统的状态是否发生了改变，是什么造成的</td>
+<td>内核日志，硬件日志，系统指标</td>
+</tr>
+<tr>
+<td>我想知道系统中是否有异常的程序，它造成持续的高占用，或不断产生错误</td>
+<td>进程的资源利用率</td>
+</tr>
+<tr>
+<td>我想知道哪些是恶意 IP</td>
+<td>IP 地址的请求量、响应情况、消耗带宽、地理位置</td>
+</tr>
+<tr>
+<td>我想知道哪些镜像的使用率最高</td>
+<td>文件访问次数，按镜像聚合</td>
+</tr>
+<tr>
+<td>我想知道镜像的同步情况</td>
+<td>MirrorDotNet 同步任务队列、任务运行时间是否异常</td>
+</tr>
+<tr>
+<td>我想知道是否有人在尝试发起攻击</td>
+<td>持续失败的 SSH 请求，端口扫描</td>
+</tr>
+</tbody>
+</table>
+<p>在初步研讨后，我们得出了以下需求，并梳理了相关数据源：</p>
+<table>
+<thead>
+<tr>
+<th>系统</th>
+<th>需求</th>
+<th>数据源及其采集方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>指标监控</td>
+<td>- 监控系统资源利用率和运行状况<br />- 为 HPC 性能调优提供参考</td>
+<td>- 节点：metric exporter<br />- 基础设施：SNMP 和 RedFish</td>
+</tr>
+<tr>
+<td>日志分析</td>
+<td>- 监控系统各组件异常事件<br />- 观测无盘系统的服务稳定性<br />- 内外部事件监控和响应<br />（节点 down、断电断网或波动等）<br />- 入侵防御、行为分析（来自 mirror）</td>
+<td>- 系统日志<br />- 各类服务和应用：日志文件和 systemd-journal<br />- 基础设施：syslog 和 SNMP Trap</td>
+</tr>
+</tbody>
+</table>
+<h3 id="技术选型与案例调研">技术选型与案例调研<a class="headerlink" href="#技术选型与案例调研" title="Permanent link">&para;</a></h3>
+<p>在构建系统时，会面临技术选型上的难题：东西太多了。下面的图片来自 <a href="https://landscape.cncf.io/">Cloud Native Landscape</a>，显示了可观测性领域有多少优秀的产品可供选择。</p>
+<figure>
+    <a class="glightbox" href="index.assets/landscape.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="landscape" src="index.assets/landscape.png" width="60%" /></a>
+
+<figcaption>Cloud Native Landscape</figcaption>
+</figure>
+<p>我们没有什么实际经验，因此可以先做一些案例调研，了解业界主流方向，然后再根据自己的需求和技术栈来选择合适的方案。我们会参考的包括 HPC 领域论文和互联网大厂的技术博客，以及来自开源社区的实践经验。</p>
+<details class="info">
+<summary>案例调研</summary>
+<p>下面是我们看过一些案例，有兴趣了解的同学可以看看：</p>
+<ul>
+<li>2019 <a href="https://www.osti.gov/servlets/purl/1644780">High Performance Computing Monitoring. (Conference) | OSTI.GOV</a>：美国桑迪亚（Sandia）国家实验室做了一套开源的 HPC 监控系统 <a href="https://github.com/ovis-hpc/ldms"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span> OVIS/LDMS</a>。他们的设计了节点的指标采集、管理节点上的两层数据聚合，最后使用 Splunk 进行数据分析。</li>
+<li>2021 <a href="https://grafana.com/events/grafanacon/2021/hpc-grafana/">Enhancing observability for High Performance Computing infrastructure with Grafana</a>：美国超算应用国家中心（NCSA）使用 Grafana 对 HPC 系统进行可观测性增强，比如进行 Job 数据的可视化监控等。他们使用 Telegraf 采集指标数据，存储到 InfluxDB。他们计划将 Elasticsearch 作为 Grafana Log 看板后端。</li>
+<li>2023 <a href="https://dl.acm.org/doi/10.1145/3569951.3597554">HPC Monitoring &amp; Visualization: Understanding usage of HPC systems - PEARC'23</a>：美国太平洋西北国家实验室展示了他们基于 Prometheus 和 Grafana 的 HPC 监控系统。</li>
+<li>2024 <a href="https://doi.org/10.1002/cpe.8141">SOMA: Observability, Monitoring, and In Situ Analytics in Exascale Applications</a>：基于微服务架构的 HPC 可观测性系统。文章作者来自俄勒冈大学、NVIDIA、布鲁克海文国家实验室、罗格斯大学。俄勒冈大学开发了知名的 HPC 性能分析工具 <a href="https://www.cs.uoregon.edu/research/tau/home.php">TAU</a>。</li>
+<li>Bilibili 技术团队的公众号文章：<ul>
+<li><a href="https://mp.weixin.qq.com/s?__biz=Mzg3Njc0NTgwMg==&amp;mid=2247495096&amp;idx=1&amp;sn=b7df3d9adebb1171715b8507aba55420">持续降本：B 站日志平台 3.0 演进之路</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=Mzg3Njc0NTgwMg==&amp;mid=2247490544&amp;idx=1&amp;sn=2a6a72ac932911988968ef5c83d2e0be">B 站基于 Clickhouse 的下一代日志体系建设实践</a></li>
+<li><a href="https://www.bilibili.com/video/BV1tB4y1p7j7">从 ES 到 ClickHouse：B 站海量日志分析场景迁移的实践与思考</a></li>
+<li>billions 3.0 日志平台主要使用 iceberg + clickhouse 的混合存储。</li>
+</ul>
+</li>
+</ul>
+</details>
+<p>总而言之我们的技术选型如图所示，下文将详细介绍每个部分的技术栈。</p>
+<figure>
+<a class="glightbox" href="index.assets/observability_system.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="observability_system" src="index.assets/observability_system.svg" /></a>
+
+<figcaption>可观测性系统设计</figcaption>
+</figure>
+<h4 id="成熟方案plg-和-elk">成熟方案：PLG 和 ELK<a class="headerlink" href="#成熟方案plg-和-elk" title="Permanent link">&para;</a></h4>
+<p>目前业界主流的可观测性系统有：</p>
+<ul>
+<li>PLG Stack: Promtail/Prometheus, Loki, Grafana</li>
+<li>ELK Stack: Elasticsearch, Logstash, Kibana</li>
+</ul>
+<p>简单了解一下这些可观测性系统，就会发现它们的架构基本一致，都是由<strong>数据收集、数据存储、数据查询、数据展示</strong>四个部分组成，只是在实现上有所取舍。PLG 的核心是 Grafana，是一个分析和可视化平台，更适合指标监控；ELK 的核心是 Elasticsearch，是一个全文本搜索引擎，更适合日志分析。</p>
+<div class="grid cards">
+<p><a class="glightbox" href="https://elastic-stack.readthedocs.io/en/latest/_images/elk_overview.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="elk" src="https://elastic-stack.readthedocs.io/en/latest/_images/elk_overview.png" /></a></p>
+<p><a class="glightbox" href="index.assets/plg_stack.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="plg" src="index.assets/plg_stack.png" /></a></p>
+</div>
+<details class="info">
+<summary>PLG Stack vs. ELK Stack</summary>
+<p>关于两者更详细的对比，可以参考这篇 2023 年的学士学位论文： <a href="https://www.diva-portal.org/smash/get/diva2:1771279/FULLTEXT01.pdf">A Comparative Analysis of Log Management Solutions: ELK Stack Versus PLG Stack</a></p>
+<blockquote>
+<p>The study found that <strong>PLG is more resource-efficient in terms of CPU and memory</strong> compared to ELK, and requires less disk space to store logs. ELK, however, performs better in terms of query request time. ELK has a more user-friendly interface and requires minimal configuration, while <strong>PLG requires more configuration but provides more control</strong> for experienced users.</p>
+</blockquote>
+<p>这篇论文附录中展示了 ELK 和 PLG 的一套完整配置，可以作为参考。</p>
+</details>
+<p>最终我们没有完全采用 PLG 或 ELK 方案。他们在自己擅长的方面确实做的很好，但仅仅如此。就笔者个人的使用体验，Kibana 对指标数据的展示远远不如 Grafana，而 Loki 的日志查询比 Elasticsearch 死板太多。<a href="https://www.reddit.com/r/devops/comments/ami7m9/is_elk_trustable_also_for_metrics_and_alerting/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12c0 3.314 1.343 6.314 3.515 8.485l-2.286 2.286A.72.72 0 0 0 1.738 24H12c6.627 0 12-5.373 12-12S18.627 0 12 0m4.388 3.199a1.999 1.999 0 1 1-1.947 2.46v.002a2.37 2.37 0 0 0-2.032 2.341v.007c1.776.067 3.4.567 4.686 1.363a2.802 2.802 0 1 1 2.908 4.753c-.088 3.256-3.637 5.876-7.997 5.876-4.361 0-7.905-2.617-7.998-5.87a2.8 2.8 0 0 1 1.189-5.34c.645 0 1.239.218 1.712.585 1.275-.79 2.881-1.291 4.64-1.365v-.01a3.23 3.23 0 0 1 2.88-3.207 2 2 0 0 1 1.959-1.595m-8.085 8.376c-.784 0-1.459.78-1.506 1.797s.64 1.429 1.426 1.429 1.371-.369 1.418-1.385-.553-1.841-1.338-1.841m7.406 0c-.786 0-1.385.824-1.338 1.841s.634 1.385 1.418 1.385c.785 0 1.473-.413 1.426-1.429-.046-1.017-.721-1.797-1.506-1.797m-3.703 4.013c-.974 0-1.907.048-2.77.135a.222.222 0 0 0-.183.305 3.2 3.2 0 0 0 2.953 1.964 3.2 3.2 0 0 0 2.953-1.964.222.222 0 0 0-.184-.305 28 28 0 0 0-2.769-.135"/></svg></span> Is ELK trustable also for metrics and alerting? : r/devops</a> 有不少相关探讨，大多认为同时采取 elk + prometheus 是好的选择，而单独使用其中一个在某些场景下可能会有不足。</p>
+<h4 id="数据采集层opentelemetry">数据采集层：OpenTelemetry<a class="headerlink" href="#数据采集层opentelemetry" title="Permanent link">&para;</a></h4>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<ul>
+<li><a href="https://github.com/open-telemetry/docs-cn/blob/main/OT.md"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span> OpenTelemetry 简介</a></li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">OpenTelemetry 的历史</p>
+<ul>
+<li>OpenTracing 制定了一套平台无关、厂商无关的协议标准，使得开发人员能够方便的添加或更换底层 APM 的实现。2016 年 11 月 CNCF.io 接受 OpenTracing，同时这也是 CNCF 的第三个项目，前两个是鼎鼎大名的 Kubernetes 和 Prometheus，由此可见开源世界对 APM 的重视，对统一标准的重视和渴望。</li>
+<li>OpenCensus 由谷歌推出，最初目标并不是抢 OpenTracing 的饭碗，而是为了把 Go 语言的 Metrics 采集、链路跟踪与 Go 语言自带的 profile 工具打通，统一用户的使用方式。随着项目的进展，野心也膨胀了，这个时候开始幻想为什么不把其它各种语言的相关采集都统一呢？OpenCensus 的场景进一步扩大了，不仅做了 Metrics 基础指标监控，还做了 OpenTracing 的老本行：分布式跟踪。此外，微软也加入了 OpenCensus。</li>
+<li>OpenTracing 和 OpenCensus 的功能特性各有优缺点，社区活跃度半斤八两。一边是开源社区的力量，一边是谷歌、微软。<strong>这两个项目随后合并，诞生了 OpenTelemetry。</strong></li>
+</ul>
+</div>
+<p>OpenTelemetry 是一个<strong>可观测性框架和工具</strong>，涵盖了可观测性的三大支柱。下面左图展示了传统的可观测性体系，三大支柱各自独立，需要自己实现数据收集、存储、查询和展示。右图展示了 OpenTelemetry 的架构。</p>
+<div class="grid cards">
+<p><a class="glightbox" href="https://opentelemetry.io/docs/specs/otel/logs/img/separate-collection.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="arch_legacy" src="https://opentelemetry.io/docs/specs/otel/logs/img/separate-collection.png" /></a></p>
+<p><a class="glightbox" href="https://opentelemetry.io/docs/specs/otel/logs/img/unified-collection.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="arch_opentelemetry" src="https://opentelemetry.io/docs/specs/otel/logs/img/unified-collection.png" /></a></p>
+</div>
+<center>
+<figcaption>传统与 OpenTelemetry 架构对比<br/>
+    <small><a href="https://opentelemetry.io/docs/specs/otel/logs/">
+    OpenTelemetry Logging - OpenTelemetry
+    </a></small>
+</figcaption>
+</center>
+
+<p>OpenTelemetry 的终极目标：实现 Metrics、Tracing、Logging 的融合及大一统，作为可观测性的数据采集终极解决方案。</p>
+<ul>
+<li>基于 Metrics 告警发现异常</li>
+<li>通过 Tracing 定位到具体的系统和方法</li>
+<li>根据模块的日志最终定位到错误详情和根源</li>
+<li>调整 Metrics 等设置，更精确的告警/发现问题</li>
+</ul>
+<p>为了实现融合，OpenTelemetry 提出了<strong>上下文（Context）</strong>的概念。Context 为 Metrics、Logging、Tracing 提供统一的上下文，三者均可以访问到这些信息，同时 Context 可以随着请求链路的深入，不断往下传播。</p>
+<p><strong>OpenTelemetry 的自身定位很明确：数据采集和标准规范的统一，对于数据如何去使用、存储、展示、告警，官方是不涉及的。</strong></p>
+<p>OpenTelemetry 正在逐步成为可观测性领域的标准规范。并且，OpenTelemetry 的实现大多采用 Go，与我们的技术栈相符。<strong>综合以上原因，我们最终选择了 OpenTelemetry 作为数据采集层的标准，并将其应用到我们自己编写的各类工具中。</strong></p>
+<div class="admonition info">
+<p class="admonition-title">案例调研</p>
+<p>越来越多的公司迁移到 OpenTelemetry，以下是一些参考：</p>
+<ul>
+<li>
+<p><a href="https://innovation.ebayinc.com/tech/engineering/why-and-how-ebay-pivoted-to-opentelemetry/">Why and How eBay Pivoted to OpenTelemetry - ebay</a>：ebya 于 2022 年将 K8s 上的 MetricBeat 迁移到 OpenTelemetry，同时积极贡献到 OpenTelemetry 社区。他们认为 OpenTelemetry 的可伸缩性和性能都有优势：</p>
+<blockquote>
+<p>We are busy working on doing the same for Filebeat at this point and early performance benchmarks are very promising.</p>
+<p>We will continue to learn from running agents at scale and keep pivoting as needed. We will continue to work with the OpenTelemetry community as it continues to pave the way for standardization within the Observability ecosystem. Now that we’re using OpenTelemetry, we can provide our developers with an industry-approved open standard to send telemetry into Sherlock.io. As the community grows to offer support for newer features like profiling, we will adopt them into the platform to benefit our developer community.</p>
+</blockquote>
+</li>
+<li>
+<p><a href="https://www.bilibili.com/video/BV18K4y1M7bL"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.813 4.653h.854q2.266.08 3.773 1.574Q23.946 7.72 24 9.987v7.36q-.054 2.266-1.56 3.773c-1.506 1.507-2.262 1.524-3.773 1.56H5.333q-2.266-.054-3.773-1.56C.053 19.614.036 18.858 0 17.347v-7.36q.054-2.267 1.56-3.76t3.773-1.574h.774l-1.174-1.12a1.23 1.23 0 0 1-.373-.906q0-.534.373-.907l.027-.027q.4-.373.92-.373t.92.373L9.653 4.44q.107.106.187.213h4.267a.8.8 0 0 1 .16-.213l2.853-2.747q.4-.373.92-.373c.347 0 .662.151.929.4s.391.551.391.907q0 .532-.373.906zM5.333 7.24q-1.12.027-1.88.773-.76.748-.786 1.894v7.52q.026 1.146.786 1.893t1.88.773h13.334q1.12-.026 1.88-.773t.786-1.893v-7.52q-.026-1.147-.786-1.894t-1.88-.773zM8 11.107q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q0-.56.386-.947.387-.386.947-.386m8 0q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q.025-.586.4-.96.373-.373.933-.373"/></svg></span> 可观测性技术生态和 OpenTelemetry 原理及实践 - 腾讯云</a>：腾讯于 2021 年做的技术报告。此时腾讯 OpenTelemetry OTeam 已经在内部基于 OpenTelemetry 建立起了完善的业务和平台监测体系“天机阁 2.0”，为内部业务提供了全链路可观测性支持。</p>
+</li>
+<li>
+<p><a href="https://www.bilibili.com/read/cv18609680"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.813 4.653h.854q2.266.08 3.773 1.574Q23.946 7.72 24 9.987v7.36q-.054 2.266-1.56 3.773c-1.506 1.507-2.262 1.524-3.773 1.56H5.333q-2.266-.054-3.773-1.56C.053 19.614.036 18.858 0 17.347v-7.36q.054-2.267 1.56-3.76t3.773-1.574h.774l-1.174-1.12a1.23 1.23 0 0 1-.373-.906q0-.534.373-.907l.027-.027q.4-.373.92-.373t.92.373L9.653 4.44q.107.106.187.213h4.267a.8.8 0 0 1 .16-.213l2.853-2.747q.4-.373.92-.373c.347 0 .662.151.929.4s.391.551.391.907q0 .532-.373.906zM5.333 7.24q-1.12.027-1.88.773-.76.748-.786 1.894v7.52q.026 1.146.786 1.893t1.88.773h13.334q1.12-.026 1.88-.773t.786-1.893v-7.52q-.026-1.147-.786-1.894t-1.88-.773zM8 11.107q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q0-.56.386-.947.387-.386.947-.386m8 0q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q.025-.586.4-.96.373-.373.933-.373"/></svg></span> B 站基于 Clickhouse 的下一代日志体系建设实践</a>：2022 年 B 站日志系统从 Elasticsearch 迁移到 OpenTelemetry + ClickHouse。</p>
+<blockquote>
+<p>日志作为一种应用产生的实时数据，随着业务应用规模发展而紧跟着扩大。日志系统必须在具备高吞吐量的同时，也要具备较高的实时性要求。Elasticsearch 由于分词等特性，在写吞吐量上有着明显的瓶颈，分词耗 CPU 且难以解决热点问题。如果资源冗余不足，就容易导致稳定性下降，日志摄入发生延迟，日志的延迟会对排障产生极大负面影响。</p>
+<p>Kibana 虽然好用，但也不是没有缺点的，整体代码复杂，二次开发困难。且每次升级 ES 必须升级到对应的 Kibana 版本也增加了用户迁移的成本。还有一点就是 Kibana Query 虽然语法较为简单，但对于初次接触的研发还是有一定的学习成本的。</p>
+<p>在采集和传输上，我们制定了一套内部的日志格式规范，使用 JSON 作为传输格式，并提供了 Java 和 Golang 的 SDK。这套传输格式本身在序列化/反序列化上性能一般，且私有协议难以避免兼容性和可维护性问题。</p>
+<p>针对上述的一系列问题，我们设计了 Bilibili 日志服务 2.0 的体系，主要的进化为使用 ClickHouse 作为存储，实现了自研的日志可视化分析平台，并使用 OpenTelemetry 作为统一日志上报协议。</p>
+</blockquote>
+</li>
+</ul>
+</div>
+<h4 id="数据存储层prometheus-和-clickhouse">数据存储层：Prometheus 和 ClickHouse<a class="headerlink" href="#数据存储层prometheus-和-clickhouse" title="Permanent link">&para;</a></h4>
+<p>我们已经知道 OpenTelemetry 只负责数据生产和收集。至于存储、使用和分析，我们需要继续做选择。</p>
+<ul>
+<li>指标数据：Prometheus 和 InfluxDB 两个 TSDB 作为候选者。Prometheus 由于以下原因胜出：<ul>
+<li><a href="https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/">Prometheus“致力于成为 OpenTelemetry Metrics 的默认存储”</a>。在即将到来的 Prometheus 3.0，OTEL 将得到原生支持。</li>
+<li>它不仅仅是数据库，还是一套监控系统，自带了分析功能，为下一层提供便利。</li>
+</ul>
+</li>
+<li>日志数据：Elasticsearch 和 ClickHouse 是两种不同类型的数据库，生态也各有优略。目前都部署一套试试看。</li>
+</ul>
+<h4 id="查询和分析层grafana">查询和分析层：Grafana<a class="headerlink" href="#查询和分析层grafana" title="Permanent link">&para;</a></h4>
+<p>我们选择 Grafana。它足够灵活，支持多种数据源，而且有丰富的插件和模板，可以满足我们的需求，不论是 metric、log 还是 trace。</p>
+<p>此外，大数据挖掘领域应该少不了 AI 的身影。MindsDB 是一个开源虚拟数据库，可实现将实时数据连接到人工智能系统的管道自动化。使用 AI 进行数据分析有待进一步研究。</p>
+<h4 id="其他">其他<a class="headerlink" href="#其他" title="Permanent link">&para;</a></h4>
+<p>我们也调查过其他产品，但最终没有选择的原因：</p>
+<ul>
+<li>
+<p>Fluentd: 日志收集工具，支持多种数据源和输出。<a href="https://blog.laisky.com/p/go-fluentd/">使用 Golang 写一个取代 fluentd 的日志处理器</a> 这篇博客对它做了一些评论：</p>
+<blockquote>
+<p>我曾经写过一篇介绍 fluentd 的文章：<a href="https://blog.laisky.com/p/fluentd/">fluentd 安装、配置、使用介绍</a>。在此文中，我介绍了使用 fluentd 作为日志处理工具的用法，在工作中，我也使用了多年的 fluentd。而且 fluentd 还加入了 CNCF，发展潜力可观。</p>
+<p>不过在目前的公司中，因为较为特殊的需求，使用 fluentd 遇到了一些问题。首先是插件质量良莠不齐，而因为没有熟悉 ruby 的人，所以调试起来相当头疼。其次是 ruby 存在 GIL，性能被限制在单核上，而 process 扩展的可用场景有限。最后就是实际需求过于多样，fluentd 的很多插件没法满足需求，或是需要大量使用 rewrite 控制解析流，配置文件相当晦涩难懂。综合这些原因，正好最近没什么事，以及也想看看 golang 的能力，所以干脆决定用 golang 自己写一个。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="写在最后我们才刚刚开始">写在最后：我们才刚刚开始<a class="headerlink" href="#写在最后我们才刚刚开始" title="Permanent link">&para;</a></h2>
+<p><a href="https://stackoverflow.com/questions/76362881/can-opentelemetry-collector-replace-filebeat-and-metricbeat"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.725 0-1.72 1.277 6.39 8.588 1.716-1.277zm-3.94 3.418-1.369 1.644 8.225 6.85 1.369-1.644zm-3.15 4.465-.905 1.94 9.702 4.517.904-1.94zm-1.85 4.86-.44 2.093 10.473 2.201.44-2.092-10.473-2.203zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396zm4.265 2.133v2.13h10.66v-2.13H6.154Z"/></svg></span> Can OpenTelemetry Collector replace Filebeat and Metricbeat</a></p>
+<blockquote>
+<p>My final thought on opentelemetry to have 1 fits-all-solution: No, it is currently not possible and you probably do not need it. OTEL sdks is still partially in not very mature state, your microservices are also different and requiring different integrations and having different deployment procedures. <strong>What I can propose here is to try this and that, fail, write down your observations, fail again and again to have more mature understanding of what you more or less need. So, be able to instrument your systems with different tools and keep your hand on pulse of the whole Observability news - it's road only started ;)</strong></p>
+</blockquote>
+<p>笔者十分认同上面这段话。我们的可观测性系统设计只是一个初步的尝试，我们还需要不断地实践、失败、总结，才能找到最适合我们的解决方案。</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2025 09:15:53">April 25, 2025</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2025 09:15:53">April 25, 2025</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: 运维文档">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                运维文档
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="log/" class="md-footer__link md-footer__link--next" aria-label="Next: 日志收集">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                日志收集
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      ZJUSCT
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/polyfill/index.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/tablesort/dist/tablesort.min.js"></script>
+      
+        <script src="../../javascripts/tablesort.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

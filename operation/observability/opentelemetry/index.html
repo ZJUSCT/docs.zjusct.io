@@ -1,0 +1,2194 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ZJUSCT Documents & Blogs">
+      
+      
+        <meta name="author" content="ZJUSCT">
+      
+      
+        <link rel="canonical" href="https://docs.zjusct.io/operation/observability/opentelemetry/">
+      
+      
+        <link rel="prev" href="../network/">
+      
+      
+        <link rel="next" href="../../../blog/">
+      
+      
+      <link rel="icon" href="../../../assets/zjusct.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>数据采集：OpenTelemetry - ZJUSCT 文档与博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/fonts.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/counter.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/theme.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/neoteroi-v1.1.2.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#数据采集opentelemetry" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="ZJUSCT 文档与博客" class="md-header__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+      
+  <img src="../../../assets/zjusct.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ZJUSCT 文档与博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              数据采集：OpenTelemetry
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="zjusct" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="根据系统模式切换主题"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="根据系统模式切换主题" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ZJUSCT/docs.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docs.zjusct.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../competition/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  竞赛
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../falcon/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Falcon
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  运维
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../blog/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  博客
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="ZJUSCT 文档与博客" class="md-nav__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+      
+  <img src="../../../assets/zjusct.svg" alt="logo">
+
+    </a>
+    ZJUSCT 文档与博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ZJUSCT/docs.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docs.zjusct.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            首页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index/contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    贡献
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index/newcomer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJUSCT 集群新手指南
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../competition/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    竞赛
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            竞赛
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../falcon/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Falcon
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Falcon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../falcon/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU Git 代码托管服务
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../falcon/mirror-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU Mirror 历史
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../falcon/mirror/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU Mirror 镜像站
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    运维
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            运维
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    可观测性
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            可观测性
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    日志收集
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络观测
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    数据采集：OpenTelemetry
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    数据采集：OpenTelemetry
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#otel-规范基本概念" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel 规范：基本概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otel-语义约定" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel 语义约定
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otel-规范日志和指标的数据模型" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel 规范：日志和指标的数据模型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OTel 规范：日志和指标的数据模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otel-协议otlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel 协议（OTLP）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OTel 协议（OTLP）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#protobuf" class="md-nav__link">
+    <span class="md-ellipsis">
+      ProtoBuf
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      gRPC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http11-和-http2" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP/1.1 和 HTTP/2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otel-collector-otelcol" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel Collector (otelcol)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OTel Collector (otelcol)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#collector-简介" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collector 简介
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collector-部署" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collector 部署
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collector-性能分析与调试" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collector 性能分析与调试
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#子组件pkgottl" class="md-nav__link">
+    <span class="md-ellipsis">
+      子组件：pkg/ottl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#子组件pkgstanza" class="md-nav__link">
+    <span class="md-ellipsis">
+      子组件：pkg/stanza
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../blog/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    博客
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            博客
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    posts
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            posts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blog/posts/.template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    None
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#otel-规范基本概念" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel 规范：基本概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otel-语义约定" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel 语义约定
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otel-规范日志和指标的数据模型" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel 规范：日志和指标的数据模型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OTel 规范：日志和指标的数据模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otel-协议otlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel 协议（OTLP）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OTel 协议（OTLP）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#protobuf" class="md-nav__link">
+    <span class="md-ellipsis">
+      ProtoBuf
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      gRPC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http11-和-http2" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP/1.1 和 HTTP/2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otel-collector-otelcol" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel Collector (otelcol)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OTel Collector (otelcol)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#collector-简介" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collector 简介
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collector-部署" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collector 部署
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collector-性能分析与调试" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collector 性能分析与调试
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#子组件pkgottl" class="md-nav__link">
+    <span class="md-ellipsis">
+      子组件：pkg/ottl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#子组件pkgstanza" class="md-nav__link">
+    <span class="md-ellipsis">
+      子组件：pkg/stanza
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../../index/contribute/#tag:完善" class="md-tag">完善</a>
+      
+    
+  </nav>
+
+
+  
+    <a href="https://github.com/ZJUSCT/docs.zjusct.io/blob/main/docs/operation/observability/opentelemetry.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="数据采集opentelemetry">数据采集：OpenTelemetry<a class="headerlink" href="#数据采集opentelemetry" title="Permanent link">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">OpenTelemetry 的缩写为 OTel。</p>
+</div>
+<p>OpenTelemetry 简介见 <a href="../#数据采集层opentelemetry">可观测性#OpenTelemetry</a>。</p>
+<p>OpenTelemetry 的主要部分如下：</p>
+<ul>
+<li>OTel 规范：涉及 OpenTelemetry 的所有部分。</li>
+<li>OTel 协议（OpenTelemetry Protocol，OTLP）：描述遥测数据在数据源、中间节点和后端之间的编码和传输方式。</li>
+<li>语义约定（Semantic Conventions）：定义各类遥测数据的属性名、类型、意义和有效值。</li>
+<li>API：如何生成遥测数据。</li>
+<li>SDK：在特定语言中实现 API，导出遥测数据。</li>
+<li>收集器（OpenTelemetry Collector，otelcol）：接收、处理和导出遥测数据。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">关于 API 和 SDK 的区分</p>
+<p>API 包括抽象类，用于库开发者。SDK 具体实现了 API，用于应用开发者。</p>
+<p>OTel 设计如此，是为了让应用开发者能够替换不同 SDK 实现。OpenTelemetry SDK 是官方的实现，但其他人也可以按 API 实现自己的 SDK。</p>
+</div>
+<h2 id="otel-规范基本概念">OTel 规范：<a href="https://opentelemetry.io/docs/specs/otel/common/">基本概念</a><a class="headerlink" href="#otel-规范基本概念" title="Permanent link">&para;</a></h2>
+<p>要点如下：</p>
+<ul>
+<li>
+<p>属性（Attributes）是 KV 对，V 要么是原始类型（字符串、整数、浮点数等），要么是数组（类型相同）。</p>
+<ul>
+<li>
+<p>值得注意的是，Log 数据模型在标准之外进行了扩充，允许了值为 <code>any</code>，这是为了支持外部日志格式。</p>
+<blockquote>
+<p>Arbitrary deep nesting of values for arrays and maps is allowed (essentially allows to represent an equivalent of a JSON object).</p>
+</blockquote>
+<p>除了 <code>LogRecord</code> 的 <code>Attributes</code>，其他地方都应当遵守标准的属性定义。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>属性名由 <a href="https://opentelemetry.io/docs/specs/semconv/general/attribute-naming/">OTel 语义约定</a> 约定：</p>
+<ul>
+<li>应当是小写的。</li>
+<li>使用命名空间避免名字冲突，使用 <code>.</code> 分隔命名空间。</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这意味着 OpenTelemetry 的属性是扁平的，不支持嵌套。比如，一个键为 <code>foo.bar</code> 的属性应当是：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">&quot;foo.bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>而不是</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nt">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="nt">&quot;bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>扁平的属性结构在实践时有几个好处：</p>
+<ul>
+<li>便于数据库检索：比如在 ClickHouse 中存储为 <code>map(LowCardinality(String), String)</code>，如果嵌套，则需要对子字符串再次进行解析，无法简单地看到属性整体。</li>
+<li>便于 OTel 处理：比如要检查一个属性是否存在的 stanza 表达式为 <code>type(attributes["foo.bar"]) != 'nil'</code>。如果嵌套，需要先检查 <code>attributes.foo</code> 是否存在，再检查 <code>attributes.foo.bar</code> 是否存在，否则报错指针异常。</li>
+</ul>
+</div>
+<ul>
+<li>
+<p>资源（Resource）是一组<strong>不变</strong>（immutable）的属性，用于描述产生数据的实体。</p>
+<blockquote>
+<p>A Resource is an immutable representation of the entity producing telemetry as Attributes.</p>
+<p>-- <a href="https://github.com/open-telemetry/opentelemetry-specification/blob/v1.37.0/specification/resource/sdk.md"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span> opentelemetry-specification/specification/resource/sdk.md at v1.37.0 · open-telemetry/opentelemetry-specification</a></p>
+</blockquote>
+<p>目前 OpenTelemetry 定义的资源中，我们关心的如下：</p>
+<ul>
+<li>服务 <code>service</code>：一般指一个特定的应用程序，<strong>大部分需要在收集时手动添加</strong>。<ul>
+<li><code>service.name</code>：服务名。</li>
+<li><code>service.version</code>：服务版本。</li>
+</ul>
+</li>
+<li>计算单元：<ul>
+<li><a href="https://opentelemetry.io/docs/specs/semconv/resource/container/">容器 <code>container</code></a>：在 metric 中由 <code>docker_status</code> receiver 自动添加，在 log 中需要手动解析。</li>
+<li><a href="https://opentelemetry.io/docs/specs/semconv/resource/process/">进程 <code>process</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="otel-语义约定"><a href="https://opentelemetry.io/docs/specs/semconv/">OTel 语义约定</a><a class="headerlink" href="#otel-语义约定" title="Permanent link">&para;</a></h2>
+<p>语义约定规范了各类数据的<strong>属性名、类型、意义和有效值</strong>，为不同系统之间的数据交换建立起一套标准。OpenTelemetry 内部各组件都遵守这些语义约定，外部系统也很容易将自己的数据映射到这些约定上。此外，越来越多的系统开始提供语义约定的直接支持。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>网络相关的属性名称定义在 <a href="https://opentelemetry.io/docs/specs/semconv/attributes-registry/network/"><code>semconv/attributes-registry/network</code></a> 下。其中对端 IP 的定义如下：</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>类型</th>
+<th>描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>network.peer.address</code></td>
+<td>string</td>
+<td>Peer address of the network connection - IP address or Unix domain socket name.</td>
+<td><code>10.1.2.80</code>; <code>/tmp/my.sock</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="otel-规范日志和指标的数据模型"><a href="https://opentelemetry.io/docs/specs/otel/">OTel 规范</a>：日志和指标的数据模型<a class="headerlink" href="#otel-规范日志和指标的数据模型" title="Permanent link">&para;</a></h2>
+<p>OpenTelemetry 数据模型定义了<strong>三大支柱的数据模型和包含的语义约定</strong>（只有 Metric 和 Log 有明确的 Data Specification，Trace 在 API Specification 中有数据类型规范）。规范中有很大篇幅讲解设计的原因和背景，这里不再赘述，感兴趣的同学可以查看原文。这里简单举其中一些字段作为例子。</p>
+<h3 id="log"><a href="https://opentelemetry.io/docs/specs/otel/logs/data-model/">Log</a><a class="headerlink" href="#log" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Timestamp</td>
+<td>uint64</td>
+<td>Time when the event occurred.</td>
+</tr>
+<tr>
+<td>ObservedTimestamp</td>
+<td>uint64</td>
+<td>Time when the event was observed.</td>
+</tr>
+<tr>
+<td>SeverityText</td>
+<td>string</td>
+<td>The severity text (also known as log level).</td>
+</tr>
+<tr>
+<td>SeverityNumber</td>
+<td>number</td>
+<td>Numerical value of the severity.</td>
+</tr>
+<tr>
+<td>Body</td>
+<td>any</td>
+<td>The body of the log record.</td>
+</tr>
+<tr>
+<td>Resource</td>
+<td>Resource</td>
+<td>Describes the source of the log.</td>
+</tr>
+<tr>
+<td>InstrumentationScope</td>
+<td>Instrumentation Scope</td>
+<td>Describes the scope that emitted the log.</td>
+</tr>
+<tr>
+<td>Attributes</td>
+<td>map<string, any></td>
+<td>Additional information about the event.</td>
+</tr>
+</tbody>
+</table>
+<p>如果对字段的语义有困惑，可以去查文档和 GitHub 上的讨论。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ObservedTimestamp: 2024-10-04 15:46:26.809948211 +0000 UTC
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Timestamp: 2024-10-04 15:46:14 +0000 UTC
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>SeverityText: notice
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>SeverityNumber: Info2(10)
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>Body: Str(&lt;189&gt;Oct  4 23:46:14 Huawei %%01SHELL/5/CMDRECORD[l](324):Record command information. (Task=vt0, Ip=192.168.1.178, User=admin, Command=&quot;log off (ssh user)&quot;, Result=Success) )
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>Attributes:
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    -&gt; net.host.port: Str(514)
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    -&gt; net.peer.name: Str(192.168.1.1)
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    -&gt; appname: Str(%%01SHELL/5/CMDRECORD(l))
+</span></code></pre></div>
+</div>
+<p>OpenTelemetry 的日志尚处于早期阶段，很多语义约定还没有规范化。附录 <a href="https://opentelemetry.io/docs/specs/otel/logs/data-model-appendix/">Appendix A. Example Mappings</a> 展示了一些常见日志格式的映射。可以看到，日志中结构化的部分应当尽可能提取到 Body 之外的地方作为元数据（比如 Resource 和 Attributes），Body 只剩下文本信息。<a href="https://github.com/open-telemetry/opentelemetry-specification/issues/1613#issuecomment-953187375">Distinction between structured <code>Body</code> and <code>Attributes</code> · Issue #1613 · open-telemetry/opentelemetry-specification</a> 对 <code>Body</code> 字段的使用做的详细的讨论，最终给出了如下的建议：</p>
+<ul>
+<li>OTel 规范仍会保持 <code>Body</code> 类型为 <code>any</code>，以兼容各种日志格式，满足无损转换的要求。</li>
+<li>现有的所有日志库产生的日志消息体（message）都是字符串，因此限制日志 API 仅接受 <code>Body</code> 为字符串，结构化数据应当进入 <code>Attributes</code>。</li>
+</ul>
+<h3 id="metrics"><a href="https://opentelemetry.io/docs/specs/otel/metrics/data-model/">Metrics</a><a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h3>
+<p>Metrics 本质上来自事件。OTLP 分层设计了三个模型：Events =&gt; Data Stream =&gt; Timeseries。高层次模型涉及度量 API 和离散输入值，低层次模型定义时间序列和离散输出值。</p>
+<div class="grid cards">
+<p><a class="glightbox" href="../opentelemetry.assets/model-event-layer.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Events → Streams" src="../opentelemetry.assets/model-event-layer.png" /></a></p>
+<p><a class="glightbox" href="../opentelemetry.assets/model-layers-stream.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Stream → Timeseries" src="../opentelemetry.assets/model-layers-stream.png" /></a></p>
+</div>
+<p>时间序列：</p>
+<ul>
+<li>元数据属性<ul>
+<li>指标名称</li>
+<li>属性（维度）</li>
+<li>点的值类型（整数、浮点数等）</li>
+<li>测量单位</li>
+</ul>
+</li>
+<li><strong>主要数据</strong>是有序的（时间戳，值）点，类型可以是：<ul>
+<li>计数器（单调，累积）</li>
+<li>仪表</li>
+<li>直方图</li>
+<li>指数直方图</li>
+</ul>
+</li>
+</ul>
+<p>指标监测系统常见三种保留语义的变换：Temporal reaggregation（降频）、Spatial reaggregatio（降维，去除指标中不必要的属性）、Delta-to-Cumulative（增量和累积之间的转换）。OTel 的所有 Data Stream 都有内置的聚合函数支持这些变换。</p>
+<p>Metric 点类型：</p>
+<div class="grid cards">
+<ul>
+<li>
+<p>Delta Sum</p>
+<hr />
+<p>​    <a class="glightbox" href="../opentelemetry.assets/model-delta-sum.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Delta Sum" src="../opentelemetry.assets/model-delta-sum.png" /></a></p>
+</li>
+<li>
+<p>Cumulative Sum</p>
+<hr />
+<p><a class="glightbox" href="../opentelemetry.assets/model-cumulative-sum.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Cumulative Sum" src="../opentelemetry.assets/model-cumulative-sum.png" /></a></p>
+</li>
+<li>
+<p>Gauge</p>
+<hr />
+<p><a class="glightbox" href="../opentelemetry.assets/model-gauge.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Gauge" src="../opentelemetry.assets/model-gauge.png" /></a></p>
+</li>
+<li>
+<p>Delta Histogram</p>
+<hr />
+<p><a class="glightbox" href="../opentelemetry.assets/model-delta-histogram.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Delta Histogram" src="../opentelemetry.assets/model-delta-histogram.png" /></a></p>
+</li>
+</ul>
+</div>
+<h2 id="otel-协议otlp">OTel 协议（OTLP）<a class="headerlink" href="#otel-协议otlp" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<ul>
+<li><a href="https://opentelemetry.io/docs/specs/otlp/">OTLP Specification - OpenTelemetry</a>。</li>
+</ul>
+</div>
+<p>OTLP 描述了遥测数据在数据源、中间节点和后端之间的编码和传输方式。</p>
+<ul>
+<li>OTLP 协议是请求 - 响应式的。目前定义了一种请求和一种响应：<code>Export</code>。</li>
+<li>必须支持的压缩方式有 <code>gzip</code> 和 <code>none</code>。</li>
+<li>OTLP 目前定义了在 gRPC、HTTP/1.1 和 HTTP/2 上的实现。</li>
+</ul>
+<figure>
+<a class="glightbox" href="../opentelemetry.assets/otlp.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="otlp" src="../opentelemetry.assets/otlp.png" /></a>
+
+<figcaption>OTLP 协议</figcaption>
+</figure>
+<h3 id="protobuf"><a href="https://protobuf.dev/">ProtoBuf</a><a class="headerlink" href="#protobuf" title="Permanent link">&para;</a></h3>
+<p>Protocol Buffers 由 Google 提出，是一套语言中立、平台无关的<strong>序列化</strong>机制。使用 ProtoBuf Schema 很容易描述数据结构如何序列化为二进制流，以及如何从二进制流反序列化为数据结构。</p>
+<h3 id="grpc"><a href="https://grpc.io/">gRPC</a><a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h3>
+<ul>
+<li>端口 <code>4317</code>。</li>
+<li>建立 gRPC 连接后，客户端使用 <code>Export&lt;signal&gt;ServiceRequest</code> 发送数据。</li>
+<li>服务端分三种情况响应：<ul>
+<li>完全成功：回复 <code>Export&lt;signal&gt;ServiceResponse</code> 消息，不设置 <code>partial_success</code> 字段。</li>
+<li>部分成功：回复 <code>Export&lt;signal&gt;ServiceResponse</code> 消息，设置 <code>partial_success</code>、其他描述拒绝的部分和原因的字段。该情况下客户端不允许重试。</li>
+<li>失败：这些代码由 gRPC 规范定义（状态码和错误处理），OTLP 只是说明了这些代码在 OTLP 中的含义。<ul>
+<li>可重试：服务端返回代码 <code>UNAVAILABLE</code>，并使用 <code>RetryInfo</code> 描述重试的间隔。</li>
+<li>不可重试：服务端返回代码 <code>INVALID_ARGUMENT</code>，并使用 <code>BadRequest</code> 描述错误。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="http11-和-http2"><a href="https://datatracker.ietf.org/doc/html/rfc2616">HTTP/1.1</a> 和 <a href="https://datatracker.ietf.org/doc/html/rfc9113">HTTP/2</a><a class="headerlink" href="#http11-和-http2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>载荷编码为二进制或 JSON 格式。</li>
+<li>客户端使用 <code>POST</code> 请求发送数据，路径为 <code>v1/&lt;signal&gt;</code> 等。</li>
+<li>服务端分三种情况响应：<ul>
+<li>完全成功：返回 <code>200 OK</code>。</li>
+<li>部分成功：返回 <code>200 OK</code>，并在响应体中描述拒绝的部分和原因。</li>
+<li>失败：返回 <code>4xx</code> 或 <code>5xx</code> 状态码，具体含义由 OTLP 定义。</li>
+</ul>
+</li>
+</ul>
+<h2 id="otel-collector-otelcol">OTel Collector (otelcol)<a class="headerlink" href="#otel-collector-otelcol" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<ul>
+<li><a href="https://opentelemetry.io/docs/collector/">Collector - OpenTelemetry</a></li>
+</ul>
+</div>
+<h3 id="collector-简介">Collector 简介<a class="headerlink" href="#collector-简介" title="Permanent link">&para;</a></h3>
+<p>Collector 以无关厂商的方式接收、处理和导出遥测数据。</p>
+<p>Collector 由 Receiver、Processor 和 Exporter 组成，整体架构如下：</p>
+<figure>
+<a class="glightbox" href="../opentelemetry.assets/collector_arch.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="collector_arch" src="../opentelemetry.assets/collector_arch.png" /></a>
+
+<figcaption>OpenTelemetry Collector 架构</figcaption>
+</figure>
+<ul>
+<li>Receiver 和 Exporter 灵活支持 Pull 或 Push 模式。</li>
+<li>Processor 可以对数据进行转换、过滤、聚合等操作。</li>
+<li>Connector 可以对流水线进行聚合、路由等操作。</li>
+</ul>
+<p>目前，我们主要以 Normalizer 模式部署，起到在数据源和后端之间的数据清洗和转换作用。</p>
+<figure>
+<a class="glightbox" href="../opentelemetry.assets/collector_normalizer.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="collector_normalizer" src="../opentelemetry.assets/collector_normalizer.png" /></a>
+
+<figcaption>Normalizer 模式</figcaption>
+</figure>
+<p>Collector 的插件分为 core 和 contrib 两类，分别在不同 GitHub 仓库。Collector 每次发布都会打包插件，制作成不同的 distribution 版本。一般选择 contrib 版本，因为 syslog、journald 等重要插件都在 contrib 仓库中。</p>
+<p>Collector 默认提供自身的可观测性：<code>8888</code> 端口暴露了 Prometheus metric 接口，日志输出到 <code>stderr</code>。Collector 通过 systemd 管理，日志也可以通过 journald 收集。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>使用 <a href="https://www.otelbin.io/">otelbin.io</a> 可以可视化 Collector 配置。</p>
+</div>
+<h3 id="collector-部署">Collector 部署<a class="headerlink" href="#collector-部署" title="Permanent link">&para;</a></h3>
+<p>根据我们的<a href="../#需求分析">需求</a>，选择 agent + gateway 部署模式。所有节点均部署 systemd 维护的 otelcol 作为 agent，管理节点上部署 otelcol Docker 作为 gateway。</p>
+<pre class="mermaid"><code>flowchart TD
+ subgraph s1["cloud.region"]
+    n8["Infrastructure"]
+    n1(["agent"])
+    subgraph s3["host.name"]
+     n7(["agent"])
+     n6["service.name"]
+    end
+    subgraph s2["host.name"]
+     n5["service.name"]
+     n4(["agent"])
+     n2["service.name"]
+    end
+ end
+ n3(["gateway"])
+ n5 --&gt; n4
+ n2 --&gt; n4
+ n6 --&gt; n7
+ n7 --&gt; n1
+ n4 --&gt; n1(["gateway"])
+ n1(["gateway(cluster)"]) --&gt; n3(["gateway(final)"])
+ n8["Infrastructure"] --&gt; n1
+</code></pre>
+<p><a href="https://www.youtube.com/watch?v=WhRrwSHDBFs"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.498 6.186a3.02 3.02 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.02 3.02 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.02 3.02 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.02 3.02 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814M9.545 15.568V8.432L15.818 12z"/></svg></span> OpenTelemetry Collector Deployment Patterns</a> 还描述了基本、扇出（Fanout）、规范化（Normalizer）、负载均衡、多集群、多租户等部署模式。</p>
+<p>Collector 可以使用 OpAMP 协议管理，OpenTelemetry 也提供了简单的 <a href="https://github.com/open-telemetry/opamp-go"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span> OpAMP Go 实现</a>。因为该协议目前处于 Beta 阶段，所以我们暂时没有使用。<strong>等到协议应用成熟，我们应当使用 OpAMP 作为中心化的配置管理工具，下发配置文件和监测 Collector 运行状态。</strong></p>
+<p>部署为 Agent + Gateway 模式时，数据处理的位置有多种选择。ClickHouse 官方的建议是：在 gateway 和 ClickHouse 中做转换和处理，尽量减少 agent 实例上的工作。</p>
+<div class="admonition tip">
+<p class="admonition-title">通常，我们只在 agent 上执行过滤、时间戳设置和添加属性操作。</p>
+<blockquote>
+<p>We recommend users avoid doing excessive event processing using operators or transform processors. These can incur considerable memory and CPU overhead, especially JSON parsing. It is possible to do all processing in ClickHouse at insert time with materialized views and columns with some exceptions - specifically, context-aware enrichment e.g. adding of k8s metadata. For more details see "Extracting structure with SQL".</p>
+<p>If processing is done using the OTel collector, we recommend doing transformations at gateway instances and minimizing any work done at agent instances. This will ensure the resources required by agents at the edge, running on servers, are as minimal as possible. Typically, we see users only performing filtering (to minimize unnecessary network usage), timestamp setting (via operators), and enrichment, which requires context in agents. For example, if gateway instances reside in a different Kubernetes cluster, k8s enrichment will need to occur in the agent.</p>
+</blockquote>
+</div>
+<p>我们有跨网站传输遥测数据的需求（从 mirror 到 cluster），配置了以下安全措施：</p>
+<ul>
+<li>使用 TLS 证书进行 HTTPS 通信。</li>
+<li>使用 bearer token 进行认证。</li>
+</ul>
+<h3 id="collector-性能分析与调试">Collector 性能分析与调试<a class="headerlink" href="#collector-性能分析与调试" title="Permanent link">&para;</a></h3>
+<p>作为数据集散的枢纽，Collector 的性能至关重要。OpenTelemetry 很关心这一点，对每次 Git 提交都会自动运行基准测试，结果见 <a href="https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/">benchmarks/loadtests</a>。</p>
+<p>Collector 自身提供 pprof 插件，可以进行性能分析。可以查看 <code>http://localhost:1778/debug/pprof/</code> 了解基本情况。希望深入了解 Go pprof 的同学可以参考下面的资料：</p>
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PL8Q5PSrFkjsyWjcuAXfBgtS9KtqNn3m9o"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.498 6.186a3.02 3.02 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.02 3.02 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.02 3.02 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.02 3.02 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814M9.545 15.568V8.432L15.818 12z"/></svg></span> Profiling Go Code with pprof</a></li>
+<li><a href="https://github.com/Soypete/Production-Go-Examples"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span> Production-Go-Examples</a></li>
+<li><a href="https://jvns.ca/blog/2017/09/24/profiling-go-with-pprof/">Profiling Go programs with pprof - Julia Evans</a></li>
+</ul>
+<p>此外还有 zpages 插件，提供诊断信息。可以查看 <code>http://localhost:55680/debug/servicez</code> 了解基本情况。希望深入了解 zpages 的同学可以参考下面的资料：</p>
+<ul>
+<li><a href="https://medium.com/opentelemetry/zpages-in-opentelemetry-2b080a81eb47"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.21 0A4.2 4.2 0 0 0 0 4.21v15.58A4.2 4.2 0 0 0 4.21 24h15.58A4.2 4.2 0 0 0 24 19.79v-1.093a5 5 0 0 1-.422.02c-2.577 0-4.027-2.146-4.09-4.832a8 8 0 0 1 .022-.708c.093-1.186.475-2.241 1.105-3.022a3.9 3.9 0 0 1 1.395-1.1c.468-.237 1.127-.367 1.664-.367h.023q.151 0 .303.01V4.211A4.2 4.2 0 0 0 19.79 0Zm.198 5.583h4.165l3.588 8.435 3.59-8.435h3.864v.146l-.019.004c-.705.16-1.063.397-1.063 1.254h-.003l.003 10.274c.06.676.424.885 1.063 1.03l.02.004v.145h-4.923v-.145l.019-.005c.639-.144.994-.353 1.054-1.03V7.267l-4.745 11.15h-.261L6.15 7.569v9.445c0 .857.358 1.094 1.063 1.253l.02.004v.147H4.405v-.147l.019-.004c.705-.16 1.065-.397 1.065-1.253V6.987c0-.857-.358-1.094-1.064-1.254l-.018-.004zm19.25 3.668c-1.086.023-1.733 1.323-1.813 3.124H24V9.298a1.4 1.4 0 0 0-.342-.047m-1.862 3.632c-.1 1.756.86 3.239 2.204 3.634v-3.634z"/></svg></span> ZPages in OpenTelemetry</a></li>
+</ul>
+<p>关于 Collector 和其他产品的比较，可以自己写基于 Docker 的基准测试。<a href="../#技术选型与案例调研">可观测性#案例调研</a> 中也有一些参考资料。我们进行了 Filebeat 和 OTel Collector 的比较，仅开启 json 解析器对文件日志进行解析时：</p>
+<ul>
+<li>Filebeat 处理日志时 CPU 占用较高，闲时 CPU 占用率低，内存占用稳定偏高。</li>
+<li>OTel Collector 处理日志时 CPU 占用较低，闲时 CPU 占用相对较高，内存占用稳定偏低。</li>
+</ul>
+<h3 id="子组件pkgottl">子组件：pkg/ottl<a class="headerlink" href="#子组件pkgottl" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl"><code>pkg/ottl</code></a> 实现了 OTel Transformation Language（OTTL），用于处理和转换遥测数据。<strong>Transform Processor 的配置基于该种语言</strong>，实现的功能比 <code>pkg/stanza</code> 更强大。</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>下面我们以一个具体的情境为例介绍 OTTL。假设你需要对下面的 Log 进行处理：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="nt">&quot;MESSAGE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Something happened.&quot;</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="nt">&quot;_PID&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="nt">&quot;_TRANSPORT&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kernel&quot;</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="nt">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="nt">&quot;baz&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qux&quot;</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>要求将 <code>body</code> 替换为 <code>MESSAGE</code>，特定键值对移动到 <code>resource</code>，其余键值对移动到 <code>attributes</code> 中，并添加前缀 <code>journald.*</code>（在前文我们知道这代表 OTel 属性的命名空间）：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Something happened.&quot;</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="nt">&quot;journald._TRANSPORT&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kernel&quot;</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="nt">&quot;journald.foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="nt">&quot;journald.baz&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qux&quot;</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="nt">&quot;process.pid&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>大致思路是：</p>
+<ul>
+<li>在 Receiver 处：<ul>
+<li>使用 <code>move</code> Operator 将 <code>body</code> 移动到 <code>attributes.journald</code>。</li>
+<li>使用 <code>move</code> Operator 将 <code>MESSAGE</code> 等有明确目的的字段移动到相应位置。</li>
+</ul>
+</li>
+<li>在 Processor 处：<ul>
+<li>使用 <code>flatten</code> Function 将 <code>attributes["*"]</code> 的键名称放入命名空间 <code>attributes["journald.*"]</code>（其实就是利用 <code>flatten</code> 添加前缀的功能，并没有展平嵌套）。</li>
+</ul>
+</li>
+</ul>
+</div>
+<ul>
+<li>
+<p>在 <a href="#otel-规范基本概念">OTel 规范：基本概念</a> 中，我们提到不同遥测数据的字段定义（数据类型）可能不同。OTTL 定义不同遥测数据的上下文（Context），限制如何访问遥测数据的各个字段。</p>
+<ul>
+<li>
+<p><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/contexts/ottllog/README.md">Log 上下文</a>：</p>
+<p>pdata 是 Collector Pipeline Data，即 Collector 内部流水线中的数据表示格式。Log Context 针对 pdata.LogRecord 定义。阅读文档我们了解到相关字段如下：</p>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resource</code></td>
+<td><code>pcommon.Resource</code></td>
+</tr>
+<tr>
+<td><code>resource.attributes</code></td>
+<td><code>pcommon.Map</code></td>
+</tr>
+<tr>
+<td><code>resource.attribute[""] |</code>string<code>、</code>bool<code>、</code>pcommon.Map`、...</td>
+<td></td>
+</tr>
+<tr>
+<td><code>attributes</code></td>
+<td><code>pcommon.Map</code></td>
+</tr>
+<tr>
+<td><code>attributes[""]</code></td>
+<td><code>string</code>、<code>bool</code>、<code>pcommon.Map</code>、...</td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td>any</td>
+</tr>
+<tr>
+<td><code>body[]</code></td>
+<td><code>string</code>、<code>bool</code>、<code>pcommon.Map</code>、...</td>
+</tr>
+<tr>
+<td><code>body[""]</code></td>
+<td><code>string</code>、<code>bool</code>、<code>pcommon.Map</code>、...</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>OTTL Functions 能够操纵 pdata 数据。主要有两类函数：</p>
+<ul>
+<li>Editors：修改遥测数据。如 <code>append</code>、<code>delete_key</code>、<code>flatten</code> 等。</li>
+<li>Converters：仅用于转换，返回一个值，不修改输入数据。如 <code>IsInt</code>、<code>Day</code> 等。</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title"><code>flatten</code> 函数</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>flaten(target, Optional[prefix], Optional[depth])
+</span></code></pre></div>
+<p>函数作用于 <code>pcommon.Map</code>。</p>
+</div>
+</li>
+</ul>
+<p>于是我们可以写出在 Processor 中需要使用的 OTTL 语句：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>logs:
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  flatten(attributes, &quot;journald&quot;)
+</span></code></pre></div>
+<h3 id="子组件pkgstanza">子组件：pkg/stanza<a class="headerlink" href="#子组件pkgstanza" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/stanza"><code>pkg/stanza</code></a> 是用于处理传统日志的模块，<strong>很多日志 Receiver 都基于它构建</strong>，我们也常常需要使用其中的 operator。一些基本概念简单介绍如下：</p>
+<ul>
+<li>entry 表示在流水线中移动的一个日志。filed 指 entry 中的值。</li>
+<li>operator 创建、修改或删除 entry。有四种 operator：input、parser、transform、output。operator 组织为 operator sequences。</li>
+<li>Adapter 帮助 stanza operator 集成到 OTel collector receiver。它负责 OTel <code>plog.Logs</code> 和 stanza <code>entry.Entry</code> 之间的转换。</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>这是一个有很多 filed 的 entry：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Something happened.&quot;</span><span class="p">,</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nt">&quot;details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nt">&quot;reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;event&quot;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">},</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-01-31T00:00:00-00:00&quot;</span><span class="p">,</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="nt">&quot;severity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="nt">&quot;severity_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INFO&quot;</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>这是几个 operator 组成的 sequence：</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">operators</span><span class="p">:</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">json_parser</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">remove</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="nt">field</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attributes.foo</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">add</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attributes.bar</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz</span>
+</span></code></pre></div>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2025 09:15:53">April 25, 2025</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2025 09:15:53">April 25, 2025</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../network/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 网络观测">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                网络观测
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../blog/" class="md-footer__link md-footer__link--next" aria-label="Next: ZJUSCT（技术）博客">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                ZJUSCT（技术）博客
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      ZJUSCT
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/polyfill/index.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/tablesort/dist/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

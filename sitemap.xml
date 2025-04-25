@@ -1,39 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://zjusct.github.io/docs.zjusct.io/</loc>
+         <loc>https://docs.zjusct.io/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
-         <loc>https://zjusct.github.io/docs.zjusct.io/blog/</loc>
+         <loc>https://docs.zjusct.io/blog/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
-         <loc>https://zjusct.github.io/docs.zjusct.io/competition/</loc>
+         <loc>https://docs.zjusct.io/competition/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
-         <loc>https://zjusct.github.io/docs.zjusct.io/falcon/</loc>
+         <loc>https://docs.zjusct.io/falcon/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
-         <loc>https://zjusct.github.io/docs.zjusct.io/falcon/git/</loc>
+         <loc>https://docs.zjusct.io/falcon/git/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
-         <loc>https://zjusct.github.io/docs.zjusct.io/falcon/mirror-history/</loc>
+         <loc>https://docs.zjusct.io/falcon/mirror-history/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
-         <loc>https://zjusct.github.io/docs.zjusct.io/falcon/mirror/</loc>
+         <loc>https://docs.zjusct.io/falcon/mirror/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
-         <loc>https://zjusct.github.io/docs.zjusct.io/index/contribute/</loc>
+         <loc>https://docs.zjusct.io/index/contribute/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
-         <loc>https://zjusct.github.io/docs.zjusct.io/index/newcomer/</loc>
+         <loc>https://docs.zjusct.io/index/newcomer/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/observability/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/observability/log/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/observability/network/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/observability/opentelemetry/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
 </urlset>

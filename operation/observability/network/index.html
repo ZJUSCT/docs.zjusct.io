@@ -12,28 +12,28 @@
         <meta name="author" content="ZJUSCT">
       
       
-        <link rel="canonical" href="https://docs.zjusct.io/blog/">
+        <link rel="canonical" href="https://docs.zjusct.io/operation/observability/network/">
       
       
-        <link rel="prev" href="../operation/observability/opentelemetry/">
+        <link rel="prev" href="../log/">
       
       
-        <link rel="next" href="posts/.template/">
+        <link rel="next" href="../opentelemetry/">
       
       
-      <link rel="icon" href="../assets/zjusct.png">
+      <link rel="icon" href="../../../assets/zjusct.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>ZJUSCT（技术）博客 - ZJUSCT 文档与博客</title>
+        <title>网络观测 - ZJUSCT 文档与博客</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,22 +52,22 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/fonts.css">
+      <link rel="stylesheet" href="../../../stylesheets/fonts.css">
     
-      <link rel="stylesheet" href="../stylesheets/counter.css">
+      <link rel="stylesheet" href="../../../stylesheets/counter.css">
     
-      <link rel="stylesheet" href="../stylesheets/theme.css">
+      <link rel="stylesheet" href="../../../stylesheets/theme.css">
     
-      <link rel="stylesheet" href="../stylesheets/neoteroi-v1.1.2.css">
+      <link rel="stylesheet" href="../../../stylesheets/neoteroi-v1.1.2.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -76,7 +76,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#zjusct技术博客" class="md-skip">
+        <a href="#网络观测" class="md-skip">
           Skip to content
         </a>
       
@@ -109,9 +109,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="ZJUSCT 文档与博客" class="md-header__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+    <a href="../../.." title="ZJUSCT 文档与博客" class="md-header__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
       
-  <img src="../assets/zjusct.svg" alt="logo">
+  <img src="../../../assets/zjusct.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -128,7 +128,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ZJUSCT（技术）博客
+              网络观测
             
           </span>
         </div>
@@ -258,7 +258,7 @@
     
     
       <li class="md-tabs__item">
-        <a href=".." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
   
@@ -280,7 +280,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../competition/" class="md-tabs__link">
+        <a href="../../../competition/" class="md-tabs__link">
           
   
   
@@ -302,7 +302,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../falcon/" class="md-tabs__link">
+        <a href="../../../falcon/" class="md-tabs__link">
           
   
   
@@ -320,11 +320,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../operation/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -342,13 +344,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../blog/" class="md-tabs__link">
           
   
   
@@ -384,9 +384,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="ZJUSCT 文档与博客" class="md-nav__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+    <a href="../../.." title="ZJUSCT 文档与博客" class="md-nav__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
       
-  <img src="../assets/zjusct.svg" alt="logo">
+  <img src="../../../assets/zjusct.svg" alt="logo">
 
     </a>
     ZJUSCT 文档与博客
@@ -442,7 +442,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href=".." class="md-nav__link ">
+            <a href="../../.." class="md-nav__link ">
               
   
   
@@ -477,7 +477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../index/contribute/" class="md-nav__link">
+      <a href="../../../index/contribute/" class="md-nav__link">
         
   
   
@@ -500,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../index/newcomer/" class="md-nav__link">
+      <a href="../../../index/newcomer/" class="md-nav__link">
         
   
   
@@ -555,7 +555,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../competition/" class="md-nav__link ">
+            <a href="../../../competition/" class="md-nav__link ">
               
   
   
@@ -625,7 +625,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../falcon/" class="md-nav__link ">
+            <a href="../../../falcon/" class="md-nav__link ">
               
   
   
@@ -660,7 +660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../falcon/git/" class="md-nav__link">
+      <a href="../../../falcon/git/" class="md-nav__link">
         
   
   
@@ -685,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../falcon/mirror-history/" class="md-nav__link">
+      <a href="../../../falcon/mirror-history/" class="md-nav__link">
         
   
   
@@ -708,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../falcon/mirror/" class="md-nav__link">
+      <a href="../../../falcon/mirror/" class="md-nav__link">
         
   
   
@@ -735,6 +735,8 @@
       
   
   
+    
+  
   
   
     
@@ -750,22 +752,23 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../operation/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -778,13 +781,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             运维
@@ -797,6 +800,8 @@
                 
   
   
+    
+  
   
   
     
@@ -818,20 +823,21 @@
       
       
         
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
+          
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../operation/observability/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -844,13 +850,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             可观测性
@@ -866,7 +872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../operation/observability/log/" class="md-nav__link">
+      <a href="../log/" class="md-nav__link">
         
   
   
@@ -886,10 +892,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../operation/observability/network/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    网络观测
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -900,6 +928,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#网络流分析network-flow-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      网络流分析（Network Flow Analysis）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络流分析（Network Flow Analysis）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#netstream-基本原理" class="md-nav__link">
+    <span class="md-ellipsis">
+      NetStream 基本原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#netstream-配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      NetStream 配置
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -912,7 +993,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../operation/observability/opentelemetry/" class="md-nav__link">
+      <a href="../opentelemetry/" class="md-nav__link">
         
   
   
@@ -947,8 +1028,6 @@
       
   
   
-    
-  
   
   
     
@@ -966,23 +1045,22 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../../blog/" class="md-nav__link ">
               
   
   
@@ -995,13 +1073,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_5" id="__nav_5_label" tabindex="">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             博客
@@ -1027,13 +1105,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -1042,7 +1117,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
         
           
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
             
   
   
@@ -1069,7 +1144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="posts/.template/" class="md-nav__link">
+      <a href="../../../blog/posts/.template/" class="md-nav__link">
         
   
   
@@ -1100,7 +1175,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -1143,6 +1218,47 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#网络流分析network-flow-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      网络流分析（Network Flow Analysis）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络流分析（Network Flow Analysis）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#netstream-基本原理" class="md-nav__link">
+    <span class="md-ellipsis">
+      NetStream 基本原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#netstream-配置" class="md-nav__link">
+    <span class="md-ellipsis">
+      NetStream 配置
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1150,16 +1266,168 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="zjusct技术博客">ZJUSCT（技术）博客<a class="headerlink" href="#zjusct技术博客" title="Permanent link">&para;</a></h1>
-      </header>
-      
-      
-    </div>
-  </div>
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../../index/contribute/#tag:完善" class="md-tag">完善</a>
+      
+    
+  </nav>
+
+
+  
+    <a href="https://github.com/ZJUSCT/docs.zjusct.io/blob/main/docs/operation/observability/network.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="网络观测">网络观测<a class="headerlink" href="#网络观测" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<ul>
+<li><a href="https://www.auvik.com/franklyit/blog/best-network-traffic-monitor/">Network Traffic Monitoring in 2024: Discover the Top 7 Solutions</a></li>
+<li>华为文档</li>
+</ul>
+</div>
+<h2 id="网络流分析network-flow-analysis">网络流分析（Network Flow Analysis）<a class="headerlink" href="#网络流分析network-flow-analysis" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<ul>
+<li><a href="https://www.varonis.com/blog/flow-monitoring">Network Flow Monitoring Explained: NetFlow vs sFlow vs IPFIX</a>：对 NetFlow, sFlow, IPFIX 三种流量监控协议的介绍。</li>
+<li><a href="https://support.huawei.com/enterprise/zh/doc/EDOC1100411131/b7771e97">配置 IPv4 原始流统计信息的输出示例 - NetEngine AR600, AR6100, AR6200, AR6300 V300R024 配置指南 - 网络管理与监控（命令行） - 华为</a></li>
+</ul>
+</div>
+<p>四种协议的关系：</p>
+<ul>
+<li><strong>NetFlow</strong>：Cisco 开发的流量监控协议。相关衍生协议一般兼容：<ul>
+<li><strong>NetStream</strong>：Huawei 基于 NetFlow v9 开发的流量监控协议。</li>
+</ul>
+</li>
+<li><strong>sFlow</strong>：sampled flow，与 NetFlow 不兼容。</li>
+<li><strong>IPFIX</strong>：由 IETF 从 NetFlow v9 标准化而来。</li>
+</ul>
+<p>下文将以 NetStream 为例进行介绍。</p>
+<h3 id="netstream-基本原理">NetStream 基本原理<a class="headerlink" href="#netstream-基本原理" title="Permanent link">&para;</a></h3>
+<p>三部分：</p>
+<ul>
+<li>网络流数据输出器 NDE（NetStream Data Exporter）：配置了 NetStream 功能的设备在 NetStream 系统中担当 NDE 角色。</li>
+<li>网络流数据收集器 NSC（NetStream Collector）：运行于 Unix 或者 Windows 上的一个应用程序，负责解析来自 NDE 的报文。</li>
+<li>网络流数据分析器 NDA（NetStream Data Analyzer）：从 NSC 中提取统计数据，进行进一步的加工处理后生成报表。</li>
+</ul>
+<p>当流量进入 NDE 后，经历下列过程：</p>
+<ul>
+<li>设备的 NetStream 模块按一定的采样方式进行 <strong>NetStream 采样</strong>：随机/固定报文间隔采样、随机/固定时间间隔采样</li>
+<li>对采样数据建立 <strong>NetStream 流</strong>：NetStream 是一项基于“流”来提供报文统计的技术，NetStream 流就是 IP 报文（UDP、TCP、ICMP 报文）。对于 IPv4 报文，IPv4 NetStream 会根据 IPv4 报文的<strong>目的 IP 地址、源 IP 地址、目的端口号、源端口号、协议号、服务类型 ToS（Type of Service）、输入接口或输出接口</strong>来定义流，相同的七元组标识为同一条流。</li>
+<li>按一定的老化方式对流进行 <strong>NetStream 流老化</strong>处理：<ul>
+<li>按时老化：活跃流 30 分钟，非活跃流 30 秒</li>
+<li>由 TCP 连接的 FIN 和 RST 报文触发老化</li>
+<li>统计字节超过限制时老化：硬件的字节计数器是 32 比特，最大计数值为 4294967295，约为 3.9G 字节</li>
+<li>强制老化</li>
+</ul>
+</li>
+<li>按一定的输出方式以及相应的版本进行 <strong>NetStream 流输出</strong>：<ul>
+<li><strong>原始流输出</strong>是指所有流的统计信息都要被统计。在流老化时间超时后，每条流的统计信息都要输出到 NetStream 服务器。</li>
+<li><strong>聚合流输出</strong>是指采用聚合流输出功能后，设备对与聚合关键项完全相同的流统计信息进行汇总，从而得到对应的聚合流统计信息，并且将该聚合统计信息发送到相应的接收聚合统计信息的 NetStream 服务器。例如：协议 - 端口聚合、目的前缀聚合。</li>
+<li>对于<strong>灵活流输出</strong>，其流的建立条件是按照自定义的条件设置。</li>
+</ul>
+</li>
+</ul>
+<p>以 OpenTelemetry NetFlow Receiver 为例，NetFlow v9 格式输出到 ClickHouse 中的条目如下：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Timestamp:          2025-03-25 04:25:44.920000000
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>TimestampTime:      2025-03-25 04:25:44
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>TraceId:
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>SpanId:
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>TraceFlags:         0
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>SeverityText:
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>SeverityNumber:     0
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>ServiceName:
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Body:
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>ResourceSchemaUrl:
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>ResourceAttributes: {&#39;cloud.region&#39;:&#39;zjusct-cluster&#39;}
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>ScopeSchemaUrl:
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>ScopeName:          otelcol/netflowreceiver
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>ScopeVersion:
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>ScopeAttributes:    {&#39;receiver&#39;:&#39;netflow&#39;}
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>LogAttributes:      {&#39;destination.address&#39;:&#39;10.78.18.247&#39;,&#39;destination.port&#39;:&#39;11349&#39;,&#39;flow.end&#39;:&#39;1742876744920000000&#39;,&#39;flow.io.bytes&#39;:&#39;377&#39;,&#39;flow.io.packets&#39;:&#39;1&#39;,&#39;flow.sampler_address&#39;:&#39;172.25.3.254&#39;,&#39;flow.sampling_rate&#39;:&#39;0&#39;,&#39;flow.sequence_num&#39;:&#39;1&#39;,&#39;flow.start&#39;:&#39;1742876744920000000&#39;,&#39;flow.time_received&#39;:&#39;1742876776236499353&#39;,&#39;flow.type&#39;:&#39;netflow_v9&#39;,&#39;network.transport&#39;:&#39;udp&#39;,&#39;network.type&#39;:&#39;ipv4&#39;,&#39;source.address&#39;:&#39;210.32.148.87&#39;,&#39;source.port&#39;:&#39;29915&#39;}
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">选择更短的老化时间</p>
+<p>NetStream 稍显不足的地方在于：无法实时监控流量。只有当流老化时，才会将流量数据发送到 NetStream 服务器，根据该结果只能得到平均速率。如果对实时性要求较高，可以选择更短的老化时间。然而系统对最短老化时间有限制，在 AR6121 上，活跃流最小老化时间 1 分钟，非活跃流最小老化时间 1 秒。</p>
+</div>
+<h3 id="netstream-配置">NetStream 配置<a class="headerlink" href="#netstream-配置" title="Permanent link">&para;</a></h3>
+<p>目前 OpenTelemetry NetFlow Receiver 暂时只支持华为路由器中原始流统计信息的输出，使用协议 - 端口聚合等聚合输出会导致 IP 地址字段无法识别等问题。</p>
+<p>在需要监控的接口上使能统计。默认固定报文间隔采样（1:100），我们选择全量采样：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>[Router] interface gigabitethernet 1/0/0
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>[Router-GigabitEthernet1/0/0] ip netstream sampler fix-packets 1 inbound
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>[Router-GigabitEthernet1/0/0] ip netstream sampler fix-packets 1 outbound
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>[Router-GigabitEthernet1/0/0] ip netstream inbound
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>[Router-GigabitEthernet1/0/0] ip netstream outbound
+</span></code></pre></div>
+<p>在全局视图下使能原始流统计信息的输出：</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="o">[</span>Router<span class="o">]</span><span class="w"> </span>ip<span class="w"> </span>netstream<span class="w"> </span>tcp-flag<span class="w"> </span><span class="nb">enable</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="o">[</span>Router<span class="o">]</span><span class="w"> </span>ip<span class="w"> </span>netstream<span class="w"> </span><span class="nb">export</span><span class="w"> </span>version<span class="w"> </span><span class="m">9</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># 配置完下面两行即可在 OpenTelemetry NetFlow Receiver 中查看到流量数据</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="o">[</span>Router<span class="o">]</span><span class="w"> </span>ip<span class="w"> </span>netstream<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span><span class="m">10</span>.1.2.1
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="o">[</span>Router<span class="o">]</span><span class="w"> </span>ip<span class="w"> </span>netstream<span class="w"> </span><span class="nb">export</span><span class="w"> </span>host<span class="w"> </span><span class="m">10</span>.1.2.2<span class="w"> </span><span class="m">6000</span>
+</span></code></pre></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2025 09:15:53">April 25, 2025</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2025 09:15:53">April 25, 2025</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
@@ -1179,7 +1447,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../operation/observability/opentelemetry/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 数据采集：OpenTelemetry">
+          <a href="../log/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 日志收集">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1189,20 +1457,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                数据采集：OpenTelemetry
+                日志收集
               </div>
             </div>
           </a>
         
         
           
-          <a href="posts/.template/" class="md-footer__link md-footer__link--next" aria-label="Next: None">
+          <a href="../opentelemetry/" class="md-footer__link md-footer__link--next" aria-label="Next: 数据采集：OpenTelemetry">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                None
+                数据采集：OpenTelemetry
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1242,12 +1510,12 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
-        <script src="../javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/polyfill/index.min.js"></script>
       
@@ -1255,7 +1523,7 @@
       
         <script src="https://cdn.jsdelivr.net/npm/tablesort/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../../../javascripts/tablesort.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
       
