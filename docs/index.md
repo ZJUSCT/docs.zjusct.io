@@ -14,29 +14,29 @@ h5:before {content: unset;}
 
 <div class="grid cards" markdown>
 
-!!! warning "[Falcon](falcon)"
+!!! warning "[Falcon](falcon/index.md)"
 
     ZJU Mirror 和镜像站文档。
 
-!!! abstract "[Blog](blog)"
+!!! abstract "[Blog](blog/index.md)"
 
     ZJUSCT 博客。
 
-!!! question "[竞赛](competition)"
+!!! question "[竞赛](competition/index.md)"
 
     竞赛相关文档。
 
-!!! bug "[运维](operation)"
+!!! bug "[运维](operation/index.md)"
 
     硬件、软件、网络、可观测性等运维文档。
 
-!!! tip "[优化](optimization)"
+!!! tip "[优化](optimization/index.md)"
 
     建设中
 
-!!! quote "[内部资料（语雀）](internal)"
+!!! quote "[内部资料（语雀）](https://yuque.zju.edu.cn/sct)"
 
-    不宜公开的内部资料，仅校内访问。
+    不宜公开的内部资料，仅团队成员校内访问。
 
 </div>
 

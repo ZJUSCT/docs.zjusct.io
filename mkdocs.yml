@@ -9,11 +9,13 @@ copyright: ZJUSCT
 
 nav:
   - 首页:
-      - index.md
-      - ZJUSCT 简介: https://www.zjusct.io/
-      - index
+    - index.md
+    - index
+  - 竞赛: competition
+  - Falcon:
+    - falcon/index.md
+    - falcon
   - 博客: blog
-  - Falcon: falcon
 
 theme:
   name: material
