@@ -17,6 +17,7 @@ nav:
     - falcon
   - 运维:
     - operation/index.md
+    - 硬件运维: operation/hardware
     - 可观测性: operation/observability
   - 博客: blog
 
