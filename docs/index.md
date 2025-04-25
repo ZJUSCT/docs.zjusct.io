@@ -10,7 +10,7 @@ h5:before {content: unset;}
 
 这是 **[浙江大学超算队（ZJUSCT）](https://zjusct.io)** 的文档与博客，主要面向 **团队成员及 HPC 爱好者**，包含了我们在 **高性能计算（HPC）** 领域的技术积累和经验。
 
-## 快速导航🚀
+## 🚀 快速导航
 
 <div class="grid cards" markdown>
 

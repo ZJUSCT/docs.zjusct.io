@@ -1,5 +1,5 @@
 site_name: ZJUSCT 文档与博客
-site_url: https://zjusct.github.io/docs.zjusct.io/
+site_url: https://docs.zjusct.io/
 repo_name: docs.zjusct.io
 repo_url: https://github.com/ZJUSCT/docs.zjusct.io
 edit_uri: blob/main/docs/
@@ -15,6 +15,9 @@ nav:
   - Falcon:
     - falcon/index.md
     - falcon
+  - 运维:
+    - operation/index.md
+    - 可观测性: operation/observability
   - 博客: blog
 
 theme:
@@ -137,6 +140,7 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: true
   - git-committers:
+      enabled: false
       repository: zjusct/docs.zjusct.io
       branch: main
   - glightbox
