@@ -1,0 +1,3461 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ZJUSCT Documents & Blogs">
+      
+      
+        <meta name="author" content="ZJUSCT">
+      
+      
+        <link rel="canonical" href="https://docs.zjusct.io/blog/2019/06/14/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/">
+      
+      
+        <link rel="prev" href="../../../05/31/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">
+      
+      
+        <link rel="next" href="../../16/%E5%9F%BA%E4%BA%8E-gan-%E7%9A%84%E5%8A%A8%E6%BC%AB%E5%A4%B4%E5%83%8F%E7%94%9F%E6%88%90/">
+      
+      
+      <link rel="icon" href="../../../../../assets/zjusct.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>生成式对抗网络——理论 - ZJUSCT 文档与博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/fonts.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/counter.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/theme.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/neoteroi-v1.1.2.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#理论准备" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="ZJUSCT 文档与博客" class="md-header__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+      
+  <img src="../../../../../assets/zjusct.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ZJUSCT 文档与博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              生成式对抗网络——理论
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="zjusct" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="根据系统模式切换主题"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="根据系统模式切换主题" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ZJUSCT/docs.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docs.zjusct.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../competition/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  竞赛
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../falcon/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Falcon
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../operation/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  运维
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  博客
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="ZJUSCT 文档与博客" class="md-nav__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+      
+  <img src="../../../../../assets/zjusct.svg" alt="logo">
+
+    </a>
+    ZJUSCT 文档与博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ZJUSCT/docs.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docs.zjusct.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            首页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../index/contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    贡献
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../index/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJUSCT 历史
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../index/newcomer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJUSCT 集群新手指南
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../competition/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    竞赛
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            竞赛
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../falcon/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Falcon
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Falcon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../falcon/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU Git 代码托管服务
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../falcon/mirror-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU Mirror 历史
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../falcon/mirror/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU Mirror 镜像站
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../operation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    运维
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            运维
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../operation/hardware/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    硬件运维
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            硬件运维
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/hardware/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    硬件知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/hardware/oobm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    带外管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../operation/software/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    软件运维
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            软件运维
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/software/build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    编译/构建系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/software/conda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    包管理器：Conda
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/software/lmod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    环境管理：Lmod
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/software/modern-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    现代化 CLI 工具
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/software/shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    环境变量与 Shell
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/software/spack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    包管理器：Spack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../operation/observability/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    可观测性
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            可观测性
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/observability/log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    日志收集
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/observability/network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络观测
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/observability/opentelemetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    数据采集：OpenTelemetry
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    博客
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            博客
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    posts
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            posts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../posts/.template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    None
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2018
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            2018
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2018/09/30/%E6%B5%99%E6%B1%9F%E5%A4%A7%E5%AD%A6%E8%B6%85%E7%AE%97%E9%98%9F%E5%8D%9A%E5%AE%A2%E6%B4%BB%E4%BA%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    浙江大学超算队博客...活了？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2018/11/25/cuda-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%80%BB%E7%BB%93-%E4%B8%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CUDA 内存管理总结 (一)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2018/12/07/quick-guide-to-cuda-profiling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Guide to CUDA Profiling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2018/12/23/distributed-tensorflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Distributed Tensorflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2018/12/24/bp-%E7%AE%97%E6%B3%95feed-forward-neural-network-and-back-propagation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    （BP 算法）Feed forward neural network and back propagation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_3" id="__nav_5_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2019
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            2019
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03/31/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%A2%99%E5%86%85%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2-centos-7-%E7%9A%84-mysql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    如何在墙内快速部署 CentOS 7 的 MySQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03/31/virtual-memory-and-tlb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Virtual Memory and TLB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05/11/%E5%9F%BA%E4%BA%8E-0-1-%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%9A%84%E6%9C%B4%E7%B4%A0%E5%9B%BE%E7%89%87%E9%99%8D%E5%99%AA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    基于 0-1 乘性噪声的朴素图片降噪
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05/27/20190526-%E4%BC%9A%E8%AE%AE%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2019.05.26 会议记录
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05/31/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    生成式对抗网络——基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    生成式对抗网络——理论
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    生成式对抗网络——理论
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#理论准备" class="md-nav__link">
+    <span class="md-ellipsis">
+      理论准备
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="理论准备">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jensen-不等式" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jensen 不等式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kl-散度" class="md-nav__link">
+    <span class="md-ellipsis">
+      KL 散度
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="KL 散度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#性质-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      性质 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#性质-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      性质 2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js-散度" class="md-nav__link">
+    <span class="md-ellipsis">
+      JS 散度
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#初代-gan-的收敛性" class="md-nav__link">
+    <span class="md-ellipsis">
+      初代 GAN 的收敛性
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="初代 GAN 的收敛性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#纳什均衡点" class="md-nav__link">
+    <span class="md-ellipsis">
+      纳什均衡点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#优化算法的收敛性" class="md-nav__link">
+    <span class="md-ellipsis">
+      优化算法的收敛性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#初代-gan-存在的问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      初代 GAN 存在的问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="初代 GAN 存在的问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log1-d-存在的问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      log(1-D) 存在的问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logd-存在的问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      log(D) 存在的问题
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wasserstein-gan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wasserstein GAN
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wasserstein GAN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wasserstein-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wasserstein Distance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wd-的优势" class="md-nav__link">
+    <span class="md-ellipsis">
+      WD 的优势
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wgan" class="md-nav__link">
+    <span class="md-ellipsis">
+      WGAN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wgan-gp" class="md-nav__link">
+    <span class="md-ellipsis">
+      WGAN-GP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16/%E5%9F%BA%E4%BA%8E-gan-%E7%9A%84%E5%8A%A8%E6%BC%AB%E5%A4%B4%E5%83%8F%E7%94%9F%E6%88%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    基于 GAN 的动漫头像生成
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../21/rsa-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8F%8A%E5%85%B6%E6%95%B0%E5%AD%A6%E6%80%9D%E6%83%B3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RSA 加密算法及其数学思想
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2019/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2019
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2018/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2018
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Categories
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/cuda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CUDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/centos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CentOS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/meetingreport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MeetingReport
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/mysql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MySQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/operating-susyem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Operating Susyem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/profile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Profile
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/spc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Spc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/tlb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TLB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tech
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/tensorflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tensorflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/virtual-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Virtual Memory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/zju/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/zjusct/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJUSCT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    密码学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    数论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#理论准备" class="md-nav__link">
+    <span class="md-ellipsis">
+      理论准备
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="理论准备">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jensen-不等式" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jensen 不等式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kl-散度" class="md-nav__link">
+    <span class="md-ellipsis">
+      KL 散度
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="KL 散度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#性质-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      性质 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#性质-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      性质 2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js-散度" class="md-nav__link">
+    <span class="md-ellipsis">
+      JS 散度
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#初代-gan-的收敛性" class="md-nav__link">
+    <span class="md-ellipsis">
+      初代 GAN 的收敛性
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="初代 GAN 的收敛性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#纳什均衡点" class="md-nav__link">
+    <span class="md-ellipsis">
+      纳什均衡点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#优化算法的收敛性" class="md-nav__link">
+    <span class="md-ellipsis">
+      优化算法的收敛性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#初代-gan-存在的问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      初代 GAN 存在的问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="初代 GAN 存在的问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log1-d-存在的问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      log(1-D) 存在的问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logd-存在的问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      log(D) 存在的问题
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wasserstein-gan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wasserstein GAN
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wasserstein GAN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wasserstein-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wasserstein Distance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wd-的优势" class="md-nav__link">
+    <span class="md-ellipsis">
+      WD 的优势
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wgan" class="md-nav__link">
+    <span class="md-ellipsis">
+      WGAN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wgan-gp" class="md-nav__link">
+    <span class="md-ellipsis">
+      WGAN-GP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://avatars.githubusercontent.com/u/45935569" alt="Unispac">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          <a href="https://github.com/Unispac">Unispac</a>
+                        
+                      </strong>
+                      <br>
+                      .
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2019-06-14 00:00:00+00:00" class="md-ellipsis">June 14, 2019</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../../../category/ai/">AI</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              9 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+  
+    <a href="https://github.com/ZJUSCT/docs.zjusct.io/blob/main/docs/blog/posts/2019/06-14-GAN-theory.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>生成式对抗网络——理论</h1>
+
+<p>在 <a href="../../../05/31/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">对抗式生成网络 - 基础</a> 这篇文章中，我们介绍了对抗式生成网络（Generative Adversarial Networks, GAN）的基本思想。我们已经知道，与最经典的 Reflection Model 不一样，GAN 是通过一组用于生成的 generator 和用于判别的 discriminator 互相对抗来实现生成能力的自强化。上一篇文章中，我们只是很简单的介绍了它的 intuition，但 GAN 本质上还是一个数学模型，为什么能实现自强化，为什么模型最后会向我们希望的方向收敛，它还需要一些更加严谨的理论推导。</p>
+<p>这篇文章中，我们将根据<a href="https://arxiv.org/pdf/1701.04862.pdf">《TOWARDS PRINCIPLED METHODS FOR TRAINING GENERATIVE ADVERSARIAL NETWORKS》(Arjovsky et al. 2017)</a> 和 <a href="https://arxiv.org/pdf/1701.07875.pdf">《Wasserstein GAN》(Arjovsky et al. 2017)</a> 这两篇论文的推导和论述，简单的讨论一下 GAN 的数学理论。</p>
+<!-- more -->
+
+<p>在展开 GAN 的讨论之前，我们将会先简单的介绍几个需要用到的前置概念和知识。在这之后我们会介绍原始 GAN 的 loss function 的实际数学意义，并简单讨论其存在的问题，最后讨论解决的方法。</p>
+<h2 id="理论准备">理论准备<a class="headerlink" href="#理论准备" title="Permanent link">&para;</a></h2>
+<h3 id="jensen-不等式"><Font color=green>Jensen 不等式</font><a class="headerlink" href="#jensen-不等式" title="Permanent link">&para;</a></h3>
+<p>众所周知，在一个凸函数，其定义域上的任意两点 <span class="arithmatex">\(x_1,x_2\)</span>，在 <span class="arithmatex">\(0\leq t \leq1\)</span> 时，满足：</p>
+<div class="arithmatex">\[
+tf(x_1)+(1-t)f(x_2) \geq f[tx_1+(1-t)x_2]
+\]</div>
+<p>这就是 Jensen 不等式最著名的两点形式。Jensen 的两点不等式可以被推广到任意多数量的点集<span class="arithmatex">\(\{x_i\}\)</span>上：当<span class="arithmatex">\(\lambda_i \geq0\)</span>且<span class="arithmatex">\(\Sigma \lambda_i=1\)</span>时，凸函数<span class="arithmatex">\(f(x)\)</span>满足 <span class="arithmatex">\(f(\Sigma\lambda_ix_i)\leq \Sigma\lambda_if(x_i)\)</span>。用数学归纳法可以证明这一推广式。</p>
+<p>很容易想到，当上式取极限时，我们则会得到连续域上的 Jensen 不等式：</p>
+<div class="arithmatex">\[
+\int p(x)dx=1\;=&gt;f[\int p(x)xdx]\leq \int p(x)f(x)dx
+\]</div>
+<p>把上式放到概率论中，如果 p(x) 看作概率密度函数，那么上式显然等价于：</p>
+<div class="arithmatex">\[
+f[E(x)]\leq E[f(x)]
+\]</div>
+<h3 id="kl-散度"><Font color=green>KL 散度</font><a class="headerlink" href="#kl-散度" title="Permanent link">&para;</a></h3>
+<p>考虑一个真实的概率分布 p(x) 和一个对这个概率分布进行拟合的另一个近似分布 q(x)，我们如何评估这个近似分布好不好？换句话说，我们如何去量化这个近似评估和真实评估的差异？</p>
+<p>KL 散度（Kullback-Leibler divergence）是一个选择。KL 散度又常常被称为相对熵（relative entropy）或者信息散度（information divergence），是两个概率分布间差异的非对称性度量。</p>
+<p>对于上面的两个概率分布 p 和 q，KL 散度定义如下：</p>
+<div class="arithmatex">\[
+KL(p||q)
+=\int p(x)ln[\frac {p(x)}{q(x)}]dx
+\]</div>
+<p>直观的来看，对于点 x 处，KL 散度将两个分布的差异损失定义为<span class="arithmatex">\(p(x)ln[\frac{p(x)}{q(x)}]\)</span>，显然只有两个分布都在此处取相同的概率密度，这个损失才为 0，并且在真实分布 p 中出现频率更高的 x 处的损失所享有的权重也会更大。因此，从直观的角度来看，它确实在某种程度上反映了两个分布之间的拟合程度。</p>
+<p>除了直观意义，它在数学上也有两个很好的性质。</p>
+<h4 id="性质-1"><font color=blue>性质 1</font><a class="headerlink" href="#性质-1" title="Permanent link">&para;</a></h4>
+<p><strong>KL(p||q) &gt;= 0, 当且仅当 p=q 时，等号成立。</strong></p>
+<div class="arithmatex">\[
+KL(p||q)=\int p(x)ln[\frac{p(x)}{q(x)}]dx\\
+令 g(x)=\frac{q(x)}{p(x)}\\
+KL(p||q)=\int -p(x)ln[g(x)]dx
+\\-ln(x) 为凸函数，由 Jensen 不等式=&gt;\\
+KL(p||q)=E[-ln(g(x))]\geq -ln[E(g(x))]\\
+=-ln\{\int p(x)\frac{q(x)}{p(x)}dx\}=-ln(1)=0\\
+得证
+\]</div>
+<h4 id="性质-2"><font color=blue>性质 2</font><a class="headerlink" href="#性质-2" title="Permanent link">&para;</a></h4>
+<p><strong>最小化 KL 散度等价于最大化似然函数</strong></p>
+<div class="arithmatex">\[
+q(x) 是 p(x) 的近似\\
+=&gt;q(x)=P(x;\theta)，\theta 是这个近似器的参数\\
+argmin\;KL(p||q)=argmax\;\int p(x)ln[q(x)]-\int p(x)ln[p(x)]\\
+=argmax\;\int p(x)ln[q(x)]\\
+\approx argmax\;\frac{1}{N}\Sigma\;ln[q(x_i)]\\
+=argmax\; \frac{1}{N}\;\Pi\;q(x_i) \\
+=argmax\;\frac{1}{N} \;\Pi\;P(x_i;\theta)
+\]</div>
+<p>如上所示，对于 p(x) 做参数估计，我们可以写出似然函数：<span class="arithmatex">\(\frac{1}{N}\;\Pi\;P(x;\theta)\)</span>，最大化这个似然函数的直观意义就是使得这个近似分布中，尽量让实验中出现次数多的样本 x 取更大的概率值，这是极大似然的基本想法。</p>
+<p>推导发现，最小化 KL 散度，实际上就等价于最大化这个似然函数。（这可以看作 KL 散度之所以是一个“良好”测度量的原因。）</p>
+<h3 id="js-散度"><Font color=green>JS 散度</font><a class="headerlink" href="#js-散度" title="Permanent link">&para;</a></h3>
+<p>JS 散度（Jensen-Shannon divergence），和 KL 散度一样，也是用来衡量两条曲线的相合性的。</p>
+<p>在 KL 散度中 p 和 q 的地位不等价，交换 p 和 q 得到的结果是不一样的。如果把散度当作某种“距离”的衡量，那么在 KL 散度定义的距离空间中，两个对象之间的距离就是不对称的。但是在一些问题背景下，我们可能更希望使用具有对称性的“距离”。</p>
+<p>JS 散度的定义就是为了解决了 KL 散度的不对称问题：</p>
+<div class="arithmatex">\[
+JS(P1||P2)=\frac{1}{2}KL(P1||\frac{P1+P2}{2})+\frac{1}{2}KL(P2||\frac{P1+P2}{2})
+\]</div>
+<p>如上所示，它直接从 KL 散度的定义中做了一个简单的变换，直观意义可以理解为 P1 和 P2 与这两者的中线"距离"的均值。关于其严格的数学性质，这里就不再赘述，有兴趣可以取查阅相关的资料。</p>
+<h2 id="初代-gan-的收敛性">初代 GAN 的收敛性<a class="headerlink" href="#初代-gan-的收敛性" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/0.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Discriminator 与 Generator 之间的 Minimax 博弈" src="../../../06-14-GAN-theory.assets/0.webp" /></a></p>
+<p>2014 年时，Goodfellow 在<a href="https://arxiv.org/pdf/1406.2661.pdf">《Generative Adversarial Nets》</a>中首次提出 GAN 的时候，使用了上面这个非常优雅的目标损失函数，这是一个非常简练的 minimax 博弈式，使用这套 Loss，训练过程中，Discriminator 会尽量的最大化真实样例的评分期望，并最小化生成的样例的评分期望，以筛选出假图片；Generator 则尽量最大化自己生成的样例的期望评分，试图骗过 Discriminator。其基本的思想我们在上一篇文章中已经介绍过了。</p>
+<p>对于一个 generator 来说，我们一般是采样一个噪音向量 z 作为其输入，generator 根据这个随机输入生成一个随机特征的图片。当我们使用满足<span class="arithmatex">\(z\sim p_z\)</span>的随机噪音的时候，也隐含的定义了生成的图片的分布<span class="arithmatex">\(p_g\)</span>，理想的情况下，我们希望生成的图片分布尽量收敛于训练集中图像的概率分布<span class="arithmatex">\(p_{data}\)</span>。</p>
+<p>Goodfellow 在 GAN 的开山之作中证明了上面式子中定义的 minimax 博弈在<span class="arithmatex">\(p_g=p_{data}\)</span>时取得纳什均衡，并且使用其提出的算法（其实就是用梯度下降最优化上述目标函数）可以使得博弈达到这个纳什均衡，因此也就能达到<span class="arithmatex">\(p_g = p_{data}\)</span>这个美好期望。</p>
+<h3 id="纳什均衡点"><Font color=green>纳什均衡点</font><a class="headerlink" href="#纳什均衡点" title="Permanent link">&para;</a></h3>
+<p>对于任意一个样本 x，它既有可能来自训练集，又有可能来自生成器，只不过是概率分布存在差异罢了。这个样本对于上面定义的判别器 D 损失的贡献为：<span class="arithmatex">\(-P_{data}(x)logD(x)-P_g(x)log[1-D(x)]\)</span>。</p>
+<p>固定 generator 的参数，上式对 D 求偏导 :</p>
+<div class="arithmatex">\[
+Dif=\frac{-P_{data}(x)}{D(x)}+\frac{P_g(x)}{1-D(x)}
+\]</div>
+<p>导数为 0 时，判别器的损失取最优值，不难导出最优判别器：</p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/1.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="最优判别器" src="../../../06-14-GAN-theory.assets/1.webp" /></a></p>
+<p>这个最优判别器的直观意义很显然，一个数据 x 在训练集中出现的可能性是 a，被生成器生成的概率是 b，那么当一个最优的判别器要判断其到底是真图片还是假图片的时候，输出概率<span class="arithmatex">\(\frac{a}{a+b}\)</span>是非常自然的事情。</p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/2.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="生成器的等价目标函数" src="../../../06-14-GAN-theory.assets/2.webp" /></a></p>
+<p>因此，对于任何一个固定的 G，D 能取得的最优如上。那么说白了，要求纳什均衡，也就是只需要再调整生成器的生成分布 <span class="arithmatex">\(p_g(x)\)</span> 的，使得上式取最小。</p>
+<p>原论文中给出了下面的证明过程，证明了<span class="arithmatex">\(p_g=p_{data}\)</span>时，取得纳什均衡：</p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/3.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="纳什均衡的证明" src="../../../06-14-GAN-theory.assets/3.webp" /></a></p>
+<p>前面我们已经介绍过了 KL 散度：<span class="arithmatex">\(KL(p||q)=\int p(x)ln[\frac {p(x)}{q(x)}]dx\)</span>.</p>
+<p>原论文中给出的证明其实就是对上面的<span class="arithmatex">\(C(G)\)</span>做了一个变换，将其变换成散度形式：</p>
+<div class="arithmatex">\[
+\int p_{data}(x)*log\frac{p_{data}(x)}{p_{data}(x)+p_g(x)}*dx+\int p_g(x)*log\frac{p_g(x)}{p_{data}(x)+p_g(x)}*dx\\
+=KL（p_{data}||p_{data}+p_g）+KL(p_g||p_{data}(x)+p_g(x))
+\]</div>
+<p>log 里面分母再除个 2，提出来就是它证明中的式子了：</p>
+<div class="arithmatex">\[
+=KL（p_{data}||\frac{p_{data}+p_g}{2}）+KL(p_g||\frac{p_{data}+p_g}{2})-log(4)
+\]</div>
+<p>然后我们就是要最小化它对吧？</p>
+<p>我们在上面介绍 KL 散度的时候，已经证明了，KL&gt;=0，当且仅当 p，q 相等时取 0，所以上式取最小的条件就是：<span class="arithmatex">\(p_{data}=\frac{p_{data}+p_g}{2}=p_g&lt;=&gt;p_{data}=p_g\)</span>。</p>
+<p>由此得证纳什均衡的取得条件为<span class="arithmatex">\(p_{data}=p_g\)</span>。</p>
+<h3 id="优化算法的收敛性"><Font color=green>优化算法的收敛性</font><a class="headerlink" href="#优化算法的收敛性" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/4.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="优化算法" src="../../../06-14-GAN-theory.assets/4.webp" /></a></p>
+<p>在上一篇文章中，我们就已经介绍了这个训练算法，分别让 D 和 G 轮流针对 Loss 做梯度下降而已，直观上很好理解。Goodfellow 在原论文中也对其收敛性做了证明：</p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/5.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="优化算法的收敛性" src="../../../06-14-GAN-theory.assets/5.webp" /></a></p>
+<p>其实感觉证了跟没证差不多吧。。大致就和我们在之前讨论的一样，最后要优化的本质上就是一个关于<span class="arithmatex">\(p_g\)</span>的函数，然后证明了凸性，所以可以用梯度下降保证收敛到最优点。但是实际操作中，我们不能表示为一个<span class="arithmatex">\(p_g\)</span>的函数，而是用多层网络来拟合，虽然缺乏理论保障，但是非常成功，2333。。。</p>
+<p>总的来说，原论文中，这一部分，主要还是证明纳什均衡点的部分最精彩。上一篇文章中，我们用类比的方法解释了 GAN 的哲学，但是这里我们直接从数学上证明了定义的 Loss 的合理性：在这个 Loss 定义下，我们实际上是在让生成器的生成结果的概率分布和数据集分布拟合。</p>
+<h2 id="初代-gan-存在的问题">初代 GAN 存在的问题<a class="headerlink" href="#初代-gan-存在的问题" title="Permanent link">&para;</a></h2>
+<p>从 14 年 GAN 被提出以来，GAN 在实践过程中，就一直存在训练困难等问题。</p>
+<p>"However, they still remain remarkably difficult to train, with most current papers dedicated to heuristically finding stable architectures......Dispite their success, there is little to no theory explaining the unstable behaviour of GAN training."</p>
+<p>为了解决这个问题，大部分尝试都是通过改进 GAN 的生成器和判别器的架构，毕竟是 CNN，优化优化架构总能让性能提升的。比较成功的如 DCGAN，通过不断实验，找到一个比较好的网络架构设置。它们取得了一些成功，但是没有彻底解决 GAN 存在的问题，并且也一直缺乏对于 GAN 的表现的理论解释。</p>
+<p>人们发现，在使用上面 Goodfellow 提出的那套 minimax 损失函数训练时，判别器训练得越好，生成器梯度消失越严重。也就是说当 discriminator 太强的时候，generator 的能力就训练不上去了。</p>
+<p>Goodfellow 当年在写这篇论文的时候也发现了这个问题，于是在介绍完自己最开始提出的那套 Loss 后，又补充了几句："In practive, equation 1 may not provide sufficient gradient for G to learn will......Rather than training G to minimize log(1-D(G(z))) we can train G to maxmize log D(G(z)). This objective function results in the same fixed point of the dynamics of G and D but provides much stronger gradients early in learning."</p>
+<p>其实就是把 generator 的目标函数简单的从 log(1-D) 换成了-log(D)，直观来看，意义是一样的，都是在引导 generator 骗过 discriminator，只不过数学形式发生了变化，在训练的时候梯度/收敛等方面发生了变化。但是后来人们发现，这种做法也很一般，首先梯度很不稳定，其次生成的样本多样性不足。</p>
+<p>直到 2017 年，这位来自 Courant Institute of Mathematical Sciences 的 Martin Arjovsky 先生发表了文章开头提到的<a href="https://arxiv.org/pdf/1701.04862.pdf">《TOWARDS PRINCIPLED METHODS FOR TRAINING GENERATIVE ADVERSARIAL NETWORKS》(Arjovsky et al. 2017)</a> ，其中存在的理论问题才得到了回答。</p>
+<p>原文中对于这部分问题的归纳得非常精彩：</p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/6.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="初代 GAN 存在的问题" src="../../../06-14-GAN-theory.assets/6.webp" /></a></p>
+<p>寥寥几句话，就把前人遇到的问题的要害给抓住了：既然 D 最优的时候，训练 G 就能逼近纳什均衡，为啥 D 越好，G 的训练却越糟糕？Goodfellow 说这是因为 saturation 导致的，可以换个 loss function，但是为啥换了过后发现更垃圾了。</p>
+<p>于是提出了四个精髓的问题：为啥 D 越好，G 训练越差？为什么 GAN 的训练不稳定？Goodfellow 提出的替代选项也和 JSD 有关么，性质如何？有什么解决当下问题的办法吗？</p>
+<p>问完后，夸下海口：The fundamental contributions of this paper are the answer to all these questions. 可谓是技惊四座。。。</p>
+<p>这部分，我们主要整理了 Arjovsky 这篇论文中的关于初代 GAN 存在的问题的部分分析和推理。我们将分两个部分分别讨论 Goodfellow 原论文中提出的两种形式的 Generator 目标函数存在的问题。</p>
+<p>但是我们只会给出一个简单的 intuition 层次上的讨论，严格的数学推导读者可以自行下载论文查看。因为，这位数学研究所的大哥，写的论文。。。嗯。。。</p>
+<p>非常严谨：</p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/7.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="初代 GAN 存在的问题" src="../../../06-14-GAN-theory.assets/7.webp" /></a></p>
+<p>要吃下这篇论文，最好得有一点测度论的基础。（反正我不会）</p>
+<p>至于他在这篇论文中提出的解决方法，我们不再讨论，因为下一个部分，我们会介绍一个更加成熟的方法——WGAN。而提出者。。。还是这位 Arjovsky 先生。。。</p>
+<h3 id="log1-d-存在的问题"><Font color=green>log(1-D) 存在的问题</font><a class="headerlink" href="#log1-d-存在的问题" title="Permanent link">&para;</a></h3>
+<p>在上面证明 GAN 的纳什均衡点的时候，我们已经知道当 Discriminator 最优时，最优化 Generator 目标函数的等价表达式：</p>
+<div class="arithmatex">\[
+KL（p_{data}||\frac{p_{data}+p_g}{2}）+KL(p_g||\frac{p_{data}+p_g}{2})-log(4)\\
+=2JSD(p_{data}||p_g)-log(4)
+\]</div>
+<p>最小化这个目标函数，也就是最小化<span class="arithmatex">\(p_{data}\)</span>和<span class="arithmatex">\(p_g\)</span>的散度，也就是尽量让两个分布贴合，两者相等时达到纳什均衡，这些我们都已经讨论过了。</p>
+<p>但是问题就出在这个散度上。</p>
+<p>如果在训练过程中<span class="arithmatex">\(p_{data}\)</span>和<span class="arithmatex">\(p_g\)</span>这两个分布完全不重叠，或者重叠部分可忽略，那么这个 JS 散度会是多少呢？</p>
+<p>（这里的重叠指：两个分布在某个样本点上都有不为 0 的出现概率。）</p>
+<p>还是先考虑单个 x 对这个 JSD 的贡献：</p>
+<div class="arithmatex">\[
+[p_{data}(x)*log\frac{2p_{data}(x)}{p_{data}(x)+p_g(x)}+p_g(x)*log\frac{2p_g(x)}{p_{data}(x)+p_g(x)}]dx
+\]</div>
+<p>对于每个 x 来说，存在四种可能性：</p>
+<div class="arithmatex">\[
+p_{data}(x)=0，p_g(x)=0\\
+p_{data}(x)\neq0，p_g(x)=0\\
+p_{data}(x)=0，p_g(x)\neq0\\
+p_{data}(x)\neq0，p_g(x)\neq0\\
+\]</div>
+<p>第一种情况，对散度无贡献，第二种情况和第三种情况则会贡献 log2*dx。由于完全不重叠或者重叠忽略不计，第四种情况贡献也可算作 0。因此，实际上，在<span class="arithmatex">\(p_{data}和 p_g\)</span>重叠量可以忽略不计的情况下，这个 JS 散度始终在 log2 附近轻微震动。使用这样的 loss function 来训练 generator，其实就意味着：梯度=0。</p>
+<p>也就是说，当 discriminator 最优的时候，如果生成器产生结果的分布<span class="arithmatex">\(p_g\)</span>与训练集分布<span class="arithmatex">\(p_{data}\)</span>的重叠量可以忽略不计，generator 不能获得任何梯度信息（因为梯度=0），无法通过梯度来优化自己。</p>
+<p>而<span class="arithmatex">\(p_{data}\)</span>和<span class="arithmatex">\(p_d\)</span>重叠量可忽略不计的概率是多大呢？几乎是 1..</p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/8.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../06-14-GAN-theory.assets/8.webp" /></a></p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/9.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../06-14-GAN-theory.assets/9.webp" /></a></p>
+<p>原论文用测度论的方法证明了：当<span class="arithmatex">\(p_{data}和 p_g\)</span>的支撑集是高维空间中的低维流行时，这两个分布重叠部分的测度为 0 的概率为 1。</p>
+<p>这里简单解释一下概念：</p>
+<ul>
+<li>支撑集：一个函数在其定义域上取值非 0 的定义点的点集。</li>
+<li>流形：三维空间中我们有曲线，曲面。这些低维曲线/曲面都是这个三维空间中的一个低维流形。比如一三维空间中的曲面是这个空间中的一个二维流形，曲线是一个一维流形。本质上，我们知道，所谓维度就是指需要几个变量才能确定，流形就是高维空间中这些概念的推广。</li>
+<li>测度：可以理解为长度/面积/体积这些经典空间中的概念在高维空间中的推广，可以理解为超体积。（如果对线性代数熟悉的话，我们知道行列式本质上也是在计算一个超体积。）</li>
+</ul>
+<p>为什么要用支撑集这样的概念呢？因为像图片这样的高维向量，以 64*64 的图片为例（4096 维），并不是随便拿一个 4096 维的向量，它就是一个对人类来说有“意义”的图片。当我们看到一张猫的图片（本质上是一个满足一定特征的向量）我们会说这是猫，当我们看到一个随机生成的 4096 维向量，我们大多时候看到的就是一堆乱七八糟的像素点。所以对于图片的概率分布来说，这个 4096 维的向量空间中，大部分的概率值应该都是 0，是没有意义的。</p>
+<p>那么，很容易就会想到，对于真实图片的概率分布，其支撑集可能只是这个高维空间中的一个低维流形（真实图片只有可能分布在一个这个空间中的一个低维度超几何面上，其它地方概率=0）。</p>
+<p>更直观一点来说，就是：既然真实图片只是其所在的空间的一个非常小的集合中，那么可能我们根本就不需要这么高维度的向量来表达它，一个更低维度的编码就够了，用像素矩阵来表达一个图片对象是一个非常低效的手段。实际上已经有许多例子能够为此提供支持，其中最有代表性的应该是图像压缩。以 JPEG 压缩为例，在有些例子中，它可以将一个 bmp 格式的图片的大小压缩 20 倍，虽然它是有损压缩，但是解压后肉眼基本上看不出压缩前后的区别！</p>
+<p>而原论文中想要表达的就是：既然图片分布是低位流形，那么两个低维流形的交叠相对于这个低维流形而言，期望测度是 0。比如说在二维平面上随便取两条曲线段，这两条曲线段可能会有有限的相交点，但是这些有限的相交点的“长度”相比于这个曲线段微不足道。原论文的证明其实就是把这个直观的感受推广到了高维空间中。</p>
+<p>至此，我们终于知道为啥 D 训练得太好，G 就训练不动了。因为 D 训练得越好，训练 G 时的目标函数就越贴近上面我们推导出的 JS 散度。而这个散度虽然理论上看起来很好，只要不断降低，就能够让两个分布贴在一起，但是实际上由于两个分布的交叠几乎总是可以忽略不计，所以导致这个散度根本降不动。</p>
+<p>因此，初代的 GAN 训练过程中需要非常小心的平衡 D 和 G 的训练，如果以来 D 就训练得太好，那么 G 根本训练不动，如果 D 质量很差，G 从 D 那里得到的梯度指引也会不够准确，导致 G 的训练效果一般。</p>
+<h3 id="logd-存在的问题"><font color=green>log(D) 存在的问题</font><a class="headerlink" href="#logd-存在的问题" title="Permanent link">&para;</a></h3>
+<p>那么 Goodfellow 提出的备选项 : logD 又如何呢？</p>
+<p>还是按照上面的方法，做一个简单的变形，就可以导出，当 D 最优的时候，G 的目标函数等价于：</p>
+<div class="arithmatex">\[
+KL(p_g||p_{data})-2JS(p_{data}||p_g)
+\]</div>
+<p>最小化这个目标函数会变得很滑稽。</p>
+<p>一方面我们希望最小化 KL，另一方面又希望最大化 JS。直观上来看，我们又希望将两个分布贴紧，又希望将它们两个拉开。。。</p>
+<p>所以显然当年 Goodfellow 提出的这个“改进”完全是凭感觉瞎扯的。它避免了原来的那个裸的 JS，所以解决了梯度消失的问题，但是这两个互相矛盾的目标也自然最后也会让我们得到不稳定的梯度波动。。</p>
+<h2 id="wasserstein-gan">Wasserstein GAN<a class="headerlink" href="#wasserstein-gan" title="Permanent link">&para;</a></h2>
+<p>Arjovsky 在<a href="https://arxiv.org/pdf/1701.04862.pdf">《TOWARDS PRINCIPLED METHODS FOR TRAINING GENERATIVE ADVERSARIAL NETWORKS》(Arjovsky et al. 2017)</a> 还讨论了一些别的问题，并且也提出了一些解决这些问题的思路和方法。限于笔者实力和精力有限，这里不再赘述，有兴趣可以阅读原论文。</p>
+<p>这一部分，我们将介绍 WGAN。WGAN 的提出者也是 Arjovsky 等人，在发了上面这篇 paper 后，他又立刻发表了 <a href="https://arxiv.org/pdf/1701.07875.pdf">《Wasserstein GAN》(Arjovsky et al. 2017)</a>。</p>
+<p>Wasserstein GAN，顾名思义，其实就是把概率分布间的距离度量改成使用“Wasserstein Distance”来衡量的 GAN。这一部分，我们会简单的介绍 Wasserstein Distance 及其相对于其它类型距离定义的优势。最后我们会介绍 WGAN 的基本思路和流程。</p>
+<h3 id="wasserstein-distance"><Font color=green>Wasserstein Distance</font><a class="headerlink" href="#wasserstein-distance" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/14.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Wasserstein Distance" src="../../../06-14-GAN-theory.assets/14.webp" /></a></p>
+<p>原论文中，作者简单的贴出了 Wasserstein Distance 的定义，乍一看反正就是一个数学表达式，求的是一个向量间距离的期望下确界。。。</p>
+<p>WD 也被称为推土机距离（Earth-Mover Distance），是信息论里面的一个定义。搜一下这个东西，你会发现还有很多应用中都用到了它，它本质上是从最优传输问题导出的。上面我们说了这个式子就是要求一个期望的下确界，对于这个期望来说，其所依赖的联合概率分布是一个参数，这里要求一个下确界，就是要求一个最优联合概率分布来使得整个传输时最优的。而这个最优概率传输代价可以作为两个概率分布之间的差异的某种形式的度量。有兴趣可以参考一下这篇文章：<a href="https://zhuanlan.zhihu.com/p/45980364">《传说中的推土机距离基础，最优传输理论了解一下》</a>。</p>
+<p>用最优传输代价为什么能衡量分布距离？</p>
+<p>假设我们是一个电商平台，我们运营着自己的仓库，我们当然希望全国各地的仓库中商品的分布尽量和各地的需求贴合。比如说 A 城对商品需求量为 x，我们当然希望 A 城的仓库正好有 x 件商品来满足需求。</p>
+<p>如果我们把 n 个城市的仓库库存表示为一个 n 维向量 X，商品需求也表示为一个 n 维向量 Y，那么最容易想到的简单评估库存分配的方法就是计算<span class="arithmatex">\(||X-Y||\)</span>，这个向量距离范数在一定程度上衡量了库存分布和商品需求分布的贴合程度。</p>
+<p>但是，这个范数可能评估得并不那么精确。</p>
+<p>假设现在 n 个城市里，有 n-2 个城市库存和需求都是一样的，但是有两个城市，比如西藏和北京，其中西藏需求量比库存大 1，北京的库存比需求量大 1。那么我们可以从北京运送 1 个单位的商品到西藏，此时得到范数值<span class="arithmatex">\(||X-Y||=1\)</span>。</p>
+<p>再考虑另一个例子，如果这两个城市不是北京和西藏，而是北京和天津，那么我们需要把一个单位的商品从北京运送到天津。此时<span class="arithmatex">\(||X-Y||\)</span>依然是 1。</p>
+<p>我们很快就会发现一个问题。如果把货物从北京发送到天津所需要的代价肯定显著低于从北京发往西藏，从这个角度来看，后者的分布应该优于前者的分布，但是如果简单的用一个距离范数来表达，无法体现这种差别。</p>
+<p>我们把本地发货的代价设为 0，把北京到西藏的代价设为 100，北京到天津的代价为 10。那么用最优传输代价来评估，前者的代价是 100，后者代价是 10，我们便能体现出后者由于前者这一特性。</p>
+<p>这就是最优传输代价用来衡量分布距离的直观理解。</p>
+<h3 id="wd-的优势"><Font color=green>WD 的优势</font><a class="headerlink" href="#wd-的优势" title="Permanent link">&para;</a></h3>
+<p>原论文在引出 WGAN 之前，先对比了四种距离定义的表现。考虑到其中一种 TVD 对于我们理解 WGAN 并没有什么特别必要，我们这里主要比较一下三种距离：KL Divergence，JS Divergence，Wasserstein Distance (Earth-Mover Distance)。</p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/12.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="一个距离度量的例子" src="../../../06-14-GAN-theory.assets/12.webp" /></a></p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/10.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="两个不重叠的分布" src="../../../06-14-GAN-theory.assets/10.webp" /></a></p>
+<p>原作者举了上面这个简单的例子，这个例子中有两个不重叠的概率分布。（原论文没有给上面的示意图，这张示意图源自一篇知乎的文章<a href="https://zhuanlan.zhihu.com/p/25071913">《令人拍案叫绝的 Wasserstein GAN》</a>）</p>
+<p>我们将看到 JSD，KLD 和 WD 在这个例子中表现出来的差异：</p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/11.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="JS 散度与 KL 散度的表现" src="../../../06-14-GAN-theory.assets/11.webp" /></a></p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/13.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Wasserstein Distance" src="../../../06-14-GAN-theory.assets/13.webp" /></a></p>
+<p>对于 JS 我们前面已经分析过了，只要不相交，不管距离是多少，始终等于 log2，根本不能体现距离带来的差别，所以一旦分开了，就不能通过梯度拉回来，所以训练 G 的时候会出现梯度消失。</p>
+<p>对于 KL，也很容易验证，当完全不相交时，梯度会趋于无穷，导致梯度爆炸。</p>
+<p>而 WD 却体现出了非常优秀的性质，它完全是和距离呈正相关的，提供了连续平滑的梯度。</p>
+<p>由此可见，如果我们使用 WD 来作为目标函数引导<span class="arithmatex">\(p_g\)</span>和<span class="arithmatex">\(p_{data}\)</span>的拟合，就能很好的避免梯度消失或者梯度爆炸。</p>
+<h3 id="wgan"><Font color=green>WGAN</font><a class="headerlink" href="#wgan" title="Permanent link">&para;</a></h3>
+<p>前面我们说了，WGAN 就是把初代 GAN 的 loss 换掉，不再使用 JS 散度作为目标，取而代之，采用 Wasserstein Distance 来作为目标。</p>
+<p>但是并没有这么简单。。。还记得 Wasserstein Distance 中要求一个下确界吗？这东西并不能直接求解。。</p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/15.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../06-14-GAN-theory.assets/15.webp" /></a></p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/16.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../06-14-GAN-theory.assets/16.webp" /></a></p>
+<p>如上，虽然 WD 并不能直接算出来。但是作者在原文中使用了 Kantorovich-Rubinstein duality（这个东西有兴趣可以自己去看<a href="https://vincentherrmann.github.io/blog/wasserstein/">这篇文章</a>，原 paper 这部分引用了这本书：《Optimal Transport - Old and New》，据说是写个数学系 phd 看的，998 页。"Have fun and good luck!!!"），于是 WD 距离的计算就归结为另一个等价对偶式的计算：</p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/17.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="WD 的对偶式" src="../../../06-14-GAN-theory.assets/17.webp" /></a></p>
+<p>或者也可以用：</p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/18.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1560522899056" src="../../../06-14-GAN-theory.assets/18.webp" /></a></p>
+<p>这里的<span class="arithmatex">\(f\)</span>是一个满足 Lipschitz 连续的函数。</p>
+<p>所谓的 Lipschitz 连续，就是对于一个常数 K，函数在定义域中任意两个元素<span class="arithmatex">\(x_1,x_2\)</span>上都要满足：</p>
+<div class="arithmatex">\[
+|f(x_1)-f(x_2)|\leq K|x_1-x_2|
+\]</div>
+<p>K 被称为 Lipschitz 常数，上面的表达式中，要求 <span class="arithmatex">\(f\)</span> 满足对于一个固定大小的 Lipschitz 常数满足 Lipschitz 连续。从 Lipschitz 连续的定义上，可以看到，它限制了函数梯度的上限，使得一个函数的函数值局部变动幅度只能在一个有限的范围内。</p>
+<p>所以，计算 WD 就成了，在 <span class="arithmatex">\(f\)</span> 的 Lipschitz 常数不超过 K 的条件下，找出那个特殊的满足条件的 <span class="arithmatex">\(f\)</span> 取到<span class="arithmatex">\(E_{x\sim p_r}[f(x)]-E_{x\sim p_\theta}[f(x)]\)</span> 的上界。</p>
+<p>似乎找到这个最优 <span class="arithmatex">\(f\)</span> 也不是一件容易的事情？神经网络最厉害的不就是拟合么。。我们拿一个神经网络来拟合。。但是神经网络在拟合过程中没办法限制 f 使得它满足 Lipschitz 条件呀？WGAN 原论文中暴力的将拟合 f 的网络的 w 参数全部限制在了[-c,c]之间（小于-c 就令为-c，大于 c 就令为 c），来强行的满足了 Lipschitz 条件（f 最终肯定是关于 w 的函数，w 的范围只要被限制了，那么 f 的导数极限也被限制住了）。</p>
+<p>于是在 WGAN 的设计中，原本的 discriminator 网络其实被换成了拟合 <span class="arithmatex">\(f\)</span> 的网络。对于这个 <span class="arithmatex">\(f\)</span> 网络的训练，它做的事情就是要最大化：</p>
+<div class="arithmatex">\[
+L=E_{x\sim p_{data}}[f_w(x)]-E_{x\sim p_g}[f_w(x)]
+\]</div>
+<p>在训练充足的情况下，这个 <span class="arithmatex">\(f\)</span> 被期望能逼近使得 WD 对偶式取上确界时的<span class="arithmatex">\(f\)</span>。</p>
+<p>而 generator 要干什么呢？它就是负责最小化这个 L，因为 <span class="arithmatex">\(f\)</span> 网络的训练主要是调整 <span class="arithmatex">\(f\)</span> 取上确界，使得 L 逼近 WD，g 网络则负责降低这个 WD，使得两个分布被贴合。</p>
+<p>你说巧不巧？明明 discriminator 已经不再是那个负责判别的 discriminator，而是被用来拟合一个不明意义的<span class="arithmatex">\(f\)</span>，两个网络之间竟然还是存在一个 minimax 博弈！</p>
+<p>最后，附上 WGAN 的伪代码，其实变化不大：</p>
+<p><a class="glightbox" href="../../../06-14-GAN-theory.assets/19.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="WGAN 伪代码" src="../../../06-14-GAN-theory.assets/19.webp" /></a></p>
+<h3 id="wgan-gp"><Font color=green>WGAN-GP</font><a class="headerlink" href="#wgan-gp" title="Permanent link">&para;</a></h3>
+<p>WGAN 论文中，作者也说了，采用 clip 来保证 Lipschitz 条件非常粗暴，简陋，鼓励大家提出一些新的想法。WGAN-GP 就是一个替代策略，它在 Loss 里面添加了一个 Gradient penalty 项，有点类似正则化项，但是这里的 GP 项主要是为了限制 f 网络中的参数，让它满足 Lipschitz 条件。相对而言，更灵活一点。</p>
+<p>具体的介绍可以参考<a href="https://zhuanlan.zhihu.com/p/52799555">这篇文章</a>，我们不再展开讨论。</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2025 18:58:32">April 27, 2025</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2025 18:58:32">April 27, 2025</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../../05/31/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 生成式对抗网络——基础">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                生成式对抗网络——基础
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../16/%E5%9F%BA%E4%BA%8E-gan-%E7%9A%84%E5%8A%A8%E6%BC%AB%E5%A4%B4%E5%83%8F%E7%94%9F%E6%88%90/" class="md-footer__link md-footer__link--next" aria-label="Next: 基于 GAN 的动漫头像生成">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                基于 GAN 的动漫头像生成
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      ZJUSCT
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/polyfill/index.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/tablesort/dist/tablesort.min.js"></script>
+      
+        <script src="../../../../../javascripts/tablesort.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

@@ -1,0 +1,3264 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ZJUSCT Documents & Blogs">
+      
+      
+        <meta name="author" content="ZJUSCT">
+      
+      
+        <link rel="canonical" href="https://docs.zjusct.io/blog/2019/05/31/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">
+      
+      
+        <link rel="prev" href="../../27/20190526-%E4%BC%9A%E8%AE%AE%E8%AE%B0%E5%BD%95/">
+      
+      
+        <link rel="next" href="../../../06/14/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/">
+      
+      
+      <link rel="icon" href="../../../../../assets/zjusct.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>生成式对抗网络——基础 - ZJUSCT 文档与博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/fonts.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/counter.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/theme.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/neoteroi-v1.1.2.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#review-for-ml" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="ZJUSCT 文档与博客" class="md-header__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+      
+  <img src="../../../../../assets/zjusct.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ZJUSCT 文档与博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              生成式对抗网络——基础
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="zjusct" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="根据系统模式切换主题"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="根据系统模式切换主题" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ZJUSCT/docs.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docs.zjusct.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../competition/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  竞赛
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../falcon/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Falcon
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../operation/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  运维
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  博客
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="ZJUSCT 文档与博客" class="md-nav__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+      
+  <img src="../../../../../assets/zjusct.svg" alt="logo">
+
+    </a>
+    ZJUSCT 文档与博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ZJUSCT/docs.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docs.zjusct.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            首页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../index/contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    贡献
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../index/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJUSCT 历史
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../index/newcomer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJUSCT 集群新手指南
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../competition/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    竞赛
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            竞赛
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../falcon/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Falcon
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Falcon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../falcon/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU Git 代码托管服务
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../falcon/mirror-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU Mirror 历史
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../falcon/mirror/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU Mirror 镜像站
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../operation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    运维
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            运维
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../operation/hardware/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    硬件运维
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            硬件运维
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/hardware/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    硬件知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/hardware/oobm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    带外管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../operation/software/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    软件运维
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            软件运维
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/software/build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    编译/构建系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/software/conda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    包管理器：Conda
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/software/lmod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    环境管理：Lmod
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/software/modern-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    现代化 CLI 工具
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/software/shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    环境变量与 Shell
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/software/spack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    包管理器：Spack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../operation/observability/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    可观测性
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            可观测性
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/observability/log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    日志收集
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/observability/network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络观测
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../operation/observability/opentelemetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    数据采集：OpenTelemetry
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    博客
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            博客
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    posts
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            posts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../posts/.template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    None
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2018
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            2018
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2018/09/30/%E6%B5%99%E6%B1%9F%E5%A4%A7%E5%AD%A6%E8%B6%85%E7%AE%97%E9%98%9F%E5%8D%9A%E5%AE%A2%E6%B4%BB%E4%BA%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    浙江大学超算队博客...活了？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2018/11/25/cuda-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%80%BB%E7%BB%93-%E4%B8%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CUDA 内存管理总结 (一)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2018/12/07/quick-guide-to-cuda-profiling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Guide to CUDA Profiling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2018/12/23/distributed-tensorflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Distributed Tensorflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2018/12/24/bp-%E7%AE%97%E6%B3%95feed-forward-neural-network-and-back-propagation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    （BP 算法）Feed forward neural network and back propagation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_3" id="__nav_5_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2019
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            2019
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03/31/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%A2%99%E5%86%85%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2-centos-7-%E7%9A%84-mysql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    如何在墙内快速部署 CentOS 7 的 MySQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03/31/virtual-memory-and-tlb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Virtual Memory and TLB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11/%E5%9F%BA%E4%BA%8E-0-1-%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%9A%84%E6%9C%B4%E7%B4%A0%E5%9B%BE%E7%89%87%E9%99%8D%E5%99%AA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    基于 0-1 乘性噪声的朴素图片降噪
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../27/20190526-%E4%BC%9A%E8%AE%AE%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2019.05.26 会议记录
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    生成式对抗网络——基础
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    生成式对抗网络——基础
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#review-for-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Review for ML
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is Generation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Generation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auto-encoder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auto-encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Idea
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pros-and-cons" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pros and Cons
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discriminator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discriminator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discriminator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-idea_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Idea
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#train" class="md-nav__link">
+    <span class="md-ellipsis">
+      Train
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pros-and-cons_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pros and Cons
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gan" class="md-nav__link">
+    <span class="md-ellipsis">
+      GAN
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GAN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-idea_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Idea
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparision
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06/14/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    生成式对抗网络——理论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06/16/%E5%9F%BA%E4%BA%8E-gan-%E7%9A%84%E5%8A%A8%E6%BC%AB%E5%A4%B4%E5%83%8F%E7%94%9F%E6%88%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    基于 GAN 的动漫头像生成
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06/21/rsa-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8F%8A%E5%85%B6%E6%95%B0%E5%AD%A6%E6%80%9D%E6%83%B3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RSA 加密算法及其数学思想
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2019/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2019
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2018/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2018
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Categories
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/cuda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CUDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/centos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CentOS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/meetingreport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MeetingReport
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/mysql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MySQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/operating-susyem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Operating Susyem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/profile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Profile
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/spc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Spc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/tlb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TLB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tech
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/tensorflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tensorflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/virtual-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Virtual Memory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/zju/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/zjusct/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJUSCT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    密码学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    数论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#review-for-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Review for ML
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is Generation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Generation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auto-encoder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auto-encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Idea
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pros-and-cons" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pros and Cons
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discriminator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discriminator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discriminator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-idea_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Idea
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#train" class="md-nav__link">
+    <span class="md-ellipsis">
+      Train
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pros-and-cons_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pros and Cons
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gan" class="md-nav__link">
+    <span class="md-ellipsis">
+      GAN
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GAN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-idea_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Idea
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparision
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://avatars.githubusercontent.com/u/45935569" alt="Unispac">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          <a href="https://github.com/Unispac">Unispac</a>
+                        
+                      </strong>
+                      <br>
+                      .
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2019-05-31 00:00:00+00:00" class="md-ellipsis">May 31, 2019</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../../../category/ai/">AI</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              5 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+  
+    <a href="https://github.com/ZJUSCT/docs.zjusct.io/blob/main/docs/blog/posts/2019/05-31-GAN-Introduction.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>生成式对抗网络——基础</h1>
+
+<p>Reference: <a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLDS18.html">Machine Learning and having it deep and structured (2018,Spring)</a> （李宏毅）</p>
+<p>生成式对抗网络（Generative Adversarial Network，GAN），是 2014 年被提出来的一种生成式深度学习网络技术。</p>
+<p>由于在众多应用场合中的出色表现，近年来 GAN 的应用和研究已经成为一个非常热门的方向。</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/0.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="研究热度" src="../../../05-31-GAN-Introduction.assets/0.webp" width="60%" /></a></p>
+<p>这篇文章将会对 GAN 做一个直观的介绍，帮助读者理解 GAN 的 Basic Idea。</p>
+<!-- more -->
+
+<p>第一节中，我们将简单对机器学习的 Basic Ideas 做一个回顾。第二节和第三节会简单介绍一下什么是生成（Generation）。第四节和第五节会介绍两种生成模型。第六节我们将会看到 GAN 是如何结合这两种模型从而达到优秀的表现。</p>
+<h2 id="review-for-ml">Review for ML<a class="headerlink" href="#review-for-ml" title="Permanent link">&para;</a></h2>
+<p>在之前的文章（ <a href="http://zjuqxy.xyz/?p=1081">机器学习</a> / <a href="http://122.152.198.128/?p=1532&gt;">卷积神经网络</a>）中，我们介绍了一些机器学习（Machine Learning）的思想和例子。</p>
+<p>简单回顾一下在这些文章中的讨论，我们知道，<Font color=red>机器学习本质上就是一个映射拟合 </Font>:</p>
+<p>在这个过程中，模型（Model）是一个函数，我们希望对它输入一个自变量 x，能从它那里得到一个我们想要的输出 y。以房价预测为例，我们希望告诉这个模型一些当前的经济，政治等社会环境，它能反馈一个房价数值。以图像分类为例，我们希望告诉这个模型一张图片，它能反馈给我们这张图片属于什么类别。</p>
+<p>在最简单的形式中，我们用一个简单的线性模型（Linear Model） <span class="arithmatex">\(w*x=y\)</span> 来建模这个函数。高级一点，选择一个更复杂的核函数（另一种说法也可以称特征函数）的话，这个线性模型可以表达更加复杂的关系。再高级一点，把这些线性模型多层复合起来，形成神经网络（Neural Network），表达力就更强，而这个用深度神经网络来建模的方法自成一派，也就是所谓的深度学习（Deep Learning）。</p>
+<p>而常常所说的训练数据（Training Data）无非就是从真实的世界中采样的一组（x，y）样本。训练（Training）则是让我们的模型从训练数据中学习 x 和 y 之间存在的某种规律的模式（Pattern），模型的参数在<Font color=red>学习过程中</font>不断调整，最后模型代表的函数尽可能的去模拟了真实世界中的映射关系。</p>
+<p>这个学习过程又是怎样的呢？通常就是定义了一个损失函数（Loss Function），这个损失函数的值是基于模型预测出来的结果和我们采样出来的真实结果的差别。<Font color=red>所谓学习其实就是最小化这个差别。因此，所谓的学习，本质上就是这个函数最优化问题的一种拟人化表达而已。</Font></p>
+<p>因此机器学习实际上就是给定一个训练数据集，产生一个预测函数。这个预测函数能对输入的 x 给出期望的 y，简单的可以表示为这样：</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/2.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ML 示意图" src="../../../05-31-GAN-Introduction.assets/2.webp" /></a></p>
+<h2 id="what-is-generation">What Is Generation<a class="headerlink" href="#what-is-generation" title="Permanent link">&para;</a></h2>
+<p>机器学习中，有很多种类型的任务，比如最简单的回归（Regression），分类（Classification）等。</p>
+<p>它们是机器学习入门时肯定会接触的例子，常见的回归/分类任务比如：给定一张图片，输出一个标量或者向量描述这个图片的性质。</p>
+<p>而生成（Generation）实际上就可以简单的理解为上述任务的一种逆向过程。给机器一张图片，它给你一个向量描述它的类别或者特征，似乎很无聊？那么如果给机器一个向量后，它给你生成一张图片 (~~老婆~~) 呢？</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/1.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="用向量生成图片" src="../../../05-31-GAN-Introduction.assets/1.webp" /></a></p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/4.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="生成器根据向量变化产生不同图片" src="../../../05-31-GAN-Introduction.assets/4.webp" /></a></p>
+<p>这就是生成任务最直观最简单的例子。（除了生成图片以外，当然它也可以用来生成句子/音频等其它任何你能想到的东西，只要能保证可训练。）</p>
+<p>如上图所示，只需要调整对生成器的输入向量，它就会相应的生成不同的图片。P2 中增大了第一维的输入，生成的人物头发变长了；P3 中改变向量倒数第二维的输入，人物头发变成了蓝色；P4 中增大了向量的最后一维，生成的人像就变得笑口常开了。</p>
+<h2 id="why-generation">Why Generation<a class="headerlink" href="#why-generation" title="Permanent link">&para;</a></h2>
+<p>一个很自然的问题是：为什么我们需要生成？给我一个向量，我生成一张图片有什么用？</p>
+<p>如果只是给一个很枯燥的向量，让机器生成一张图片确实没啥用。但是如果再组合上其它的功能模块，这个技术可能会非常有用。</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/21.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../05-31-GAN-Introduction.assets/21.webp" /></a></p>
+<p>比如说，我们可以不从向量开始，而从一个句子开始。训练这样一个模型，自然语言先被转成向量编码，向量编码再被转成这个自然语言句子描述的画面。</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/22.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../05-31-GAN-Introduction.assets/22.webp" /></a></p>
+<p>又比如说，我们可以从图片中修改一部分区域，画出一个简单的草图，它就自动帮我们生成更加真实的修改内容。</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/23.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../05-31-GAN-Introduction.assets/23.webp" /></a></p>
+<p>你甚至还可以根据马云的脸的表情信息的编码生成一张小罗伯特·唐尼同样表情的脸，然后替换上去，产生真实的换脸效果。</p>
+<p>生成，在某种意义上来说，是人工智能最有意义的任务。回归和分类这样的任务仅仅是去理解和识别我们熟知的对象，比如识别一句话是不是脏话，识别一张图片是不是猫。但是生成却是化腐朽为神奇，仅仅根据一些非常空洞的描述就自动生成了我们人所熟知的对象，这才是我们真正最想让人工智能为我们做的。仅仅是理解和识别，人工智能终究只是作为一种辅助工具。但是当它能创造的时候，它就翻身做了主人。</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/9.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="连续性" src="../../../05-31-GAN-Introduction.assets/9.webp" /></a></p>
+<p>上图是一个向量生成图片的例子。向量按照一种顺序在逐渐变化，我们而可以看到第四行生成的人脸也在变化。惊人的是，它的生成竟然是一个连续的将脸变换一个朝向的过程。这说明，这个模型确实学到了这个人的脸的深刻特征，能根据向量的微调，对产生的结果也生成连贯一致的微调。</p>
+<p>不只是绘画，当它还能生成语言，生成电影，生成代码，生成电路设计，生成科学理论时，它体现出来的智能性是非常让人震撼的。学习到对象/概念的深层次内涵，并且能够使用这些学到的知识去创造未知的东西，这是人工智能的究极目标之一。</p>
+<h2 id="auto-encoder">Auto-encoder<a class="headerlink" href="#auto-encoder" title="Permanent link">&para;</a></h2>
+<h3 id="basic-idea">Basic Idea<a class="headerlink" href="#basic-idea" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/7.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Generator" src="../../../05-31-GAN-Introduction.assets/7.webp" /></a></p>
+<p>上图是生成模型的一种基本模式，我们希望输入一个向量得到一个目标输出作为图形。</p>
+<p>一个简单问题是，我们如何训练它？容易想到的是事先准备一堆向量和图片之间的映射对，让这个生成器学得某种映射模式，如下图所示：</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/8.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="训练数据样例" src="../../../05-31-GAN-Introduction.assets/8.webp" /></a></p>
+<p>但面临的一个现实问题是，用于训练的图片很容易得到，但是这个向量 code 如何得到？需要我们手工设置吗？对于一些大型的项目，这个向量一般维度很高，样例也很多，手工设置这些向量标签可操作性并不强。并且，如果设计的向量不好，也很难保证模型收敛。</p>
+<p>自编码器在一定程度上解决了这个问题：</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/5.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../05-31-GAN-Introduction.assets/5.webp" /></a></p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/6.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Auto-encoder" src="../../../05-31-GAN-Introduction.assets/6.webp" /></a></p>
+<p>如图，自编码器接收一张图片作为输入，先丢入一个神经网络中产生一个编码作为输出（一个高维向量），这个产生的编码再被丢入另外一个神经网络，恢复成图片。我们希望恢复出来的图片尽可能和输入的图片相近，于是可以定义一个 loss 来衡量图片在这一次编码和解码过程中的损失，根据这个 loss，再使用像梯度下降之类的方法，就可以调整 encoder 和 decoder 的参数，使得其尽可能减少损失。</p>
+<p>在这样一个自编码，自解码的过程中，我们就既有了编码器和解码器。我们可以只对解码器输入向量，就能得到一个生成图。需要注意到的是，在这样一个自编码器模型中，code 和 image 的映射完全是由模型生成的。模型会自动帮我们调优这个映射的划分。</p>
+<p><Font color=red>PS : </Font>这个 code 的长度是一个超参数，我们需要设定一个适合的编码长度。一方面，它的长度小于原图才能达到我们希望的提取特征的效果。另一方面，如果它的长度太小，可能无法容纳图片中必须的一些关键信息，导致无法还原。</p>
+<h3 id="pros-and-cons">Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Permanent link">&para;</a></h3>
+<p>自动编码器的优点很显然，只需要给模型展示一些正例，它就能学到编码与图片之间的映射，非常易于训练和生成。</p>
+<p>上面我们说了，我们在训练一个自编码器的时候，希望的是输出图片和输入图片尽可能的相近，减少损失。这个相似如何去衡量呢？一般采用的方法都是把图片当作高维向量处理，求两个向量之间距离的 L1 或者 L2 范数。这个范数就表征了两张图片之间的差别，而这样的衡量方式局限性很明显：</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/10.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="简单范数的局限性" src="../../../05-31-GAN-Introduction.assets/10.webp" /></a></p>
+<p>如上图所示，如果我们让机器生成了四个版本的“2”的图片。其中 v1 和 v2 与原图只差了一个像素点，v3 和 v4 查了足足 6 个像素点。但是 v1 和 v2 破绽很明显，v1 在尾巴上出现了一个孤立的橘色块，而 v2 在中间留了一块白出来，这都是不自然的。而 v3 和 v4 虽然像素点差距更大，但是其实只是尾巴和头分别拉长了一点罢了，这都是很正常的情况。所以，用这种标准训练出来的模型，它显然缺少一个大局观。只是机械的分别关注全局对象的每一个小组成部分，很难学到组成部分之间的关联。</p>
+<h2 id="discriminator">Discriminator<a class="headerlink" href="#discriminator" title="Permanent link">&para;</a></h2>
+<h3 id="basic-idea_1">Basic Idea<a class="headerlink" href="#basic-idea_1" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/11.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="评估器" src="../../../05-31-GAN-Introduction.assets/11.webp" /></a></p>
+<p>评估器接收一个对象输入，产生一个标量输出。（其实就是一个回归问题）如上图所示，以生成图片的任务为例，一个评估器会评估机器生成的图片是否和人类作出来的图有一样的效果，根据生成质量，评估器会给出一个 0~1 的评分。</p>
+<p>假设我们已经有了一个很好的评估器，我们也可以用拿它来生成图片。给定一个向量，我们通过一些事先构造的假设，将其可能对应的图片锁定在一个集合（可能会很大）中。图片生成就成为了在这个集合中枚举，筛选出一个得分最高的图片：</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/12.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="枚举筛选" src="../../../05-31-GAN-Introduction.assets/12.webp" /></a></p>
+<h3 id="train">Train<a class="headerlink" href="#train" title="Permanent link">&para;</a></h3>
+<p>一个实际的问题是，如何训练一个好的评估器？它怎么能分辨出哪些是画得好的，哪些是画得糟糕的？</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/13.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../05-31-GAN-Introduction.assets/13.webp" /></a></p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/14.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../05-31-GAN-Introduction.assets/14.webp" /></a></p>
+<p>在网上，我们可以下载一大堆艺术家绘制的图片，他们都可以拿来作为正例，用来让模型学习什么是“好”图片。但是如果全都是正例，那么评估器将会收敛为一个恒输出 1 的常函数。所以，要训练一个评估器，面临的一个实际问题是：如何获得好的反例？</p>
+<p>如果反例的采样分布没有选好，那么模型对反例的识别能力也会很差。就会像上图那样，一个画得很一般的图片却获得了 0.9 的高分。</p>
+<p>我们可以通过一个迭代算法来不断强化这个评估器：</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/15.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="迭代优化" src="../../../05-31-GAN-Introduction.assets/15.webp" /></a></p>
+<p>如上图所示。一开始，我们可以随机生成一批反例，然后我们用当前的正例和反例训练出来一个评估器。评估器是个什么东西呢？它本质上也是一个定义在图片域上的函数。我们现在就从这个定义域上采集一批评分很高的图片来作为反例，用新的反例结合之前的正例重新训练，得到下一个版本的评估器。最后不断迭代。</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/16.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="迭代示意图" src="../../../05-31-GAN-Introduction.assets/16.webp" /></a></p>
+<p>上图是一个迭代过程的示意图，绿色为真实图片的分布域，蓝色为生成的效果糟糕的图片的分布域，红色曲线是我们的评估函数。在第一轮的训练中，真实域的函数估值会被拉高，我们随机生成那些噪音图片所在的域的股指会被压低。但是这个估值函数可能还不够，它可能没有发现其它很糟糕的图片的分布域，给了它们很高的估值，我们称为“虚高”。所以我们会进行第二轮训练，第二轮中用到的反例是从第一轮训练出来的估值函数中采样的估值高的点，那些“虚高”的点因为被作为反例被压低，而那些本来就该得分高的点即使被采样为反例，但是因为有同区域的正例在支撑，所以这一区域的估值不会被压低。最后，多轮迭代后，那些虚高的点就会逐渐被压平，只有正例分布的区域还依旧坚挺。此时我们就认为得到的评估函数是优秀的。</p>
+<p>这就像是制定一部法律。我们希望人们的行为被约束在一个我们预先定义的可接受的范围内。但是法律有漏洞，总有人钻空子，在制定者期望之外的区域获得很高的收益。法律制定者就会锁定这些突出的领域专门指定新的条令来打击。经过不断的实践和修订，这部法律也就完善起来。</p>
+<h3 id="pros-and-cons_1">Pros and Cons<a class="headerlink" href="#pros-and-cons_1" title="Permanent link">&para;</a></h3>
+<p>估值器的优点正好弥补了自动编码器的缺点。自动编码器是一个 Button Up 的模型，它根据编码对每一个像素点单独生成，组成一个完整的更高层的结果，这样的 Button Up 模型很难学到不同组成部分之间的关联。而估值器是一个 Top Down 模型，它直接获得正常图片作为输入，用全连接网络或者卷积网络很容易学习图片中的一些局部以及全局特征。</p>
+<p>但是缺点也很明显。从上面看到，我们发现评估器很依赖于一个 argmax 的计算。如果要用它来生成模型，我们需要在一个域上找到得分最高的候选图。如果要用迭代法来训练一个评估器，我们也需要在当前的评估函数域采样估值高的点来作为新的反例。然而这个 argmax 怎么算呢？很多用 discriminator 来做生成的，都要事先做一些不准确的假设，根据这些假设对不同的输入向量在图片域中划分一个候选域，在这个可行域上做 argmax。并且有的时候需要大量的枚举，非常耗时。并且要训练评估器也不容易，光有正例还不行，还得自己去合理的生成反例。</p>
+<p>所以，显而易见，评估器虽然有了自编码器难以学得的全局观，但是却没了自编码器那种易于生成结果的特性。</p>
+<h2 id="gan">GAN<a class="headerlink" href="#gan" title="Permanent link">&para;</a></h2>
+<p>讨论了这么多，终于轮到主人公 GAN 登场了。</p>
+<p>前面我们先讨论了 Auto-encoder 和 Discriminator，分别介绍了用它们来做生成的基本想法。在讨论中，我们已经意识到了：Auto-encoder 很容易产生生成图像，但是由于是 button-up 的模型，根据编码分别对每一个像素点预测，很难学得像素点之间的关系；Discriminator 很容易学得图像中一些局部和全局的特征细节，可以很好的处理像素点之间的 correlation，但是其主要能力还是在做评估上，在生成方面它还是缺乏一个有效的生成手段。</p>
+<p>GAN 集成了这两个方法：一方面，GAN 使用一个类似 Auto-encoder 结构的 Generator 来生成图像，另一方面它用一个 Discriminator 来评估生成图片的质量。</p>
+<h3 id="basic-idea_2">Basic Idea<a class="headerlink" href="#basic-idea_2" title="Permanent link">&para;</a></h3>
+<p>考虑这样的一个过程：</p>
+<p>一开始我们已经有了一个 generator 和 discriminator，它们的参数都是随机设置的。generator 生成的图片很糟糕，discriminator 也无法判别什么图片是好的。</p>
+<p>然后我们可以以一个适当的概率分布随机向这个 generator 中输入一组向量，然后得到一堆生成的图片，用这些图片作为反例，用艺术家绘制的图片作为正例训练 discriminator。这轮训练后，得到的 discriminator 的能力得到了提升，能够学会给一些好的图片打高分，给一些差的图片打低分。</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/18.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="固定 Generator，强化 Discriminator" src="../../../05-31-GAN-Introduction.assets/18.webp" /></a></p>
+<p>这之后，我们再固定这个 discriminator 的参数。此时如果我们给 generator 输入一个向量，再把它产生的图片送入 discriminator 中，我们会得到一个反馈的分数。这个反馈分数就可以作为 LOSS，我们根据 LOSS FUNCTION 的梯度调整 generator 的参数，使得它尽可能产生可以骗过这个版本的 discriminator，从它手下得到一个高分。这轮训练后，得到的 generator 的能力也得到了提升，能够产生一些像样的图片了。</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/19.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="固定 Discriminator，强化 Generator" src="../../../05-31-GAN-Introduction.assets/19.webp" /></a></p>
+<p>然后我们又重复上面的过程，强化 discriminator，discriminator 强化后再强化 generator。。。可以期望的是，多轮迭代后，我们的 generator 和 discriminator 都可以变得很强。</p>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/17.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="GAN 的哲学" src="../../../05-31-GAN-Introduction.assets/17.webp" /></a></p>
+<p>上图很好的从生物进化的角度很好的揭示了 GAN 的哲学。一开始蝴蝶颜色五颜六色的，停在树上的时候，捕食它的鸟根据颜色是否是棕色来区分它和叶子。在这个过程中，那些五颜六色的蝴蝶被淘汰了，棕色的蝴蝶脱颖而出，成功骗过了初代鸟。但是那些被骗过的初代鸟也会被淘汰，于是鸟也在这个过程中进化，学会了通过判别是否有叶脉来寻找猎物。而蝴蝶在这一过程中再次进化，成为了枯叶蝶。。。这是自然界中经典的良性竞争，互相强化的例子。而 Generative Adversarial Network 中的“Adversarial”也就是这样来的。在 GAN 中，我们让一个 generator 和一个 discriminator 互相对抗，generator 努力的生成逼真的图片试图骗过 discriminator，discriminator 努力强化自己的辨别能力对抗 generator 的欺骗。模型的学习就是在两者的对抗之中互相强化而完成的。</p>
+<h3 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../../../05-31-GAN-Introduction.assets/20.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="GAN" src="../../../05-31-GAN-Introduction.assets/20.webp" /></a></p>
+<p>上图是 GAN 的基本训练模式。<span class="arithmatex">\(\theta_d\)</span> 和 <span class="arithmatex">\(\theta_g\)</span> 分别是 Discriminator 和 Generator 的参数，一开始是随意初始化的。</p>
+<p>每一轮中：</p>
+<p>首先从数据库中采样 m 个真实样本<span class="arithmatex">\(\{x_i\}\)</span>，再让 Generator 随机生成 m 个虚假样本<span class="arithmatex">\(\{\hat{x_i}\}\)</span>。</p>
+<p>定义 <span class="arithmatex">\(V=\frac{1}{m}[\;\Sigma_{i=1}^{m}logD(x_i)+\Sigma_{i=1}^{m}log(1-D(\hat{x}_i))\;]\)</span></p>
+<p>真实样本得分越高，虚假样本得分越低，这个 V 的值越大。于是我们只需要通过梯度上升法，最大化这个 V，我们的 Discriminator 就能尽可能的对真实样本给出高分，尽可能的给虚假样本给出低分。这实际上就是完成了一个对 Discriminator 的强化。</p>
+<p>在这之后，我们再取样 m 个随机向量<span class="arithmatex">\({z_i}\)</span>，丢入 Generator，再把生成的结果给 Discriminator 评估。</p>
+<p>定义<span class="arithmatex">\(V=\frac{1}{m}\Sigma_{i=1}^mlog(D(G(z_i)))\)</span></p>
+<p>同样的，我们希望最大化这个 V 值，使得产生的结果尽可能骗过 Discriminator。将 V 值对 <span class="arithmatex">\(\theta_g\)</span> 求偏导，使用梯度上升来最大化这个 V，从而实现对 Generator 的调优。</p>
+<h3 id="comparision">Comparision<a class="headerlink" href="#comparision" title="Permanent link">&para;</a></h3>
+<p>在 GAN 的设计中，我们可以看到其明显优于 Auto-encoder 和 Discriminator 的地方。Auto-encoder 生成之后，缺乏一个强大评估反馈，简单的采用原图和恢复生成图的差向量范数来评估，无法考虑到各个 component 之间的 correlation，缺乏一个大局观。Discriminator 虽然能对图片产生很深的特征理解，但是缺少一个高效准确的 proposal 手段，训练时它非常依赖于反例的生成，生成时又需要选择一个候选区域来执行 argmax，这都不是容易解决的问题。</p>
+<p>GAN 将这两者的特性做了一个结合。虽然还是采用 button-up 的生成方式，根据向量对每一个像素点单独生成，但是多了一个 up-down 评估模式的 discriminator 来对生成内容进行更加细致的评估反馈，从而 generator 能得到更好的训练指引。另一方面，由于有了一个更加强大的 generator，训练 discriminator 时，能获得质量更高的反例，从而 discriminator 也能得到更好的训练。</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2025 18:58:32">April 27, 2025</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2025 18:58:32">April 27, 2025</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../27/20190526-%E4%BC%9A%E8%AE%AE%E8%AE%B0%E5%BD%95/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2019.05.26 会议记录">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                2019.05.26 会议记录
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../06/14/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/" class="md-footer__link md-footer__link--next" aria-label="Next: 生成式对抗网络——理论">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                生成式对抗网络——理论
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      ZJUSCT
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/polyfill/index.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/tablesort/dist/tablesort.min.js"></script>
+      
+        <script src="../../../../../javascripts/tablesort.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
