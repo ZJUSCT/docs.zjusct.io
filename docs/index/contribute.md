@@ -84,11 +84,11 @@ mkdocs serve
 
 ```html
 <figure markdown>
-  ![示例图片](path/to/image.png){ width=80% }
-  <figcaption>
-    图片说明<br>
-    <small>[来源](https://example.com)</small>
-  </figcaption>
+![示例图片](path/to/image.png){ width=80% }
+<figcaption>
+  图片说明<br>
+  <small>[来源](https://example.com)</small>
+</figcaption>
 </figure>
 ```
 
