@@ -73,7 +73,7 @@
     ```
 
     - Conda 创建环境默认在个人家目录下，可以随意修改。
-    - Spack 默认环境在 `/opt/spack` 下，无法修改。建议参照 [运维/软件运维/Spack](operation/software/spack) 创建个人 Spack 环境。
+    - Spack 默认环境在 `/opt/spack` 下，无法修改。建议参照 [运维/软件运维/Spack](../operation/software/spack.md) 创建个人 Spack 环境。
 
 - **预装目录**：`/opt`
 - **配置管理**：[集群配置仓库](https://git.zju.edu.cn/zjusct/ops/jenkins.clusters.zjusct.io)

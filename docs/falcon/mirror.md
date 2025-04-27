@@ -79,6 +79,12 @@ tags:
 
 ![infra](mirror.assets/infra.drawio)
 
+<div class="grid cards" markdown>
+![infra-1](mirror.assets/infra-1.webp)
+
+![infra-2](mirror.assets/infra-2.webp)
+</div>
+
 ### 存储服务器 [H3C X10536 G3](https://www.h3c.com/cn/Service/Document_Software/Document_Center/Storage/Catalog/Massive_Scale_Out/H3C_UniStor_X10000_G3/)
 
 | 参数 | 值 |
