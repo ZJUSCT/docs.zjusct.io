@@ -18,6 +18,7 @@ nav:
   - 运维:
     - operation/index.md
     - 硬件运维: operation/hardware
+    - 软件运维: operation/software
     - 可观测性: operation/observability
   - 博客: blog
 

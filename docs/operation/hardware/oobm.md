@@ -1,9 +1,13 @@
 ---
 tags:
-  - help
+  - 完善
 ---
 
 # 带外管理
+
+!!! todo
+
+    - [ ] Redfish Ansible 自动化介绍
 
 ## 概述
 

@@ -53,7 +53,18 @@ tags:
     - [开源镜像站 - LUG @ USTC](https://docs.ustclug.org/services/mirrors/)
     - [Home · sjtug/mirror-docker-unified Wiki](https://github.com/sjtug/mirror-docker-unified/wiki)
 
-本文档的其余部分面向镜像站爱好者和运维人员。本节总体介绍镜像站的构成和运维方式。
+文档的接下来的内容面向镜像站爱好者和运维人员，本节总体介绍镜像站的构成和运维方式。
+
+- **基础设施**：镜像站的硬件设施和网络环境，决定了镜像站上层采用的技术栈和运维方式。学校间的差异很大，从单机部署到云平台都有。
+- **后端**：负责镜像站的核心任务——同步和存储，它主要是一个同步任务调度器。规模较大的镜像站几乎都会定制自己的后端，下面是国内镜像站后端简表：
+
+    | 语言 | 后端实现 |
+    | --- | --- |
+    | Go | [tuna/tunasync](https://github.com/tuna/tunasync)、[sjutg/lug](https://github.com/sjtug/lug)、[ustclug/Yuki](https://github.com/ustclug/Yuki) |
+    | Python | [PKUOSC](https://github.com/PKUOSC/SyncController) |
+    | C# | [ZJUSCT/MirrorManager](https://github.com/ZJUSCT/MirrorManager) |
+
+- **前端**：负责镜像站的访问和用户交互。它主要是 Web 服务，提供了镜像列表、同步状态、帮助文档等功能。
 
 ## 基础设施
 
@@ -119,8 +130,10 @@ tags:
 | 包转发率 | 360Mpps |
 | 链路聚合 | 支持 10GE 端口聚合 |
 
+## 后端
+
+
 ## 前端
 
-## 后端
 
 
