@@ -12,28 +12,28 @@
         <meta name="author" content="ZJUSCT">
       
       
-        <link rel="canonical" href="https://docs.zjusct.io/operation/hardware/">
+        <link rel="canonical" href="https://docs.zjusct.io/operation/software/shell/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../modern-cli/">
       
       
-        <link rel="next" href="knowledge/">
+        <link rel="next" href="../spack/">
       
       
-      <link rel="icon" href="../../assets/zjusct.png">
+      <link rel="icon" href="../../../assets/zjusct.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>硬件运维 - ZJUSCT 文档与博客</title>
+        <title>环境变量与 Shell - ZJUSCT 文档与博客</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,22 +52,22 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/fonts.css">
+      <link rel="stylesheet" href="../../../stylesheets/fonts.css">
     
-      <link rel="stylesheet" href="../../stylesheets/counter.css">
+      <link rel="stylesheet" href="../../../stylesheets/counter.css">
     
-      <link rel="stylesheet" href="../../stylesheets/theme.css">
+      <link rel="stylesheet" href="../../../stylesheets/theme.css">
     
-      <link rel="stylesheet" href="../../stylesheets/neoteroi-v1.1.2.css">
+      <link rel="stylesheet" href="../../../stylesheets/neoteroi-v1.1.2.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -76,7 +76,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#硬件运维" class="md-skip">
+        <a href="#环境变量与-shell" class="md-skip">
           Skip to content
         </a>
       
@@ -109,9 +109,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ZJUSCT 文档与博客" class="md-header__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+    <a href="../../.." title="ZJUSCT 文档与博客" class="md-header__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
       
-  <img src="../../assets/zjusct.svg" alt="logo">
+  <img src="../../../assets/zjusct.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -128,7 +128,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              硬件运维
+              环境变量与 Shell
             
           </span>
         </div>
@@ -258,7 +258,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../.." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
   
@@ -280,7 +280,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../competition/" class="md-tabs__link">
+        <a href="../../../competition/" class="md-tabs__link">
           
   
   
@@ -302,7 +302,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../falcon/" class="md-tabs__link">
+        <a href="../../../falcon/" class="md-tabs__link">
           
   
   
@@ -326,7 +326,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -348,7 +348,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../blog/" class="md-tabs__link">
+        <a href="../../../blog/" class="md-tabs__link">
           
   
   
@@ -384,9 +384,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ZJUSCT 文档与博客" class="md-nav__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+    <a href="../../.." title="ZJUSCT 文档与博客" class="md-nav__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
       
-  <img src="../../assets/zjusct.svg" alt="logo">
+  <img src="../../../assets/zjusct.svg" alt="logo">
 
     </a>
     ZJUSCT 文档与博客
@@ -442,7 +442,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../.." class="md-nav__link ">
+            <a href="../../.." class="md-nav__link ">
               
   
   
@@ -477,7 +477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../index/contribute/" class="md-nav__link">
+      <a href="../../../index/contribute/" class="md-nav__link">
         
   
   
@@ -500,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../index/newcomer/" class="md-nav__link">
+      <a href="../../../index/newcomer/" class="md-nav__link">
         
   
   
@@ -555,7 +555,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../competition/" class="md-nav__link ">
+            <a href="../../../competition/" class="md-nav__link ">
               
   
   
@@ -625,7 +625,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../falcon/" class="md-nav__link ">
+            <a href="../../../falcon/" class="md-nav__link ">
               
   
   
@@ -660,7 +660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../falcon/git/" class="md-nav__link">
+      <a href="../../../falcon/git/" class="md-nav__link">
         
   
   
@@ -685,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../falcon/mirror-history/" class="md-nav__link">
+      <a href="../../../falcon/mirror-history/" class="md-nav__link">
         
   
   
@@ -708,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../falcon/mirror/" class="md-nav__link">
+      <a href="../../../falcon/mirror/" class="md-nav__link">
         
   
   
@@ -772,7 +772,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -804,8 +804,6 @@
                 
   
   
-    
-  
   
   
     
@@ -831,15 +829,17 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../hardware/" class="md-nav__link ">
               
   
   
@@ -852,13 +852,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             硬件运维
@@ -874,7 +874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="knowledge/" class="md-nav__link">
+      <a href="../../hardware/knowledge/" class="md-nav__link">
         
   
   
@@ -897,7 +897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="oobm/" class="md-nav__link">
+      <a href="../../hardware/oobm/" class="md-nav__link">
         
   
   
@@ -925,8 +925,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -958,17 +960,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -987,7 +987,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             软件运维
@@ -1001,7 +1001,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/build/" class="md-nav__link">
+      <a href="../build/" class="md-nav__link">
         
   
   
@@ -1024,7 +1024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/conda/" class="md-nav__link">
+      <a href="../conda/" class="md-nav__link">
         
   
   
@@ -1049,7 +1049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/lmod/" class="md-nav__link">
+      <a href="../lmod/" class="md-nav__link">
         
   
   
@@ -1072,7 +1072,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/modern-cli/" class="md-nav__link">
+      <a href="../modern-cli/" class="md-nav__link">
         
   
   
@@ -1092,10 +1092,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../software/shell/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    环境变量与 Shell
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1106,6 +1128,119 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#shell-的模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell 的模式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shell 的模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loginnon-login-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      login/non-login shell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interactivenon-interactive-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      interactive/non-interactive shell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#两者的组合" class="md-nav__link">
+    <span class="md-ellipsis">
+      两者的组合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-启动时加载的文件" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell 启动时加载的文件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shell 启动时加载的文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fish" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fish
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zsh
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#远程执行命令的方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      远程执行命令的方式
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1118,7 +1253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/spack/" class="md-nav__link">
+      <a href="../spack/" class="md-nav__link">
         
   
   
@@ -1183,7 +1318,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../observability/" class="md-nav__link ">
+            <a href="../../observability/" class="md-nav__link ">
               
   
   
@@ -1218,7 +1353,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/log/" class="md-nav__link">
+      <a href="../../observability/log/" class="md-nav__link">
         
   
   
@@ -1241,7 +1376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/network/" class="md-nav__link">
+      <a href="../../observability/network/" class="md-nav__link">
         
   
   
@@ -1264,7 +1399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/opentelemetry/" class="md-nav__link">
+      <a href="../../observability/opentelemetry/" class="md-nav__link">
         
   
   
@@ -1331,7 +1466,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../blog/" class="md-nav__link ">
+            <a href="../../../blog/" class="md-nav__link ">
               
   
   
@@ -1415,7 +1550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/posts/.template/" class="md-nav__link">
+      <a href="../../../blog/posts/.template/" class="md-nav__link">
         
   
   
@@ -1446,7 +1581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -1496,37 +1631,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#注意事项" class="md-nav__link">
+  <a href="#shell-的模式" class="md-nav__link">
     <span class="md-ellipsis">
-      注意事项
+      Shell 的模式
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#操作规范" class="md-nav__link">
-    <span class="md-ellipsis">
-      操作规范
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="操作规范">
+    <nav class="md-nav" aria-label="Shell 的模式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#服务器上下架" class="md-nav__link">
+  <a href="#loginnon-login-shell" class="md-nav__link">
     <span class="md-ellipsis">
-      服务器上/下架
+      login/non-login shell
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#机柜布局与理线" class="md-nav__link">
+  <a href="#interactivenon-interactive-shell" class="md-nav__link">
     <span class="md-ellipsis">
-      机柜布局与理线
+      interactive/non-interactive shell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#两者的组合" class="md-nav__link">
+    <span class="md-ellipsis">
+      两者的组合
     </span>
   </a>
   
@@ -1534,6 +1669,57 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-启动时加载的文件" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell 启动时加载的文件
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shell 启动时加载的文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fish" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fish
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zsh
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#远程执行命令的方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      远程执行命令的方式
+    </span>
+  </a>
   
 </li>
       
@@ -1556,14 +1742,14 @@
       
       
       
-        <a href="../../index/contribute/#tag:完善" class="md-tag">完善</a>
+        <a href="../../../index/contribute/#tag:完善" class="md-tag">完善</a>
       
     
   </nav>
 
 
   
-    <a href="https://github.com/ZJUSCT/docs.zjusct.io/blob/main/docs/operation/hardware/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/ZJUSCT/docs.zjusct.io/blob/main/docs/operation/software/shell.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1571,217 +1757,188 @@
   
 
 
-<h1 id="硬件运维">硬件运维<a class="headerlink" href="#硬件运维" title="Permanent link">&para;</a></h1>
-<div class="admonition abstract">
-<p class="admonition-title">Abstract</p>
-<p>本文档主要介绍硬件运维的注意事项和操作规范。硬件知识和设备说明书见其他文档。</p>
+<h1 id="环境变量与-shell">环境变量与 Shell<a class="headerlink" href="#环境变量与-shell" title="Permanent link">&para;</a></h1>
+<details class="quote">
+<summary>Quote</summary>
+<ul>
+<li><a href="https://askubuntu.com/questions/247738/why-is-etc-profile-not-invoked-for-non-login-shells">Why is /etc/profile not invoked for non-login shells? - AskUbuntu</a></li>
+</ul>
+</details>
+<p>对于 SSH 登录、远程执行命令、本机登录等不同场景，环境变量可能不同，这常常引起许多困惑。本篇文章根据相关资料总结一下环境变量的加载过程。</p>
+<h2 id="shell-的模式">Shell 的模式<a class="headerlink" href="#shell-的模式" title="Permanent link">&para;</a></h2>
+<details class="quote">
+<summary>Quote</summary>
+<ul>
+<li><a href="https://unix.stackexchange.com/questions/170493/login-non-login-and-interactive-non-interactive-shells">login/non-login and interactive/non-interactive shells [duplicate] - StackExchange</a></li>
+<li><a href="https://askubuntu.com/questions/247738/why-is-etc-profile-not-invoked-for-non-login-shells">Why is /etc/profile not invoked for non-login shells? - AskUbuntu</a></li>
+<li><a href="https://superuser.com/questions/1224938/ssh-host-is-a-login-shell-but-ssh-host-command-is-not"><code>ssh &lt;host&gt;</code> is a login shell, but <code>ssh &lt;host&gt; &lt;command&gt;</code> is not? - SuperUser</a></li>
+</ul>
+</details>
+<h3 id="loginnon-login-shell">login/non-login shell<a class="headerlink" href="#loginnon-login-shell" title="Permanent link">&para;</a></h3>
+<p>login/non-login shell 的区别在于是否需要输入用户名密码。让我们举一些例子：</p>
+<ul>
+<li>从控制台登录系统，需要输入用户名密码，这是 login shell。</li>
+<li>使用 <code>su</code> 切换用户，需要输入指定用户的密码，这是 login shell。</li>
+<li>使用 <code>ssh</code> 登录远程系统，需要输入密码，这是 login shell。</li>
+<li>使用 <code>bash</code> 启动新的 shell，这是 non-login shell。</li>
+<li>在<strong>图形界面</strong>下打开终端（如 konsole、gnome-terminal），这是 non-login shell。因为你已经通过如 GDM、KDM、LightDM 等图形化登录界面登录了系统。</li>
+</ul>
+<p>可以看出，要启动 non-login shell，首先要有已经登录的用户。</p>
+<h3 id="interactivenon-interactive-shell">interactive/non-interactive shell<a class="headerlink" href="#interactivenon-interactive-shell" title="Permanent link">&para;</a></h3>
+<p>interactive/non-interactive shell 的区别是该 Shell 是否接受用户输入。让我们举一些例子：</p>
+<ul>
+<li>从控制台登录系统，输入命令，这是 interactive shell。</li>
+<li>使用 <code>bash -c 'echo hello'</code> 执行命令，这是 non-interactive shell。</li>
+<li>使用 <code>bash</code> 启动新的 shell，这是 interactive shell。</li>
+<li>使用 <code>bash</code> 启动新的 shell 执行脚本，这是 non-interactive shell。</li>
+</ul>
+<p>值得注意的是，即使脚本中使用 <code>read</code> 等命令向用户请求输入，也是 non-interactive shell。因为这并不是 Shell 本身的交互，而是脚本中命令的交互。</p>
+<h3 id="两者的组合">两者的组合<a class="headerlink" href="#两者的组合" title="Permanent link">&para;</a></h3>
+<p><code>bash</code> 选项可以控制 shell 的模式：</p>
+<ul>
+<li><code>-l</code>：login shell（虽然使用 <code>bash -l</code> 还是不需要输入用户名密码，但可以看到环境变量确实按 login shell 加载了）</li>
+<li><code>-c</code>：non-interactive shell</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>可以使用下面的命令<a href="https://unix.stackexchange.com/questions/48994/how-to-run-a-program-in-a-clean-environment-in-bash">启动一个干净的 bash</a>：</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>env<span class="w"> </span>-i<span class="w"> </span>bash<span class="w"> </span>--noprofile<span class="w"> </span>--norc
+</span></code></pre></div>
 </div>
-<p>目前，集群机房基础设施基本稳定，大部分运维任务已经可以通过远程方式完成。但我们仍然需要具备基础的硬件知识，并具备动手操作的能力：</p>
+<p>可以使用下列命令检查当前的 shell 模式：</p>
 <ul>
-<li>每月会有一两次更换设备的需求</li>
-<li>打比赛时需要自己组装集群</li>
+<li><code>echo $-</code>：<ul>
+<li>包含 <code>i</code> 表示 interactive shell</li>
+<li>不包含 <code>i</code> 表示 non-interactive shell</li>
 </ul>
-<p>硬件运维需要仔细耐心，特别要注意避免硬件损坏。<strong>请爱惜设备</strong>。</p>
-<h2 id="注意事项">注意事项<a class="headerlink" href="#注意事项" title="Permanent link">&para;</a></h2>
-<div class="admonition danger">
-<p class="admonition-title">在进行硬件操作时，请务必遵循以下守则！</p>
-<p>这些注意事项都是我们在运维过程中吃过的苦，请不要掉以轻心！</p>
-</div>
+</li>
+<li><code>shopt login_shell</code>：<ul>
+<li><code>login_shell</code> 为 <code>on</code> 表示 login shell</li>
+<li><code>login_shell</code> 为 <code>off</code> 表示 non-login shell</li>
+</ul>
+</li>
+</ul>
+<p>使用 SSH 远程执行命令时，OpenSSH 将启动一个 non-login、non-interactive shell。</p>
+<h2 id="shell-启动时加载的文件">Shell 启动时加载的文件<a class="headerlink" href="#shell-启动时加载的文件" title="Permanent link">&para;</a></h2>
+<details class="quote">
+<summary>Quote</summary>
 <ul>
-<li><strong>佩戴手套</strong><ul>
-<li><strong>（暴论）不戴手套的人都是没被夹过或电过的</strong>。进入机房前请先佩戴手套（尤其是秋冬季节，注意静电危害！）。</li>
-<li>既能保护自己的手不被机油、灰尘弄脏或被器件弄伤，也能保护硬件设备免受侵蚀和静电的危险。</li>
-<li><strong>例外：拆卸 CPU 时不应当佩戴手套，避免损坏插槽上的触点</strong>。</li>
+<li><a href="https://shreevatsa.wordpress.com/2008/03/30/zshbash-startup-files-loading-order-bashrc-zshrc-etc/">Zsh/Bash startup files loading order (.bashrc, .zshrc etc.) - WordPress</a></li>
 </ul>
-</li>
-<li>
-<p><strong>切勿随意乱丢零件</strong></p>
+</details>
+<p><code>/etc/profile</code> 被认为是只在用户登录（login shell）时执行一次的文件。这导致我们使用 SSH 远程执行命令或使用 MPI 通过 SSH 启动进程时（为 non-login non-interactive shell），放置在 <code>/etc/profile</code> 中的相关环境变量均不会生效。对于不同的 Shell，应当查找其对应的启动文件，以确保环境变量的正确加载。</p>
+<h3 id="bash">Bash<a class="headerlink" href="#bash" title="Permanent link">&para;</a></h3>
+<details class="quote">
+<summary>Quote</summary>
 <ul>
-<li><strong>所有物资请用完放回原位</strong>，否则又会变得非常乱。</li>
-<li>去机房之前<strong>带上零件盒</strong>。螺丝等各种小零件需要的时候极其难找。</li>
-<li>拆卸零件时务必放置到零件盒中，或用密封袋装好<strong>并标记</strong>，避免日后丢失或混淆。</li>
+<li><a href="https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html">Bash Startup Files - GNU</a></li>
 </ul>
-<p><figure markdown="span">
-    <center>
-    <a class="glightbox" href="index.assets/tag.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="tag" src="index.assets/tag.webp" width="50%" /></a>
-    </center>
-    <figcaption>
-    从服务器上拆卸线缆后用标签标记好
-    </figcaption>
-</figure></p>
-</li>
-<li>
-<p><strong>拍照记录</strong></p>
+</details>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>login</td>
+<td><code>/etc/profile</code><br><code>~/.bash_profile</code><br><code>~/.bash_login</code><br><code>~/.profile</code></td>
+</tr>
+<tr>
+<td>interactive non-login</td>
+<td><code>~/.bashrc</code></td>
+</tr>
+<tr>
+<td>non-interactive non-login</td>
+<td>环境变量 <code>BASH_ENV</code> 指定的文件</td>
+</tr>
+<tr>
+<td>remote non-interactive</td>
+<td><code>~/.bashrc</code></td>
+</tr>
+</tbody>
+</table>
+<details class="info">
+<summary>关于 Bash 远程执行命令时加载文件的进一步探讨</summary>
+<p><a href="https://github.com/bminor/bash/blob/master/shell.c#L1124">bash/shell.c - GitHub</a></p>
+<div class="language-c highlight"><span class="filename">shell.c</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="cm">/* If we were run by sshd or we think we were run by rshd, execute</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cm">    ~/.bashrc if we are a top-level shell. */</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">#if 1   </span><span class="cm">/* TAG:bash-5.3 */</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">run_by_ssh</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">isnetconn</span><span class="w"> </span><span class="p">(</span><span class="n">fileno</span><span class="w"> </span><span class="p">(</span><span class="n">stdin</span><span class="p">)))</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">shell_level</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cp">#else</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isnetconn</span><span class="w"> </span><span class="p">(</span><span class="n">fileno</span><span class="w"> </span><span class="p">(</span><span class="n">stdin</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">shell_level</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="cp">#endif</span>
+</span></code></pre></div>
+<p><a href="https://github.com/bminor/bash/blob/master/config-top.h#L109">bash/config-top.h - GitHub</a></p>
+<div class="language-c highlight"><span class="filename">config-top.h</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cm">/* Define this if you want bash to try to check whether it&#39;s being run by</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cm">sshd and source the .bashrc if so (like the rshd behavior).  This checks</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cm">for the presence of SSH_CLIENT or SSH2_CLIENT in the initial environment,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cm">which can be fooled under certain not-uncommon circumstances. */</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="cm">/* #define SSH_SOURCE_BASHRC */</span>
+</span></code></pre></div>
+<p><code>SSH_SOURCE_BASHRC</code> 默认为 undefined。那唯一的条件就是，如果stdin 为网络连接，则会加载 bashrc。</p>
+<p>判断网络连接的方式为，测试下 getpeername 会不会报错：<a href="https://github.com/bminor/bash/blob/master/lib/sh/netconn.c#L44">bash/netconn.c - GitHub</a></p>
+</details>
+<h3 id="fish">Fish<a class="headerlink" href="#fish" title="Permanent link">&para;</a></h3>
+<details class="quote">
+<summary>Quote</summary>
 <ul>
-<li>如果你对将要操作的内容不熟悉，请拍照记录原始状态，以便在操作失败时能够恢复。</li>
-<li><strong>对于线缆较多的情况这一点尤其重要！</strong>不要过于自信相信觉得一定能复原。</li>
+<li><a href="https://fishshell.com/docs/current/language.html#configuration">Configuration files - Fish Shell</a></li>
 </ul>
-</li>
-<li>
-<p><strong>勿用蛮力</strong></p>
-<ul>
-<li>机房内陌生的接口和组件较多，它们往往有特定的插拔方式，不当操作可能导致硬件损坏。</li>
-<li>
-<p>用蛮力的结果 belike：</p>
-<p><figure markdown="span">
-    <center>
-    <a class="glightbox" href="index.assets/mind_force.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="mind_force" src="index.assets/mind_force.webp" width="50%" /></a>
-    </center>
-    <figcaption>
-    用蛮力导致 PCIe 设备挂耳损坏无法安装
-    </figcaption>
-</figure></p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>插好线之后，轻轻拉一下看看有没有插牢</strong></p>
-<ul>
-<li>有些网线很容易脱落，IB 线也可能插反。</li>
-<li>
-<p>有些电源线接口也会有松动：</p>
-<p><figure markdown="span">
-    <center>
-    <a class="glightbox" href="index.assets/mind_cable.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="mind_cable" src="index.assets/mind_cable.webp" width="50%" /></a>
-    </center>
-    <figcaption>
-    电源线接口松动
-    </figcaption>
-</figure></p>
-</li>
-<li>
-<p>PCIE 卡、网络、电源线接口都有指示灯，巡检时可以多留心一下指示灯的状态。</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>走线</strong></p>
-<ul>
-<li>参考 <a href="#机柜布局与理线">操作手册#机柜布局与理线</a>，禁止乱飞。</li>
-<li>非我们管理的机柜线缆可能很乱，只要没影响到我们就没事。如果他们飞线经过我们，就扔到机柜顶上去。</li>
-</ul>
-</li>
-</ul>
-<h2 id="操作规范">操作规范<a class="headerlink" href="#操作规范" title="Permanent link">&para;</a></h2>
-<h3 id="服务器上下架">服务器上/下架<a class="headerlink" href="#服务器上下架" title="Permanent link">&para;</a></h3>
-<p>服务器附件盒内一般有上架说明书，按照说明书操作。</p>
-<p>服务器的导轨有几种类型：</p>
-<ul>
-<li><strong>托架式导轨</strong>：我们一般不使用。</li>
-<li>
-<p><strong>抽拉式导轨</strong>：</p>
-<ul>
-<li>
-<p>导轨是分段的，抽出内轨后卡扣会自动锁住。根据卡扣的构造不同，需要按压/拉动卡扣才能将内轨推回。</p>
-<p><figure markdown="span">
-    <center>
-    <a class="glightbox" href="index.assets/op_server_rail2.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_server_rail2" src="index.assets/op_server_rail2.webp" width="80%" /></a>
-    </center>
-    <figcaption>
-    抽拉式导轨的内轨卡扣
-    </figcaption>
-</figure></p>
-</li>
-</ul>
-<p>根据内轨是否可拆卸，分为两种情况：</p>
-<ul>
-<li>
-<p><strong>内轨可拆卸</strong>：先卸下内轨安装到服务器。然后将服务器与内轨一起推入外轨。参考 <a href="https://www.bilibili.com/video/BV1pK411L71n"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.813 4.653h.854q2.266.08 3.773 1.574Q23.946 7.72 24 9.987v7.36q-.054 2.266-1.56 3.773c-1.506 1.507-2.262 1.524-3.773 1.56H5.333q-2.266-.054-3.773-1.56C.053 19.614.036 18.858 0 17.347v-7.36q.054-2.267 1.56-3.76t3.773-1.574h.774l-1.174-1.12a1.23 1.23 0 0 1-.373-.906q0-.534.373-.907l.027-.027q.4-.373.92-.373t.92.373L9.653 4.44q.107.106.187.213h4.267a.8.8 0 0 1 .16-.213l2.853-2.747q.4-.373.92-.373c.347 0 .662.151.929.4s.391.551.391.907q0 .532-.373.906zM5.333 7.24q-1.12.027-1.88.773-.76.748-.786 1.894v7.52q.026 1.146.786 1.893t1.88.773h13.334q1.12-.026 1.88-.773t.786-1.893v-7.52q-.026-1.147-.786-1.894t-1.88-.773zM8 11.107q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q0-.56.386-.947.387-.386.947-.386m8 0q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q.025-.586.4-.96.373-.373.933-.373"/></svg></span> Dell PowerEdge R740 服务器卸载/安装混合导轨</a>。</p>
-<p><figure markdown="span" style="width: 49%; display: inline-block">
-    <center>
-    <a class="glightbox" href="index.assets/op_server_rail3.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_server_rail3" src="index.assets/op_server_rail3.webp" width="80%" /></a>
-    </center>
-    <figcaption>
-    将内轨安装到服务器
-    </figcaption>
-</figure>
-<figure markdown="span" style="width: 50%; display: inline-block">
-    <center>
-    <a class="glightbox" href="index.assets/op_server_rail4.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_server_rail4" src="index.assets/op_server_rail4.webp" width="80%" /></a>
-    </center>
-    <figcaption>
-    将服务器与内轨一起推入外轨
-    </figcaption>
-</figure></p>
-</li>
-<li>
-<p><strong>内轨不可拆卸</strong>：抬起服务器，将铆钉直接卡在内轨卡槽中。参考 <a href="https://www.bilibili.com/video/BV1ga411H7uN"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.813 4.653h.854q2.266.08 3.773 1.574Q23.946 7.72 24 9.987v7.36q-.054 2.266-1.56 3.773c-1.506 1.507-2.262 1.524-3.773 1.56H5.333q-2.266-.054-3.773-1.56C.053 19.614.036 18.858 0 17.347v-7.36q.054-2.267 1.56-3.76t3.773-1.574h.774l-1.174-1.12a1.23 1.23 0 0 1-.373-.906q0-.534.373-.907l.027-.027q.4-.373.92-.373t.92.373L9.653 4.44q.107.106.187.213h4.267a.8.8 0 0 1 .16-.213l2.853-2.747q.4-.373.92-.373c.347 0 .662.151.929.4s.391.551.391.907q0 .532-.373.906zM5.333 7.24q-1.12.027-1.88.773-.76.748-.786 1.894v7.52q.026 1.146.786 1.893t1.88.773h13.334q1.12-.026 1.88-.773t.786-1.893v-7.52q-.026-1.147-.786-1.894t-1.88-.773zM8 11.107q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q0-.56.386-.947.387-.386.947-.386m8 0q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q.025-.586.4-.96.373-.373.933-.373"/></svg></span> 浪潮英信服务器 NF5270M6 整机上架安装视频</a>。</p>
-<p><figure markdown="span">
-    <center>
-    <a class="glightbox" href="index.assets/op_server_rail.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_server_rail" src="index.assets/op_server_rail.webp" width="80%" /></a>
-    </center>
-    <figcaption>
-    将铆钉卡在内轨卡槽中
-    </figcaption>
-</figure></p>
-</li>
-</ul>
-</li>
-</ul>
-<div class="admonition danger">
-<p class="admonition-title">错误案例</p>
-<p>曾经有没经验的同学来机房上架服务器，用导轨挂钩来承重。这是严重错误的，很容易导致挂钩断裂服务器掉落。</p>
-<p><div class="grid cards" markdown>
-    <a class="glightbox" href="index.assets/op_wrong_server_rail.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="op_cable_tray" src="index.assets/op_wrong_server_rail.webp" /></a>
-    <a class="glightbox" href="index.assets/op_wrong_server_rail2.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="op_cable_tray2" src="index.assets/op_wrong_server_rail2.webp" /></a>
-</div></p>
-<p><strong>最好不要让没经验的人上架服务器，联络时一定要说清楚各项注意事项，把教程发给他们。</strong></p>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">Fish 不会读取 <code>/etc/profile</code></p>
 </div>
 <ul>
-<li>记得固定好导轨与服务器、导轨与机架的螺丝（如果有），避免抽拉时导轨脱架。</li>
+<li>Configuration snippets:<ul>
+<li><code>~/.config/fish/conf.d/</code></li>
+<li><code>/etc/fish/conf.d/</code></li>
+<li><code>~/.local/share/fish</code></li>
+<li><code>/usr/share/fish/vendor_conf.d</code></li>
+<li><code>/usr/local/share/fish/vendor_conf.d</code></li>
 </ul>
-<figure>
-    <center>
-    <a class="glightbox" href="index.assets/op_server_install.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_server_install" src="index.assets/op_server_install.webp" width="80%" /></a>
-    </center>
-    <figcaption>
-    服务器上架过程
-    </figcaption>
-</figure>
-<h3 id="机柜布局与理线">机柜布局与理线<a class="headerlink" href="#机柜布局与理线" title="Permanent link">&para;</a></h3>
-<p>我们的机柜布局约定：</p>
+</li>
+<li>System-wide configuration files: <code>/etc/fish/config.fish</code></li>
+<li>User configuration: <code>~/.config/fish/config.fish</code></li>
+</ul>
+<p>Fish 文档说明，不论以何种方式启动，都会按照上述顺序加载配置文件。但实际操作时，发现 non-interactive 时似乎不会加载 snippets。总之，对于 Fish，要保证所有情况下加载，应当将配置直接写入 <code>/etc/fish/config.fish</code>。</p>
+<h3 id="zsh">Zsh<a class="headerlink" href="#zsh" title="Permanent link">&para;</a></h3>
+<details class="quote">
+<summary>Quote</summary>
 <ul>
-<li>机柜顶部为 TOR（Top of Rack）交换机、InfiniBand 交换机等网络设备。</li>
-<li>机柜底部为服务器，U 数越大、越重的设备应当越靠近底部。</li>
-<li>为了方便维护，每台服务器之间至少保持 1U 的间隔，普通服务器上架高度不超过 30U。这意味着一个机柜可以承载约 10 台 2U 服务器。</li>
+<li><a href="https://zsh.sourceforge.io/Intro/intro_3.html">Startup Files - SourceForge</a></li>
+<li><a href="https://gist.github.com/pbrisbin/45654dc74787c18e858c">ZSH startup file headaches - GitHub</a></li>
 </ul>
-<p>一般的理线方式是利用机柜侧边的理线槽，将线缆梳理至机柜两侧。</p>
-<figure style="width: 80%">
-    <a class="glightbox" href="index.assets/op_cable_tray.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="op_cable_tray" src="index.assets/op_cable_tray.webp" style="float: left; " width="50%" /></a>
-    <a class="glightbox" href="index.assets/op_cable_tray2.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_cable_tray2" src="index.assets/op_cable_tray2.webp" width="50%" /></a>
-</figure>
-<center><figcaption>
-机柜理线槽
-</figcaption></center>
-
-<p>我们的机柜没有预装理线槽，且有些位置被 PDU 占用，所以在机架上安装理线环，用于清理网线。</p>
+</details>
+<ul>
+<li><code>/etc/zsh/zshenv</code></li>
+<li><code>~/.zshenv</code></li>
+<li><code>/etc/zsh/zprofile</code> (if login shell)</li>
+<li><code>~/.zprofile</code>   (if login shell)</li>
+<li><code>/etc/zsh/zshrc</code>    (if interactive)</li>
+<li><code>~/.zshrc</code>      (if interactive)</li>
+<li><code>/etc/zsh/zlogin</code>   (if login shell)</li>
+<li><code>~/.zlogin</code>     (if login shell)</li>
+</ul>
+<p>对于 Zsh，要保证所有情况下加载，应当将配置直接写入 <code>/etc/zsh/zshrc</code>。</p>
+<h2 id="远程执行命令的方式">远程执行命令的方式<a class="headerlink" href="#远程执行命令的方式" title="Permanent link">&para;</a></h2>
+<p>远程执行命令有非常多种方式，不一定涉及 Shell。</p>
 <ul>
 <li>
-<p>从最顶上的交换机开始，左侧是数据网络，右侧是管理网络。</p>
-<p><figure markdown="span">
-    <center>
-    <a class="glightbox" href="index.assets/op_cable_tray3.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_cable_tray3" src="index.assets/op_cable_tray3.webp" width="80%" /></a>
-    </center>
-    <figcaption>
-    左数据，右管理
-    </figcaption>
-</figure></p>
+<p>SSH 总是通过用户的 Login Shell 执行命令，但该 Shell 的状态不一定能够是 login 的。比如，执行一个不存在的命令，会由 Login Shell 报告错误信息：</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>ssh<span class="w"> </span>machine<span class="w"> </span>non-exist
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>fish:<span class="w"> </span>Unknown<span class="w"> </span>command:<span class="w"> </span>non-exist
+</span></code></pre></div>
 </li>
 <li>
-<p><strong>网线</strong>：使用理线槽梳理。过长的线裁剪打水晶头，或折叠后使用扎带绑好。</p>
+<p>Slurm 远程执行则不涉及 Shell。启动不存在的文件，可以看到是由 <code>execve()</code> 报告错误信息：</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>srun<span class="w"> </span>non-exist
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>slurmstepd:<span class="w"> </span>error:<span class="w"> </span>execve<span class="o">()</span>:<span class="w"> </span>non-exist:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+</span></code></pre></div>
 </li>
-<li><strong>电源线</strong>：电源线不走理线槽。折叠后使用粗扎带绑好。电源在 PDU 上的顺序与在机架上的顺序应当一致。</li>
 </ul>
-<p>有些服务器带有理线臂，可以在不拆卸线缆的同时抽出服务器进行检查。</p>
-<figure>
-    <center>
-    <a class="glightbox" href="index.assets/op_cable_tray4.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_cable_tray4" src="index.assets/op_cable_tray4.webp" width="80%" /></a>
-    </center>
-    <figcaption>
-    理线臂
-    </figcaption>
-</figure>
-<p>但我们没有，也不预留长度，线都扎得比较紧，所以<strong>抽出服务器前必须检查所有线缆都已经卸除</strong>。</p>
 
 
 
@@ -1804,7 +1961,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2025 09:52:15">April 25, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2025 17:10:39">April 27, 2025</span>
   </span>
 
     
@@ -1814,7 +1971,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2025 09:52:15">April 25, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2025 17:10:39">April 27, 2025</span>
   </span>
 
     
@@ -1849,7 +2006,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: 运维文档">
+          <a href="../modern-cli/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 现代化 CLI 工具">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1859,20 +2016,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                运维文档
+                现代化 CLI 工具
               </div>
             </div>
           </a>
         
         
           
-          <a href="knowledge/" class="md-footer__link md-footer__link--next" aria-label="Next: 硬件知识">
+          <a href="../spack/" class="md-footer__link md-footer__link--next" aria-label="Next: 包管理器：Spack">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                硬件知识
+                包管理器：Spack
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1912,12 +2069,12 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/polyfill/index.min.js"></script>
       
@@ -1925,7 +2082,7 @@
       
         <script src="https://cdn.jsdelivr.net/npm/tablesort/dist/tablesort.min.js"></script>
       
-        <script src="../../javascripts/tablesort.js"></script>
+        <script src="../../../javascripts/tablesort.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
       

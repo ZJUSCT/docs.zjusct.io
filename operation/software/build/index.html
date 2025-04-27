@@ -12,28 +12,28 @@
         <meta name="author" content="ZJUSCT">
       
       
-        <link rel="canonical" href="https://docs.zjusct.io/operation/hardware/">
+        <link rel="canonical" href="https://docs.zjusct.io/operation/software/build/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../../hardware/oobm/">
       
       
-        <link rel="next" href="knowledge/">
+        <link rel="next" href="../conda/">
       
       
-      <link rel="icon" href="../../assets/zjusct.png">
+      <link rel="icon" href="../../../assets/zjusct.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>硬件运维 - ZJUSCT 文档与博客</title>
+        <title>编译/构建系统 - ZJUSCT 文档与博客</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,22 +52,22 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/fonts.css">
+      <link rel="stylesheet" href="../../../stylesheets/fonts.css">
     
-      <link rel="stylesheet" href="../../stylesheets/counter.css">
+      <link rel="stylesheet" href="../../../stylesheets/counter.css">
     
-      <link rel="stylesheet" href="../../stylesheets/theme.css">
+      <link rel="stylesheet" href="../../../stylesheets/theme.css">
     
-      <link rel="stylesheet" href="../../stylesheets/neoteroi-v1.1.2.css">
+      <link rel="stylesheet" href="../../../stylesheets/neoteroi-v1.1.2.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -76,7 +76,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#硬件运维" class="md-skip">
+        <a href="#编译构建系统" class="md-skip">
           Skip to content
         </a>
       
@@ -109,9 +109,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ZJUSCT 文档与博客" class="md-header__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+    <a href="../../.." title="ZJUSCT 文档与博客" class="md-header__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
       
-  <img src="../../assets/zjusct.svg" alt="logo">
+  <img src="../../../assets/zjusct.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -128,7 +128,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              硬件运维
+              编译/构建系统
             
           </span>
         </div>
@@ -258,7 +258,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../.." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
   
@@ -280,7 +280,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../competition/" class="md-tabs__link">
+        <a href="../../../competition/" class="md-tabs__link">
           
   
   
@@ -302,7 +302,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../falcon/" class="md-tabs__link">
+        <a href="../../../falcon/" class="md-tabs__link">
           
   
   
@@ -326,7 +326,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -348,7 +348,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../blog/" class="md-tabs__link">
+        <a href="../../../blog/" class="md-tabs__link">
           
   
   
@@ -384,9 +384,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ZJUSCT 文档与博客" class="md-nav__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+    <a href="../../.." title="ZJUSCT 文档与博客" class="md-nav__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
       
-  <img src="../../assets/zjusct.svg" alt="logo">
+  <img src="../../../assets/zjusct.svg" alt="logo">
 
     </a>
     ZJUSCT 文档与博客
@@ -442,7 +442,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../.." class="md-nav__link ">
+            <a href="../../.." class="md-nav__link ">
               
   
   
@@ -477,7 +477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../index/contribute/" class="md-nav__link">
+      <a href="../../../index/contribute/" class="md-nav__link">
         
   
   
@@ -500,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../index/newcomer/" class="md-nav__link">
+      <a href="../../../index/newcomer/" class="md-nav__link">
         
   
   
@@ -555,7 +555,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../competition/" class="md-nav__link ">
+            <a href="../../../competition/" class="md-nav__link ">
               
   
   
@@ -625,7 +625,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../falcon/" class="md-nav__link ">
+            <a href="../../../falcon/" class="md-nav__link ">
               
   
   
@@ -660,7 +660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../falcon/git/" class="md-nav__link">
+      <a href="../../../falcon/git/" class="md-nav__link">
         
   
   
@@ -685,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../falcon/mirror-history/" class="md-nav__link">
+      <a href="../../../falcon/mirror-history/" class="md-nav__link">
         
   
   
@@ -708,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../falcon/mirror/" class="md-nav__link">
+      <a href="../../../falcon/mirror/" class="md-nav__link">
         
   
   
@@ -772,7 +772,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -804,8 +804,6 @@
                 
   
   
-    
-  
   
   
     
@@ -831,15 +829,17 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../hardware/" class="md-nav__link ">
               
   
   
@@ -852,13 +852,13 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             硬件运维
@@ -874,7 +874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="knowledge/" class="md-nav__link">
+      <a href="../../hardware/knowledge/" class="md-nav__link">
         
   
   
@@ -897,7 +897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="oobm/" class="md-nav__link">
+      <a href="../../hardware/oobm/" class="md-nav__link">
         
   
   
@@ -925,8 +925,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -958,17 +960,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -987,7 +987,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             软件运维
@@ -998,10 +998,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../software/build/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    编译/构建系统
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1012,6 +1034,104 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gnu-make" class="md-nav__link">
+    <span class="md-ellipsis">
+      GNU Make
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnu-autotools" class="md-nav__link">
+    <span class="md-ellipsis">
+      GNU Autotools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GNU Autotools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#文件结构" class="md-nav__link">
+    <span class="md-ellipsis">
+      文件结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autoconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autoconf
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libtool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Libtool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#附编写模板文件" class="md-nav__link">
+    <span class="md-ellipsis">
+      附：编写模板文件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmake" class="md-nav__link">
+    <span class="md-ellipsis">
+      CMake
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1024,7 +1144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/conda/" class="md-nav__link">
+      <a href="../conda/" class="md-nav__link">
         
   
   
@@ -1049,7 +1169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/lmod/" class="md-nav__link">
+      <a href="../lmod/" class="md-nav__link">
         
   
   
@@ -1072,7 +1192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/modern-cli/" class="md-nav__link">
+      <a href="../modern-cli/" class="md-nav__link">
         
   
   
@@ -1095,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/shell/" class="md-nav__link">
+      <a href="../shell/" class="md-nav__link">
         
   
   
@@ -1118,7 +1238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/spack/" class="md-nav__link">
+      <a href="../spack/" class="md-nav__link">
         
   
   
@@ -1183,7 +1303,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../observability/" class="md-nav__link ">
+            <a href="../../observability/" class="md-nav__link ">
               
   
   
@@ -1218,7 +1338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/log/" class="md-nav__link">
+      <a href="../../observability/log/" class="md-nav__link">
         
   
   
@@ -1241,7 +1361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/network/" class="md-nav__link">
+      <a href="../../observability/network/" class="md-nav__link">
         
   
   
@@ -1264,7 +1384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/opentelemetry/" class="md-nav__link">
+      <a href="../../observability/opentelemetry/" class="md-nav__link">
         
   
   
@@ -1331,7 +1451,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../blog/" class="md-nav__link ">
+            <a href="../../../blog/" class="md-nav__link ">
               
   
   
@@ -1415,7 +1535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/posts/.template/" class="md-nav__link">
+      <a href="../../../blog/posts/.template/" class="md-nav__link">
         
   
   
@@ -1446,7 +1566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -1496,37 +1616,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#注意事项" class="md-nav__link">
+  <a href="#gnu-make" class="md-nav__link">
     <span class="md-ellipsis">
-      注意事项
+      GNU Make
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#操作规范" class="md-nav__link">
+  <a href="#gnu-autotools" class="md-nav__link">
     <span class="md-ellipsis">
-      操作规范
+      GNU Autotools
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="操作规范">
+    <nav class="md-nav" aria-label="GNU Autotools">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#服务器上下架" class="md-nav__link">
+  <a href="#文件结构" class="md-nav__link">
     <span class="md-ellipsis">
-      服务器上/下架
+      文件结构
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#机柜布局与理线" class="md-nav__link">
+  <a href="#autoconf" class="md-nav__link">
     <span class="md-ellipsis">
-      机柜布局与理线
+      Autoconf
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libtool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Libtool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#附编写模板文件" class="md-nav__link">
+    <span class="md-ellipsis">
+      附：编写模板文件
     </span>
   </a>
   
@@ -1534,6 +1681,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmake" class="md-nav__link">
+    <span class="md-ellipsis">
+      CMake
+    </span>
+  </a>
   
 </li>
       
@@ -1556,14 +1712,14 @@
       
       
       
-        <a href="../../index/contribute/#tag:完善" class="md-tag">完善</a>
+        <a href="../../../index/contribute/#tag:不完善" class="md-tag">不完善</a>
       
     
   </nav>
 
 
   
-    <a href="https://github.com/ZJUSCT/docs.zjusct.io/blob/main/docs/operation/hardware/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/ZJUSCT/docs.zjusct.io/blob/main/docs/operation/software/build.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1571,217 +1727,169 @@
   
 
 
-<h1 id="硬件运维">硬件运维<a class="headerlink" href="#硬件运维" title="Permanent link">&para;</a></h1>
-<div class="admonition abstract">
-<p class="admonition-title">Abstract</p>
-<p>本文档主要介绍硬件运维的注意事项和操作规范。硬件知识和设备说明书见其他文档。</p>
+<h1 id="编译构建系统">编译/构建系统<a class="headerlink" href="#编译构建系统" title="Permanent link">&para;</a></h1>
+<h2 id="gnu-make">GNU Make<a class="headerlink" href="#gnu-make" title="Permanent link">&para;</a></h2>
+<div class="language-makefile highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">all</span><span class="o">:</span><span class="w"> </span><span class="n">hello</span>.<span class="n">exe</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nf">hello.exe</span><span class="o">:</span><span class="w"> </span><span class="n">hello</span>.<span class="n">o</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span>gcc<span class="w"> </span>-o<span class="w"> </span>hello.exe<span class="w"> </span>hello.o
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nf">hello.o</span><span class="o">:</span><span class="w"> </span><span class="n">hello</span>.<span class="n">c</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span>gcc<span class="w"> </span>-c<span class="w"> </span>hello.c
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nf">clean</span><span class="o">:</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span>rm<span class="w"> </span>hello.o<span class="w"> </span>hello.exe
+</span></code></pre></div>
+<ul>
+<li>使用 <span class="keys"><kbd class="key-tab">Tab</kbd></span> 缩进命令。</li>
+</ul>
+<div class="admonition failure">
+<p class="admonition-title">必须使用制表符缩进</p>
+<p>如果没有使用制表符缩进，会得到 <code>makefile:4: *** missing separator. Stop</code></p>
 </div>
-<p>目前，集群机房基础设施基本稳定，大部分运维任务已经可以通过远程方式完成。但我们仍然需要具备基础的硬件知识，并具备动手操作的能力：</p>
+<p>每个规则都有三个部分：一个目标、一个必需品列表和一个命令</p>
+<div class="language-makefile highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">target</span><span class="o">:</span><span class="w"> </span><span class="n">pre</span>-<span class="n">req</span>-1 <span class="n">pre</span>-<span class="n">req</span>-2 ...
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nb">command</span>
+</span></code></pre></div>
 <ul>
-<li>每月会有一两次更换设备的需求</li>
-<li>打比赛时需要自己组装集群</li>
+<li>运行 <code>make</code> 时默认启动 <code>all</code> 的生成。</li>
 </ul>
-<p>硬件运维需要仔细耐心，特别要注意避免硬件损坏。<strong>请爱惜设备</strong>。</p>
-<h2 id="注意事项">注意事项<a class="headerlink" href="#注意事项" title="Permanent link">&para;</a></h2>
-<div class="admonition danger">
-<p class="admonition-title">在进行硬件操作时，请务必遵循以下守则！</p>
-<p>这些注意事项都是我们在运维过程中吃过的苦，请不要掉以轻心！</p>
+<p><code>make</code> 检查一个规则时，先查找必须品列表中的文件。如果文件不存在，则寻找生成文件的规则；如果所有文件都比目标旧，则不会执行生成命令（提示 <code>Nothing to be done</code>）。</p>
+<ul>
+<li>
+<p>注释：<code>#</code> 直到行尾</p>
+</li>
+<li>
+<p>规则语法：</p>
+</li>
+</ul>
+<div class="language-makefile highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nf">target1 [target2 ...]</span><span class="o">:</span><span class="w"> </span>[<span class="n">pre</span>-<span class="n">req</span>-1 <span class="n">pre</span>-<span class="n">req</span>-2 ...]
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="o">[</span>command1
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>command2
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>....<span class="o">]</span>
+</span></code></pre></div>
+<ul>
+<li>伪目标（人工目标）：只执行命令，不生成文件。标准伪目标有：<code>all</code>、 <code>clean</code>、 <code>install</code>。</li>
+<li>变量：<code>$</code> 开头，用圆括号或花括号包裹。如 <code>$(CC)</code>。</li>
+<li>自动变量：<ul>
+<li><code>$@</code>：目标文件名</li>
+<li><code>$*</code>：目标文件名（不带扩展名）</li>
+<li><code>$&lt;</code>：第一个必需品的文件名</li>
+<li><code>$^</code>：所有必须品的文件名（用空格分隔，去除重复）</li>
+<li><code>$+</code>：所有必须品的文件名（用空格分隔，不去除重复）</li>
+<li><code>$?</code>：所有比目标新的必须品的文件名</li>
+</ul>
+</li>
+<li>虚拟路径：<ul>
+<li><code>VPATH</code>：设定寻找依赖项和目标文件的路径，如 <code>VPATH = src include</code></li>
+<li><code>vpath</code>：设定某类文件的寻找路径，如 <code>vpath %.c src</code></li>
+</ul>
+</li>
+<li>
+<p>模式：</p>
+<div class="language-makefile highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">%.o</span><span class="o">:</span><span class="w"> </span>%.<span class="n">c</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">$(</span>COMPILE.c<span class="k">)</span><span class="w"> </span><span class="k">$(</span>OUTPUT_OPTION<span class="k">)</span><span class="w"> </span>$&lt;
+</span></code></pre></div>
+<ul>
+<li><code>%</code> 匹配文件名</li>
+</ul>
+</li>
+</ul>
+<h2 id="gnu-autotools">GNU Autotools<a class="headerlink" href="#gnu-autotools" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<ul>
+<li><a href="https://www.lrde.epita.fr/~adl/autotools.html">Tutorial</a></li>
+<li><a href="https://www.gnu.org/software/automake/manual/html_node/Autotools-Introduction.html">Doc</a></li>
+</ul>
 </div>
-<ul>
-<li><strong>佩戴手套</strong><ul>
-<li><strong>（暴论）不戴手套的人都是没被夹过或电过的</strong>。进入机房前请先佩戴手套（尤其是秋冬季节，注意静电危害！）。</li>
-<li>既能保护自己的手不被机油、灰尘弄脏或被器件弄伤，也能保护硬件设备免受侵蚀和静电的危险。</li>
-<li><strong>例外：拆卸 CPU 时不应当佩戴手套，避免损坏插槽上的触点</strong>。</li>
-</ul>
-</li>
-<li>
-<p><strong>切勿随意乱丢零件</strong></p>
-<ul>
-<li><strong>所有物资请用完放回原位</strong>，否则又会变得非常乱。</li>
-<li>去机房之前<strong>带上零件盒</strong>。螺丝等各种小零件需要的时候极其难找。</li>
-<li>拆卸零件时务必放置到零件盒中，或用密封袋装好<strong>并标记</strong>，避免日后丢失或混淆。</li>
-</ul>
-<p><figure markdown="span">
-    <center>
-    <a class="glightbox" href="index.assets/tag.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="tag" src="index.assets/tag.webp" width="50%" /></a>
-    </center>
-    <figcaption>
-    从服务器上拆卸线缆后用标签标记好
-    </figcaption>
-</figure></p>
-</li>
-<li>
-<p><strong>拍照记录</strong></p>
-<ul>
-<li>如果你对将要操作的内容不熟悉，请拍照记录原始状态，以便在操作失败时能够恢复。</li>
-<li><strong>对于线缆较多的情况这一点尤其重要！</strong>不要过于自信相信觉得一定能复原。</li>
-</ul>
-</li>
-<li>
-<p><strong>勿用蛮力</strong></p>
-<ul>
-<li>机房内陌生的接口和组件较多，它们往往有特定的插拔方式，不当操作可能导致硬件损坏。</li>
-<li>
-<p>用蛮力的结果 belike：</p>
-<p><figure markdown="span">
-    <center>
-    <a class="glightbox" href="index.assets/mind_force.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="mind_force" src="index.assets/mind_force.webp" width="50%" /></a>
-    </center>
-    <figcaption>
-    用蛮力导致 PCIe 设备挂耳损坏无法安装
-    </figcaption>
-</figure></p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>插好线之后，轻轻拉一下看看有没有插牢</strong></p>
-<ul>
-<li>有些网线很容易脱落，IB 线也可能插反。</li>
-<li>
-<p>有些电源线接口也会有松动：</p>
-<p><figure markdown="span">
-    <center>
-    <a class="glightbox" href="index.assets/mind_cable.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="mind_cable" src="index.assets/mind_cable.webp" width="50%" /></a>
-    </center>
-    <figcaption>
-    电源线接口松动
-    </figcaption>
-</figure></p>
-</li>
-<li>
-<p>PCIE 卡、网络、电源线接口都有指示灯，巡检时可以多留心一下指示灯的状态。</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>走线</strong></p>
-<ul>
-<li>参考 <a href="#机柜布局与理线">操作手册#机柜布局与理线</a>，禁止乱飞。</li>
-<li>非我们管理的机柜线缆可能很乱，只要没影响到我们就没事。如果他们飞线经过我们，就扔到机柜顶上去。</li>
-</ul>
-</li>
-</ul>
-<h2 id="操作规范">操作规范<a class="headerlink" href="#操作规范" title="Permanent link">&para;</a></h2>
-<h3 id="服务器上下架">服务器上/下架<a class="headerlink" href="#服务器上下架" title="Permanent link">&para;</a></h3>
-<p>服务器附件盒内一般有上架说明书，按照说明书操作。</p>
-<p>服务器的导轨有几种类型：</p>
-<ul>
-<li><strong>托架式导轨</strong>：我们一般不使用。</li>
-<li>
-<p><strong>抽拉式导轨</strong>：</p>
-<ul>
-<li>
-<p>导轨是分段的，抽出内轨后卡扣会自动锁住。根据卡扣的构造不同，需要按压/拉动卡扣才能将内轨推回。</p>
-<p><figure markdown="span">
-    <center>
-    <a class="glightbox" href="index.assets/op_server_rail2.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_server_rail2" src="index.assets/op_server_rail2.webp" width="80%" /></a>
-    </center>
-    <figcaption>
-    抽拉式导轨的内轨卡扣
-    </figcaption>
-</figure></p>
-</li>
-</ul>
-<p>根据内轨是否可拆卸，分为两种情况：</p>
-<ul>
-<li>
-<p><strong>内轨可拆卸</strong>：先卸下内轨安装到服务器。然后将服务器与内轨一起推入外轨。参考 <a href="https://www.bilibili.com/video/BV1pK411L71n"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.813 4.653h.854q2.266.08 3.773 1.574Q23.946 7.72 24 9.987v7.36q-.054 2.266-1.56 3.773c-1.506 1.507-2.262 1.524-3.773 1.56H5.333q-2.266-.054-3.773-1.56C.053 19.614.036 18.858 0 17.347v-7.36q.054-2.267 1.56-3.76t3.773-1.574h.774l-1.174-1.12a1.23 1.23 0 0 1-.373-.906q0-.534.373-.907l.027-.027q.4-.373.92-.373t.92.373L9.653 4.44q.107.106.187.213h4.267a.8.8 0 0 1 .16-.213l2.853-2.747q.4-.373.92-.373c.347 0 .662.151.929.4s.391.551.391.907q0 .532-.373.906zM5.333 7.24q-1.12.027-1.88.773-.76.748-.786 1.894v7.52q.026 1.146.786 1.893t1.88.773h13.334q1.12-.026 1.88-.773t.786-1.893v-7.52q-.026-1.147-.786-1.894t-1.88-.773zM8 11.107q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q0-.56.386-.947.387-.386.947-.386m8 0q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q.025-.586.4-.96.373-.373.933-.373"/></svg></span> Dell PowerEdge R740 服务器卸载/安装混合导轨</a>。</p>
-<p><figure markdown="span" style="width: 49%; display: inline-block">
-    <center>
-    <a class="glightbox" href="index.assets/op_server_rail3.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_server_rail3" src="index.assets/op_server_rail3.webp" width="80%" /></a>
-    </center>
-    <figcaption>
-    将内轨安装到服务器
-    </figcaption>
-</figure>
-<figure markdown="span" style="width: 50%; display: inline-block">
-    <center>
-    <a class="glightbox" href="index.assets/op_server_rail4.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_server_rail4" src="index.assets/op_server_rail4.webp" width="80%" /></a>
-    </center>
-    <figcaption>
-    将服务器与内轨一起推入外轨
-    </figcaption>
-</figure></p>
-</li>
-<li>
-<p><strong>内轨不可拆卸</strong>：抬起服务器，将铆钉直接卡在内轨卡槽中。参考 <a href="https://www.bilibili.com/video/BV1ga411H7uN"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.813 4.653h.854q2.266.08 3.773 1.574Q23.946 7.72 24 9.987v7.36q-.054 2.266-1.56 3.773c-1.506 1.507-2.262 1.524-3.773 1.56H5.333q-2.266-.054-3.773-1.56C.053 19.614.036 18.858 0 17.347v-7.36q.054-2.267 1.56-3.76t3.773-1.574h.774l-1.174-1.12a1.23 1.23 0 0 1-.373-.906q0-.534.373-.907l.027-.027q.4-.373.92-.373t.92.373L9.653 4.44q.107.106.187.213h4.267a.8.8 0 0 1 .16-.213l2.853-2.747q.4-.373.92-.373c.347 0 .662.151.929.4s.391.551.391.907q0 .532-.373.906zM5.333 7.24q-1.12.027-1.88.773-.76.748-.786 1.894v7.52q.026 1.146.786 1.893t1.88.773h13.334q1.12-.026 1.88-.773t.786-1.893v-7.52q-.026-1.147-.786-1.894t-1.88-.773zM8 11.107q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q0-.56.386-.947.387-.386.947-.386m8 0q.56 0 .933.373.375.374.4.96v1.173q-.025.586-.4.96-.373.375-.933.374c-.56-.001-.684-.125-.933-.374q-.375-.373-.4-.96V12.44q.025-.586.4-.96.373-.373.933-.373"/></svg></span> 浪潮英信服务器 NF5270M6 整机上架安装视频</a>。</p>
-<p><figure markdown="span">
-    <center>
-    <a class="glightbox" href="index.assets/op_server_rail.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_server_rail" src="index.assets/op_server_rail.webp" width="80%" /></a>
-    </center>
-    <figcaption>
-    将铆钉卡在内轨卡槽中
-    </figcaption>
-</figure></p>
-</li>
-</ul>
-</li>
-</ul>
-<div class="admonition danger">
-<p class="admonition-title">错误案例</p>
-<p>曾经有没经验的同学来机房上架服务器，用导轨挂钩来承重。这是严重错误的，很容易导致挂钩断裂服务器掉落。</p>
-<p><div class="grid cards" markdown>
-    <a class="glightbox" href="index.assets/op_wrong_server_rail.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="op_cable_tray" src="index.assets/op_wrong_server_rail.webp" /></a>
-    <a class="glightbox" href="index.assets/op_wrong_server_rail2.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="op_cable_tray2" src="index.assets/op_wrong_server_rail2.webp" /></a>
-</div></p>
-<p><strong>最好不要让没经验的人上架服务器，联络时一定要说清楚各项注意事项，把教程发给他们。</strong></p>
+<p>历史较为悠久的项目都会使用 GNU Autotools 来构建项目，标准流程为：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>./configure<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install
+</span></code></pre></div>
+<p>需要熟悉的工具是 Autoconf 和 <code>autoreconf</code>，其他工具一般不需要直接操作。</p>
+<h3 id="文件结构">文件结构<a class="headerlink" href="#文件结构" title="Permanent link">&para;</a></h3>
+<p>在 <code>./configure</code> 阶段可以使用 <code>--prefix=/path/to/dir</code> 参数指定安装路径，默认为 <code>/usr/local</code>。</p>
+<p>构建工具将在该目录下生成文件，标准架构如下：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>prefix
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>├── bin
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>├── include
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>├── lib
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>├── share
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>│   ├── man
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>│   ├── info
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>│   ...
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>...
+</span></code></pre></div>
+<h3 id="autoconf">Autoconf<a class="headerlink" href="#autoconf" title="Permanent link">&para;</a></h3>
+<p><code>./configure</code> 自动检测系统中的环境变量、库、头文件等，基于 <code>configure.ac</code> 等文件生成 <code>Makefile</code> 等文件。</p>
+<p>可以指定的变量：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>CC
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>CFLAGS
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>CXX
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>CXXFLAGS
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>LDFLAGS
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>CPPFLAGS (for both C and C++)
+</span></code></pre></div>
+<p>使用 <code>./configure --help</code> 查看帮助。</p>
+<details class="note">
+<summary>觉得在命令行中指定参数不方便？</summary>
+<p>如果觉得写命令行参数太长，可以把变量指定到 <code>config.site</code> 文件中：</p>
+<div class="language-text highlight"><span class="filename">config.site</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>test -z &quot;$CC&quot; &amp;&amp; CC=gcc-3
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>test -z &quot;$CPPFLAGS&quot; &amp;&amp; CPPFLAGS=-I$HOME/usr/include
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>test -z &quot;$LDFLAGS&quot; &amp;&amp; LDFLAGS=-L$HOME/usr/lib
+</span></code></pre></div>
+<p>运行 <code>./configure</code> 时应当会提示如 <code>configure: loading site script /home/adl/usr/share/config.site</code>。</p>
+</details>
+<details class="note">
+<summary>不需要在源文件目录中构建</summary>
+<p><code>./configure</code> 在哪里运行，程序、目标文件和库文件就在哪里生成。因此，可以任何你希望的地方开始构建项目。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>/nfs/src/amhello-1.0/configure
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>make
+</span></code></pre></div>
+<p>这样可以方便地使用一份源代码为多个平台构建项目。</p>
+</details>
+<details class="note">
+<summary>交叉编译</summary>
+<p>使用 <code>--host</code> 参数指定目标体系结构。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>./configure<span class="w"> </span>--host<span class="o">=</span>i586-mingw32msvc
+</span></code></pre></div>
+<p><code>--target</code> 参数用于构建编译工具，指定编译工具的目标体系结构。</p>
+</details>
+<h3 id="automake">Automake<a class="headerlink" href="#automake" title="Permanent link">&para;</a></h3>
+<p><code>automake</code> 接受 <code>Makefile.am</code> 文件，生成 <code>Makefile.in</code> 文件。</p>
+<p>可以指定的变量：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>DESTDIR
+</span></code></pre></div>
+<p>一些通用的 target：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>all
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>install
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>clean
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>distclean
+</span></code></pre></div>
+<h3 id="libtool">Libtool<a class="headerlink" href="#libtool" title="Permanent link">&para;</a></h3>
+<p><code>libtool</code> 用于处理库文件，可以生成 <code>.la</code> （libtool archive）文件。和它有关的操作都会被翻译为真实的库文件。</p>
+<div class="admonition warning">
+<p class="admonition-title">库文件是可移植性的地狱</p>
+<p>在不同平台上，库文件类型不同、编译选项不同。</p>
+<p>在 Linux 上，静态库为 <code>.a</code> 文件，动态库为 <code>.so</code> 文件。编译选项 <code>-fPIC</code> 用于生成位置无关代码，<code>-shared</code> 用于生成动态库。</p>
 </div>
+<p>在安装时可以使用下面的参数控制库文件生成：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>--enable-shared
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>--disable-shared
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>--enable-static
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>--disable-static
+</span></code></pre></div>
+<h3 id="附编写模板文件">附：编写模板文件<a class="headerlink" href="#附编写模板文件" title="Permanent link">&para;</a></h3>
+<p>为了使用 GNU Autotools 构建项目，至少需要编写下面的文件：</p>
 <ul>
-<li>记得固定好导轨与服务器、导轨与机架的螺丝（如果有），避免抽拉时导轨脱架。</li>
+<li><code>configure.ac</code></li>
+<li><code>Makefile.am</code></li>
+<li><code>src/Makefile.am</code></li>
 </ul>
-<figure>
-    <center>
-    <a class="glightbox" href="index.assets/op_server_install.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_server_install" src="index.assets/op_server_install.webp" width="80%" /></a>
-    </center>
-    <figcaption>
-    服务器上架过程
-    </figcaption>
-</figure>
-<h3 id="机柜布局与理线">机柜布局与理线<a class="headerlink" href="#机柜布局与理线" title="Permanent link">&para;</a></h3>
-<p>我们的机柜布局约定：</p>
-<ul>
-<li>机柜顶部为 TOR（Top of Rack）交换机、InfiniBand 交换机等网络设备。</li>
-<li>机柜底部为服务器，U 数越大、越重的设备应当越靠近底部。</li>
-<li>为了方便维护，每台服务器之间至少保持 1U 的间隔，普通服务器上架高度不超过 30U。这意味着一个机柜可以承载约 10 台 2U 服务器。</li>
-</ul>
-<p>一般的理线方式是利用机柜侧边的理线槽，将线缆梳理至机柜两侧。</p>
-<figure style="width: 80%">
-    <a class="glightbox" href="index.assets/op_cable_tray.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="op_cable_tray" src="index.assets/op_cable_tray.webp" style="float: left; " width="50%" /></a>
-    <a class="glightbox" href="index.assets/op_cable_tray2.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_cable_tray2" src="index.assets/op_cable_tray2.webp" width="50%" /></a>
-</figure>
-<center><figcaption>
-机柜理线槽
-</figcaption></center>
-
-<p>我们的机柜没有预装理线槽，且有些位置被 PDU 占用，所以在机架上安装理线环，用于清理网线。</p>
-<ul>
-<li>
-<p>从最顶上的交换机开始，左侧是数据网络，右侧是管理网络。</p>
-<p><figure markdown="span">
-    <center>
-    <a class="glightbox" href="index.assets/op_cable_tray3.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_cable_tray3" src="index.assets/op_cable_tray3.webp" width="80%" /></a>
-    </center>
-    <figcaption>
-    左数据，右管理
-    </figcaption>
-</figure></p>
-</li>
-<li>
-<p><strong>网线</strong>：使用理线槽梳理。过长的线裁剪打水晶头，或折叠后使用扎带绑好。</p>
-</li>
-<li><strong>电源线</strong>：电源线不走理线槽。折叠后使用粗扎带绑好。电源在 PDU 上的顺序与在机架上的顺序应当一致。</li>
-</ul>
-<p>有些服务器带有理线臂，可以在不拆卸线缆的同时抽出服务器进行检查。</p>
-<figure>
-    <center>
-    <a class="glightbox" href="index.assets/op_cable_tray4.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="op_cable_tray4" src="index.assets/op_cable_tray4.webp" width="80%" /></a>
-    </center>
-    <figcaption>
-    理线臂
-    </figcaption>
-</figure>
-<p>但我们没有，也不预留长度，线都扎得比较紧，所以<strong>抽出服务器前必须检查所有线缆都已经卸除</strong>。</p>
+<p><code>autoconf</code> 会按合适的顺序执行所有自动化工具。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>autoreconf<span class="w"> </span>--install
+</span></code></pre></div>
+<h2 id="cmake">CMake<a class="headerlink" href="#cmake" title="Permanent link">&para;</a></h2>
 
 
 
@@ -1804,7 +1912,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2025 09:52:15">April 25, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2025 17:10:39">April 27, 2025</span>
   </span>
 
     
@@ -1814,7 +1922,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2025 09:52:15">April 25, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2025 17:10:39">April 27, 2025</span>
   </span>
 
     
@@ -1849,7 +1957,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: 运维文档">
+          <a href="../../hardware/oobm/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 带外管理">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1859,20 +1967,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                运维文档
+                带外管理
               </div>
             </div>
           </a>
         
         
           
-          <a href="knowledge/" class="md-footer__link md-footer__link--next" aria-label="Next: 硬件知识">
+          <a href="../conda/" class="md-footer__link md-footer__link--next" aria-label="Next: 包管理器：Conda">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                硬件知识
+                包管理器：Conda
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1912,12 +2020,12 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/polyfill/index.min.js"></script>
       
@@ -1925,7 +2033,7 @@
       
         <script src="https://cdn.jsdelivr.net/npm/tablesort/dist/tablesort.min.js"></script>
       
-        <script src="../../javascripts/tablesort.js"></script>
+        <script src="../../../javascripts/tablesort.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
       

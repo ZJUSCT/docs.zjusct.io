@@ -2,70 +2,98 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.zjusct.io/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/blog/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/competition/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/falcon/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/falcon/git/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/falcon/mirror-history/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/falcon/mirror/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/index/contribute/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/index/newcomer/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/operation/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/operation/hardware/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/operation/hardware/knowledge/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/operation/hardware/oobm/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/operation/observability/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/operation/observability/log/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/operation/observability/network/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
     </url>
     <url>
          <loc>https://docs.zjusct.io/operation/observability/opentelemetry/</loc>
-         <lastmod>2025-04-25</lastmod>
+         <lastmod>2025-04-27</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/software/</loc>
+         <lastmod>2025-04-27</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/software/build/</loc>
+         <lastmod>2025-04-27</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/software/conda/</loc>
+         <lastmod>2025-04-27</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/software/lmod/</loc>
+         <lastmod>2025-04-27</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/software/modern-cli/</loc>
+         <lastmod>2025-04-27</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/software/shell/</loc>
+         <lastmod>2025-04-27</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/software/spack/</loc>
+         <lastmod>2025-04-27</lastmod>
     </url>
 </urlset>
