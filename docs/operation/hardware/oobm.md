@@ -138,43 +138,6 @@ IPMI 界面中可能有两处地方可以找到远程挂载镜像：
 
     更建议通过 KVM 挂载极小的 iPXE 或 netboot.xyz 镜像作为跳板，引导进入 Linux 安装程序后令其自行下载大镜像。
 
-    ??? tip "使用 netboot.xyz 作为跳板快速安装 Ubuntu "
-
-        如果你觉得传统方式太慢，可以尝试以下方法：
-
-        1. 下载 `netboot.xyz` ISO 文件：[netboot.xyz-multiarch.iso](https://netboot.xyz/downloads)
-
-        2. 打开 KVM，挂载下载的 ISO 文件，并启动到该 ISO。
-
-        3. 在出现提示进入 iPXE 命令行时，按键进入 iPXE 命令行，输入以下命令：
-
-            ```shell
-            set net0/ip ********  # 设置对应的 IP 地址
-            set net0/netmask 255.255.255.0  # 设置子网掩码
-            set net0/gateway ***********  # 设置网关
-            ifopen net0  # 打开网络接口
-            ```
-
-        4. 使用以下命令从远程服务器挂载 Ubuntu ISO 文件：
-
-            ```shell
-            sanboot --no-describe --drive 0x81 http://镜像站地址/ubuntu-releases/24.04.2/ubuntu-24.04.2-live-server-amd64.iso
-            ```
-
-        5. 断开 KVM ISO 连接，等待一会儿，可能会报错 `can not find sr0`，继续等待，直到出现是否进行网络启动的提示，选择 `Yes`。
-
-        6. 配置网络，设置如下：
-            - IP 地址：同上
-            - DNS：`10.10.0.21`
-
-        7. 输入 ISO 文件路径：
-
-            ```
-            http://镜像站地址/ubuntu-releases/24.04.2/ubuntu-24.04.2-live-server-amd64.iso
-            ```
-
-        8. 进入 Ubuntu 安装界面，完成安装流程。
-
 ## 使用 `ipmitool`
 
 [:simple-github: `ipmitool`](https://github.com/ipmitool/ipmitool) 是一个 IPMI 命令行工具，但它目前已经进入 Public Archive 状态，不再维护。
