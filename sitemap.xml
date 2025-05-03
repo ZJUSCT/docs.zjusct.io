@@ -61,6 +61,10 @@
          <lastmod>2025-05-03</lastmod>
     </url>
     <url>
+         <loc>https://docs.zjusct.io/blog/2025/03/16/%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E5%85%A5%E4%BE%B5%E4%BA%8B%E4%BB%B6%E5%A7%8B%E6%9C%AB/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
          <loc>https://docs.zjusct.io/blog/2025/05/01/%E7%AC%AC%E4%B8%89%E4%BB%A3%E9%95%9C%E5%83%8F%E7%AB%99%E5%BB%BA%E8%AE%BE%E4%B8%80%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/</loc>
          <lastmod>2025-05-03</lastmod>
     </url>
@@ -154,6 +158,122 @@
     </url>
     <url>
          <loc>https://docs.zjusct.io/operation/software/spack/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/macOS/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/basic/acl/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/basic/boot/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/basic/drivers/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/basic/filesystem/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/basic/systemd/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/diskless/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/diskless/cicd/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/diskless/distros/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/diskless/nfsroot/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/diskless/pxe/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/service/auth/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/service/containers/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/service/jenkins/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/service/ldap/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/service/nis/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/service/pve/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/operation/system/service/slurm/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/optimization/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/optimization/parallel/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/optimization/parallel/cpu/model/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/optimization/parallel/cpu/mpi/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/optimization/parallel/cpu/openmp/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/optimization/parallel/cpu/others/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/optimization/parallel/gpu/cuda/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/optimization/parallel/gpu/hip/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/optimization/parallel/gpu/model/</loc>
+         <lastmod>2025-05-03</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.zjusct.io/optimization/parallel/gpu/others/</loc>
          <lastmod>2025-05-03</lastmod>
     </url>
     <url>
