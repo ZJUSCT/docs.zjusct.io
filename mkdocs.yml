@@ -8,19 +8,18 @@ site_author: ZJUSCT
 copyright: ZJUSCT
 
 nav:
+  # 已启用 include_dir_to_nav 插件，可使用目录名添加该目录下所有文件
+  # 文件按字母序排列，如果同级有其他文件，就需要专门把 index.md 放在最前面
   - 首页:
     - index.md
     - index
-  - 竞赛: competition
-  - Falcon:
+  - 🏆 竞赛: competition
+  - 🦅 Falcon:
     - falcon/index.md
     - falcon
-  - 运维:
-    - operation/index.md
-    - 硬件运维: operation/hardware
-    - 软件运维: operation/software
-    - 可观测性: operation/observability
-  - 博客: blog
+  - 🔧 优化: optimization
+  - ⚙️ 运维: operation
+  - ✍️ 博客: blog
 
 theme:
   name: material

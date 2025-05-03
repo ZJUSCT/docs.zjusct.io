@@ -80,6 +80,12 @@ mkdocs serve
 
     我们推荐直接插入 `.drawio` 文件，以便后续修改。
 
+为了减小图片体积，建议使用下面的命令转换为 WebP 格式：
+
+```bash
+for f in *.jpg *.jpeg *.png; do [ -f "$f" ] && cwebp "$f" -o "${f%.*}.webp" && rm "$f"; done
+```
+
 如果图片需要引用备注、说明信息或调整缩放等效果，请使用下面的 [HTML 格式](https://squidfunk.github.io/mkdocs-material/reference/images/#image-captions)：
 
 ```html
@@ -91,6 +97,12 @@ mkdocs serve
 </figcaption>
 </figure>
 ```
+
+## 📝 博客规范
+
+本文档已启用 [Basic blogs - Material for MkDocs](https://squidfunk.github.io/mkdocs-material/tutorials/blogs/basic)。要新增博客，请在 `docs/blog/posts/<year>` 目录下创建新的 Markdown 文件，命名为 `<month>-<day>-<title>.md`，内容参考 `docs/blog/posts/.template.md`。
+
+然后在 `docs/blog/.authors.yml` 中添加作者信息即可。
 
 ## 📊 文档状态
 

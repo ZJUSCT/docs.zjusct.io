@@ -142,6 +142,11 @@ iPXE 引导进入安装程序后，安装程序需要自己重新配置网络，
 kernel ... ip=<client-ip>:<server-ip>:<gw-ip>:<netmask>:<hostname>:<device>:<autoconf>:<dns0-ip>:<dns1-ip>:<ntp0-ip>
 ```
 
+<figure markdown>
+![image-download.webp](./05-03-mirror-1-autoinstall.assets/image-download.webp)
+<figcaption>完成网络配置后下载镜像的 Ubuntu Installer</figcaption>
+</figure>
+
 !!! info "关于 `sanboot`"
 
     虽然有使用 `sanboot` 挂载 ISO 镜像的例子，但实测发现 Debian 和 Ubuntu 均无法正常工作。引导后会提示找不到安装介质（incorrect installation media detected）。[相关讨论](https://github.com/ipxe/ipxe/discussions/644)指出该命令适用于 iSCSI，而一般不适用于 HTTP。
@@ -289,6 +294,8 @@ apt:
 1. **R4900 网络接口异常**
 
     在系统安装过程中，只有通过 `ens2f1np1` 端口才能正常联网；而安装完成后，必须切换到 `ens2f0np0` 端口才能正常工作，即使两个网口均已连接。初步怀疑是 Broadcom 驱动 `bnxt_en` 的问题，需进一步排查。此问题未在 X10000 上复现。
+
+    iPXE 启动时，initrd 偶尔会下载到一半卡住，因此脚本中添加了失败重试的逻辑。X10000 未出现该问题，但 R4900 上经常出现。
 
 2. **链路聚合问题**
 
