@@ -471,6 +471,13 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#定位损坏的磁盘">
+<span class="md-ellipsis">
+      定位损坏的磁盘
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1631,6 +1638,13 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#定位损坏的磁盘">
+<span class="md-ellipsis">
+      定位损坏的磁盘
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1999,6 +2013,52 @@
 </tr>
 </tbody>
 </table>
+<h3 id="定位损坏的磁盘">定位损坏的磁盘<a class="headerlink" href="#定位损坏的磁盘" title="Permanent link">¶</a></h3>
+<p>镜像站磁盘损坏应当联系信息中心进行更换。我们需要负责定位损坏的磁盘，将信息反馈给信息中心。</p>
+<ul>
+<li>如果是直通盘，则使用 <code>hwinfo --disk</code> 可以看到 Model 和 Serial Number，据此去 IPMI 的 Storage 选项卡搜索即可。</li>
+<li>如果是逻辑卷：<ul>
+<li>RAID 卡检测到坏盘后，会在 IPMI 中标记逻辑卷状态为 <code>Failed</code>，可直接定位。</li>
+<li>
+<p>RAID 卡尚未检测到磁盘损坏，而系统报错，则可以根据 SysFS 路径进行定位。以下面的路径为例：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>// 内核日志，出现该日志的时候控制器已检测到磁盘损坏，会直接掉盘
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>tag#741 received 'logical unit failure' from controller for scsi 14:1:0:9
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>// hwinfo 信息
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>SysFS BusID: 14:1:0:9
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>SysFS Device Link: /devices/pci0000:3a/0000:3a:00.0/0000:3b:00.0/host14/target14:1:0/14:1:0:9
+</span></code></pre></div>
+<p>将 BusID 的字段分为 0~3。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>控制器编号</td>
+</tr>
+<tr>
+<td>1</td>
+<td>设备类型，逻辑卷为 <code>1</code>，直通盘为 <code>0</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>直通盘序号</td>
+</tr>
+<tr>
+<td>3</td>
+<td>逻辑卷序号</td>
+</tr>
+</tbody>
+</table>
+<p>比如上面的设备为逻辑卷 9，可以在 IPMI 中找到对应的逻辑卷。</p>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="后端">后端<a class="headerlink" href="#后端" title="Permanent link">¶</a></h2>
 <h2 id="前端">前端<a class="headerlink" href="#前端" title="Permanent link">¶</a></h2>
 <h2 id="软件源和同步工具">软件源和同步工具<a class="headerlink" href="#软件源和同步工具" title="Permanent link">¶</a></h2>
@@ -2014,7 +2074,7 @@
 <li>
 <p><strong>两个角色</strong>：Receiver 和 Sender。至于 Client 和 Server，只要 Rsync 双方连接建立，就不再区分。</p>
 <p>以 Rsync Pull 为例：</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>rsync<span class="w"> </span>rsync://HOST/SRC...<span class="w"> </span><span class="o">[</span>DEST<span class="o">]</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>rsync<span class="w"> </span>rsync://HOST/SRC...<span class="w"> </span><span class="o">[</span>DEST<span class="o">]</span>
 </span></code></pre></div>
 <p>远程主机是 Sender，本机是 Receiver。</p>
 <p>一旦建立连接，<strong>Sender 遍历自己的文件系统，将文件列表发送给 Receiver</strong>。</p>
@@ -2066,45 +2126,45 @@
 </ul>
 </div>
 <p><code>sources.list</code> 格式：</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>type uri distribution component1 component2 component3 [..] componentX
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>type uri distribution component1 component2 component3 [..] componentX
 </span></code></pre></div>
 <p>APT 首先从 <code>$URI/dists/$DISTRIBUTION</code> 下载 <code>InRelease</code> 或 <code>Release</code> 文件。前者文件内签名，后者需要使用 <code>Release.gpg</code> 验证。<strong><code>Release</code> 文件列出了该 <code>$DISTRIBUTION</code> 的索引文件及其哈希值</strong>：</p>
-<div class="language-text highlight"><span class="filename">Release（部分）</span><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>Suite: unstable
-</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>Codename: sid
-</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>Date: Thu, 26 Sep 2024 08:17:58 UTC
-</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>Valid-Until: Thu, 03 Oct 2024 08:17:58 UTC
-</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>Architectures: all amd64 arm64 armel armhf i386 mips64el ppc64el riscv64 s390x
-</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>Components: main contrib non-free-firmware non-free
-</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>MD5Sum:
-</span><span id="__span-2-8"><a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a> 7f8beaf99c34820e69778ea792c2d338  5312136 contrib/Contents-all
-</span><span id="__span-2-9"><a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a> e941316dc5a3e703335083e7b659b387    63339 contrib/Contents-all.diff/Index
+<div class="language-text highlight"><span class="filename">Release（部分）</span><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>Suite: unstable
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>Codename: sid
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>Date: Thu, 26 Sep 2024 08:17:58 UTC
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>Valid-Until: Thu, 03 Oct 2024 08:17:58 UTC
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>Architectures: all amd64 arm64 armel armhf i386 mips64el ppc64el riscv64 s390x
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>Components: main contrib non-free-firmware non-free
+</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>MD5Sum:
+</span><span id="__span-3-8"><a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a> 7f8beaf99c34820e69778ea792c2d338  5312136 contrib/Contents-all
+</span><span id="__span-3-9"><a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a> e941316dc5a3e703335083e7b659b387    63339 contrib/Contents-all.diff/Index
 </span></code></pre></div>
 <p>接下来 APT 在 <code>$URI/dists/$DISTRIBUTION/$COMPONENT</code> 下载索引文件，比如 <code>binary-$ARCH/Packages.xz</code>、<code>source/Sources.xz</code>。<strong>索引文件列出了软件包的路径及其哈希值。</strong>例如，下面的 <code>Sources</code> 文件列出了 <code>0ad</code> 软件包的路径和哈希值：</p>
-<div class="language-text highlight"><span class="filename">Sources（部分）</span><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>Package: 0ad
-</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>Binary: 0ad
-</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>Architecture: amd64 arm64 armhf i386 kfreebsd-amd64 kfreebsd-i386
-</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>Files:
-</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a> 4d5f452a06bcdba6907f3350219a63db 2565 0ad_0.0.26-3.dsc
-</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>Checksums-Sha256:
-</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a> c2d4b91d9d20a27b4989495d3b370635e79e2f7a4ed1f9031abc89e9c1d50952 2565 0ad_0.0.26-3.dsc
-</span><span id="__span-3-8"><a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>Package-List:
-</span><span id="__span-3-9"><a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a> 0ad deb games optional arch=amd64,arm64,armhf,i386,kfreebsd-amd64,kfreebsd-i386
-</span><span id="__span-3-10"><a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a>Directory: pool/main/0/0ad
+<div class="language-text highlight"><span class="filename">Sources（部分）</span><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>Package: 0ad
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>Binary: 0ad
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>Architecture: amd64 arm64 armhf i386 kfreebsd-amd64 kfreebsd-i386
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>Files:
+</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a> 4d5f452a06bcdba6907f3350219a63db 2565 0ad_0.0.26-3.dsc
+</span><span id="__span-4-6"><a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a>Checksums-Sha256:
+</span><span id="__span-4-7"><a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a> c2d4b91d9d20a27b4989495d3b370635e79e2f7a4ed1f9031abc89e9c1d50952 2565 0ad_0.0.26-3.dsc
+</span><span id="__span-4-8"><a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a>Package-List:
+</span><span id="__span-4-9"><a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a> 0ad deb games optional arch=amd64,arm64,armhf,i386,kfreebsd-amd64,kfreebsd-i386
+</span><span id="__span-4-10"><a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a>Directory: pool/main/0/0ad
 </span></code></pre></div>
 <p><strong>软件包都保存在 <code>$URI/pool/$COMPONENT</code> 下</strong>，按照首字母分目录存放。一些常见的文件：</p>
 <ul>
 <li><code>.deb</code>：二进制包</li>
 <li>
 <p><code>.dsc</code>：源码包描述文件，指定哪些文件组成源码包。一般是 <code>.orig.tar</code>、<code>.debian.tar</code>。例如：</p>
-<div class="language-text highlight"><span class="filename">0ad_0.0.23.1-5.dsc（部分）</span><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>Checksums-Sha1:
-</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>3c6bb8924d65d17200e6b9475101e7d04f5db13a 31922812 0ad_0.0.23.1.orig.tar.xz
-</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>85ac24b7b826f4345dc5dd4015256ce1eb0cab70 73620 0ad_0.0.23.1-5.debian.tar.xz
-</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>Checksums-Sha256:
-</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>01bff7641ee08cac896c54d518d7e4b01752513105558f212e3199d747512a37 31922812 0ad_0.0.23.1.orig.tar.xz
-</span><span id="__span-4-6"><a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a>aff899c0b6a0c2ff746e051504a3e3ac7bb6070c21eb5a5ef5fb55d55391b0e0 73620 0ad_0.0.23.1-5.debian.tar.xz
-</span><span id="__span-4-7"><a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a>Files:
-</span><span id="__span-4-8"><a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a>4fa111410ea55de7a013406ac1013668 31922812 0ad_0.0.23.1.orig.tar.xz
-</span><span id="__span-4-9"><a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a>43a5bf77192a8eebdbe763cdd1d72fa3 73620 0ad_0.0.23.1-5.debian.tar.xz
+<div class="language-text highlight"><span class="filename">0ad_0.0.23.1-5.dsc（部分）</span><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>Checksums-Sha1:
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>3c6bb8924d65d17200e6b9475101e7d04f5db13a 31922812 0ad_0.0.23.1.orig.tar.xz
+</span><span id="__span-5-3"><a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>85ac24b7b826f4345dc5dd4015256ce1eb0cab70 73620 0ad_0.0.23.1-5.debian.tar.xz
+</span><span id="__span-5-4"><a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a>Checksums-Sha256:
+</span><span id="__span-5-5"><a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>01bff7641ee08cac896c54d518d7e4b01752513105558f212e3199d747512a37 31922812 0ad_0.0.23.1.orig.tar.xz
+</span><span id="__span-5-6"><a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a>aff899c0b6a0c2ff746e051504a3e3ac7bb6070c21eb5a5ef5fb55d55391b0e0 73620 0ad_0.0.23.1-5.debian.tar.xz
+</span><span id="__span-5-7"><a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a>Files:
+</span><span id="__span-5-8"><a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a>4fa111410ea55de7a013406ac1013668 31922812 0ad_0.0.23.1.orig.tar.xz
+</span><span id="__span-5-9"><a href="#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a>43a5bf77192a8eebdbe763cdd1d72fa3 73620 0ad_0.0.23.1-5.debian.tar.xz
 </span></code></pre></div>
 </li>
 </ul>
@@ -2179,40 +2239,40 @@
 <li>解析命令行参数</li>
 <li>
 <p>读取配置文件</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>read_config<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nb">local</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/[^A-Za-z0-9._-]/_/g'</span><span class="k">)</span>
-</span><span id="__span-5-3"><a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nb">local</span><span class="w"> </span><span class="nv">config</span><span class="o">=</span><span class="k">$(</span>search_config<span class="w"> </span><span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span><span class="k">)</span>
-</span><span id="__span-5-4"><a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$config</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-5-5"><a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">    </span>.<span class="w"> </span><span class="s2">"</span><span class="nv">$config</span><span class="s2">"</span>
-</span><span id="__span-5-6"><a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">    </span><span class="nv">CURRENT_CONFIG</span><span class="o">=</span><span class="s2">"</span><span class="nv">$config</span><span class="s2">"</span>
-</span><span id="__span-5-7"><a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="m">0</span>
-</span><span id="__span-5-8"><a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="k">else</span>
-</span><span id="__span-5-9"><a href="#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Can't read config file </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">!"</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
-</span><span id="__span-5-10"><a href="#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">78</span><span class="w"> </span><span class="c1"># EX_CONFIG</span>
-</span><span id="__span-5-11"><a href="#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="k">fi</span>
-</span><span id="__span-5-12"><a href="#__codelineno-5-12" id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="o">}</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>read_config<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="nb">local</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/[^A-Za-z0-9._-]/_/g'</span><span class="k">)</span>
+</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="nb">local</span><span class="w"> </span><span class="nv">config</span><span class="o">=</span><span class="k">$(</span>search_config<span class="w"> </span><span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span><span class="k">)</span>
+</span><span id="__span-6-4"><a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$config</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-6-5"><a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">    </span>.<span class="w"> </span><span class="s2">"</span><span class="nv">$config</span><span class="s2">"</span>
+</span><span id="__span-6-6"><a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">    </span><span class="nv">CURRENT_CONFIG</span><span class="o">=</span><span class="s2">"</span><span class="nv">$config</span><span class="s2">"</span>
+</span><span id="__span-6-7"><a href="#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="m">0</span>
+</span><span id="__span-6-8"><a href="#__codelineno-6-8" id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="k">else</span>
+</span><span id="__span-6-9"><a href="#__codelineno-6-9" id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Can't read config file </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2">!"</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+</span><span id="__span-6-10"><a href="#__codelineno-6-10" id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">78</span><span class="w"> </span><span class="c1"># EX_CONFIG</span>
+</span><span id="__span-6-11"><a href="#__codelineno-6-11" id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="k">fi</span>
+</span><span id="__span-6-12"><a href="#__codelineno-6-12" id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="o">}</span>
 </span></code></pre></div>
 <p>配置文件大概长这样：</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nv">MIRRORNAME</span><span class="o">=</span><span class="sb">`</span>hostname<span class="w"> </span>-f<span class="sb">`</span>
-</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="nv">TO</span><span class="o">=</span><span class="s2">"/srv/mirrors/debian/"</span>
-</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="nv">MAILTO</span><span class="o">=</span><span class="s2">"</span><span class="nv">$LOGNAME</span><span class="s2">"</span>
-</span><span id="__span-6-4"><a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="nv">HUB</span><span class="o">=</span><span class="nb">false</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nv">MIRRORNAME</span><span class="o">=</span><span class="sb">`</span>hostname<span class="w"> </span>-f<span class="sb">`</span>
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nv">TO</span><span class="o">=</span><span class="s2">"/srv/mirrors/debian/"</span>
+</span><span id="__span-7-3"><a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="nv">MAILTO</span><span class="o">=</span><span class="s2">"</span><span class="nv">$LOGNAME</span><span class="s2">"</span>
+</span><span id="__span-7-4"><a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="nv">HUB</span><span class="o">=</span><span class="nb">false</span>
 </span></code></pre></div>
 <p>因此可以直接使用 <code>.</code> 读取配置文件。</p>
 </li>
 <li>
 <p>设置 <code>rsync</code> 选项</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nv">RSYNC</span><span class="o">=</span><span class="si">${</span><span class="nv">RSYNC</span><span class="k">:-</span><span class="nv">rsync</span><span class="si">}</span>
-</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nv">RSYNC_PROTOCOL</span><span class="o">=</span><span class="k">$(</span>rsync_protocol<span class="k">)</span>
-</span><span id="__span-7-3"><a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="nv">RSYNC_EXTRA</span><span class="o">=</span><span class="si">${</span><span class="nv">RSYNC_EXTRA</span><span class="k">:-</span><span class="s2">""</span><span class="si">}</span>
-</span><span id="__span-7-4"><a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="nv">RSYNC_BW</span><span class="o">=</span><span class="si">${</span><span class="nv">RSYNC_BW</span><span class="k">:-</span><span class="nv">0</span><span class="si">}</span>
-</span><span id="__span-7-5"><a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$RSYNC_PROTOCOL</span><span class="w"> </span>-ge<span class="w"> </span><span class="m">31</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-7-6"><a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">    </span><span class="nv">RSYNC_OPTIONS</span><span class="o">=</span><span class="si">${</span><span class="nv">RSYNC_OPTIONS</span><span class="k">:-</span><span class="s2">"-prltvHSB8192 --safe-links --chmod=D755,F644 --timeout 120 --stats --no-human-readable --no-inc-recursive"</span><span class="si">}</span>
-</span><span id="__span-7-7"><a href="#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="k">else</span>
-</span><span id="__span-7-8"><a href="#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">    </span><span class="nv">RSYNC_OPTIONS</span><span class="o">=</span><span class="si">${</span><span class="nv">RSYNC_OPTIONS</span><span class="k">:-</span><span class="s2">"-prltvHSB8192 --safe-links --timeout 120 --stats --no-human-readable --no-inc-recursive"</span><span class="si">}</span>
-</span><span id="__span-7-9"><a href="#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="k">fi</span>
-</span><span id="__span-7-10"><a href="#__codelineno-7-10" id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="nv">RSYNC_OPTIONS1</span><span class="o">=</span><span class="si">${</span><span class="nv">RSYNC_OPTIONS1</span><span class="k">:-</span><span class="s2">"--include=*.diff/ --include=by-hash/ --exclude=*.diff/Index --exclude=Contents*--exclude=Packages* --exclude=Sources*--exclude=Release* --exclude=InRelease --exclude=i18n/*--exclude=dep11/* --exclude=installer-*/current --exclude=ls-lR*"</span><span class="si">}</span>
-</span><span id="__span-7-11"><a href="#__codelineno-7-11" id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="nv">RSYNC_OPTIONS2</span><span class="o">=</span><span class="si">${</span><span class="nv">RSYNC_OPTIONS2</span><span class="k">:-</span><span class="s2">"--max-delete=40000 --delay-updates --delete --delete-delay --delete-excluded"</span><span class="si">}</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nv">RSYNC</span><span class="o">=</span><span class="si">${</span><span class="nv">RSYNC</span><span class="k">:-</span><span class="nv">rsync</span><span class="si">}</span>
+</span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="nv">RSYNC_PROTOCOL</span><span class="o">=</span><span class="k">$(</span>rsync_protocol<span class="k">)</span>
+</span><span id="__span-8-3"><a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="nv">RSYNC_EXTRA</span><span class="o">=</span><span class="si">${</span><span class="nv">RSYNC_EXTRA</span><span class="k">:-</span><span class="s2">""</span><span class="si">}</span>
+</span><span id="__span-8-4"><a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="nv">RSYNC_BW</span><span class="o">=</span><span class="si">${</span><span class="nv">RSYNC_BW</span><span class="k">:-</span><span class="nv">0</span><span class="si">}</span>
+</span><span id="__span-8-5"><a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$RSYNC_PROTOCOL</span><span class="w"> </span>-ge<span class="w"> </span><span class="m">31</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-8-6"><a href="#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">    </span><span class="nv">RSYNC_OPTIONS</span><span class="o">=</span><span class="si">${</span><span class="nv">RSYNC_OPTIONS</span><span class="k">:-</span><span class="s2">"-prltvHSB8192 --safe-links --chmod=D755,F644 --timeout 120 --stats --no-human-readable --no-inc-recursive"</span><span class="si">}</span>
+</span><span id="__span-8-7"><a href="#__codelineno-8-7" id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="k">else</span>
+</span><span id="__span-8-8"><a href="#__codelineno-8-8" id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">    </span><span class="nv">RSYNC_OPTIONS</span><span class="o">=</span><span class="si">${</span><span class="nv">RSYNC_OPTIONS</span><span class="k">:-</span><span class="s2">"-prltvHSB8192 --safe-links --timeout 120 --stats --no-human-readable --no-inc-recursive"</span><span class="si">}</span>
+</span><span id="__span-8-9"><a href="#__codelineno-8-9" id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="k">fi</span>
+</span><span id="__span-8-10"><a href="#__codelineno-8-10" id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="nv">RSYNC_OPTIONS1</span><span class="o">=</span><span class="si">${</span><span class="nv">RSYNC_OPTIONS1</span><span class="k">:-</span><span class="s2">"--include=*.diff/ --include=by-hash/ --exclude=*.diff/Index --exclude=Contents*--exclude=Packages* --exclude=Sources*--exclude=Release* --exclude=InRelease --exclude=i18n/*--exclude=dep11/* --exclude=installer-*/current --exclude=ls-lR*"</span><span class="si">}</span>
+</span><span id="__span-8-11"><a href="#__codelineno-8-11" id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="nv">RSYNC_OPTIONS2</span><span class="o">=</span><span class="si">${</span><span class="nv">RSYNC_OPTIONS2</span><span class="k">:-</span><span class="s2">"--max-delete=40000 --delay-updates --delete --delete-delay --delete-excluded"</span><span class="si">}</span>
 </span></code></pre></div>
 <p><code>RSYNC_OPTIONS</code> 包含以下选项（参考 <a href="https://download.samba.org/pub/rsync/rsync.1">rsync(1)</a>）：</p>
 <ul>
@@ -2262,19 +2322,19 @@
 </li>
 <li>
 <p>锁文件和同步标记</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="c1"># Our trace and lock files</span>
-</span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="nv">LOCK_NAME</span><span class="o">=</span><span class="s2">"Archive-Update-in-Progress-</span><span class="si">${</span><span class="nv">MIRRORNAME</span><span class="si">}</span><span class="s2">"</span>
-</span><span id="__span-8-3"><a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="nv">LOCK</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">TO</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">LOCK_NAME</span><span class="si">}</span><span class="s2">"</span>
-</span><span id="__span-8-4"><a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="nv">UPDATEREQUIRED_NAME</span><span class="o">=</span><span class="s2">"Archive-Update-Required-</span><span class="si">${</span><span class="nv">MIRRORNAME</span><span class="si">}</span><span class="s2">"</span>
-</span><span id="__span-8-5"><a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="nv">UPDATEREQUIRED</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">TO</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">UPDATEREQUIRED_NAME</span><span class="si">}</span><span class="s2">"</span>
-</span><span id="__span-8-6"><a href="#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="c1"># Used to make sure we will have the archive fully and completly synced before</span>
-</span><span id="__span-8-7"><a href="#__codelineno-8-7" id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="c1"># we stop, even if we get multiple pushes while this script is running</span>
-</span><span id="__span-8-8"><a href="#__codelineno-8-8" id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="c1"># Otherwise we can end up with a half-synced archive</span>
-</span><span id="__span-8-9"><a href="#__codelineno-8-9" id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="c1"># - get a push</span>
-</span><span id="__span-8-10"><a href="#__codelineno-8-10" id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="c1"># - sync, while locked</span>
-</span><span id="__span-8-11"><a href="#__codelineno-8-11" id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="c1"># - get another push. Of course no extra sync run then happens, we are locked</span>
-</span><span id="__span-8-12"><a href="#__codelineno-8-12" id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="c1"># - done. Archive not correctly synced, we don't have all the changes from the second push</span>
-</span><span id="__span-8-13"><a href="#__codelineno-8-13" id="__codelineno-8-13" name="__codelineno-8-13"></a>touch<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">UPDATEREQUIRED</span><span class="si">}</span><span class="s2">"</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c1"># Our trace and lock files</span>
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="nv">LOCK_NAME</span><span class="o">=</span><span class="s2">"Archive-Update-in-Progress-</span><span class="si">${</span><span class="nv">MIRRORNAME</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-9-3"><a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="nv">LOCK</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">TO</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">LOCK_NAME</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-9-4"><a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="nv">UPDATEREQUIRED_NAME</span><span class="o">=</span><span class="s2">"Archive-Update-Required-</span><span class="si">${</span><span class="nv">MIRRORNAME</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-9-5"><a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="nv">UPDATEREQUIRED</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">TO</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">UPDATEREQUIRED_NAME</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-9-6"><a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="c1"># Used to make sure we will have the archive fully and completly synced before</span>
+</span><span id="__span-9-7"><a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="c1"># we stop, even if we get multiple pushes while this script is running</span>
+</span><span id="__span-9-8"><a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="c1"># Otherwise we can end up with a half-synced archive</span>
+</span><span id="__span-9-9"><a href="#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="c1"># - get a push</span>
+</span><span id="__span-9-10"><a href="#__codelineno-9-10" id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="c1"># - sync, while locked</span>
+</span><span id="__span-9-11"><a href="#__codelineno-9-11" id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="c1"># - get another push. Of course no extra sync run then happens, we are locked</span>
+</span><span id="__span-9-12"><a href="#__codelineno-9-12" id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="c1"># - done. Archive not correctly synced, we don't have all the changes from the second push</span>
+</span><span id="__span-9-13"><a href="#__codelineno-9-13" id="__codelineno-9-13" name="__codelineno-9-13"></a>touch<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">UPDATEREQUIRED</span><span class="si">}</span><span class="s2">"</span>
 </span></code></pre></div>
 <p>同步标记主要是用于<strong>记录</strong>新的推送并在下面的循环中处理，否则 <code>ftpsync</code> 同步过程中收到的推送会因为锁而被忽略。</p>
 </li>
@@ -2283,39 +2343,39 @@
 </li>
 <li>
 <p>运行 <code>rsync</code>，以这个大循环为主体：</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="k">while</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-e<span class="w"> </span><span class="si">${</span><span class="nv">UPDATEREQUIRED</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="k">while</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-e<span class="w"> </span><span class="si">${</span><span class="nv">UPDATEREQUIRED</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 </span></code></pre></div>
 <ul>
 <li>
 <p>第一阶段：</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>run_rsync<span class="w"> </span><span class="s2">"stage1"</span><span class="w"> </span><span class="si">${</span><span class="nv">RSYNC_OPTIONS1</span><span class="si">}</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">result</span><span class="o">=</span><span class="nv">$?</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>run_rsync<span class="w"> </span><span class="s2">"stage1"</span><span class="w"> </span><span class="si">${</span><span class="nv">RSYNC_OPTIONS1</span><span class="si">}</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">result</span><span class="o">=</span><span class="nv">$?</span>
 </span></code></pre></div>
 </li>
 <li>
 <p>第二阶段：首先确保上游镜像站已经完成同步，然后再进行同步</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="k">for</span><span class="w"> </span>aupfile<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">TO</span><span class="si">}</span><span class="s2">/Archive-Update-in-Progress-"</span>*<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="nv">$aupfile</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span>
-</span><span id="__span-11-3"><a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span>*<span class="o">)</span>
-</span><span id="__span-11-4"><a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span><span class="nv">$aupfile</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-11-5"><a href="#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">            </span><span class="c1"># Remove the file, it will be synced again if</span>
-</span><span id="__span-11-6"><a href="#__codelineno-11-6" id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">            </span><span class="c1"># upstream is still not done</span>
-</span><span id="__span-11-7"><a href="#__codelineno-11-7" id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">            </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$aupfile</span><span class="s2">"</span>
-</span><span id="__span-11-8"><a href="#__codelineno-11-8" id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">        </span><span class="k">fi</span>
-</span><span id="__span-11-9"><a href="#__codelineno-11-9" id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">        </span><span class="nv">upstream_uip</span><span class="o">=</span><span class="nb">true</span>
-</span><span id="__span-11-10"><a href="#__codelineno-11-10" id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="w">        </span><span class="p">;;</span>
-</span><span id="__span-11-11"><a href="#__codelineno-11-11" id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="w">    </span><span class="k">esac</span>
-</span><span id="__span-11-12"><a href="#__codelineno-11-12" id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="k">done</span>
-</span><span id="__span-11-13"><a href="#__codelineno-11-13" id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="si">${</span><span class="nv">upstream_uip</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-11-14"><a href="#__codelineno-11-14" id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="w">    </span>log<span class="w"> </span><span class="s2">"Upstream archive update in progress, skipping stage2"</span>
-</span><span id="__span-11-15"><a href="#__codelineno-11-15" id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">UPDATE_RETRIES</span><span class="si">}</span><span class="w"> </span>-lt<span class="w"> </span><span class="si">${</span><span class="nv">UIPRETRIES</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-11-16"><a href="#__codelineno-11-16" id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="w">        </span>log<span class="w"> </span><span class="s2">"Retrying update in </span><span class="si">${</span><span class="nv">UIPSLEEP</span><span class="si">}</span><span class="s2">"</span>
-</span><span id="__span-11-17"><a href="#__codelineno-11-17" id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="w">        </span>sleep<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">UIPSLEEP</span><span class="si">}</span><span class="s2">"</span>
-</span><span id="__span-11-18"><a href="#__codelineno-11-18" id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="w">    </span><span class="k">fi</span>
-</span><span id="__span-11-19"><a href="#__codelineno-11-19" id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="k">else</span>
-</span><span id="__span-11-20"><a href="#__codelineno-11-20" id="__codelineno-11-20" name="__codelineno-11-20"></a><span class="w">    </span><span class="c1"># We are lucky, it worked. Now do step 2 and sync again, this time including</span>
-</span><span id="__span-11-21"><a href="#__codelineno-11-21" id="__codelineno-11-21" name="__codelineno-11-21"></a><span class="w">    </span><span class="c1"># the packages/releases files</span>
-</span><span id="__span-11-22"><a href="#__codelineno-11-22" id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="w">    </span>run_rsync<span class="w"> </span><span class="s2">"stage2"</span><span class="w"> </span><span class="si">${</span><span class="nv">RSYNC_OPTIONS2</span><span class="si">}</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">result</span><span class="o">=</span><span class="nv">$?</span>
-</span><span id="__span-11-23"><a href="#__codelineno-11-23" id="__codelineno-11-23" name="__codelineno-11-23"></a><span class="k">fi</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="k">for</span><span class="w"> </span>aupfile<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">TO</span><span class="si">}</span><span class="s2">/Archive-Update-in-Progress-"</span>*<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="nv">$aupfile</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span>
+</span><span id="__span-12-3"><a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">    </span>*<span class="o">)</span>
+</span><span id="__span-12-4"><a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span><span class="nv">$aupfile</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-12-5"><a href="#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="w">            </span><span class="c1"># Remove the file, it will be synced again if</span>
+</span><span id="__span-12-6"><a href="#__codelineno-12-6" id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">            </span><span class="c1"># upstream is still not done</span>
+</span><span id="__span-12-7"><a href="#__codelineno-12-7" id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">            </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$aupfile</span><span class="s2">"</span>
+</span><span id="__span-12-8"><a href="#__codelineno-12-8" id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">        </span><span class="k">fi</span>
+</span><span id="__span-12-9"><a href="#__codelineno-12-9" id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="w">        </span><span class="nv">upstream_uip</span><span class="o">=</span><span class="nb">true</span>
+</span><span id="__span-12-10"><a href="#__codelineno-12-10" id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="w">        </span><span class="p">;;</span>
+</span><span id="__span-12-11"><a href="#__codelineno-12-11" id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="w">    </span><span class="k">esac</span>
+</span><span id="__span-12-12"><a href="#__codelineno-12-12" id="__codelineno-12-12" name="__codelineno-12-12"></a><span class="k">done</span>
+</span><span id="__span-12-13"><a href="#__codelineno-12-13" id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="si">${</span><span class="nv">upstream_uip</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-12-14"><a href="#__codelineno-12-14" id="__codelineno-12-14" name="__codelineno-12-14"></a><span class="w">    </span>log<span class="w"> </span><span class="s2">"Upstream archive update in progress, skipping stage2"</span>
+</span><span id="__span-12-15"><a href="#__codelineno-12-15" id="__codelineno-12-15" name="__codelineno-12-15"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">UPDATE_RETRIES</span><span class="si">}</span><span class="w"> </span>-lt<span class="w"> </span><span class="si">${</span><span class="nv">UIPRETRIES</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-12-16"><a href="#__codelineno-12-16" id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="w">        </span>log<span class="w"> </span><span class="s2">"Retrying update in </span><span class="si">${</span><span class="nv">UIPSLEEP</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-12-17"><a href="#__codelineno-12-17" id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="w">        </span>sleep<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">UIPSLEEP</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-12-18"><a href="#__codelineno-12-18" id="__codelineno-12-18" name="__codelineno-12-18"></a><span class="w">    </span><span class="k">fi</span>
+</span><span id="__span-12-19"><a href="#__codelineno-12-19" id="__codelineno-12-19" name="__codelineno-12-19"></a><span class="k">else</span>
+</span><span id="__span-12-20"><a href="#__codelineno-12-20" id="__codelineno-12-20" name="__codelineno-12-20"></a><span class="w">    </span><span class="c1"># We are lucky, it worked. Now do step 2 and sync again, this time including</span>
+</span><span id="__span-12-21"><a href="#__codelineno-12-21" id="__codelineno-12-21" name="__codelineno-12-21"></a><span class="w">    </span><span class="c1"># the packages/releases files</span>
+</span><span id="__span-12-22"><a href="#__codelineno-12-22" id="__codelineno-12-22" name="__codelineno-12-22"></a><span class="w">    </span>run_rsync<span class="w"> </span><span class="s2">"stage2"</span><span class="w"> </span><span class="si">${</span><span class="nv">RSYNC_OPTIONS2</span><span class="si">}</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nv">result</span><span class="o">=</span><span class="nv">$?</span>
+</span><span id="__span-12-23"><a href="#__codelineno-12-23" id="__codelineno-12-23" name="__codelineno-12-23"></a><span class="k">fi</span>
 </span></code></pre></div>
 </li>
 </ul>
@@ -2325,8 +2385,8 @@
 </li>
 <li>
 <p>去除锁</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="c1"># Remove the Archive-Update-in-Progress file before we push our downstreams.</span>
-</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a>rm<span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">LOCK</span><span class="si">}</span><span class="s2">"</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="c1"># Remove the Archive-Update-in-Progress file before we push our downstreams.</span>
+</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a>rm<span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">LOCK</span><span class="si">}</span><span class="s2">"</span>
 </span></code></pre></div>
 </li>
 </ul>
@@ -2335,7 +2395,7 @@
 <span class="md-icon" title="Last update">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 29, 2025 07:10:37">April 29, 2025</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 3, 2025 15:46:23">May 3, 2025</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="Created">
