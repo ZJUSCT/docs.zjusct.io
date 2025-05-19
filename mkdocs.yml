@@ -140,6 +140,7 @@ plugins:
   - blog
   - git-revision-date-localized:
       enable_creation_date: true
+  # 该插件本地编辑时关闭，CI 时自动开启
   - git-committers:
       enabled: false
       repository: zjusct/docs.zjusct.io
