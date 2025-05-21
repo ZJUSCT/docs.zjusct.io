@@ -4327,13 +4327,14 @@
 </li>
 <li>
 <p><strong>2025-03-13 12:46:28</strong> 攻击者通过 <code>bowling</code> 的 SSH 配置文件跳板到 ZJU Mirror。所幸 Mirror 的密码复杂度较高，未能爆破成功。</p>
-<pre class="mermaid"><code>2025-03-13 12:46:28.320 Accepted publickey for bowling from ***.***.***.***(集群校网) port 39121 ssh2: ED25519 SHA256:kFqyS5UJ1IgqPT79Y6BOj286/PhmO2KaK4ht6WT3wWk
-2025-03-13 12:46:28.323 pam_unix(sshd:session): session opened for user bowling(uid=1006) by (uid=0)
-2025-03-13 12:47:53.864 pam_unix(sudo:auth): authentication failure; logname=bowling uid=1006 euid=0 tty=/dev/pts/1 ruser=bowling rhost=  user=bowling
-2025-03-13 12:48:08.669 bowling : 3 incorrect password attempts ; TTY=pts/1 ; PWD=/home/bowling ; USER=root ; COMMAND=validate
-2025-03-13 13:10:30.381 pam_unix(su:auth): authentication failure; logname= uid=1006 euid=0 tty= ruser=bowling rhost=  user=cage
-2025-03-13 13:10:30.380 pam_unix(su:auth): authentication failure; logname= uid=1006 euid=0 tty= ruser=bowling rhost=  user=cage
-...</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>2025-03-13 12:46:28.320 Accepted publickey for bowling from ***.***.***.***(集群校网) port 39121 ssh2: ED25519 SHA256:kFqyS5UJ1IgqPT79Y6BOj286/PhmO2KaK4ht6WT3wWk
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>2025-03-13 12:46:28.323 pam_unix(sshd:session): session opened for user bowling(uid=1006) by (uid=0)
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>2025-03-13 12:47:53.864 pam_unix(sudo:auth): authentication failure; logname=bowling uid=1006 euid=0 tty=/dev/pts/1 ruser=bowling rhost=  user=bowling
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>2025-03-13 12:48:08.669 bowling : 3 incorrect password attempts ; TTY=pts/1 ; PWD=/home/bowling ; USER=root ; COMMAND=validate
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>2025-03-13 13:10:30.381 pam_unix(su:auth): authentication failure; logname= uid=1006 euid=0 tty= ruser=bowling rhost=  user=cage
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>2025-03-13 13:10:30.380 pam_unix(su:auth): authentication failure; logname= uid=1006 euid=0 tty= ruser=bowling rhost=  user=cage
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>...
+</span></code></pre></div>
 </li>
 <li>
 <p><strong>2025-03-15 02:10:06</strong> 攻击者从公网访问超算队集群，开始横向移动。最终使用管理员 <code>star</code> 的密钥对进入核心节点 storage。</p>
@@ -4420,7 +4421,7 @@ style s7 fill:#FF3131</code></pre>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 3, 2025 07:29:41">May 3, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 21, 2025 07:43:53">May 21, 2025</span>
   </span>
 
     
