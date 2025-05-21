@@ -161,7 +161,7 @@ flowchart TD
 
 - **2025-03-13 12:46:28** 攻击者通过 `bowling` 的 SSH 配置文件跳板到 ZJU Mirror。所幸 Mirror 的密码复杂度较高，未能爆破成功。
 
-    ```mermaid
+    ```text
     2025-03-13 12:46:28.320 Accepted publickey for bowling from ***.***.***.***(集群校网) port 39121 ssh2: ED25519 SHA256:kFqyS5UJ1IgqPT79Y6BOj286/PhmO2KaK4ht6WT3wWk
     2025-03-13 12:46:28.323 pam_unix(sshd:session): session opened for user bowling(uid=1006) by (uid=0)
     2025-03-13 12:47:53.864 pam_unix(sudo:auth): authentication failure; logname=bowling uid=1006 euid=0 tty=/dev/pts/1 ruser=bowling rhost=  user=bowling
