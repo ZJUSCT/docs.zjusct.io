@@ -10,21 +10,6 @@
         "title": "ISC25",
         "activities": [
             {
-                "title": "Virtual Opening Ceremony",
-                "start": "2025-04-01",
-                "end": "2025-04-01"
-            },
-            {
-                "title": "Virtual Competition Ends",
-                "start": "2025-05-09",
-                "end": "2025-05-09"
-            },
-            {
-                "title": "Virtual Team Interviews",
-                "start": "2025-05-12",
-                "end": "2025-05-23"
-            },
-            {
                 "title": "In-Person Opening Ceremony",
                 "start": "2025-06-10",
                 "end": "2025-06-10"
@@ -37,17 +22,82 @@
         ]
     },
     {
-        "title": "ASC25",
+        "title": "SCC & IndySCC",
         "activities": [
             {
-                "title": "Preliminary Competition",
-                "start": "2025-01-06",
-                "end": "2025-02-21"
+                "title": "Getting Started 研讨会",
+                "start": "2025-04-07",
+                "end": "2025-04-07"
             },
             {
-                "title": "Final Competition",
-                "start": "2025-05-10",
-                "end": "2025-05-14"
+                "title": "IndySCC 申请开放",
+                "start": "2025-03-01",
+                "end": "2025-03-01"
+            },
+            {
+                "title": "IndySCC 申请截止",
+                "start": "2025-05-16",
+                "end": "2025-05-16"
+            },
+            {
+                "title": "IndySCC 通知发送",
+                "start": "2025-06-16",
+                "end": "2025-06-16"
+            },
+            {
+                "title": "IndySCC 比赛",
+                "start": "2025-11-17",
+                "end": "2025-11-19"
+            }
+        ]
+    },
+    {
+        "title": "PAC 2025",
+        "activities": [
+            {
+                "title": "报名截止 & 初赛赛题发布",
+                "start": "2025-06-15",
+                "end": "2025-06-15"
+            },
+            {
+                "title": "初赛截止日期",
+                "start": "2025-07-01",
+                "end": "2025-07-01"
+            },
+            {
+                "title": "决赛任务发布",
+                "start": "2025-07-15",
+                "end": "2025-07-15"
+            },
+            {
+                "title": "决赛提交截止",
+                "start": "2025-08-15",
+                "end": "2025-08-15"
+            }
+        ]
+    },
+    {
+        "title": "SolverChallenge25",
+        "activities": [
+            {
+                "title": "任务公布",
+                "start": "2025-05-15",
+                "end": "2025-05-15"
+            },
+            {
+                "title": "报名截止",
+                "start": "2025-06-15",
+                "end": "2025-06-15"
+            },
+            {
+                "title": "提交截止",
+                "start": "2025-07-15",
+                "end": "2025-07-15"
+            },
+            {
+                "title": "答辩和颁奖",
+                "start": "2025-08-02",
+                "end": "2025-08-02"
             }
         ]
     }
