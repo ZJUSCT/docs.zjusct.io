@@ -1,0 +1,5661 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ZJUSCT Documents & Blogs">
+      
+      
+        <meta name="author" content="ZJUSCT">
+      
+      
+        <link rel="canonical" href="https://docs.zjusct.io/operation/network/network-technology/ipv6/">
+      
+      
+        <link rel="prev" href="../../rdma/">
+      
+      
+        <link rel="next" href="../l2tp/">
+      
+      
+      <link rel="icon" href="../../../../assets/zjusct.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>IPv6 - ZJUSCT 文档与博客</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/fonts.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/counter.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/theme.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/neoteroi-v1.1.2.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ipv6" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="ZJUSCT 文档与博客" class="md-header__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+      
+  <img src="../../../../assets/zjusct.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ZJUSCT 文档与博客
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              IPv6
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="zjusct" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="根据系统模式切换主题"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="根据系统模式切换主题" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ZJUSCT/docs.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docs.zjusct.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  首页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../competition/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🏆 竞赛
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../falcon/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🦅 Falcon
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../optimization/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🔧 优化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  ⚙️ 运维
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../blog/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  ✍️ 博客
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="ZJUSCT 文档与博客" class="md-nav__button md-logo" aria-label="ZJUSCT 文档与博客" data-md-component="logo">
+      
+  <img src="../../../../assets/zjusct.svg" alt="logo">
+
+    </a>
+    ZJUSCT 文档与博客
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ZJUSCT/docs.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docs.zjusct.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            首页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../index/contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    贡献
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../index/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJUSCT 历史
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../index/newcomer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJUSCT 集群新手指南
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../competition/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    🏆 竞赛
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            🏆 竞赛
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../falcon/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    🦅 Falcon
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            🦅 Falcon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../falcon/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU Git 代码托管服务
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../falcon/mirror-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU Mirror 历史
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../falcon/mirror/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU Mirror 镜像站
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../optimization/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    🔧 优化
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            🔧 优化
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../optimization/parallel/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    parallel
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            parallel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    cpu
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            cpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../optimization/parallel/cpu/model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    模型
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../optimization/parallel/cpu/mpi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MPI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../optimization/parallel/cpu/openmp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../optimization/parallel/cpu/others/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    其他
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    gpu
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            gpu
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../optimization/parallel/gpu/cuda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CUDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../optimization/parallel/gpu/hip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HIP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../optimization/parallel/gpu/model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    模型
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../optimization/parallel/gpu/others/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Others
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    ⚙️ 运维
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            ⚙️ 运维
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../hardware/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    hardware
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            hardware
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    硬件知识
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hardware/oobm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    带外管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    network
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rdma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RDMA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_3" id="__nav_5_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    network-technology
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            network-technology
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    IPv6
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    IPv6
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ipv6-原理" class="md-nav__link">
+    <span class="md-ellipsis">
+      IPv6 原理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IPv6 原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ipv6-地址" class="md-nav__link">
+    <span class="md-ellipsis">
+      IPv6 地址
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icmpv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ICMPv6
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ndp" class="md-nav__link">
+    <span class="md-ellipsis">
+      NDP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#地址解析" class="md-nav__link">
+    <span class="md-ellipsis">
+      地址解析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#跟踪邻居状态" class="md-nav__link">
+    <span class="md-ellipsis">
+      跟踪邻居状态
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#重复地址检测" class="md-nav__link">
+    <span class="md-ellipsis">
+      重复地址检测
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#路由器发现" class="md-nav__link">
+    <span class="md-ellipsis">
+      路由器发现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#地址自动配置slaac" class="md-nav__link">
+    <span class="md-ellipsis">
+      地址自动配置（SLAAC）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#默认路由器优先级和路由信息发现" class="md-nav__link">
+    <span class="md-ellipsis">
+      默认路由器优先级和路由信息发现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#重定向" class="md-nav__link">
+    <span class="md-ellipsis">
+      重定向
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ipv6-实践" class="md-nav__link">
+    <span class="md-ellipsis">
+      IPv6 实践
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IPv6 实践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#校园网-slaac" class="md-nav__link">
+    <span class="md-ellipsis">
+      校园网 SLAAC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#华为路由器配置-slaac" class="md-nav__link">
+    <span class="md-ellipsis">
+      华为路由器配置 SLAAC
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dhcpv6-原理" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 原理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DHCPv6 原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-基本概念" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-报文格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 报文格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-有状态自动分配" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 有状态自动分配
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DHCPv6 有状态自动分配">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-四步交互" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 四步交互
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-两步交互" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 两步交互
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-无状态自动分配" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 无状态自动分配
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-pd-工作原理" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 PD 工作原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-中继工作原理" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 中继工作原理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dhcpv6-实践" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 实践
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DHCPv6 实践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#校园网有状态-dhcpv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      校园网有状态 DHCPv6
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#华为路由器配置-ipv6-中继" class="md-nav__link">
+    <span class="md-ellipsis">
+      华为路由器配置 IPv6 中继
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../l2tp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    L2TP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    链路聚合
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lldp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLDP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snmp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SNMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vlan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VLAN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wlan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WLAN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../observability/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    observability
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            observability
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../observability/log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    日志收集
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../observability/network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络观测
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../observability/opentelemetry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    数据采集：OpenTelemetry
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../software/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    software
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_5" id="__nav_5_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software/build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    编译/构建系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software/conda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    包管理器：Conda
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software/lmod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    环境管理：Lmod
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software/modern-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    现代化 CLI 工具
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software/shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    环境变量与 Shell
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../software/spack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    包管理器：Spack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../system/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    system
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_6" id="__nav_5_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            system
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/macOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    macOS 运维
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6_3" id="__nav_5_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    basic
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            basic
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/basic/acl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    文件权限
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/basic/boot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    启动过程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/basic/drivers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Linux 设备驱动
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/basic/filesystem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    文件系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/basic/systemd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    systemd
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../system/diskless/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    diskless
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_6_4" id="__nav_5_6_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            diskless
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/diskless/cicd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    自动构建：Jenkins
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/diskless/distros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    其他发行版
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/diskless/nfsroot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    核心机制：NFS Root
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/diskless/pxe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    引导方式：PXE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6_5" id="__nav_5_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    service
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            service
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/service/auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    身份认证与授权：NSS、PAM 和 SSSD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/service/containers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    容器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/service/jenkins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CI/CD 平台：Jenkins
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/service/ldap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    目录服务：LDAP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/service/nis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络信息服务：NIS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/service/pve/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    虚拟化平台：PVE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../system/service/slurm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    任务调度：Slurm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../blog/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    ✍️ 博客
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            ✍️ 博客
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    posts
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            posts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/posts/.template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    None
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_2" id="__nav_6_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2018
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            2018
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2018/09/30/%E6%B5%99%E6%B1%9F%E5%A4%A7%E5%AD%A6%E8%B6%85%E7%AE%97%E9%98%9F%E5%8D%9A%E5%AE%A2%E6%B4%BB%E4%BA%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    浙江大学超算队博客...活了？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2018/11/25/cuda-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%80%BB%E7%BB%93-%E4%B8%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CUDA 内存管理总结 (一)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2018/12/07/quick-guide-to-cuda-profiling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Guide to CUDA Profiling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2018/12/23/distributed-tensorflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Distributed Tensorflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2018/12/24/bp-%E7%AE%97%E6%B3%95feed-forward-neural-network-and-back-propagation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    （BP 算法）Feed forward neural network and back propagation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_3" id="__nav_6_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2019
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            2019
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2019/03/31/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%A2%99%E5%86%85%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2-centos-7-%E7%9A%84-mysql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    如何在墙内快速部署 CentOS 7 的 MySQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2019/03/31/virtual-memory-and-tlb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Virtual Memory and TLB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2019/05/11/%E5%9F%BA%E4%BA%8E-0-1-%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%9A%84%E6%9C%B4%E7%B4%A0%E5%9B%BE%E7%89%87%E9%99%8D%E5%99%AA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    基于 0-1 乘性噪声的朴素图片降噪
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2019/05/27/20190526-%E4%BC%9A%E8%AE%AE%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2019.05.26 会议记录
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2019/05/31/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    生成式对抗网络——基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2019/06/14/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    生成式对抗网络——理论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2019/06/16/%E5%9F%BA%E4%BA%8E-gan-%E7%9A%84%E5%8A%A8%E6%BC%AB%E5%A4%B4%E5%83%8F%E7%94%9F%E6%88%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    基于 GAN 的动漫头像生成
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2019/06/21/rsa-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8F%8A%E5%85%B6%E6%95%B0%E5%AD%A6%E6%80%9D%E6%83%B3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RSA 加密算法及其数学思想
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_4" id="__nav_6_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2025
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            2025
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2025/03/16/%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E5%85%A5%E4%BE%B5%E4%BA%8B%E4%BB%B6%E5%A7%8B%E6%9C%AB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    蠕虫病毒入侵事件始末
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2025/05/01/%E7%AC%AC%E4%B8%89%E4%BB%A3%E9%95%9C%E5%83%8F%E7%AB%99%E5%BB%BA%E8%AE%BE%E4%B8%80%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三代镜像站建设（一）：服务器自动化部署
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/2025/05/19/-hello-hpc-world--2025-%E8%B6%85%E7%AE%97%E7%9F%AD%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B%E6%AD%A3%E5%BC%8F%E5%90%AF%E5%8A%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🎓 Hello, HPC World | 2025 超算短学期课程正式启动！
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/archive/2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/archive/2019/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2019
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/archive/2018/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2018
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Categories
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/cuda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CUDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/centos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CentOS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/meetingreport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MeetingReport
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/mysql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MySQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/operating-susyem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Operating Susyem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/profile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Profile
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/spc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Spc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/tlb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TLB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tech
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/tensorflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tensorflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/virtual-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Virtual Memory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/zju/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/zjusct/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ZJUSCT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    密码学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    数论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/%E7%9F%AD%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    短学期课程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/%E8%BF%90%E7%BB%B4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    运维
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ipv6-原理" class="md-nav__link">
+    <span class="md-ellipsis">
+      IPv6 原理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IPv6 原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ipv6-地址" class="md-nav__link">
+    <span class="md-ellipsis">
+      IPv6 地址
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icmpv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ICMPv6
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ndp" class="md-nav__link">
+    <span class="md-ellipsis">
+      NDP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#地址解析" class="md-nav__link">
+    <span class="md-ellipsis">
+      地址解析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#跟踪邻居状态" class="md-nav__link">
+    <span class="md-ellipsis">
+      跟踪邻居状态
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#重复地址检测" class="md-nav__link">
+    <span class="md-ellipsis">
+      重复地址检测
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#路由器发现" class="md-nav__link">
+    <span class="md-ellipsis">
+      路由器发现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#地址自动配置slaac" class="md-nav__link">
+    <span class="md-ellipsis">
+      地址自动配置（SLAAC）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#默认路由器优先级和路由信息发现" class="md-nav__link">
+    <span class="md-ellipsis">
+      默认路由器优先级和路由信息发现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#重定向" class="md-nav__link">
+    <span class="md-ellipsis">
+      重定向
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ipv6-实践" class="md-nav__link">
+    <span class="md-ellipsis">
+      IPv6 实践
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IPv6 实践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#校园网-slaac" class="md-nav__link">
+    <span class="md-ellipsis">
+      校园网 SLAAC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#华为路由器配置-slaac" class="md-nav__link">
+    <span class="md-ellipsis">
+      华为路由器配置 SLAAC
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dhcpv6-原理" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 原理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DHCPv6 原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-基本概念" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-报文格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 报文格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-有状态自动分配" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 有状态自动分配
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DHCPv6 有状态自动分配">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-四步交互" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 四步交互
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-两步交互" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 两步交互
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-无状态自动分配" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 无状态自动分配
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-pd-工作原理" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 PD 工作原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcpv6-中继工作原理" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 中继工作原理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dhcpv6-实践" class="md-nav__link">
+    <span class="md-ellipsis">
+      DHCPv6 实践
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DHCPv6 实践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#校园网有状态-dhcpv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      校园网有状态 DHCPv6
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#华为路由器配置-ipv6-中继" class="md-nav__link">
+    <span class="md-ellipsis">
+      华为路由器配置 IPv6 中继
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../../../index/contribute/#tag:stable" class="md-tag">stable</a>
+      
+    
+  </nav>
+
+
+  
+    <a href="https://github.com/ZJUSCT/docs.zjusct.io/blob/main/docs/operation/network/network-technology/ipv6.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="ipv6">IPv6<a class="headerlink" href="#ipv6" title="Permanent link">&para;</a></h1>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<ul>
+<li>华为文档</li>
+</ul>
+</div>
+<p>IPv6 是下一代互联网协议、互联网的发展方向，受到国家重视，在国内推广和应用已经达到一定规模。浙江大学校园网也部署了 IPv6，校园网不同区域存在 SLAAC 或 DHCPv6 配置方式，但均没有下发前缀，使得用户接入的路由器无法正常使用 IPv6 功能（目前支持 NATv6 的路由器较少），因此集群内部也没有配置 IPv6。</p>
+<h2 id="ipv6-原理">IPv6 原理<a class="headerlink" href="#ipv6-原理" title="Permanent link">&para;</a></h2>
+<h3 id="ipv6-地址">IPv6 地址<a class="headerlink" href="#ipv6-地址" title="Permanent link">&para;</a></h3>
+<p>IPv6 地址分为单播地址、任播地址（Anycast Address）、组播地址三种类型。</p>
+<ul>
+<li>
+<p>单播地址：标识了一个接口，由于每个接口属于一个节点，因此每个节点的任何接口上的单播地址都可以标识这个节点。发往单播地址的报文，由此地址标识的接口接收。</p>
+<ul>
+<li>未指定地址：IPv6 中的未指定地址即 <code>0:0:0:0:0:0:0:0/128</code> 或者 <code>::/128</code>。该地址可以表示某个接口或者节点还没有 IP 地址，可以作为某些报文的源 IP 地址（例如在 NS 报文的重复地址检测中会出现）。源 IP 地址是 <code>::</code> 的报文不会被路由设备转发。</li>
+<li>环回地址：IPv6 中的环回地址即 <code>0:0:0:0:0:0:0:1/128</code> 或者 <code>::1/128</code>。环回与 IPv4 中的<code>127.0.0.1</code>作用相同，主要用于设备给自己发送报文。该地址通常用来作为一个虚接口的地址（如 Loopback 接口）。实际发送的数据包中不能使用环回地址作为源 IP 地址或者目的 IP 地址。</li>
+<li>
+<p>全球单播地址</p>
+<p><a class="glightbox" href="../ipv6.assets/addr_global.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../ipv6.assets/addr_global.png" /></a></p>
+<ul>
+<li>全球单播地址是带有全球单播前缀的 IPv6 地址，其作用类似于 IPv4 中的公网地址。这种类型的地址允许路由前缀的聚合，从而限制了全球路由表项的数量。</li>
+<li>全球单播地址由全球路由前缀（Global routing prefix）、子网 ID（Subnet ID）和接口标识（Interface ID）组成。<ul>
+<li>Global routing prefix：全球路由前缀。由提供商（Provider）指定给一个组织机构，通常全球路由前缀至少为 48 位。目前已经分配的全球路由前缀的前 3bit 均为 <code>001</code>。</li>
+<li>Subnet ID：子网 ID。组织机构可以用子网 ID 来构建本地网络（Site）。子网 ID 通常最多分配到第 64 位。子网 ID 和 IPv4 中的子网号作用相似。</li>
+<li>Interface ID：接口标识。用来标识一个设备（Host）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>链路本地地址</p>
+<p><a class="glightbox" href="../ipv6.assets/addr_link_local.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../ipv6.assets/addr_link_local.png" /></a></p>
+<ul>
+<li>链路本地地址是 IPv6 中的应用范围受限制的地址类型，只能在连接到同一本地链路的节点之间使用。它使用了特定的本地链路前缀 <code>FE80::/10</code>（最高 10 位值为 <code>1111111010</code>），同时将接口标识添加在后面作为地址的低 64 比特。</li>
+<li>当一个节点启动 IPv6 协议栈时，启动时节点的每个接口会自动配置一个链路本地地址（其固定的前缀+EUI-64 规则形成的接口标识）。这种机制使得两个连接到同一链路的 IPv6 节点不需要做任何配置就可以通信。所以链路本地地址广泛应用于邻居发现，无状态地址配置等应用。</li>
+<li>以链路本地地址为源地址或目的地址的 IPv6 报文不会被路由设备转发到其他链路。</li>
+</ul>
+</li>
+<li>
+<p>唯一本地地址</p>
+<p><a class="glightbox" href="../ipv6.assets/addr_unique_local.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../ipv6.assets/addr_unique_local.png" /></a></p>
+<ul>
+<li>唯一本地地址是另一种应用范围受限的地址，它仅能在一个站点内使用。由于本地站点地址的废除（RFC3879），唯一本地地址被用来代替本地站点地址。</li>
+<li>唯一本地地址的作用类似于 IPv4 中的私网地址，任何没有申请到提供商分配的全球单播地址的组织机构都可以使用唯一本地地址。唯一本地地址只能在本地网络内部被路由转发而不会在全球网络中被路由转发。</li>
+<li>唯一本地地址格式：<ul>
+<li>Prefix：前缀；固定为 <code>FC00::/7</code>。</li>
+<li>L：L 标志位；值为 1 代表该地址为在本地网络范围内使用的地址；值为 0 被保留，用于以后扩展。</li>
+<li>Global ID：全球唯一前缀；通过伪随机方式产生。</li>
+<li>Subnet ID：子网 ID；划分子网使用。</li>
+<li>Interface ID：接口标识。</li>
+</ul>
+</li>
+<li>唯一本地地址特点：<ul>
+<li>具有全球唯一的前缀（虽然随机方式产生，但是冲突概率很低）。</li>
+<li>可以进行网络之间的私有连接，而不必担心地址冲突等问题。</li>
+<li>具有知名前缀（FC00::/7），方便边缘设备进行路由过滤。</li>
+<li>如果出现路由泄漏，该地址不会和其他地址冲突，不会造成 Internet 路由冲突。</li>
+<li>应用中，上层应用程序将这些地址看作全球单播地址对待。</li>
+<li>独立于互联网服务提供商 ISP（Internet Service Provider）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>组播地址：IPv6 的组播与 IPv4 相同，用来标识一组接口，一般这些接口属于不同的节点。一个节点可能属于 0 到多个组播组。发往组播地址的报文被组播地址标识的所有接口接收。例如组播地址 <code>FF02::1</code> 表示链路本地范围的所有节点，组播地址 <code>FF02::2</code> 表示链路本地范围的所有路由器。</p>
+<p><a class="glightbox" href="../ipv6.assets/addr_group.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../ipv6.assets/addr_group.png" /></a></p>
+<ul>
+<li>一个 IPv6 组播地址由前缀，标志（Flag）字段、范围（Scope）字段以及组播组 ID（Group ID）4 个部分组成：<ul>
+<li>前缀：IPv6 组播地址的前缀是 <code>FF00::/8</code>。</li>
+<li>标志字段（Flag）：长度 4bit，目前只使用了后面 3 个比特（第一位必须置 0）。当最后一位值为 0 时，表示当前的组播地址是由 IANA 所分配的一个永久分配地址；当最后一位值为 1 时，表示当前的组播地址是一个临时组播地址（非永久分配地址）。</li>
+<li>范围字段（Scope）：长度 4bit，用来限制组播数据流在网络中发送的范围。</li>
+<li>组播组 ID（Group ID）：长度 112bit，用以标识组播组。目前，RFC2373 并没有将所有的 112 位都定义成组标识，而是建议仅使用该 112 位的最低 32 位作为组播组 ID，将剩余的 80 位都置 0。这样每个组播组 ID 都映射到一个唯一的以太网组播 MAC 地址（RFC2464）。</li>
+</ul>
+</li>
+<li>被请求节点组播地址<ul>
+<li>被请求节点组播地址通过节点的单播或任播地址生成。当一个节点具有了单播或任播地址，就会对应生成一个被请求节点组播地址，并且加入这个组播组。一个单播地址或任播地址对应一个被请求节点组播地址。该地址主要用于邻居发现机制和地址重复检测功能。</li>
+<li>IPv6 中没有广播地址，也不使用 ARP。但是仍然需要从 IP 地址解析到 MAC 地址的功能。在 IPv6 中，这个功能通过邻居请求 NS（Neighbor Solicitation）报文完成。当一个节点需要解析某个 IPv6 地址对应的 MAC 地址时，会发送 NS 报文，该报文的目的 IP 就是需要解析的 IPv6 地址对应的被请求节点组播地址；只有具有该组播地址的节点会检查处理。</li>
+<li>被请求节点组播地址由前缀 <code>FF02::1:FF00:0/104</code>和单播地址的最后 24 位组成。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>任播地址：任播地址标识一组网络接口（通常属于不同的节点）。目标地址是任播地址的数据包将发送给其中路由意义上最近的一个网络接口。</p>
+<ul>
+<li>任播地址设计用来在给多个主机或者节点提供相同服务时提供冗余功能和负载分担功能。目前，任播地址的使用通过共享单播地址方式来完成。将一个单播地址分配给多个节点或者主机，这样在网络中如果存在多条该地址路由，当发送者发送以任播地址为目的 IP 的数据报文时，发送者无法控制哪台设备能够收到，这取决于整个网络中路由协议计算的结果。这种方式可以适用于一些无状态的应用，例如 DNS 等。</li>
+<li>IPv6 中没有为任播规定单独的地址空间，任播地址和单播地址使用相同的地址空间。目前 IPv6 中任播主要应用于移动 IPv6。</li>
+<li>IPv6 任播地址仅可以被分配给路由设备，不能应用于主机。任播地址不能作为 IPv6 报文的源地址。</li>
+<li>子网路由器任播地址<ul>
+<li>子网路由器任播地址是已经定义好的一种任播地址（RFC3513）。发送到子网路由器任播地址的报文会被发送到该地址标识的子网中路由意义上最近的一个设备。所有设备都必须支持子网任播地址。子网路由器任播地址用于节点需要和远端子网上所有设备中的一个（不关心具体是哪一个）通信时使用。例如，一个移动节点需要和它的“家乡”子网上的所有移动代理中的一个进行通信。</li>
+<li>子网路由器任播地址由 n bit 子网前缀标识子网，其余用 0 填充。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">总结</p>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>::</code></td>
+<td>未指定地址</td>
+</tr>
+<tr>
+<td><code>::1</code></td>
+<td>环回地址</td>
+</tr>
+<tr>
+<td><code>2000::/3</code></td>
+<td>全球单播地址</td>
+</tr>
+<tr>
+<td><code>FE80::/10</code></td>
+<td>链路本地地址</td>
+</tr>
+<tr>
+<td><code>FC00::/7</code></td>
+<td>唯一本地地址</td>
+</tr>
+<tr>
+<td><code>FF00::/8</code></td>
+<td>组播地址</td>
+</tr>
+<tr>
+<td><code>FF02::1</code></td>
+<td>链路本地范围的所有节点</td>
+</tr>
+<tr>
+<td><code>FF02::2</code></td>
+<td>链路本地范围的所有路由器</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="icmpv6">ICMPv6<a class="headerlink" href="#icmpv6" title="Permanent link">&para;</a></h3>
+<p>在 IPv6 中，ICMPv6 除了提供 ICMPv4 常用的功能之外，还是其它一些功能的基础，如邻接点发现、无状态地址配置（包括重复地址检测）、PMTU 发现等。ICMPv6 的协议类型号（即 IPv6 报文中的 Next Header 字段的值）为 58。</p>
+<p>ICMPv6 错误报文用于报告在转发 IPv6 数据包过程中出现的错误。ICMPv6 错误报文可以分为以下 4 种：</p>
+<ul>
+<li>目的不可达错误报文</li>
+<li>数据包过大错误报文</li>
+<li>时间超时错误报文</li>
+<li>参数错误报文</li>
+</ul>
+<p>ICMPv6 信息报文提供诊断功能和附加的主机功能，比如多播侦听发现和邻居发现。常见的 ICMPv6 信息报文主要包括回送请求报文（Echo Request）和回送应答报文（Echo Reply），这两种报文也就是通常使用的 Ping 报文。</p>
+<h3 id="ndp">NDP<a class="headerlink" href="#ndp" title="Permanent link">&para;</a></h3>
+<p>邻居发现协议 NDP（Neighbor Discovery Protocol）是 IPv6 协议体系中一个重要的基础协议。邻居发现协议替代了 IPv4 的 ARP（Address Resolution Protocol）和 ICMP 路由器发现（Router Discovery），它定义了使用 ICMPv6 报文实现地址解析，跟踪邻居状态，重复地址检测，路由器发现以及重定向等功能。</p>
+<h4 id="地址解析">地址解析<a class="headerlink" href="#地址解析" title="Permanent link">&para;</a></h4>
+<p>在 IPv4 中，当主机需要和目标主机通信时，必须先通过 ARP 协议获得目的主机的链路层地址。在 IPv6 中，同样需要从 IP 地址解析到链路层地址的功能。邻居发现协议实现了这个功能。</p>
+<div class="admonition note">
+<p class="admonition-title">ICMPv6 与 ARP 的比较</p>
+<p>ARP 报文是直接封装在以太网报文中，以太网协议类型为 <code>0x0806</code>，普遍观点认为 ARP 定位为第 2.5 层的协议。ND 本身基于 ICMPv6 实现，以太网协议类型为 0x86DD，即 IPv6 报文，IPv6 下一个报头字段值为 58，表示 ICMPv6 报文，由于 ND 协议使用的所有报文均封装在 ICMPv6 报文中，一般来说，ND 被看作第 3 层的协议。在三层完成地址解析，主要带来以下几个好处：</p>
+<ul>
+<li>地址解析在三层完成，不同的二层介质可以采用相同的地址解析协议。</li>
+<li>可以使用三层的安全机制避免地址解析攻击。</li>
+<li>使用组播方式发送请求报文，减少了二层网络的性能压力。</li>
+</ul>
+</div>
+<p>地址解析过程中使用了两种 ICMPv6 报文：邻居请求报文 NS（Neighbor Solicitation）和邻居通告报文 NA（Neighbor Advertisement）。</p>
+<ul>
+<li>NS 报文：在地址解析中的作用类似于 IPv4 中的 ARP 请求报文。</li>
+<li>NA 报文：在地址解析中的作用类似于 IPv4 中的 ARP 应答报文。</li>
+</ul>
+<figure>
+    <center>
+    <a class="glightbox" href="../ipv6.assets/ndp_ns_na.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="ndp_ns_na" src="../ipv6.assets/ndp_ns_na.png" width="80%" /></a>
+    </center>
+    <figcaption>
+    邻居发现协议
+    </figcaption>
+</figure>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Host A 在向 Host B 发送报文之前它必须要解析出 Host B 的链路层地址，所以首先 Host A 会发送一个 NS 报文，其中源地址为 Host A 的 IPv6 地址，目的地址为 Host B 的被请求节点组播地址，需要解析的目标 IP 为 Host B 的 IPv6 地址，这就表示 Host A 想要知道 Host B 的链路层地址。同时需要指出的是，在 NS 报文的 Options 字段中还携带了 Host A 的链路层地址。</p>
+<p>当 Host B 接收到了 NS 报文之后，就会回应 NA 报文，其中源地址为 Host B 的 IPv6 地址，目的地址为 Host A 的 IPv6 地址（使用 NS 报文中的 Host A 的链路层地址进行单播），Host B 的链路层地址被放在 Options 字段中。这样就完成了一个地址解析的过程。</p>
+</div>
+<h4 id="跟踪邻居状态">跟踪邻居状态<a class="headerlink" href="#跟踪邻居状态" title="Permanent link">&para;</a></h4>
+<p>通过邻居或到达邻居的通信，会因各种原因而中断，包括硬件故障、接口卡的热插入等。如果目的地失效，则恢复是不可能的，通信失败；如果路径失效，则恢复是可能的。因此节点需要维护一张邻居表，每个邻居都有相应的状态，状态之间可以迁移。</p>
+<p>RFC2461 中定义了 5 种邻居状态，分别是：未完成（Incomplete）、可达（Reachable）、陈旧（Stale）、延迟（Delay）、探查（Probe）。Empty 表示邻居表项为空。</p>
+<figure>
+    <center>
+    <a class="glightbox" href="../ipv6.assets/ndp_state.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="ndp_state" src="../ipv6.assets/ndp_state.png" width="80%" /></a>
+    </center>
+    <figcaption>
+    邻居状态
+    </figcaption>
+</figure>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>下面以 A、B 两个邻居节点之间相互通信过程中 A 节点的邻居状态变化为例（假设 A、B 之前从未通信），说明邻居状态迁移的过程。</p>
+<ol>
+<li>A 先发送 NS 报文，并生成缓存条目，此时，邻居状态为 Incomplete。</li>
+<li>若 B 回复 NA 报文，则邻居状态由 Incomplete 变为 Reachable，否则固定时间后邻居状态由 Incomplete 变为 Empty，即删除表项。</li>
+<li>经过邻居可达时间，邻居状态由 Reachable 变为 Stale，即未知是否可达。</li>
+<li>如果在 Reachable 状态，A 收到 B 的非请求 NA 报文，且报文中携带的 B 的链路层地址和表项中不同，则邻居状态马上变为 Stale。</li>
+<li>在 Stale 状态若 A 要向 B 发送数据，则邻居状态由 Stale 变为 Delay。</li>
+<li>在经过一段固定时间后，邻居状态由 Delay 变为 Probe，则发送 NS 请求。其间若有 NA 应答，则邻居状态由 Delay 变为 Reachable。</li>
+<li>在 Probe 状态，A 每隔一定时间间隔发送单播 NS，发送固定次数后，有应答则邻居状态变为 Reachable，否则邻居状态变为 Empty，即删除表项。</li>
+</ol>
+</div>
+<h4 id="重复地址检测">重复地址检测<a class="headerlink" href="#重复地址检测" title="Permanent link">&para;</a></h4>
+<p>重复地址检测 DAD（Duplicate Address Detect）是在接口使用某个 IPv6 单播地址之前进行的，主要是为了探测是否有其它的节点使用了该地址。尤其是在地址自动配置的时候，进行 DAD 检测是很必要的。一个 IPv6 单播地址在分配给一个接口之后且通过重复地址检测之前称为试验地址（Tentative Address）。此时该接口不能使用这个试验地址进行单播通信，但是仍然会加入两个组播组：ALL-NODES 组播组和试验地址所对应的 Solicited-Node 组播组。</p>
+<p>IPv6 重复地址检测技术和 IPv4 中的 ARP 类似：节点向试验地址所对应的 Solicited-Node 组播组发送 NS 报文。NS 报文中目标地址即为该试验地址。如果收到某个其他站点回应的 NA 报文，就证明该地址已被网络上使用，节点将不能使用该试验地址通讯。</p>
+<figure>
+    <center>
+    <a class="glightbox" href="../ipv6.assets/ndp_dad.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="ndp_dad" src="../ipv6.assets/ndp_dad.png" width="80%" /></a>
+    </center>
+    <figcaption>
+    重复地址检测
+    </figcaption>
+</figure>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Host A 的 IPv6 地址 FC00::1 为新配置地址，即 FC00::1 为 Host A 的试验地址。Host A 向 FC00::1 的 Solicited-Node 组播组发送一个以 FC00::1 为请求的目标地址的 NS 报文进行重复地址检测，由于 FC00::1 并未正式指定，所以 NS 报文的源地址为未指定地址。当 Host B 收到该 NS 报文后，有两种处理方法：</p>
+<ul>
+<li>如果 Host B 发现 FC00::1 是自身的一个试验地址，则 Host B 放弃使用这个地址作为接口地址，并且不会发送 NA 报文。</li>
+<li>如果 Host B 发现 FC00::1 是一个已经正常使用的地址，Host B 会向 FF02::1 发送一个 NA 报文，该消息中会包含 FC00::1。这样，Host A 收到这个消息后就会发现自身的试验地址是重复的。Host A 上该试验地址不生效，被标识为 duplicated 状态。</li>
+</ul>
+</div>
+<h4 id="路由器发现">路由器发现<a class="headerlink" href="#路由器发现" title="Permanent link">&para;</a></h4>
+<p>路由器发现功能用来发现与本地链路相连的设备，并获取与地址自动配置相关的前缀和其他配置参数。</p>
+<p>在 IPv6 中，IPv6 地址可以支持无状态的自动配置，即主机通过某种机制获取网络前缀信息，然后主机自己生成地址的接口标识部分。路由器发现功能是 IPv6 地址自动配置功能的基础，主要通过以下两种报文实现：</p>
+<ul>
+<li>路由器通告 <strong>RA（Router Advertisement）</strong>报文：每台设备为了让二层网络上的主机和设备知道自己的存在，定时都会组播发送 RA 报文，RA 报文中会带有网络前缀信息，及其他一些标志位信息。</li>
+<li>路由器请求 <strong>RS（Router Solicitation）</strong>报文：很多情况下主机接入网络后希望尽快获取网络前缀进行通信，此时主机可以立刻发送 RS 报文，网络上的设备将回应 RA 报文。</li>
+</ul>
+<figure>
+    <center>
+    <a class="glightbox" href="../ipv6.assets/ndp_ra.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="ndp_ra" src="../ipv6.assets/ndp_ra.png" width="80%" /></a>
+    </center>
+    <figcaption>
+    路由器发现
+    </figcaption>
+</figure>
+<h4 id="地址自动配置slaac">地址自动配置（SLAAC）<a class="headerlink" href="#地址自动配置slaac" title="Permanent link">&para;</a></h4>
+<p>IPv4 使用 DHCP 实现自动配置，包括 IP 地址，缺省网关等信息，简化了网络管理。IPv6 地址增长为 128 位，且终端节点多，对于自动配置的要求更为迫切，除保留了 DHCP 作为有状态自动配置外，还增加了<strong>无状态自动配置（StateLess Address AutoConfiguration，SLAAC）</strong>。无状态自动配置即自动生成链路本地地址，主机根据 RA 报文的前缀信息，自动配置全球单播地址等，并获得其他相关信息。</p>
+<p>IPv6 主机无状态自动配置过程：</p>
+<ol>
+<li>根据接口标识产生链路本地地址。</li>
+<li>发出邻居请求，进行重复地址检测。</li>
+<li>如地址冲突，则停止自动配置，需要手工配置。</li>
+<li>如不冲突，链路本地地址生效，节点具备本地链路通信能力。</li>
+<li>主机会发送 RS 报文（或接收到设备定期发送的 RA 报文）。</li>
+<li><strong>根据 RA 报文中的前缀信息和接口标识得到 IPv6 地址</strong>。</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">从第 6 步可以知道，如果没有 RA 报文，则无法进行 SLAAC 自动配置。</p>
+</div>
+<h4 id="默认路由器优先级和路由信息发现">默认路由器优先级和路由信息发现<a class="headerlink" href="#默认路由器优先级和路由信息发现" title="Permanent link">&para;</a></h4>
+<p>当主机所在的链路中存在多个设备时，主机需要根据报文的目的地址选择转发设备。在这种情况下，设备通过发布默认路由优先级和特定路由信息给主机，提高主机根据不同的目的地选择合适的转发设备的能力。</p>
+<p>在 RA 报文中，定义了默认路由优先级和路由信息两个字段，帮助主机在发送报文时选择合适的转发设备。</p>
+<p>主机收到包含路由信息的 RA 报文后，会更新自己的路由表。当主机向其他设备发送报文时，通过查询该列表的路由信息，选择合适的路由发送报文。</p>
+<p>主机收到包含默认设备优先级信息的 RA 报文后，会更新自己的默认路由列表。当主机向其他设备发送报文时，如果没有路由可选，则首先查询该列表，然后选择本链路内优先级最高的设备发送报文；如果该设备故障，主机根据优先级从高到低的顺序，依次选择其他设备。</p>
+<h4 id="重定向">重定向<a class="headerlink" href="#重定向" title="Permanent link">&para;</a></h4>
+<p>当网关设备发现报文从其它网关设备转发更好，它就会发送重定向报文告知报文的发送者，让报文发送者选择另一个网关设备。重定向报文也承载在 ICMPv6 报文中，报文中会携带更好的路径下一跳地址和需要重定向转发的报文的目的地址等信息。</p>
+<figure>
+    <center>
+    <a class="glightbox" href="../ipv6.assets/ndp_redirect.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="ndp_redirect" src="../ipv6.assets/ndp_redirect.png" width="80%" /></a>
+    </center>
+    <figcaption>
+    重定向
+    </figcaption>
+</figure>
+<div class="admonition exmaple">
+<p class="admonition-title">Exmaple</p>
+<p>Host A 需要和 Host B 通信，Host A 的默认网关设备是 Router A，当 Host A 发送报文给 Host B 时报文会被送到 Router A。Router A 接收到 Host A 发送的报文以后会发现实际上 Host A 直接发送给 Router B 更好，它将发送一个重定向报文给主机 A，其中报文中更好的路径下一跳地址为 Router B，Destination Address 为 Host B。Host A 接收到了重定向报文之后，会在默认路由表中添加一个主机路由，以后发往 Host B 的报文就直接发送给 Router B。</p>
+</div>
+<p>当设备收到一个报文后，只有在如下情况下，设备会向报文发送者发送重定向报文：</p>
+<ul>
+<li>报文的目的地址不是一个组播地址。</li>
+<li>报文并非通过路由转发给设备。</li>
+<li>经过路由计算后，路由的下一跳出接口是接收报文的接口。</li>
+<li>设备发现报文的最佳下一跳 IP 地址和报文的源 IP 地址处于同一网段。</li>
+<li>设备检查报文的源地址，发现自身的邻居表项中有用该地址作为全球单播地址或链路本地地址的邻居存在。</li>
+</ul>
+<h2 id="ipv6-实践">IPv6 实践<a class="headerlink" href="#ipv6-实践" title="Permanent link">&para;</a></h2>
+<h3 id="校园网-slaac">校园网 SLAAC<a class="headerlink" href="#校园网-slaac" title="Permanent link">&para;</a></h3>
+<p>目前，东四教学楼（即集群所在区域）采用 SLAAC 自动配置，让我们来看一下 SLAAC 自动配置的过程。</p>
+<figure>
+    <center>
+    <a class="glightbox" href="../ipv6.assets/practice_slaac.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="practice_slaac" src="../ipv6.assets/practice_slaac.png" width="80%" /></a>
+    </center>
+    <figcaption>
+    WireShark 抓取到的 RS、RA 报文
+    </figcaption>
+</figure>
+<p>上图展示了在校园网抓包时捕获到的 RS 和 RA 报文。可以看到设备接入网络后向 <code>FF02::2</code> 组播地址发送 RS 报文（还记得这个组播地址代表什么吗？），路由器接收到 RS 报文后，向 <code>FF02::1</code> 组播地址发送 RA 报文，其中包含了前缀信息。在上图中总是能看到两个 RA 报文，其中第二个 RA 报文到达的时间晚约 0.3 秒。我们取其中一个 RA 报文进行分析：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Internet Control Message Protocol v6
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    Type: Router Advertisement (134)
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    Code: 0
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    Checksum: 0x89b9 [correct]
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    [Checksum Status: Good]
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    Cur hop limit: 64
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    Flags: 0x00, Prf (Default Router Preference): Medium
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    Router lifetime (s): 1800
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    Reachable time (ms): 0
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    Retrans timer (ms): 0
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    ICMPv6 Option (Source link-layer address : 9c:06:1b:0b:d2:01)
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        Type: Source link-layer address (1)
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        Length: 1 (8 bytes)
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        Link-layer address: H3CTechnolog_0b:d2:01 (9c:06:1b:0b:d2:01)
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    ICMPv6 Option (MTU : 1500)
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        Type: MTU (5)
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        Length: 1 (8 bytes)
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        Reserved
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        MTU: 1500
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    ICMPv6 Option (Prefix information : 2001:da8:e000:731a::/64)
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        Type: Prefix information (3)
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        Length: 4 (32 bytes)
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        Prefix Length: 64
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        Flag: 0xc0, On-link flag(L), Autonomous address-configuration flag(A)
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        Valid Lifetime: 2592000 (30 days)
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        Preferred Lifetime: 604800 (7 days)
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        Reserved
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        Prefix: 2001:da8:e000:731a::
+</span></code></pre></div>
+<p>可以看到 RA 报文中携带了前缀信息。设备收到 RA 报文后，根据前缀信息自动配置 IPv6 地址。这一过程通常采用 EUI-64 算法，即将 MAC 地址的中间 16 位 <code>FFFE</code> 插入到 MAC 地址的中间，然后将第 7 位取反，作为接口标识。</p>
+<p>如果收到了多个 RA 报文，并且这些报文中的前缀信息不同，则设备会具有多个 SLAAC 的 IPv6 地址。</p>
+<h3 id="华为路由器配置-slaac">华为路由器配置 SLAAC<a class="headerlink" href="#华为路由器配置-slaac" title="Permanent link">&para;</a></h3>
+<p>要在局域网中配置 SLAAC，就是要在路由器上配置 RA 报文发送。在华为路由器文档中，这块内容位于“配置邻居发现功能”章节。缺省情况下，RA 报文中的前缀信息为发送 RA 报文接口所在链路的网络前缀。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>interface interface-type interface-number
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a># 开启 IPv6 RA 报文发布
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>undo ipv6 nd ra halt
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a># 按需配置 RA 报文中携带的前缀
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>ipv6 nd ra prefix ipv6-address prefix-length valid-lifetime preferred-lifetime [ no-autoconfig ] [ off-link ]
+</span></code></pre></div>
+<h2 id="dhcpv6-原理">DHCPv6 原理<a class="headerlink" href="#dhcpv6-原理" title="Permanent link">&para;</a></h2>
+<p>目前 IPv6 地址的分配方法有以下几种：</p>
+<ul>
+<li>手动配置。手动配置 IPv6 地址/前缀及其他网络配置参数（DNS、NIS、SNTP 服务器地址等参数）。</li>
+<li>无状态自动地址分配。由接口 ID 生成链路本地地址，再根据路由通告报文 RA（Router Advertisement）包含的前缀信息自动配置本机地址。</li>
+<li>有状态自动地址分配，即 DHCPv6 方式。DHCPv6 又分为如下两种：<ul>
+<li>DHCPv6 有状态自动分配。DHCPv6 服务器自动分配 IPv6 地址/PD 前缀及其他网络配置参数（DNS、NIS、SNTP 服务器地址等参数）。</li>
+<li>DHCPv6 无状态自动分配。主机 IPv6 地址仍然通过路由通告方式自动生成，DHCPv6 服务器只分配除 IPv6 地址以外的配置参数，包括 DNS、NIS、SNTP 服务器等参数。</li>
+</ul>
+</li>
+</ul>
+<h3 id="dhcpv6-基本概念">DHCPv6 基本概念<a class="headerlink" href="#dhcpv6-基本概念" title="Permanent link">&para;</a></h3>
+<ul>
+<li>组播地址<ul>
+<li>在 DHCPv6 协议中，客户端不用配置 DHCPv6 Server 的 IPv6 地址，而是发送目的地址为组播地址的 Solicit 报文来定位 DHCPv6 服务器。</li>
+<li>在 DHCPv4 协议中，客户端发送广播报文来定位服务器。为避免广播风暴，在 IPv6 中，已经没有了广播类型的报文，而是采用组播报文。DHCPv6 用到的组播地址有两个：<ul>
+<li><code>FF02::1:2</code>（All DHCP Relay Agents and Servers）：所有 DHCPv6 服务器和中继代理的组播地址，这个地址是链路范围的，用于客户端和相邻的服务器及中继代理之间通信。所有 DHCPv6 服务器和中继代理都是该组的成员。</li>
+<li>FF05::1:3（All DHCP Servers）：所有 DHCPv6 服务器组播地址，这个地址是站点范围的，用于中继代理和服务器之间的通信，站点内的所有 DHCPv6 服务器都是此组的成员。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>UDP 端口号<ul>
+<li>DHCPv6 报文承载在 UDPv6 上。</li>
+<li>客户端侦听的 UDP 目的端口号是 546。</li>
+<li>服务器、中继代理侦听的 UDP 端口号是 547。</li>
+</ul>
+</li>
+<li>DHCP 唯一标识符（DUID）<ul>
+<li>DHCP 设备唯一标识符 DUID（DHCPv6 Unique Identifier），每个服务器或客户端有且只有一个唯一标识符，服务器使用 DUID 来识别不同的客户端，客户端则使用 DUID 来识别服务器。</li>
+<li>客户端和服务器 DUID 的内容分别通过 DHCPv6 报文中的 Client Identifier 和 Server Identifier 选项来携带。两种选项的格式一样，通过 option-code 字段的取值来区分是 Client Identifier 还是 Server Identifier 选项。</li>
+</ul>
+</li>
+<li>身份联盟（IA）<ul>
+<li>身份联盟 IA（Identity Association）是使得服务器和客户端能够识别、分组和管理一系列相关 IPv6 地址的结构。每个 IA 包括一个 IAID 和相关联的配置信息。</li>
+<li>客户端必须为它的每一个要通过服务器获取 IPv6 地址的接口关联至少一个 IA。客户端用给接口关联的 IA 来从服务器获取配置信息。每个 IA 必须明确关联到一个接口。</li>
+<li>IA 的身份由 IAID 唯一确定，同一个客户端的 IAID 不能出现重复。IAID 不应因为设备的重启等因素发生丢失或改变。</li>
+<li>IA 中的配置信息由一个或多个 IPv6 地址以及 T1 和 T2 生存期组成。IA 中的每个地址都有首选生存期和有效生存期。</li>
+<li>一个接口至少关联一个 IA，一个 IA 可以包含一个或多个地址信息。</li>
+</ul>
+</li>
+</ul>
+<h3 id="dhcpv6-报文格式">DHCPv6 报文格式<a class="headerlink" href="#dhcpv6-报文格式" title="Permanent link">&para;</a></h3>
+<p>目前 DHCPv6 定义了如下十三种类型报文，DHCPv6 服务器和 DHCPv6 客户端之间通过这十三种类型的报文进行通信。下表对 DHCPv6 和 DHCPv4 报文进行了类比。</p>
+<table>
+<thead>
+<tr>
+<th>报文类型</th>
+<th>DHCPv6 报文</th>
+<th>DHCPv4 报文</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>SOLICIT</td>
+<td>DHCP DISCOVER</td>
+<td>DHCPv6 客户端使用 Solicit 报文来确定 DHCPv6 服务器的位置。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ADVERTISE</td>
+<td>DHCP OFFER</td>
+<td>DHCPv6 服务器发送 Advertise 报文来对 Solicit 报文进行回应，宣告自己能够提供 DHCPv6 服务。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>REQUEST</td>
+<td>DHCP REQUEST</td>
+<td>DHCPv6 客户端发送 Request 报文来向 DHCPv6 服务器请求 IPv6 地址和其它配置信息。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>CONFIRM</td>
+<td>-</td>
+<td>DHCPv6 客户端向任意可达的 DHCPv6 服务器发送 Confirm 报文检查自己目前获得的 IPv6 地址是否适用与它所连接的链路。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>RENEW</td>
+<td>DHCP REQUEST</td>
+<td>DHCPv6 客户端向给其提供地址和配置信息的 DHCPv6 服务器发送 Renew 报文来延长地址的生存期并更新配置信息。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>REBIND</td>
+<td>DHCP REQUEST</td>
+<td>如果 Renew 报文没有得到应答，DHCPv6 客户端向任意可达的 DHCPv6 服务器发送 Rebind 报文来延长地址的生存期并更新配置信息。</td>
+</tr>
+<tr>
+<td>7</td>
+<td>REPLY</td>
+<td>DHCP ACK/NAK</td>
+<td>DHCPv6 服务器在以下场合发送 Reply 报文：DHCPv6 服务器发送携带了地址和配置信息的 Reply 消息来回应从 DHCPv6 客户端收到的 Solicit、Request、Renew、Rebind 报文。DHCPv6 服务器发送携带配置信息的 Reply 消息来回应收到的 Information-Request 报文。用来回应 DHCPv6 客户端发来的 Confirm、Release、Decline 报文。</td>
+</tr>
+<tr>
+<td>8</td>
+<td>RELEASE</td>
+<td>DHCP RELEASE</td>
+<td>DHCPv6 客户端向为其分配地址的 DHCPv6 服务器发送 Release 报文，表明自己不再使用一个或多个获取的地址。</td>
+</tr>
+<tr>
+<td>9</td>
+<td>DECLINE</td>
+<td>DHCP DECLINE</td>
+<td>DHCPv6 客户端向 DHCPv6 服务器发送 Decline 报文，声明 DHCPv6 服务器分配的一个或多个地址在 DHCPv6 客户端所在链路上已经被使用了。</td>
+</tr>
+<tr>
+<td>10</td>
+<td>RECONFIGURE</td>
+<td>-</td>
+<td>DHCPv6 服务器向 DHCPv6 客户端发送 Reconfigure 报文，用于提示 DHCPv6 客户端，在 DHCPv6 服务器上存在新的网络配置信息。</td>
+</tr>
+<tr>
+<td>11</td>
+<td>INFORMATION-REQUEST</td>
+<td>DHCP INFORM</td>
+<td>DHCPv6 客户端向 DHCPv6 服务器发送 Information-Request 报文来请求除 IPv6 地址以外的网络配置信息。</td>
+</tr>
+<tr>
+<td>12</td>
+<td>RELAY-FORW</td>
+<td>-</td>
+<td>中继代理通过 Relay-Forward 报文来向 DHCPv6 服务器转发 DHCPv6 客户端请求报文。</td>
+</tr>
+<tr>
+<td>13</td>
+<td>RELAY-REPL</td>
+<td>-</td>
+<td>DHCPv6 服务器向中继代理发送 Relay-Reply 报文，其中携带了转发给 DHCPv6 客户端的报文。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dhcpv6-有状态自动分配">DHCPv6 有状态自动分配<a class="headerlink" href="#dhcpv6-有状态自动分配" title="Permanent link">&para;</a></h3>
+<p>IPv6 主机通过有状态 DHCPv6 方式获取 IPv6 地址和其他配置参数（例如 DNS 服务器的 IPv6 地址等）。</p>
+<p>DHCPv6 服务器为客户端分配地址/前缀的过程分为两类：</p>
+<ul>
+<li>DHCPv6 四步交互分配过程</li>
+<li>DHCPv6 两步交互快速分配过程</li>
+</ul>
+<h4 id="dhcpv6-四步交互">DHCPv6 四步交互<a class="headerlink" href="#dhcpv6-四步交互" title="Permanent link">&para;</a></h4>
+<p>四步交互常用于网络中有多个 DHCPv6 服务器的情况。DHCPv6 客户端首先通过组播发送 Solicit 报文来定位可以为其提供服务的 DHCPv6 服务器，在收到多个 DHCPv6 服务器的 Advertise 报文后，根据 DHCPv6 服务器的优先级选择一个为其分配地址和配置信息的服务器，接着通过 Request/Reply 报文交互完成地址申请和分配过程。</p>
+<p>DHCPv6 服务器端如果没有配置使能两步交互，无论客户端报文中是否包含 Rapid Commit 选项，服务器都采用四步交互方式为客户端分配地址和配置信息。</p>
+<figure>
+    <center>
+    <a class="glightbox" href="../ipv6.assets/dhcpv6_four_steps.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="dhcpv6_four_steps" src="../ipv6.assets/dhcpv6_four_steps.png" width="80%" /></a>
+    </center>
+    <figcaption>
+    DHCPv6 四步交互地址分配过程
+    </figcaption>
+</figure>
+<p>DHCPv6 四步交互地址分配过程如下：</p>
+<ol>
+<li>DHCPv6 客户端发送 Solicit 报文，请求 DHCPv6 服务器为其分配 IPv6 地址和网络配置参数。</li>
+<li>如果 Solicit 报文中没有携带 Rapid Commit 选项，或 Solicit 报文中携带 Rapid Commit 选项，但服务器不支持快速分配过程，则 DHCPv6 服务器回复 Advertise 报文，通知客户端可以为其分配的地址和网络配置参数。</li>
+<li>如果 DHCPv6 客户端接收到多个服务器回复的 Advertise 报文，则根据 Advertise 报文中的服务器优先级等参数，选择优先级最高的一台服务器，并向所有的服务器发送 Request 组播报文，该报文中携带已选择的 DHCPv6 服务器的 DUID。</li>
+<li>DHCPv6 服务器回复 Reply 报文，确认将地址和网络配置参数分配给客户端使用。</li>
+</ol>
+<h4 id="dhcpv6-两步交互">DHCPv6 两步交互<a class="headerlink" href="#dhcpv6-两步交互" title="Permanent link">&para;</a></h4>
+<p>两步交互常用于网络中只有一个 DHCPv6 服务器的情况。DHCPv6 客户端首先通过组播发送 Solicit 报文来定位可以为其提供服务的 DHCPv6 服务器，DHCPv6 服务器收到客户端的 Solicit 报文后，为其分配地址和配置信息，直接回应 Reply 报文，完成地址申请和分配过程。</p>
+<p>两步交换可以提高 DHCPv6 过程的效率，但在有多个 DHCPv6 服务器的网络中，多个 DHCPv6 服务器都可以为 DHCPv6 客户端分配 IPv6 地址，回应 Reply 报文，但是客户端实际只可能使用其中一个服务器为其分配的 IPv6 地址和配置信息。为了防止这种情况的发生，管理员可以配置 DHCPv6 服务器是否支持两步交互地址分配方式。</p>
+<ul>
+<li>DHCPv6 服务器端如果配置使能了两步交互，并且客户端报文中也包含 Rapid Commit 选项，服务器采用两步交互方式为客户端分配地址和配置信息。</li>
+<li>如果 DHCPv6 服务器不支持快速分配地址，则采用四步交互方式为客户端分配 IPv6 地址和其他网络配置参数。</li>
+</ul>
+<figure>
+    <center>
+    <a class="glightbox" href="../ipv6.assets/dhcpv6_two_steps.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="dhcpv6_two_steps" src="../ipv6.assets/dhcpv6_two_steps.png" width="80%" /></a>
+    </center>
+    <figcaption>
+    DHCPv6 两步交互地址分配过程
+    </figcaption>
+</figure>
+<p>DHCPv6 两步交互地址分配过程如下：</p>
+<ol>
+<li>DHCPv6 客户端在发送的 Solicit 报文中携带 Rapid Commit 选项，标识客户端希望服务器能够快速为其分配地址和网络配置参数。</li>
+<li>DHCPv6 服务器接收到 Solicit 报文后，将进行如下处理：</li>
+<li>如果 DHCPv6 服务器支持快速分配地址，则直接返回 Reply 报文，为客户端分配 IPv6 地址和其他网络配置参数，Reply 报文中也携带 Rapid Commit 选项。</li>
+<li>如果 DHCPv6 服务器不支持快速分配过程，则采用四步交互方式为客户端分配 IPv6 地址/前缀和其他网络配置参数。</li>
+</ol>
+<h3 id="dhcpv6-无状态自动分配">DHCPv6 无状态自动分配<a class="headerlink" href="#dhcpv6-无状态自动分配" title="Permanent link">&para;</a></h3>
+<p>IPv6 节点可以通过 DHCPv6 无状态方式获取配置参数（包括 DNS、SIP、SNTP 等服务器配置信息，不包括 IPv6 地址）。</p>
+<figure>
+    <center>
+    <a class="glightbox" href="../ipv6.assets/dhcpv6_stateless.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="dhcpv6_stateless" src="../ipv6.assets/dhcpv6_stateless.png" width="80%" /></a>
+    </center>
+    <figcaption>
+    DHCPv6 无状态自动分配过程
+    </figcaption>
+</figure>
+<p>DHCPv6 无状态工作过程如下：</p>
+<ol>
+<li>DHCPv6 客户端以组播方式向 DHCPv6 服务器发送 Information-Request 报文，该报文中携带 Option Request 选项，指定 DHCPv6 客户端需要从 DHCPv6 服务器获取的配置参数。</li>
+<li>DHCPv6 服务器收到 Information-Request 报文后，为 DHCPv6 客户端分配网络配置参数，并单播发送 Reply 报文，将网络配置参数返回给 DHCPv6 客户端。DHCPv6 客户端根据收到 Reply 报文提供的参数完成 DHCPv6 客户端无状态配置。</li>
+</ol>
+<h3 id="dhcpv6-pd-工作原理">DHCPv6 PD 工作原理<a class="headerlink" href="#dhcpv6-pd-工作原理" title="Permanent link">&para;</a></h3>
+<p>DHCPv6 前缀代理 DHCPv6 PD(Prefix Delegation) 是一种前缀分配机制，并在 RFC3633 中得以标准化。在一个层次化的网络拓扑结构中，不同层次的 IPv6 地址分配一般是手工指定的。手工配置 IPv6 地址扩展性不好，不利于 IPv6 地址的统一规划管理。</p>
+<p>通过 DHCPv6 前缀代理机制，下游网络设备不需要再手工指定用户侧链路的 IPv6 地址前缀，它只需要向上游网络设备提出前缀分配申请，上游网络设备便可以分配合适的地址前缀给下游设备，下游设备把获得的前缀 (一般前缀长度小于 64) 进一步自动细分成 64 前缀长度的子网网段，把细分的地址前缀再通过路由通告 (RA) 至与 IPv6 主机直连的用户链路上，实现 IPv6 主机的地址自动配置，完成整个系统层次的地址布局。</p>
+<figure>
+    <center>
+    <a class="glightbox" href="../ipv6.assets/dhcpv6_pd.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="dhcpv6_pd" src="../ipv6.assets/dhcpv6_pd.png" width="80%" /></a>
+    </center>
+    <figcaption>
+    DHCPv6 PD 工作原理
+    </figcaption>
+</figure>
+<p>DHCPv6 PD 的工作方式与 DHCPv6 有状态自动分配类似，支持四步或两步交互，只是 DHCPv6 报文中包含 PD 前缀信息。</p>
+<h3 id="dhcpv6-中继工作原理">DHCPv6 中继工作原理<a class="headerlink" href="#dhcpv6-中继工作原理" title="Permanent link">&para;</a></h3>
+<p>DHCPv6 客户端通过 DHCPv6 中继转发报文，获取 IPv6 地址/前缀和其他网络配置参数（例如 DNS 服务器的 IPv6 地址等）。</p>
+<figure>
+    <center>
+    <a class="glightbox" href="../ipv6.assets/dhcpv6_relay.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="dhcpv6_relay" src="../ipv6.assets/dhcpv6_relay.png" width="80%" /></a>
+    </center>
+    <figcaption>
+    DHCPv6 中继工作原理
+    </figcaption>
+</figure>
+<p>DHCPv6 中继工作交互过程如下：</p>
+<ol>
+<li>DHCPv6 客户端向所有 DHCPv6 服务器和 DHCPv6 中继发送目的地址为 FF02::1:2（组播地址）的请求报文。</li>
+<li>根据 DHCPv6 中继转发报文有如下两种情况：<ul>
+<li>如果 DHCPv6 中继和 DHCPv6 客户端位于同一个链路上，即 DHCPv6 中继为 DHCPv6 客户端的第一跳中继，中继转发直接来自客户端的报文，此时 DHCPv6 中继实质上也是客户端的 IPv6 网关设备。DHCPv6 中继收到客户端的报文后，将其封装在 Relay-Forward 报文的中继消息选项（Relay Message Option）中，并将 Relay-Forward 报文发送给 DHCPv6 服务器或下一跳中继。</li>
+<li>如果 DHCPv6 中继和 DHCPv6 客户端不在同一个链路上，中继收到的报文是来自其他中继的 Relay-Forward 报文。中继构造一个新的 Relay-Forward 报文，并将 Relay-Forward 报文发送给 DHCPv6 服务器或下一跳中继。</li>
+</ul>
+</li>
+<li>DHCPv6 服务器从 Relay-Forward 报文中解析出 DHCPv6 客户端的请求，为 DHCPv6 客户端选取 IPv6 地址和其他配置参数，构造应答消息，将应答消息封装在 Relay-Reply 报文的中继消息选项中，并将 Relay-Reply 报文发送给 DHCPv6 中继。</li>
+<li>DHCPv6 中继从 Relay-Reply 报文中解析出 DHCPv6 服务器的应答，转发给 DHCPv6 客户端。如果 DHCPv6 客户端接收到多个 DHCPv6 服务器的应答，则根据报文中的服务器优先级选择一个 DHCPv6 服务器，后续从该 DHCPv6 服务器获取 IPv6 地址和其他网络配置参数。</li>
+</ol>
+<h2 id="dhcpv6-实践">DHCPv6 实践<a class="headerlink" href="#dhcpv6-实践" title="Permanent link">&para;</a></h2>
+<h3 id="校园网有状态-dhcpv6">校园网有状态 DHCPv6<a class="headerlink" href="#校园网有状态-dhcpv6" title="Permanent link">&para;</a></h3>
+<p>目前，玉泉校区 32 舍有线网络采用 DHCPv6 有状态配置，让我们来看一下 DHCPv6 有状态配置的过程。</p>
+<figure>
+    <center>
+    <a class="glightbox" href="../ipv6.assets/practice_dhcpv6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="practice_dhcpv6" src="../ipv6.assets/practice_dhcpv6.png" width="80%" /></a>
+    </center>
+    <figcaption>
+    WireShark 抓取到的 DHCPv6 报文
+    </figcaption>
+</figure>
+<p>上图展示了在校园网抓包时捕获到的 DHCPv6 报文。可以看到设备接入网络后首先发送 RS 报文尝试进行 SLAAC 配置，没有应答。使能设备的 DHCPv6 客户端功能，设备向组播地址 <code>FF02::1:2</code> 发送 DHCPv6 Solicit 报文（还记得这个组播地址代表什么吗？）尝试进行 DHCPv6 有状态配置。局域网中的 DHCPv6 服务器接收到 Solicit 报文后，向设备发送 Advertise 报文，其中包含 IA Address 即为服务器分配给客户端的 IPv6 地址。随后的 Request 和 Reply 完成 DHCPv6 配置。</p>
+<p>让我们看看 Advertise 报文的详细内容：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>DHCPv6
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    Message type: Advertise (2)
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    Transaction ID: 0x8ed327
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    Identity Association for Non-temporary Address
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        Option: Identity Association for Non-temporary Address (3)
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        Length: 40
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        IAID: 00000002
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        T1: 302400
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        T2: 483840
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        IA Address
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>            Option: IA Address (5)
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>            Length: 24
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>            IPv6 address: ****:****:****:****:****:****:****:****
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>            Preferred lifetime: 604800
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>            Valid lifetime: 2592000
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    Client Identifier
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    Server Identifier
+</span></code></pre></div>
+<h3 id="华为路由器配置-ipv6-中继">华为路由器配置 IPv6 中继<a class="headerlink" href="#华为路由器配置-ipv6-中继" title="Permanent link">&para;</a></h3>
+<p>在上一节我们已经看到，校园网 DHCPv6 下发的 IPv6 地址前缀为 128 位，这样的地址连 DHCPv6 中继都无法配置。因此本节内容在校园网没什么用，仅作为一次尝试的记录。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a># 配置 DHCPv6 服务器组
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>dhcpv6 server group zju
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a># 在这一步失败了，无法获知校园网 DHCPv6 服务器的全球单播地址
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>dhcpv6-server ???????
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>quit
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a># 在 VLANIF 接口上配置 DHCPv6 中继
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>interface vlanif 1
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>dhcpv6 relay server-select zju
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a># 配置邻居发现报文中的标志，以告知启用 DHCPv6 有状态配置
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>ipv6 nd autoconfig managed-address-flag
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>ipv6 nd autoconfig other-flag
+</span></code></pre></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 15, 2025 08:22:08 UTC">July 15, 2025</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 15, 2025 08:22:08 UTC">July 15, 2025</span>
+  </span>
+
+    
+    
+    
+      
+  <span class="md-source-file__fact">
+    
+      
+  <span class="md-icon" title="Contributors">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+  </span>
+  <span>GitHub</span>
+
+    
+    <nav>
+      
+        <a href="https://github.com/bowling233" class="md-author" title="@bowling233">
+          
+          <img src="https://avatars.githubusercontent.com/u/35755846?v=4&size=72" alt="bowling233">
+        </a>
+      
+      
+      
+    </nav>
+  </span>
+
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../rdma/" class="md-footer__link md-footer__link--prev" aria-label="Previous: RDMA">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                RDMA
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../l2tp/" class="md-footer__link md-footer__link--next" aria-label="Next: L2TP">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                L2TP
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      ZJUSCT
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/polyfill/index.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/tablesort/dist/tablesort.min.js"></script>
+      
+        <script src="../../../../javascripts/tablesort.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
