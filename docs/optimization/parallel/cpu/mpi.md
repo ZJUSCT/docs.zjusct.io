@@ -108,7 +108,7 @@ OpenMPI 使用 Slot 作为资源分配单位，有多少个 Slot 就可以运行
 - profiling:
     - `-trace` `-aps` `-mps`
 - 设备：
-    - `iface`
+    - `-iface`
 - 运行参数：
     - `-n, -np` 进程数
     - `-env` 环境变量
