@@ -33,7 +33,7 @@ pkgconf@1.8.1  xz@5.4.6  zlib-ng@2.1.6
 ==> 8 installed packages
 ```
 
-!!! note "概念：[spec](https://spack.readthedocs.io/en/latest/basic_usage.html#specs-dependencies)"
+!!! note "概念：[spec](https://spack.readthedocs.io/en/latest/spec_syntax.html)"
 
     > A spec is like a name, but it has a version, compiler, architecture, and build options associated with it. In spack, you can have many installations of the same package with different specs.
 
@@ -57,16 +57,18 @@ pkgconf@1.8.1  xz@5.4.6  zlib-ng@2.1.6
 
     Spec 的常用符号含义如下：
 
-    | Symbol  | Example | Description |
-    |-----|---- |-------------|
-    | `@` | `@1.2:1.4` | 指定版本 |
-    | `^` | `^gcc@4.7` | 依赖项 |
-    | `%` | `%gcc@4.7` | 指定编译器 |
-    | `+`、`-` 或 `~` | `+mpi` | 布尔类型选项<br/> `~` 与 `-` 等价，用于某些情况下阻止 shell 解析 |
-    | `++`、`--` 或 `~~` | `++mpi` | 布尔类型选项，在依赖之间传递 |
-    | `name=<value>` | `build_system=cmake` | 指定选项的值 |
-    | `name==<value>` | `build_system==cmake` | 指定选项的值，在依赖之间传递 |
-    ｜ `<flag>=<flags>` | `cflags=-O3` | 特殊的编译器选项，如：`cflags`, `cxxflags`, `fflags`, `cppflags`, `ldflags`, and `ldlibs` |
+    |       Symbol       |        Example        |                                        Description                                        |
+    | ------------------ | --------------------- | ----------------------------------------------------------------------------------------- |
+    | `@`                | `@1.2:1.4`            | 指定版本                                                                                  |
+    | `%`                | `%gcc@4.7`            | 直接依赖（通常为编译器）                                                                  |
+    | `^`                | `^gcc@4.7`            | 间接依赖                                                                                  |
+    | `+`、`-` 或 `~`    | `+mpi`                | 布尔类型选项<br/> `~` 与 `-` 等价，用于某些情况下阻止 shell 解析                          |
+    | `++`、`--` 或 `~~` | `++mpi`               | 布尔类型选项，在依赖之间传递                                                              |
+    | `name=<value>`     | `build_system=cmake`  | 指定选项的值                                                                              |
+    | `name==<value>`    | `build_system==cmake` | 指定选项的值，在依赖之间传递                                                              |
+    | `<flag>=<flags>`   | `cflags=-O3`          | 特殊的编译器选项，如：`cflags`, `cxxflags`, `fflags`, `cppflags`, `ldflags`, and `ldlibs` |
+
+    有几个特殊的有名选项：`platform` 内核名（`darwin` 等）、`os` 发行版名、`target` 微架构名。
 
     对于本地安装的 spec，还可以通过 `/` 哈希值来指定：
 
@@ -414,6 +416,163 @@ packages:
 
     ```bash
     echo "/opt/apps/spack/share/spack/lmod" >> /etc/lmod/.modulespath
+    ```
+
+## Spack 软件包维护
+
+!!! quote
+
+    - [Packaging Guide: defining a package — Spack documentation](https://spack.readthedocs.io/en/latest/packaging_guide_creation.html)
+
+Spack 打包系统整体比较复杂，这里我们仅介绍基本概念，侧重于构建相关，使读者有能力修改现有的软件包。
+
+在 Spack 中，每个 Package 就是一个类，形成继承关系：
+
+```mermaid
+flowchart
+ n1["PackageBase"]
+ n2["AutotoolsPackage"]
+ n1 --- n2
+ n3["CudaPackage"]
+ n1 --- n3
+ n4["MpichEnvironmentModifications"]
+ n1 --- n4
+ n5["Mvapich2"]
+ n2 --- n5
+ n3 --- n5
+ n4 --- n5
+ n6["ROCmPackage"]
+ n1 --- n6
+ n6 --- n5
+```
+
+Package 类的代码有这么几类：
+
+- 元数据：
+
+    ```python
+    homepaage = "..."
+    version("2.4.0", sha256="...")
+    variant("feature", default=True, description="...")
+    ```
+
+- 补丁：
+
+    ```python
+    patch("patchfile.patch", when="@1.2: +feature")
+    def patch(self):
+        ...  # 自定义补丁
+    ```
+
+- 依赖关系：
+
+    ```python
+    depends_on("libelf@0.8 +parser +pic",
+        when="@1.2: +feature",
+        type=("build", "link", "run", "test"),
+        patches=["patchfile.patch",
+            patch("https://github.com/spack/spack/pull/1234.patch",
+                when="@1.2: +feature")]
+        )
+    provides()
+    conflicts()
+    requires()
+    setup_dependent_pacakge()
+    ```
+
+    默认为 `type=("build","link")`。不同的依赖关系将在包的不同阶段起作用，主要是影响 `PATH` 和编译、链接器选项。
+
+    这些指令可以用 `with` 语句来批量管理：
+
+    ```python
+    with default_args(type=("build","run"), when("...")):
+        depends_on("...")
+        conflicts("...")
+    ```
+
+- 标准接口：
+
+    主要是供依赖使用。
+
+    ```python
+    def libs(self): # 库名
+    def command(self): # 可执行文件
+    def headers(self): # 头文件目录
+    def home(self): # 安装位置
+    ```
+
+- 构建、安装步骤：
+
+    根据不同的构建系统，实现不同的函数。
+
+    ```python
+    # before build
+    def setup_build_environment(self, env):
+        env.set("CXX", "g++")
+    @run_before("cmake") 
+
+    # build
+    def cmake_args(self): # CMakePackage
+        self.spec["dependecy"].prefix
+    def configure_args(self): # AutotoolsPackage
+        args = []
+        if self.spec.satisfies("+feature"):
+            args.append("--enable-feature")
+            args.append(f"--with-libxml2={self.spec['libxml2'].prefix}")
+        return args
+    def build_targets(self): # MakefilePackage
+    def install_targets(self): # MakefilePackage
+    
+    # after build
+    def install_missing_files(self):
+        install_tree("extra_files", self.prefix.bin)
+    @run_after("install", when="...")
+    ```
+
+- 环境管理：
+
+    可以管控不同阶段、依赖关系上的环境变量：
+
+    ```python
+    setup_build_environment(env, spec)
+    setup_dependent_build_environment(env, dependent_spec)
+    setup_run_environment(env)
+    setup_dependent_run_environment(env, dependent_spec)
+    ```
+
+Spack 安装软件包的大致过程：
+
+- Fetch
+- Extract to stage directory
+- Fork build environment
+
+    Spack 会清空可能影响构建的环境变量，构建过程与主进程互不干扰。
+
+- Execute (build system specific)
+    - configure
+    - build
+    - install
+
+!!! tips "调试构建环境"
+
+    有时需要手动复现 Spack 构建过程中的命令，可以使用下面的命令恢复环境：
+
+    ```bash
+    # 失败时不清除 prefix（一般用于 install 阶段的调试）
+    spack install --keep-prefix --verbose <package>
+    # 失败时包的位置就是 stage
+    spack locate <package>
+    spack cd <pacakge>
+    spack build-env <package> -- /bin/sh
+    ```
+
+    其他有用的命令：
+
+    ```bash
+    # 成功安装后保留 stage
+    spack install --keep-stage <spec>
+    # 清理 stage
+    spack clean --stage
     ```
 
 ## 常见问题
