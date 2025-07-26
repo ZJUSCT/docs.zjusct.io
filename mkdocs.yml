@@ -17,7 +17,10 @@ nav:
   - 🦅 Falcon:
     - falcon/index.md
     - falcon
-  - 🔧 优化: optimization
+  - 🔧 优化:
+    - optimization/index.md
+    - 并行编程: optimization/parallel
+    - 高性能网络: optimization/HPN
   - ⚙️ 运维: operation
   - ✍️ 博客: blog
 
