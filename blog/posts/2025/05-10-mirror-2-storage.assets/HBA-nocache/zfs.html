@@ -1,0 +1,174 @@
+
+    <style>
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid black; padding: 8px; text-align: right; }
+        th { background-color: #f2f2f2; }
+        .disk-name { text-align: left; }
+        h3 { margin-top: 20px; }
+    </style>
+    
+    <h3>bw</h3>
+    <table>
+        
+        <tr>
+            <th>Disk</th>
+            <th colspan="2">SEQ1M_Q8T1</th>
+            <th colspan="2">SEQ128K_Q32T1</th>
+            <th colspan="2">RND4K_Q32T16</th>
+            <th colspan="2">RND4K_Q1T1</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>READ</th>
+            <th>WRITE</th>
+            <th>READ</th>
+            <th>WRITE</th>
+            <th>READ</th>
+            <th>WRITE</th>
+            <th>READ</th>
+            <th>WRITE</th>
+        </tr>
+    
+    
+        <tr>
+            <td class="disk-name">draid2-12d-30c-2s-cache</td><td>10857.9</td><td>174.6</td><td>7897.6</td><td>179.7</td><td>1090.9</td><td>11.9</td><td>32.6</td><td>11.7</td></tr>
+        <tr>
+            <td class="disk-name">draid2-12d-30c-2s-nocache</td><td>10758.0</td><td>178.7</td><td>7294.7</td><td>180.5</td><td>1083.4</td><td>15.1</td><td>33.2</td><td>14.0</td></tr>
+        <tr>
+            <td class="disk-name">draid2-5d-30c-2s-cache</td><td>6130.2</td><td>91.4</td><td>4438.0</td><td>96.5</td><td>956.6</td><td>13.7</td><td>35.2</td><td>12.7</td></tr>
+        <tr>
+            <td class="disk-name">draid2-5d-30c-2s-nocache</td><td>5917.0</td><td>91.9</td><td>4244.8</td><td>97.3</td><td>976.9</td><td>18.2</td><td>33.3</td><td>16.9</td></tr>
+        <tr>
+            <td class="disk-name">draid2-7d-30c-3s-cache</td><td>6039.2</td><td>90.1</td><td>4406.6</td><td>94.6</td><td>977.4</td><td>11.4</td><td>29.9</td><td>11.6</td></tr>
+        <tr>
+            <td class="disk-name">draid2-7d-30c-3s-nocache</td><td>6010.5</td><td>88.5</td><td>4382.1</td><td>93.6</td><td>1002.9</td><td>16.3</td><td>25.4</td><td>15.5</td></tr>
+        <tr>
+            <td class="disk-name">raid0-cache</td><td>5709.3</td><td>1384.2</td><td>4065.9</td><td>1292.5</td><td>665.5</td><td>39.9</td><td>34.6</td><td>20.6</td></tr>
+        <tr>
+            <td class="disk-name">raid0-nocache</td><td>6139.6</td><td>1370.7</td><td>4181.8</td><td>1747.1</td><td>697.3</td><td>93.9</td><td>32.5</td><td>19.9</td></tr>
+        <tr>
+            <td class="disk-name">raidz2-10px3-cache</td><td>6176.2</td><td>476.4</td><td>4395.5</td><td>432.7</td><td>1057.3</td><td>31.2</td><td>33.0</td><td>20.8</td></tr>
+        <tr>
+            <td class="disk-name">raidz2-10px3-nocache</td><td>5542.5</td><td>559.7</td><td>4366.9</td><td>559.2</td><td>1017.8</td><td>47.3</td><td>28.8</td><td>20.4</td></tr>
+        <tr>
+            <td class="disk-name">raidz2-6px5-cache</td><td>4135.3</td><td>518.0</td><td>3838.1</td><td>508.7</td><td>442.1</td><td>52.7</td><td>25.9</td><td>16.8</td></tr>
+        <tr>
+            <td class="disk-name">raidz2-6px5-nocache</td><td>4148.5</td><td>466.7</td><td>3970.3</td><td>463.5</td><td>479.7</td><td>55.6</td><td>26.7</td><td>17.0</td></tr>
+        <tr>
+            <td class="disk-name">raidz3-10px3-cache</td><td>5484.1</td><td>423.9</td><td>4173.4</td><td>413.0</td><td>976.1</td><td>27.4</td><td>32.9</td><td>18.7</td></tr>
+        <tr>
+            <td class="disk-name">raidz3-10px3-nocache</td><td>5633.0</td><td>478.7</td><td>3852.5</td><td>477.6</td><td>983.8</td><td>43.9</td><td>32.8</td><td>18.0</td></tr>
+        <tr>
+            <td class="disk-name">raidz3-30-cache</td><td>5655.4</td><td>138.9</td><td>4166.7</td><td>144.0</td><td>976.3</td><td>18.0</td><td>33.2</td><td>16.1</td></tr>
+        <tr>
+            <td class="disk-name">raidz3-30-nocache</td><td>5774.4</td><td>146.7</td><td>4240.7</td><td>148.3</td><td>975.6</td><td>23.3</td><td>33.6</td><td>17.5</td></tr></table><br>
+    <h3>iops</h3>
+    <table>
+        
+        <tr>
+            <th>Disk</th>
+            <th colspan="2">SEQ1M_Q8T1</th>
+            <th colspan="2">SEQ128K_Q32T1</th>
+            <th colspan="2">RND4K_Q32T16</th>
+            <th colspan="2">RND4K_Q1T1</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>READ</th>
+            <th>WRITE</th>
+            <th>READ</th>
+            <th>WRITE</th>
+            <th>READ</th>
+            <th>WRITE</th>
+            <th>READ</th>
+            <th>WRITE</th>
+        </tr>
+    
+    
+        <tr>
+            <td class="disk-name">draid2-12d-30c-2s-cache</td><td>10858</td><td>174</td><td>63180</td><td>1437</td><td>279259</td><td>3031</td><td>8338</td><td>2990</td></tr>
+        <tr>
+            <td class="disk-name">draid2-12d-30c-2s-nocache</td><td>10758</td><td>178</td><td>58356</td><td>1443</td><td>277332</td><td>3847</td><td>8500</td><td>3594</td></tr>
+        <tr>
+            <td class="disk-name">draid2-5d-30c-2s-cache</td><td>6130</td><td>91</td><td>35503</td><td>771</td><td>244869</td><td>3480</td><td>9005</td><td>3257</td></tr>
+        <tr>
+            <td class="disk-name">draid2-5d-30c-2s-nocache</td><td>5917</td><td>92</td><td>33957</td><td>778</td><td>250058</td><td>4634</td><td>8537</td><td>4339</td></tr>
+        <tr>
+            <td class="disk-name">draid2-7d-30c-3s-cache</td><td>6039</td><td>90</td><td>35252</td><td>756</td><td>250210</td><td>2907</td><td>7659</td><td>2967</td></tr>
+        <tr>
+            <td class="disk-name">draid2-7d-30c-3s-nocache</td><td>6010</td><td>88</td><td>35056</td><td>748</td><td>256736</td><td>4147</td><td>6507</td><td>3963</td></tr>
+        <tr>
+            <td class="disk-name">raid0-cache</td><td>5709</td><td>1384</td><td>32526</td><td>10339</td><td>170352</td><td>10191</td><td>8856</td><td>5281</td></tr>
+        <tr>
+            <td class="disk-name">raid0-nocache</td><td>6139</td><td>1370</td><td>33453</td><td>13976</td><td>178498</td><td>24014</td><td>8326</td><td>5092</td></tr>
+        <tr>
+            <td class="disk-name">raidz2-10px3-cache</td><td>6176</td><td>476</td><td>35163</td><td>3461</td><td>270650</td><td>7958</td><td>8448</td><td>5320</td></tr>
+        <tr>
+            <td class="disk-name">raidz2-10px3-nocache</td><td>5542</td><td>560</td><td>34934</td><td>4473</td><td>260548</td><td>12102</td><td>7365</td><td>5220</td></tr>
+        <tr>
+            <td class="disk-name">raidz2-6px5-cache</td><td>4135</td><td>518</td><td>30704</td><td>4069</td><td>113159</td><td>13476</td><td>6618</td><td>4293</td></tr>
+        <tr>
+            <td class="disk-name">raidz2-6px5-nocache</td><td>4148</td><td>467</td><td>31763</td><td>3707</td><td>122783</td><td>14213</td><td>6827</td><td>4356</td></tr>
+        <tr>
+            <td class="disk-name">raidz3-10px3-cache</td><td>5484</td><td>424</td><td>33386</td><td>3303</td><td>249863</td><td>7009</td><td>8419</td><td>4793</td></tr>
+        <tr>
+            <td class="disk-name">raidz3-10px3-nocache</td><td>5633</td><td>479</td><td>30819</td><td>3820</td><td>251834</td><td>11218</td><td>8390</td><td>4602</td></tr>
+        <tr>
+            <td class="disk-name">raidz3-30-cache</td><td>5655</td><td>139</td><td>33332</td><td>1151</td><td>249907</td><td>4593</td><td>8488</td><td>4133</td></tr>
+        <tr>
+            <td class="disk-name">raidz3-30-nocache</td><td>5774</td><td>146</td><td>33925</td><td>1185</td><td>249731</td><td>5949</td><td>8596</td><td>4490</td></tr></table><br>
+    <h3>lat</h3>
+    <table>
+        
+        <tr>
+            <th>Disk</th>
+            <th colspan="2">SEQ1M_Q8T1</th>
+            <th colspan="2">SEQ128K_Q32T1</th>
+            <th colspan="2">RND4K_Q32T16</th>
+            <th colspan="2">RND4K_Q1T1</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>READ</th>
+            <th>WRITE</th>
+            <th>READ</th>
+            <th>WRITE</th>
+            <th>READ</th>
+            <th>WRITE</th>
+            <th>READ</th>
+            <th>WRITE</th>
+        </tr>
+    
+    
+        <tr>
+            <td class="disk-name">draid2-12d-30c-2s-cache</td><td>0.74</td><td>45.83</td><td>0.51</td><td>22.26</td><td>1.83</td><td>167.83</td><td>0.11</td><td>0.33</td></tr>
+        <tr>
+            <td class="disk-name">draid2-12d-30c-2s-nocache</td><td>0.74</td><td>44.78</td><td>0.55</td><td>22.16</td><td>1.84</td><td>132.31</td><td>0.11</td><td>0.27</td></tr>
+        <tr>
+            <td class="disk-name">draid2-5d-30c-2s-cache</td><td>1.30</td><td>87.64</td><td>0.90</td><td>41.44</td><td>2.08</td><td>147.28</td><td>0.11</td><td>0.30</td></tr>
+        <tr>
+            <td class="disk-name">draid2-5d-30c-2s-nocache</td><td>1.35</td><td>87.13</td><td>0.94</td><td>41.10</td><td>2.04</td><td>109.52</td><td>0.11</td><td>0.22</td></tr>
+        <tr>
+            <td class="disk-name">draid2-7d-30c-3s-cache</td><td>1.32</td><td>88.87</td><td>0.91</td><td>42.30</td><td>2.04</td><td>175.68</td><td>0.13</td><td>0.33</td></tr>
+        <tr>
+            <td class="disk-name">draid2-7d-30c-3s-nocache</td><td>1.33</td><td>90.43</td><td>0.91</td><td>42.73</td><td>1.99</td><td>122.55</td><td>0.15</td><td>0.24</td></tr>
+        <tr>
+            <td class="disk-name">raid0-cache</td><td>1.40</td><td>5.78</td><td>0.98</td><td>3.09</td><td>3.00</td><td>50.21</td><td>0.11</td><td>0.19</td></tr>
+        <tr>
+            <td class="disk-name">raid0-nocache</td><td>1.30</td><td>5.83</td><td>0.96</td><td>2.29</td><td>2.86</td><td>21.30</td><td>0.12</td><td>0.19</td></tr>
+        <tr>
+            <td class="disk-name">raidz2-10px3-cache</td><td>1.29</td><td>16.79</td><td>0.91</td><td>9.24</td><td>1.89</td><td>63.85</td><td>0.11</td><td>0.18</td></tr>
+        <tr>
+            <td class="disk-name">raidz2-10px3-nocache</td><td>1.44</td><td>14.29</td><td>0.92</td><td>7.15</td><td>1.96</td><td>42.29</td><td>0.13</td><td>0.19</td></tr>
+        <tr>
+            <td class="disk-name">raidz2-6px5-cache</td><td>1.93</td><td>15.44</td><td>1.04</td><td>7.86</td><td>4.52</td><td>37.90</td><td>0.15</td><td>0.23</td></tr>
+        <tr>
+            <td class="disk-name">raidz2-6px5-nocache</td><td>1.93</td><td>17.14</td><td>1.01</td><td>8.63</td><td>4.16</td><td>35.98</td><td>0.14</td><td>0.22</td></tr>
+        <tr>
+            <td class="disk-name">raidz3-10px3-cache</td><td>1.46</td><td>18.87</td><td>0.96</td><td>9.68</td><td>2.04</td><td>72.74</td><td>0.11</td><td>0.20</td></tr>
+        <tr>
+            <td class="disk-name">raidz3-10px3-nocache</td><td>1.42</td><td>16.71</td><td>1.04</td><td>8.37</td><td>2.03</td><td>45.65</td><td>0.12</td><td>0.21</td></tr>
+        <tr>
+            <td class="disk-name">raidz3-30-cache</td><td>1.41</td><td>57.62</td><td>0.96</td><td>27.79</td><td>2.04</td><td>110.63</td><td>0.11</td><td>0.24</td></tr>
+        <tr>
+            <td class="disk-name">raidz3-30-nocache</td><td>1.38</td><td>54.57</td><td>0.94</td><td>26.98</td><td>2.04</td><td>85.79</td><td>0.11</td><td>0.22</td></tr></table><br>
