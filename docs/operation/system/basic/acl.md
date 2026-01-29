@@ -5,110 +5,186 @@ tags:
 
 # 文件权限
 
-!!! todo
+## 集群文件权限策略
 
-    - [ ] POSIX 文件权限
+集群的共享存储池（挂载在 `/pool` 下）做了如下配置：
 
-## ACL 原理
+| 配置 | 效果 |
+| --- | --- |
+| `chmod g+s /pool/*` | 设置 SGID，创建的文件会自动继承 owner group |
+| `setfacl -d -m g:zjusct:rwx /pool/*` | `zjusct` 组的用户默认有所有文件的 `rwx` 权限 |
 
-POSIX 基本文件权限无法满足更细粒度的权限控制需求，可以使用 ACL（Access Control List）来实现更细粒度的权限控制。
+通过这两项配置，`zjusct` 用户组下的用户可以在 `/pool` 下便捷地协作。
 
-### ACL 历史和支持情况
+### Git
 
-??? info "几种 ACL"
+运行 `git` 命令时，`git` 首先会检查仓库的所有者是否是当前用户。如果不是，则会拒绝执行命令并触发警告。
 
-    - Classic Unix permissions：经典权限。
-    - POSIX ACL：只存在草稿
+!!! example
 
-        > Unfortunately, it eventually turned out that standardizing all these diverse areas was too ambitious a goal. In January 1998, sponsorship for 1003.1e and 1003.2c was withdrawn. While some parts of the documents produced by the working group until then were already of high quality, the overall works were not ready for publication as standards. It was decided that draft 17, the last version of the documents the working group had produced, should be made available to the public.
-
-    - NFSv4 ACL：最新，有明确规范，功能最强大的 ACL
-        - NFSv4 ACL 与 POSIX ACL 不兼容。
-        - NFSv4.1 ACL 是 POSIX ACL 和 Windows NT ACL 的超集。
-        - Ext3、Ext4 和 ZFS 都支持 NFSv4 ACL。
-        - Mac OS X、FreeBSD 都支持 NFSv4 ACL。
-        - Linux 暂未原生支持 NFSv4 ACL。
-        - 与 POSIX ACL 相比，对网络服务的支持更好，比如用户/组可以使用 `user@domain` 格式，而不仅仅是 UID/GID。
-
-- POSIX ACL 是目前 Linux 和各类文件系统普遍支持的 ACL 类型。`setfacl`、`getfacl` 等实用工具用于操作 POSIX ACL。
-- NFSv4 ACL 具有诸多优势，但在可以预见的未来都不会被 Linux 主线内核合并，在 OpenZFS 也处于 work in progress 阶段。`nfs4_setfacl`、`nfs4_getfacl` 等工具用于操作 NFSv4 ACL。
-
-    这在 ACL 上产生了非常尴尬的情况：NFSv4 服务端和客户端已经被 Linux Kernel 广泛支持，也就意味着客户端和服务端必须采用 NFSv4 ACL 进行沟通。然而，Linux Kernel 仍然没有原生支持 NFSv4 ACL，于是就必须在 NFS 服务端将 NFSv4 ACL 转换为 POSIX ACL。这部分代码可以在 [fs/nfsd/nfs4acl.c](https://github.com/torvalds/linux/blob/master/fs/nfsd/nfs4acl.c) 中找到。
+    假设用户 bowling 在共享存储池中创建了 Git 仓库 `/pool/nvme/HPC101`，那么其他用户即使有 `rwx` 权限，运行 Git 时也会遇到下面的报错：
 
     ```text
-                 NFSv4 ACL         convert            POSIX ACL
-    v4 Client <-----------> Linux Kernel NFS Server <-----------> Filesystem
+    fatal: detected dubious ownership in repository at '/pool/nvme/HPC101'
+    To add an exception for this directory, call:
+
+        git config --global --add safe.directory /pool/nvme/HPC101
     ```
 
-??? info "关于 Linux、OpenZFS 对 NFSv4 ACL 的支持情况"
+出于安全考虑，集群不会在系统层面添加 `safe.directory *` 这样的配置。请用户自行添加 Git 仓库信任。详见 [Git - git-config Documentation](https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory)
 
-    目前，OpenZFS 和 Linux Kernel 仍旧未提供对 NFSv4 ACL 的 Server 原生支持。`richacl` 已经被 Fedora 包含，但 Debian 仍未包含。
+### Autofs 与文件权限
 
-    OpenZFS 迟迟未实现 NFSv4 ACL 的原因是 Linux Kernel 对 NFSv4 ACL 的支持不足；Linux Kernel 未实现 NFSv4 ACL 的原因或许是 Linux VFS 维护者认为 POSIX ACL 已经足够，合并 NFSv4 ACL 对 Linux 没有好处。
+!!! quote
 
-    - [(2023)NFSv4 ACLs on OpenZFS for Linux - TopicBox](https://openzfs.topicbox.com/groups/developer/T1a52d42d5cd336e8)：OpenZFS 对 NFSv4 ACL 的支持进展。
-    - [ACLs - Linux NFS](https://wiki.linux-nfs.org/wiki/index.php/ACLs)：讨论了 ACL 与 NFS 实现问题和支持情况。
-    - [(2022)Linux's refusal to adopt RichACLs/NFSv4 ACLs forever perplexes me - Hacker News](https://news.ycombinator.com/item?id=33768428)：关于 Linux Kernel 对 NFSv4 ACL 的讨论。
+    - [auto.master(5) - Linux manual page](https://man7.org/linux/man-pages/man5/auto.master.5.html)
 
-    Samba Wiki：
+集群的网络文件系统均通过 [Autofs](https://docs.kernel.org/filesystems/autofs.html) 挂载。Autofs 能够实现按需挂载，当有用户访问相应路径时自动挂载，一段时间后会自动卸载。当路径没有被挂载时，显示的文件权限是一个默认值。下面是一个例子，在 `cd hdd` 之前，`hdd` 目录没有被挂载，没有显示真实的文件权限。进入文件夹后目录被挂载，能够获得真实的文件权限。
 
-    > Linux is the only one of the major Unix flavors that does not have any native NFS4 ACL support upstream in the kernel yet. There was a proposed implementation called RichACLs. RichACLs are essentially like NFS4 ACLs with the additional feature of file masks. Even though the RichACL implementation was in a good shape in 2015 already, it never was brought upstream into the kernel because some Linux VFS maintainers believe that POSIX draft ACLs are sufficient and NFS4 ACLs don't fit well to Linux. This is a pity for all of the the Linux community actually.
+```text
+bowling@storage /pool> getfacl hdd
+# file: hdd
+# owner: root
+# group: root
+user::rwx
+group::rwx
+other::---
 
-    一位开发者的评论：
+bowling@storage /pool> cd hdd
+bowling@storage /p/hdd> getfacl .
+# file: .
+# owner: root
+# group: zjusct
+# flags: -s-
+user::rwx
+group::rwx
+other::---
+default:user::rwx
+default:group::rwx
+default:group:zjusct:rwx
+default:mask::rwx
+default:other::---
+```
 
-    > My (unofficial) understanding of the linux kernel developers policy is
-    > that they will not accept any commits for functionality that is not used
-    > by an in-kernel module or component. As zfs is not and presumably never
-    > will be an official in-kernel component, any changes specifically to
-    > improve or enhance it will not be accepted upstream. For example, once
-    > zfs nfsv4 acl support is complete, it would be nice to be able to export
-    > them via NFS. However, the current linux NFS server does not support
-    > exporting actual nfsv4 ACLs, only mangling POSIX file system ACLs.
-    > Adding support to it for nfsv4 filesystem ACLs would not be accepted if
-    > it were only for the benefit of zfs. However, there is a possible
-    > workaround, at least for that. The NFS server supports re-exporting an
-    > NFS client mount. If somebody contributed a change allowing nfsv4 ACLs
-    > present on a client NFS mount to be re-exported via the NFS server, that
-    > would likely be accepted, and could be made generic enough to magically
-    > just work with zfs as well :).
+## POSIX 文件权限
 
-    Linux NFS 页面：
+POSIX 定义了基本的文件权限模型，这是 Unix 和类 Unix 系统中最基本的权限控制机制。每个文件和目录都有三种类型的用户身份和对应的权限设置：
 
-    > None of the filesystems which the linux server exports support NFSv4 ACLs. However, many of them do support POSIX ACLs. So we map NFSv4 ACLs to POSIX ACLs and store POSIX ACLs in the filesystem. The mapping is imperfect. It accepts most NFSv4 ACLs.
-    >
-    > The code to perform this mapping on the server side is in the kernel, in fs/nfsd/nfs4acl.c.
-    >
-    > Work is under way to include NFSv4 ACLs in the underlying filesystem, which would solve all of the above problems at the expense of increased filesystem complexity. As of this writing, patches for production use are not yet available.
-    >
-    > - The latest progress of Native NFSv4 ACLs on Linux Richacls, and latest Fedora has included richacl package.
-    > - man-pages in package richacl richacl(7) richaclex(7) getrichacl(1) setrichacl(1)
+### 基本权限类型
 
-    2019 年内核 Mailing List 中：
+每种文件有三个基本权限位：
 
-    > > Is there some reason why there hasn't been a greater effort to add NFSv4
-    > > ACL support to the mainstream linux filesystems?  I have to support a
-    > > hybrid linux/windows environment and not having these ACLs on ext4 is a
-    > > daily headache for me.
-    >
-    > The patches for implementing that have been rejected over and over
-    > again, and nobody is working on them anymore.
+- `r` (read) - 读权限
+- `w` (write) - 写权限  
+- `x` (execute) - 执行权限
 
-经过研究和测试，我们最终采用 POSIX ACL。启用 ACL 的存储池挂载为 NFSv3，以便在客户端上也能直接使用 `acl` 而不是 `nfs4-acl-tools`，统一服务端和客户端的 ACL 使用体验。
+这三种权限分别对应三种用户身份：
 
-!!! info
+- Owner (user) - 文件所有者
+- Group - 文件所属组
+- Other - 其他用户
 
-    TrueNAS 等专注存储的发行版已经完善支持了 NFSv4 ACL，后续我们可能考虑将存储池移动到 TrueNAS 上，升级到 NFSv4 ACL。
+### 文件与目录权限的区别
 
-### ACL 格式
+对于**文件**，权限位含义如下：
+
+- `r` - 允许读取文件内容
+- `w` - 允许修改文件内容
+- `x` - 允许执行该文件
+
+对于**目录**，权限位含义有所不同：
+
+- `r` - 允许列出目录中的文件和子目录
+- `w` - 允许在目录中创建、删除、重命名文件或子目录
+- `x` - 允许进入该目录（cd 命令）
+
+### 特殊权限位
+
+除了基本的 rwx 权限外，POSIX 还定义了三个特殊权限位：
+
+#### SUID (Set User ID)
+
+SUID 权限位用`s`表示，当设置在可执行文件上时：
+
+- 文件被执行时，进程将以文件所有者的身份运行
+- 有效用户 ID 变为文件所有者的 ID，而不是执行者的 ID
+
+例如，当普通用户执行 `passwd` 命令时，由于 `passwd` 设置了 SUID 权限，所以该进程以 root 身份运行，从而能够修改系统密码文件：
+
+```bash
+$ ls -l /usr/bin/passwd
+-rwsr-xr-x 1 root root 63816 Sep 16  2012 /usr/bin/passwd
+```
+
+注意：在权限位中，如果原本有 x 权限，则用小写 `s` 代替 x；如果没有 x 权限，则用大写 `S` 表示。
+
+#### SGID (Set Group ID)
+
+SGID 权限位同样用`s`表示，作用于：
+
+1. 可执行文件：执行时进程的有效组 ID 变为文件所属组
+2. 目录：在此目录中创建的新文件会继承目录的组所有权，而非创建者的主组
+
+例如：
+
+```bash
+$ ls -l /usr/bin/write
+-rwxr-sr-x 1 root tty 10424 May 11  2012 /usr/bin/write
+```
+
+#### Sticky Bit
+
+Sticky bit 用`t`表示，通常用于目录。当目录设置了 sticky bit 时：
+
+- 只有目录的所有者、文件的所有者或超级用户才能删除或重命名目录中的文件
+- 即使其他用户对该目录具有写权限，也不能删除不属于他们的文件
+
+最典型的例子是/tmp 目录：
+
+```bash
+$ ls -ld /tmp
+drwxrwxrwt 10 root root 4096 Jan 29 20:00 /tmp/
+```
+
+这样，任何人都可以在 `/tmp` 目录中创建文件，但只能删除自己创建的文件。
+
+### 权限表示法
+
+权限可以用多种方式表示：
+
+- 符号表示法
+
+    - `rwxr-xr--` - 完整的符号表示
+    - `u+rwx,g+rx,o+r` - 修改特定用户类型的权限
+
+- 数字表示法：
+
+    - 每个权限位对应一个数字：`r=4, w=2, x=1`
+    - 将每组权限相加：`rwx = 7, rw- = 6, r-x = 5`
+    - 三组权限组合：`755, 644, 777` 等
+
+- 特殊权限的数字表示：
+
+    - SUID = 4000 (八进制)
+    - SGID = 2000 (八进制)
+    - Sticky bit = 1000 (八进制)
+    - 因此设置特殊权限时，权限值前加上这些数字，如 4755(SUID), 2755(SGID), 1755(Sticky)
+
+## ACL 文件访问控制列表
+
+文件访问控制列表（Access Control List，ACL）用于实现更高级、更细粒度的文件权限。
+
+### POSIX ACL
 
 ??? quote
 
-    - [(2002)POSIX Access Control Lists on Linux - USENIX](https://www.usenix.org/legacy/publications/library/proceedings/usenix03/tech/freenix03/full_papers/gruenbacher/gruenbacher_html/main.html)：Ext2/3 的贡献者写的，详细介绍了 POSIX ACL 的概念、使用、原理和性能分析，并且对比讲解了不同系统中采用不同设计的考虑。这篇文章的后半部分还探讨了 NFS、Samba 与 ACL。
-    - [New Solaris ACL Model - Oracel Help Center](https://docs.oracle.com/cd/E23824_01/html/821-1448/gbacb.html)：描述了 NFSv4 下的 ACL 模型。
+    - [(2002)POSIX Access Control Lists on Linux - USENIX](https://www.usenix.org/legacy/publications/library/proceedings/usenix03/tech/freenix03/full_papers/gruenbacher/gruenbacher_html/main.html)：Ext2/3 的贡献者写的文章，详细介绍了 POSIX ACL 的概念、使用、原理和性能分析，并且对比讲解了不同系统中采用不同设计的考虑。这篇文章的后半部分还探讨了 NFS、Samba 与 ACL。
+
+POSIX ACL 是目前 Linux 和各类文件系统普遍支持的 ACL 类型。`setfacl`、`getfacl` 等实用工具用于操作 POSIX ACL。
+
+#### POSIX ACL 格式
 
 ACL 由 ACEs（Access Control Entries）组成。当基本文件权限被更改时，ACL 会被更新。具体更新方式因实现而异。
-
-#### POSIX ACE
 
 POSIX ACL 具有 6 种 ACE：
 
@@ -141,8 +217,6 @@ POSIX ACL 具有 6 种 ACE：
 
 `owner` 和 `other` 权限不受 `mask` 影响。
 
-#### POSIX ACL
-
 POSIX ACL 分为两种：
 
 - Access ACL：控制文件的访问权限。
@@ -152,78 +226,13 @@ POSIX ACL 分为两种：
 
 如果有 Default ACL，则新建文件/文件夹不受 `umask` 影响。
 
-#### NFSv4 ACL
-
-```text
-A:d:user@nfsdomain.org:rxtnc
-```
-
-- ACE Type：`A` 表示 Allow，`D` 表示 Deny。
-- ACE Flags：用于控制继承，仅用于目录。在文件上设置没有意义。
-
-    | Flag | Name | Description |
-    | --- | --- | --- |
-    | `d` | directory-inherit | 子目录继承 |
-    | `f` | file-inherit | 文件继承 |
-    | `i` | inherit-only | 仅继承 |
-    | `n` | no-propagate | 不传播 |
-
-- ACE Principal：
-    - 用户名字：`user@nfsdomain.org`
-    - 用户组：需要在 Flags 加上 `g`。
-    - 特殊：`OWNER@`、`GROUP@`、`EVERYONE@`
-- ACE Permissions：
-
-    | Permission | Function |
-    | --- | --- |
-    | `r` | read-data (files) / list-directory (directories) |
-    | `w` | write-data (files) / create-file (directories) |
-    | `a` | append-data (files) / create-subdirectory (directories) |
-    | `x` | execute (files) / change-directory (directories) |
-    | `d` | delete the file/directory |
-    | `D` | delete-child : remove a file or subdirectory from the given directory (directories only) |
-    | `t` | read the attributes of the file/directory |
-    | `T` | write the attribute of the file/directory |
-    | `n` | read the named attributes of the file/directory |
-    | `N` | write the named attributes of the file/directory |
-    | `c` | read the file/directory ACL |
-    | `C` | write the file/directory ACL |
-    | `o` | change ownership of the file/directory |
-
-    POSIX 兼容：
-
-    | Permission | Function |
-    | --- | --- |
-    | `R` | `rntcy` |
-    | `W` | `watTNcCy` + `D`（文件夹） |
-    | `X` | `xtcy` |
-
-## ACL 实践
-
-### 我们的 ACL 策略
-
-目前，只有公共存储池（`river` 等区域）使用了 ACL。我们的 ACL 策略如下：
-
-- `/river`
-    - 存储池根目录和第一层子目录：归属 `root`，基础权限 `755`，无 ACL。
-    - 第二层开始：由管理员创建，归属于某个用户及项目组，基础权限 `770`，ACL 按需设置（当基本用户/用户组无法满足权限管理需求时）。
-- `/lake`：暂无计划配置。
-- `/ocean`：暂无计划配置。
-- `/home`：暂无计划配置。
-
-### ACL 工具
+#### POSIX ACL 工具
 
 !!! quote
 
     - [HOWTO: Use POSIX ACL - Ohio Supercomputer Center](https://www.osc.edu/resources/getting_started/howto/howto_manage_access_control_list_acls/howto_use_posix_acl)
-    - [HOWTO: Use NFSv4 ACL - Ohio Supercomputer Center](https://www.osc.edu/book/export/html/4523)
 
-Debian 默认未安装 ACL。目前 APT 源中有两种 ACL 工具：
-
-- `acl`: Commands for Manipulating **POSIX** Access Control Lists
-- `nfs4-acl-tools`：**Client** tools for manipulating NFSv4 ACLs directly
-
-#### `acl`
+Debian 系列发行版的 `acl` 包提供管理 POSIX ACL 的工具。
 
 接下来介绍使用 `setfacl` 和 `getfacl` 命令设置和查看 ACL。
 
@@ -328,7 +337,145 @@ setfacl [OPTION] COMMAND file
     setfacl -d -m u:uid:r-X shared-dir
     ```
 
-#### `nfs4-acl-tools`
+### NFSv4 ACL
+
+??? quote
+
+    - [New Solaris ACL Model - Oracel Help Center](https://docs.oracle.com/cd/E23824_01/html/821-1448/gbacb.html)：描述了 NFSv4 下的 ACL 模型。
+
+NFSv4 ACL 是文件系统领域最新，有明确规范，功能最强大的 ACL，但与 POSIX ACL 不兼容。NFSv4.1 ACL 是 POSIX ACL 和 Windows NT ACL 的超集。与 POSIX ACL 相比，对 NFSv4 ACL 网络服务的支持更好，比如用户/组可以使用 `user@domain` 格式，而不仅仅是 UID/GID。
+
+#### 支持情况
+
+- 文件系统：
+
+    - Ext3、Ext4 和 ZFS 都支持 NFSv4 ACL。
+- 操作系统：
+
+    - Mac OS X、FreeBSD 都支持 NFSv4 ACL。
+    - **Linux 暂未原生支持 NFSv4 ACL**。
+
+##### Linux Kernel
+
+NFSv4 ACL 具有诸多优势，但在可以预见的未来都不会被 Linux 主线内核合并。用户态有 `nfs4_setfacl`、`nfs4_getfacl` 等工具用于操作 NFSv4 ACL。
+
+这在 ACL 上产生了非常尴尬的情况：NFSv4 服务端和客户端已经被 Linux Kernel 广泛支持，也就意味着客户端和服务端必须采用 NFSv4 ACL 进行沟通。然而，Linux Kernel 仍然没有原生支持 NFSv4 ACL，于是就必须在 NFS 服务端将 NFSv4 ACL 转换为 POSIX ACL。这部分代码可以在 [fs/nfsd/nfs4acl.c](https://github.com/torvalds/linux/blob/master/fs/nfsd/nfs4acl.c) 中找到。
+
+```text
+                NFSv4 ACL         convert            POSIX ACL
+v4 Client <-----------> Linux Kernel NFS Server <-----------> Filesystem
+```
+
+TrueNAS 等专注存储的发行版已经完善支持了 NFSv4 ACL。
+
+曾经集群使用 NFS 时，经过研究和测试，我们最终采用 POSIX ACL。启用 ACL 的存储池挂载为 NFSv3，以便在客户端上也能直接使用 `acl` 而不是 `nfs4-acl-tools`，统一服务端和客户端的 ACL 使用体验。
+
+##### 文件系统
+
+目前，OpenZFS 和 Linux Kernel 仍旧未提供对 NFSv4 ACL 的 Server 原生支持。用于在用户态实现 NFSv4 ACL 的 `richacl` 已经被 Fedora 包含，但 Debian 仍未包含。
+
+OpenZFS 迟迟未实现 NFSv4 ACL 的原因是 Linux Kernel 对 NFSv4 ACL 的支持不足；Linux Kernel 未实现 NFSv4 ACL 的原因或许是 Linux VFS 维护者认为 POSIX ACL 已经足够，合并 NFSv4 ACL 对 Linux 没有好处。
+
+- [(2023)NFSv4 ACLs on OpenZFS for Linux - TopicBox](https://openzfs.topicbox.com/groups/developer/T1a52d42d5cd336e8)：OpenZFS 对 NFSv4 ACL 的支持进展。
+- [ACLs - Linux NFS](https://wiki.linux-nfs.org/wiki/index.php/ACLs)：讨论了 ACL 与 NFS 实现问题和支持情况。
+- [(2022)Linux's refusal to adopt RichACLs/NFSv4 ACLs forever perplexes me - Hacker News](https://news.ycombinator.com/item?id=33768428)：关于 Linux Kernel 对 NFSv4 ACL 的讨论。
+
+Samba Wiki:
+
+> Linux is the only one of the major Unix flavors that does not have any native NFS4 ACL support upstream in the kernel yet. There was a proposed implementation called RichACLs. RichACLs are essentially like NFS4 ACLs with the additional feature of file masks. Even though the RichACL implementation was in a good shape in 2015 already, it never was brought upstream into the kernel because some Linux VFS maintainers believe that POSIX draft ACLs are sufficient and NFS4 ACLs don't fit well to Linux. This is a pity for all of the the Linux community actually.
+
+一位开发者的评论：
+
+> My (unofficial) understanding of the linux kernel developers policy is
+> that they will not accept any commits for functionality that is not used
+> by an in-kernel module or component. As zfs is not and presumably never
+> will be an official in-kernel component, any changes specifically to
+> improve or enhance it will not be accepted upstream. For example, once
+> zfs nfsv4 acl support is complete, it would be nice to be able to export
+> them via NFS. However, the current linux NFS server does not support
+> exporting actual nfsv4 ACLs, only mangling POSIX file system ACLs.
+> Adding support to it for nfsv4 filesystem ACLs would not be accepted if
+> it were only for the benefit of zfs. However, there is a possible
+> workaround, at least for that. The NFS server supports re-exporting an
+> NFS client mount. If somebody contributed a change allowing nfsv4 ACLs
+> present on a client NFS mount to be re-exported via the NFS server, that
+> would likely be accepted, and could be made generic enough to magically
+> just work with zfs as well :).
+
+Linux NFS 页面：
+
+> None of the filesystems which the linux server exports support NFSv4 ACLs. However, many of them do support POSIX ACLs. So we map NFSv4 ACLs to POSIX ACLs and store POSIX ACLs in the filesystem. The mapping is imperfect. It accepts most NFSv4 ACLs.
+>
+> The code to perform this mapping on the server side is in the kernel, in fs/nfsd/nfs4acl.c.
+>
+> Work is under way to include NFSv4 ACLs in the underlying filesystem, which would solve all of the above problems at the expense of increased filesystem complexity. As of this writing, patches for production use are not yet available.
+>
+> - The latest progress of Native NFSv4 ACLs on Linux Richacls, and latest Fedora has included richacl package.
+> - man-pages in package richacl richacl(7) richaclex(7) getrichacl(1) setrichacl(1)
+
+2019 年内核 Mailing List 中：
+
+> > Is there some reason why there hasn't been a greater effort to add NFSv4
+> > ACL support to the mainstream linux filesystems?  I have to support a
+> > hybrid linux/windows environment and not having these ACLs on ext4 is a
+> > daily headache for me.
+>
+> The patches for implementing that have been rejected over and over
+> again, and nobody is working on them anymore.
+
+#### NFSv4 ACL 格式
+
+```text
+A:d:user@nfsdomain.org:rxtnc
+```
+
+- ACE Type：`A` 表示 Allow，`D` 表示 Deny。
+- ACE Flags：用于控制继承，仅用于目录。在文件上设置没有意义。
+
+    | Flag | Name | Description |
+    | --- | --- | --- |
+    | `d` | directory-inherit | 子目录继承 |
+    | `f` | file-inherit | 文件继承 |
+    | `i` | inherit-only | 仅继承 |
+    | `n` | no-propagate | 不传播 |
+
+- ACE Principal：
+    - 用户名字：`user@nfsdomain.org`
+    - 用户组：需要在 Flags 加上 `g`。
+    - 特殊：`OWNER@`、`GROUP@`、`EVERYONE@`
+- ACE Permissions：
+
+    | Permission | Function |
+    | --- | --- |
+    | `r` | read-data (files) / list-directory (directories) |
+    | `w` | write-data (files) / create-file (directories) |
+    | `a` | append-data (files) / create-subdirectory (directories) |
+    | `x` | execute (files) / change-directory (directories) |
+    | `d` | delete the file/directory |
+    | `D` | delete-child : remove a file or subdirectory from the given directory (directories only) |
+    | `t` | read the attributes of the file/directory |
+    | `T` | write the attribute of the file/directory |
+    | `n` | read the named attributes of the file/directory |
+    | `N` | write the named attributes of the file/directory |
+    | `c` | read the file/directory ACL |
+    | `C` | write the file/directory ACL |
+    | `o` | change ownership of the file/directory |
+
+    POSIX 兼容：
+
+    | Permission | Function |
+    | --- | --- |
+    | `R` | `rntcy` |
+    | `W` | `watTNcCy` + `D`（文件夹） |
+    | `X` | `xtcy` |
+
+#### NFSv4 ACL 工具
+
+??? quote
+
+    - [HOWTO: Use NFSv4 ACL - Ohio Supercomputer Center](https://www.osc.edu/book/export/html/4523)
+
+Debian 系列发行版的 `nfs4-acl-tools` 提供管理 NFSv4 ACL 的工具。
 
 ```bash
 nfs4_setfacl [OPTIONS] COMMAND file
@@ -351,14 +498,29 @@ nfs4_getfacl [OPTIONS] file
 | `-L` | logical, follow symbolic links |
 | `-P` | physical, skip symbolic links |
 
-### 文件系统的 ACL 配置
+### ACL 的实现和配置
+
+- **操作系统层面**（抽象接口）：
+    - 在 Linux 和现代 UNIX-like 系统中，ACL 以扩展属性（Extended Attributes，xattrs）的形式存储。
+    - ACL 通常存储在两个特定的 xattr 命名空间中：
+        - `system.posix_acl_access`：用于文件访问 ACL
+        - `system.posix_acl_default`：用于目录默认 ACL
+    - 在 VFS 层面，系统调用（`getxattr`/`setxattr` 等）提供了统一的 xattr 操作接口。
+
+- **文件系统层面**（具体实现）：
+    - **Ext2/3/4**：使用 `i_file_acl` 字段（在 inode 中）指向一个独立的“扩展属性块”，该块存储所有 xattrs（包括 ACL）。
+    - **XFS**：采用更灵活的设计，小的 xattrs 直接存储在 inode 的可用空间中，大的 xattrs 则存储在专门的 B+ 树结构中。
+    - **Btrfs**：将 xattrs 作为特殊的元数据项存储在其树结构中。
+    - **其他文件系统**（如 ZFS、APFS 等）也有各自不同的实现方式。
+
+扩展属性（EA/xattrs）既是 VFS 层定义的抽象接口概念，也是各文件系统需要实现的具体功能。
+
+#### OpenZFS
 
 !!! quote
 
     - [Setting ACLs on ZFS Files - Oracel Help Center](https://docs.oracle.com/cd/E23823_01/html/819-5461/gbace.html)
     - [zfsprops.7 - OpenZFS](https://openzfs.github.io/openzfs-docs/man/master/7/zfsprops.7.html)
-
-#### OpenZFS
 
 OpenZFS 文档中，`acltype` 参数描述如下：
 
@@ -443,19 +605,9 @@ ZFS 的 `sharenfs` 直接使用 `export` 说明的属性，也默认支持。
     A::EVERYONE@:rtcy
     ```
 
-### ACL 实现
-
-POSIX ACL:
-
-- 操作系统层面：对于大部分 UNIX-like 系统，ACL 作为 Extended Attribute 存储在文件系统中。在系统调用层面上，EA 可以看作与文件对象相关联的键值对。EA 不仅用于实现 ACL。
-- 文件系统层面：
-    - Ext2/3：使用 `i_file_acl` 字段，指向一个 EA block。
-    - XFS：小的 EA 直接存储在 inode，大的存储在 B+ 树中。
-
-NFS:
+NFS 中的 ACL 实现：
 
 - v2 时，访问控制是在客户端缓存做的，产生了一些问题。
 - 从 v3 开始定义了 `ACCESS` RPC 调用，向服务器请求文件的权限，但没有规定如何传输 ACL。不同厂家实现的 NFSv3 在 ACL 上有所不同。
 - v4 完善了 ACL。
-
-在 Linux 系统 export 出的 NFS 中，并没有实现真正的 NFSv4 ACL，还是需要做到 POSIX ACL 的映射。
+- 在 Linux 系统 export 出的 NFS 中，并没有实现真正的 NFSv4 ACL，还是需要做到 POSIX ACL 的映射。

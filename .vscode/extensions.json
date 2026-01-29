@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "esbenp.prettier-vscode",
+        "huacnlee.autocorrect",
+        "DavidAnson.vscode-markdownlint",
+        "yzhang.markdown-all-in-one",
+        ""
+    ]
+}
