@@ -105,6 +105,49 @@ Jenkins 会为每次构建生成一个构建号，你可以点击构建号查看
 - 在 Jenkins 任务的 General 中选择一个 GitLab Connection，在 Post-build Actions 中选择发布到 GitLab。
 - 执行构建，查看构建结果是否成功发布到 GitLab。
 
+## Jenkins 流水线
+
+!!! quote
+
+    - [Pipeline Syntax](https://www.jenkins.io/doc/book/pipeline/syntax/)：流水线整体语法定义，不涉及具体的 step 怎么写。
+    - [Pipeline Steps Reference](https://www.jenkins.io/doc/pipeline/steps/)：可以查到 Jenkins 内置和所有插件提供的 step 的语法。
+
+本节讲解 Jenkins 声明式（Declarative）流水线的语法。
+
+```groovy
+pipeline {
+    stages {
+        stage() {
+            steps {
+                /* 以 sh step 为例，其文档见 https://www.jenkins.io/doc/pipeline/steps/workflow-durable-task-step/#sh-shell-script */
+                sh(
+                    script: "echo Hello, Jenkins!",
+                    returnStdout: true
+                )
+            }
+        }
+    }
+}
+
+```
+
+简单来说：
+
+- pipeline 里面是一个个 block。
+- block 可以是 sections、directives
+    - 常用的 sections：
+        - stages：里面可以放一堆 stage
+        - steps：里面可以放一堆具体的 step
+        - post：
+    - 常用的 directives：
+        - stage：里面必须有且仅有一个 steps、stages、parallel 或 matrix，和一个可选的 agent
+            - parallel：里面放一堆 stage，它们并行执行
+        - when：放在 stage 里，里面放一堆 conditions，定义该 stage 的执行条件
+        - options：放在 pipeline 或 stage 例，配置一写选项如超时、重试等
+        - triggers：放在 pipeline 里，配置触发器如定时构建（cron）、拉取 Git 仓库等
+    - step：由各类插件提供，执行具体的流水线步骤，见 [Pipeline Steps Reference](https://www.jenkins.io/doc/pipeline/steps/)
+- 上面的示例就是：一个 pipeline，里面有一个 stage，stage 里有一个 steps，steps 里有一个 sh step。
+
 ## Jenkins 配置与维护
 
     - [Initial Settings - Jenkins](https://www.jenkins.io/doc/book/installing/initial-settings/)
@@ -173,3 +216,13 @@ jenkins:
 使用 Matrix Authorization Strategy 插件，可以更细粒度地控制用户权限。下载插件后，在安全设置中可以添加匿名用户并设置其权限。为了让匿名用户能够查看基本的任务构建状态，需要赋予 Overall、Job 和 View 的 Read 权限。
 
 需要注意的是应当关闭 Job/Workspace 的匿名访问权限，否则匿名用户可以查看工作区的文件。其中很可能包含敏感信息。
+
+## Jenkins 插件
+
+### [Kubernetes](https://plugins.jenkins.io/kubernetes/)
+
+
+
+### [S3 publisher](https://plugins.jenkins.io/s3/)
+
+

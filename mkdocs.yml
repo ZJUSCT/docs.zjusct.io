@@ -22,7 +22,13 @@ nav:
     - optimization/index.md
     - 并行编程: optimization/parallel
     - 高性能网络: optimization/HPN
-  - ⚙️ 运维: operation
+  - ⚙️ 运维:
+    - operation/index.md
+    - 🐧 系统软件: operation/system
+    - 💾 存储: operation/storage
+    - ⚓ K8S:
+      - 管理篇: operation/k8s/mgmt
+      - 服务篇: operation/k8s/svc
   - ✍️ 博客: blog
 
 
