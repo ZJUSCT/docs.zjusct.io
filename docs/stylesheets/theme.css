@@ -41,3 +41,8 @@
 .md-logo__variant .md-logo__image {
     display: block;
 }
+
+[data-md-color-scheme="slate"] .md-content iframe,
+[data-md-color-scheme="slate"] .md-content .mxgraph {
+    filter: invert(1) hue-rotate(180deg);
+}
