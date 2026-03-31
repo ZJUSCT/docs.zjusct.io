@@ -5,7 +5,7 @@ tags:
 
 # CUDA
 
-![Overview of CUDA Toolkit](https://docs.nvidia.com/datacenter/tesla/drivers/graphics/cuda-x.png)
+![Overview of CUDA Toolkit](./cuda.assets/cuda-x.png)
 
 CUDA 在实际应用中的整体结构层次如上图所示。HPC 方向主要需要了解 HPC SDK 等较上层的模块，如何使用。涉及运维、功耗控制等方面时，也会涉及驱动中的 NVML 等模块。下面挑选常用的模块作一些介绍：
 
