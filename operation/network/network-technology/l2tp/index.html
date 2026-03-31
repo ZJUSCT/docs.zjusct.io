@@ -1,4 +1,7 @@
-<!DOCTYPE html><html lang="en" class="no-js"><head>
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -18,7 +21,7 @@
       
       
       <link rel="icon" href="../../../../assets/zjusct.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="zensical-0.0.30">
     
     
       
@@ -26,10 +29,15 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      <link rel="stylesheet" href="../../../../assets/stylesheets/modern/main.3b031116.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
       
       
 
@@ -43,8 +51,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
     
@@ -56,23 +64,13 @@
     
       <link rel="stylesheet" href="../../../../stylesheets/neoteroi-v1.1.2.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
     
     
-  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
-            html.glightbox-open { overflow: initial; height: 100%; }
-            .gslide-title { margin-top: 0px; user-select: text; }
-            .gslide-desc { color: #666; user-select: text; }
-            .gslide-image img { background: white; }
-            .gscrollbar-fixer { padding-right: 15px; }
-            .gdesc-inner { font-size: 0.75rem; }
-            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
-            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
-            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
-        </style></head>
+  </head>
   
   
     
@@ -87,7 +85,7 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
     <div data-md-component="skip">
       
         
@@ -106,13 +104,24 @@
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../../../.." title="ZJUSCT" class="md-header__button md-logo" aria-label="ZJUSCT" data-md-component="logo">
-      
-  <img src="../../../../assets/zjusct.svg" alt="logo">
-
+      <span class="md-logo__variant md-logo__variant--light">
+  <img
+    class="md-logo__image"
+    src="../../../../assets/zjusct-wide-clear.svg"
+    alt="ZJUSCT"
+  >
+</span>
+<span class="md-logo__variant md-logo__variant--dark">
+  <img
+    class="md-logo__image"
+    src="../../../../assets/zjusct-wide-dark-clear.svg"
+    alt="ZJUSCT"
+  >
+</span>
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -137,30 +146,30 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="切换至浅色模式" type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="zjusct" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="切换至深色模式" type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="zjusct" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_2" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="根据系统模式切换主题" type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="根据系统模式切换主题"  type="radio" name="__palette" id="__palette_2">
     
       <label class="md-header__button md-icon" title="根据系统模式切换主题" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
@@ -174,64 +183,30 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search">
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
         </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
-            
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
-          </a>
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
 </div>
       
     
-    
-      <div class="md-header__source">
+    <div class="md-header__source">
+      
         <a href="https://github.com/ZJUSCT/www.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     www.zjusct.io
   </div>
 </a>
-      </div>
-    
+      
+    </div>
   </nav>
   
 </header>
@@ -255,9 +230,6 @@
       <a href="../../../.." class="md-tabs__link">
         
   
-  
-    
-  
   首页
 
       </a>
@@ -276,9 +248,6 @@
         <a href="../../../../guideline/" class="md-tabs__link">
           
   
-  
-    
-  
   文档指引
 
         </a>
@@ -292,20 +261,14 @@
   
   
   
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../../../competition/" class="md-tabs__link">
-          
-  
-  
-    
+    <li class="md-tabs__item">
+      <a href="../../../../competition/" class="md-tabs__link">
+        
   
   🏆 竞赛
 
-        </a>
-      </li>
-    
+      </a>
+    </li>
   
 
       
@@ -319,9 +282,6 @@
       <li class="md-tabs__item">
         <a href="../../../../falcon/" class="md-tabs__link">
           
-  
-  
-    
   
   🦅 Falcon
 
@@ -342,9 +302,6 @@
         <a href="../../../../optimization/" class="md-tabs__link">
           
   
-  
-    
-  
   🔧 优化
 
         </a>
@@ -364,9 +321,6 @@
         <a href="../../../" class="md-tabs__link">
           
   
-  
-    
-  
   ⚙️ 运维
 
         </a>
@@ -382,17 +336,24 @@
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../../blog/" class="md-tabs__link">
-          
+      
+  
+  
   
   
     
+    
+      <li class="md-tabs__item">
+        <a href="../../../../blog/2018/09-30-first/" class="md-tabs__link">
+          
   
   ✍️ 博客
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -408,7 +369,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -420,9 +381,20 @@
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../../../.." title="ZJUSCT" class="md-nav__button md-logo" aria-label="ZJUSCT" data-md-component="logo">
-      
-  <img src="../../../../assets/zjusct.svg" alt="logo">
-
+      <span class="md-logo__variant md-logo__variant--light">
+  <img
+    class="md-logo__image"
+    src="../../../../assets/zjusct-wide-clear.svg"
+    alt="ZJUSCT"
+  >
+</span>
+<span class="md-logo__variant md-logo__variant--dark">
+  <img
+    class="md-logo__image"
+    src="../../../../assets/zjusct-wide-dark-clear.svg"
+    alt="ZJUSCT"
+  >
+</span>
     </a>
     ZJUSCT
   </label>
@@ -431,7 +403,7 @@
       <a href="https://github.com/ZJUSCT/www.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     www.zjusct.io
@@ -487,8 +459,6 @@
       
         
       
-        
-      
     
     
     
@@ -504,7 +474,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -602,8 +572,6 @@
               
             
               
-            
-              
                 
   
   
@@ -644,34 +612,9 @@
   
   
   
-    
-    
-      
+    <li class="md-nav__item">
+      <a href="../../../../competition/" class="md-nav__link">
         
-          
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../../../competition/" class="md-nav__link ">
-              
   
   
   <span class="md-ellipsis">
@@ -685,26 +628,7 @@
   
   
 
-            </a>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    🏆 竞赛
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-          </ul>
-        </nav>
-      
+      </a>
     </li>
   
 
@@ -728,8 +652,6 @@
       
         
       
-        
-      
     
     
     
@@ -745,7 +667,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -812,8 +734,6 @@
     </li>
   
 
-              
-            
               
             
               
@@ -911,7 +831,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -984,7 +904,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -1057,7 +977,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_2" >
         
           
           <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
@@ -1241,7 +1161,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3" >
         
           
           <label class="md-nav__link" for="__nav_5_2_3" id="__nav_5_2_3_label" tabindex="0">
@@ -1411,9 +1331,9 @@
     
       
         
-      
-        
           
+        
+      
         
       
         
@@ -1437,7 +1357,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -1477,6 +1397,8 @@
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
                 
   
   
@@ -1502,8 +1424,6 @@
     </li>
   
 
-              
-            
               
             
               
@@ -1564,7 +1484,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_4">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_4" >
         
           
           <label class="md-nav__link" for="__nav_5_3_4" id="__nav_5_3_4_label" tabindex="0">
@@ -1720,7 +1640,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_5">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_5" >
         
           
           <label class="md-nav__link" for="__nav_5_3_5" id="__nav_5_3_5_label" tabindex="0">
@@ -1921,7 +1841,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -1992,7 +1912,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
@@ -2142,7 +2062,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
         
           
           <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
@@ -2180,64 +2100,6 @@
   
   
   
-    
-    
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3_1">
-        
-          
-          <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ceph
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    ceph
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../../../storage/ceph/object/" class="md-nav__link">
         
@@ -2246,7 +2108,7 @@
   <span class="md-ellipsis">
     
   
-    对象存储：RadosGW
+    ceph
   
 
     
@@ -2268,14 +2130,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
               
                 
   
@@ -2304,7 +2158,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
         
           
           <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
@@ -2342,64 +2196,6 @@
   
   
   
-    
-    
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4_1">
-        
-          
-          <label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    管理篇
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    管理篇
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../../../k8s/mgmt/debug/" class="md-nav__link">
         
@@ -2408,7 +2204,7 @@
   <span class="md-ellipsis">
     
   
-    K8S 调试
+    管理篇
   
 
     
@@ -2422,14 +2218,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
               
                 
   
@@ -2460,7 +2248,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4_2" >
         
           
           <label class="md-nav__link" for="__nav_6_4_2" id="__nav_6_4_2_label" tabindex="0">
@@ -2609,10 +2397,6 @@
     
       
         
-          
-        
-      
-        
       
         
       
@@ -2633,12 +2417,11 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
         
           
-          <div class="md-nav__link md-nav__container">
-            <a href="../../../../blog/" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -2652,14 +2435,8 @@
   
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
@@ -2673,100 +2450,6 @@
           <ul class="md-nav__list" data-md-scrollfix>
             
               
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2">
-        
-          
-          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    posts
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    posts
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/posts/.template/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
                 
   
   
@@ -2800,10 +2483,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_1" >
         
           
-          <label class="md-nav__link" for="__nav_7_2_2" id="__nav_7_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
             
   
   
@@ -2821,8 +2504,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2839,7 +2522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2018/09/30/%E6%B5%99%E6%B1%9F%E5%A4%A7%E5%AD%A6%E8%B6%85%E7%AE%97%E9%98%9F%E5%8D%9A%E5%AE%A2%E6%B4%BB%E4%BA%86/" class="md-nav__link">
+      <a href="../../../../blog/2018/09-30-first/" class="md-nav__link">
         
   
   
@@ -2867,7 +2550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2018/11/25/cuda-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%80%BB%E7%BB%93-%E4%B8%80/" class="md-nav__link">
+      <a href="../../../../blog/2018/11-25-cuda/" class="md-nav__link">
         
   
   
@@ -2895,7 +2578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2018/12/07/quick-guide-to-cuda-profiling/" class="md-nav__link">
+      <a href="../../../../blog/2018/12-07-cuprof/" class="md-nav__link">
         
   
   
@@ -2923,7 +2606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2018/12/23/distributed-tensorflow/" class="md-nav__link">
+      <a href="../../../../blog/2018/12-23-tensorflow/" class="md-nav__link">
         
   
   
@@ -2951,7 +2634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2018/12/24/bp-%E7%AE%97%E6%B3%95feed-forward-neural-network-and-back-propagation/" class="md-nav__link">
+      <a href="../../../../blog/2018/12-24-bp/" class="md-nav__link">
         
   
   
@@ -3020,10 +2703,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2_3">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
         
           
-          <label class="md-nav__link" for="__nav_7_2_3" id="__nav_7_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
             
   
   
@@ -3041,8 +2724,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3059,7 +2742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2019/03/31/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%A2%99%E5%86%85%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2-centos-7-%E7%9A%84-mysql/" class="md-nav__link">
+      <a href="../../../../blog/2019/03-31-Install-MySQL-on-CentOS7-Inside-GFW/" class="md-nav__link">
         
   
   
@@ -3087,7 +2770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2019/03/31/virtual-memory-and-tlb/" class="md-nav__link">
+      <a href="../../../../blog/2019/03-31-Virtual-Memory-and-TLB/" class="md-nav__link">
         
   
   
@@ -3115,7 +2798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2019/05/11/%E5%9F%BA%E4%BA%8E-0-1-%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%9A%84%E6%9C%B4%E7%B4%A0%E5%9B%BE%E7%89%87%E9%99%8D%E5%99%AA/" class="md-nav__link">
+      <a href="../../../../blog/2019/05-11-Image-Restoration-SimpleVersion/" class="md-nav__link">
         
   
   
@@ -3143,7 +2826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2019/05/27/20190526-%E4%BC%9A%E8%AE%AE%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+      <a href="../../../../blog/2019/05-26-MeetingReport/" class="md-nav__link">
         
   
   
@@ -3171,7 +2854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2019/05/31/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      <a href="../../../../blog/2019/05-31-GAN-Introduction/" class="md-nav__link">
         
   
   
@@ -3199,7 +2882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2019/06/14/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/" class="md-nav__link">
+      <a href="../../../../blog/2019/06-14-GAN-theory/" class="md-nav__link">
         
   
   
@@ -3227,7 +2910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2019/06/16/%E5%9F%BA%E4%BA%8E-gan-%E7%9A%84%E5%8A%A8%E6%BC%AB%E5%A4%B4%E5%83%8F%E7%94%9F%E6%88%90/" class="md-nav__link">
+      <a href="../../../../blog/2019/06-16-GAN-Anime-Avatar-Generation/" class="md-nav__link">
         
   
   
@@ -3255,7 +2938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2019/06/21/rsa-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8F%8A%E5%85%B6%E6%95%B0%E5%AD%A6%E6%80%9D%E6%83%B3/" class="md-nav__link">
+      <a href="../../../../blog/2019/06-21-RSA/" class="md-nav__link">
         
   
   
@@ -3316,10 +2999,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2_4">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_3" >
         
           
-          <label class="md-nav__link" for="__nav_7_2_4" id="__nav_7_2_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
             
   
   
@@ -3337,8 +3020,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3355,7 +3038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2025/03/16/%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E5%85%A5%E4%BE%B5%E4%BA%8B%E4%BB%B6%E5%A7%8B%E6%9C%AB/" class="md-nav__link">
+      <a href="../../../../blog/2025/03-16-virus/" class="md-nav__link">
         
   
   
@@ -3383,7 +3066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2025/05/01/%E7%AC%AC%E4%B8%89%E4%BB%A3%E9%95%9C%E5%83%8F%E7%AB%99%E5%BB%BA%E8%AE%BE%E4%B8%80%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/" class="md-nav__link">
+      <a href="../../../../blog/2025/05-03-mirror-1-autoinstall/" class="md-nav__link">
         
   
   
@@ -3411,7 +3094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2025/06/01/%E7%AC%AC%E4%B8%89%E4%BB%A3%E9%95%9C%E5%83%8F%E7%AB%99%E5%BB%BA%E8%AE%BE%E4%BA%8C%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+      <a href="../../../../blog/2025/05-10-mirror-2-storage/" class="md-nav__link">
         
   
   
@@ -3439,7 +3122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/2025/05/19/-hello-hpc-world--2025-%E8%B6%85%E7%AE%97%E7%9F%AD%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B%E6%AD%A3%E5%BC%8F%E5%90%AF%E5%8A%A8/" class="md-nav__link">
+      <a href="../../../../blog/2025/05-19-hpc101/" class="md-nav__link">
         
   
   
@@ -3447,846 +3130,6 @@
     
   
     🎓 Hello, HPC World | 2025 超算短学期课程正式启动！
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_3">
-        
-          
-          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Archive
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Archive
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/archive/2025/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2025
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/archive/2019/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2019
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/archive/2018/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2018
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_4">
-        
-          
-          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Categories
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Categories
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/ai/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    AI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/cuda/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    CUDA
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/centos/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    CentOS
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/ml/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ML
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/meetingreport/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    MeetingReport
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/mysql/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    MySQL
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/operating-susyem/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Operating Susyem
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/profile/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Profile
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/spc/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Spc
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/tlb/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TLB
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/tech/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Tech
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/tensorflow/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Tensorflow
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/virtual-memory/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Virtual Memory
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/zju/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ZJU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/zjusct/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ZJUSCT
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    密码学
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    数论
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/%E7%9F%AD%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    短学期课程
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../blog/category/%E8%BF%90%E7%BB%B4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    运维
   
 
     
@@ -4323,12 +3166,19 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
+                    <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                    <div class="md-sidebar-button__wrapper">
+                      <label class="md-sidebar-button" for="__toc"></label>
+                    </div>
+                  
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
@@ -4337,7 +3187,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -4651,29 +3501,16 @@
               <article class="md-content__inner md-typeset">
                 
                   
-
-  <nav class="md-tags">
-    
-      
-      
-      
-      
-        <a href="../../../../guideline/contribute/#tag:stable" class="md-tag">stable</a>
-      
-    
-  </nav>
-
-
   
     <a href="https://github.com/ZJUSCT/www.zjusct.io/blob/main/docs/operation/network/network-technology/l2tp.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-file-pen" viewBox="0 0 24 24"><path d="M12.659 22H18a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v9.34"/><path d="M14 2v5a1 1 0 0 0 1 1h5M10.378 12.622a1 1 0 0 1 3 3.003L8.36 20.637a2 2 0 0 1-.854.506l-2.867.837a.5.5 0 0 1-.62-.62l.836-2.869a2 2 0 0 1 .506-.853z"/></svg>
     </a>
   
   
 
 
-<h1 id="l2tp">L2TP<a class="headerlink" href="#l2tp" title="Permanent link">¶</a></h1>
+<h1 id="l2tp">L2TP<a class="headerlink" href="#l2tp" title="Permanent link">&para;</a></h1>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
@@ -4685,7 +3522,7 @@
 <p>二层隧道协议（Layer 2 Tunneling Protocol，L2TP）是虚拟私有拨号网（Virtual Private Dial-up Network，VPDN）隧道协议的一种。L2TP 协议提供了对 PPP 链路层数据包的隧道（Tunnel）传输支持，允许二层链路端点和 PPP 会话点驻留在不同设备上，并采用包交换技术进行信息交互，从而扩展了 PPP 模型。L2TP 功能可以简单描述为在非点对点的网络上建立点对点的 PPP 会话连接。L2TP 协议结合了二层转发协议（Layer 2 Forwarding，L2F）协议和点对点隧道协议（Point-to-Point Tunneling protocol，PPTP）协议的优点，成为 IETF 有关二层隧道协议的工业标准。</p>
 <p>L2TP 是应用于远程办公场景中为出差员工远程访问企业内网资源提供接入服务的一种重要 VPN 技术。传统的拨号网络需要租用因特网服务提供商（Internet Service Provider，ISP）的电话线路，申请公共的号码或 IP 地址，不仅产生高额的费用，而且无法为远程用户尤其是出差员工提供便利的接入服务。L2TP 技术出现以后，使用 L2TP 隧道承载 PPP 报文在 Internet 上传输成为了解决上述问题的一种途径。无论出差员工是通过传统拨号方式接入 Internet，还是通过以太网方式接入 Internet，L2TP 都可以提供远程接入服务。</p>
 <p>在了解 L2TP 之前，先让我们来了解一下 PPP 协议。</p>
-<h2 id="ppp-原理">PPP 原理<a class="headerlink" href="#ppp-原理" title="Permanent link">¶</a></h2>
+<h2 id="ppp-原理">PPP 原理<a class="headerlink" href="#ppp-原理" title="Permanent link">&para;</a></h2>
 <p>点对点协议（Point-to-Point Protocol，PPP）</p>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
@@ -4697,35 +3534,35 @@
 </ul>
 </div>
 <p>PPP 诞生的目的是为了封装三层网络协议，使得两个节点之间的通信可以跨越不同的物理链路。</p>
-<h3 id="ppp-组成部分">PPP 组成部分<a class="headerlink" href="#ppp-组成部分" title="Permanent link">¶</a></h3>
+<h3 id="ppp-组成部分">PPP 组成部分<a class="headerlink" href="#ppp-组成部分" title="Permanent link">&para;</a></h3>
 <p>PPP 由两个部分组成：</p>
 <ul>
 <li>链路控制协议（Link Control Protocol，LCP）：建立、配置、测试链路。包括认证、错误检测、多路复用、环回检测等功能。</li>
 <li>网络控制协议（Network Control Protocol，NCP）：配置网络层协议。对于 PPP 封装的每一种网络层协议，都需要一个 NCP。比如对于 IPv4 是 IPCP，对于 IPv6 是 IPv6CP。</li>
 </ul>
 <figure>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/ppp_arch.png" data-desc-position="bottom"><img align="center" alt="ppp_arch" src="../l2tp.assets/ppp_arch.png" style="float: left;" width="50%"></a>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/ppp_arch_2.png" data-desc-position="bottom"><img align="center" alt="ppp_arch_2" src="../l2tp.assets/ppp_arch_2.png" width="50%"></a>
+    <img align="center" alt="ppp_arch" src="../l2tp.assets/ppp_arch.png" style="float: left;" width="50%" />
+    <img align="center" alt="ppp_arch_2" src="../l2tp.assets/ppp_arch_2.png" width="50%" />
     <figcaption>
     PPP 协议栈
-    <br><small>
+    <br/><small>
     <a href="https://en.wikipedia.org/wiki/Point-to-Point_Protocol">Wikipedia</a>, <a href="https://support.huawei.com/enterprise/en/doc/EDOC1100112361/a57612e/ppp-packet-format">Huawei</a>
     </small>
     </figcaption>
 </figure>
-<h3 id="ppp-帧格式">PPP 帧格式<a class="headerlink" href="#ppp-帧格式" title="Permanent link">¶</a></h3>
+<h3 id="ppp-帧格式">PPP 帧格式<a class="headerlink" href="#ppp-帧格式" title="Permanent link">&para;</a></h3>
 <figure>
     <center>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/ppp_frame.png" data-desc-position="bottom"><img align="center" alt="ppp_frame" src="../l2tp.assets/ppp_frame.png" width="80%"></a>
+    <img align="center" alt="ppp_frame" src="../l2tp.assets/ppp_frame.png" width="80%" />
     </center>
     <figcaption>
     PPP 帧格式
-    <br><small>
+    <br/><small>
     <a href="https://www.geeksforgeeks.org/point-to-point-protocol-ppp-frame-format/">GeeksforGeeks</a>
     </small>
     </figcaption>
 </figure>
-<h3 id="lcp">LCP<a class="headerlink" href="#lcp" title="Permanent link">¶</a></h3>
+<h3 id="lcp">LCP<a class="headerlink" href="#lcp" title="Permanent link">&para;</a></h3>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
@@ -4736,27 +3573,27 @@
 <p>当 PPP 帧 Protocol 字段为 <code>0xC021</code> 时，表示 LCP 协议。</p>
 <figure>
     <center>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/ppp_lcp.png" data-desc-position="bottom"><img align="center" alt="ppp_lcp" src="../l2tp.assets/ppp_lcp.png" width="80%"></a>
+    <img align="center" alt="ppp_lcp" src="../l2tp.assets/ppp_lcp.png" width="80%" />
     </center>
     <figcaption>
     LCP 时序图
-    <br><small>
+    <br/><small>
     <a href="http://www.tcpipguide.com/free/t_PPPLinkControlProtocolLCP.htm">The TCP/IP Guide</a>
     </small>
     </figcaption>
 </figure>
 <figure>
     <center>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/ppp_lcp_2.png" data-desc-position="bottom"><img align="center" alt="ppp_lcp_2" src="../l2tp.assets/ppp_lcp_2.png" width="80%"></a>
+    <img align="center" alt="ppp_lcp_2" src="../l2tp.assets/ppp_lcp_2.png" width="80%" />
     </center>
     <figcaption>
     LCP 状态图
-    <br><small>
+    <br/><small>
     <a href="http://www.tcpipguide.com/free/t_PPPLinkControlProtocolLCP-2.htm">The TCP/IP Guide</a>
     </small>
     </figcaption>
 </figure>
-<h3 id="chap">CHAP<a class="headerlink" href="#chap" title="Permanent link">¶</a></h3>
+<h3 id="chap">CHAP<a class="headerlink" href="#chap" title="Permanent link">&para;</a></h3>
 <p>挑战 - 应答认证协议（Challenge-Handshake Authentication Protocol，CHAP）</p>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
@@ -4767,16 +3604,16 @@
 <p>CHAP 验证协议为三次握手验证协议。它只在网络上传输用户名，而并不传输用户密码，因此安全性要比 PAP 高。</p>
 <figure>
     <center>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/ppp_chap.png" data-desc-position="bottom"><img alt="ppp_chap" src="../l2tp.assets/ppp_chap.png"></a>
+    <img alt="ppp_chap" src="../l2tp.assets/ppp_chap.png" />
     </center>
     <figcaption>
     CHAP 时序图
-    <br><small>
+    <br/><small>
     <a href="https://support.huawei.com/enterprise/zh/doc/EDOC1100112418/935e3094">Huawei</a>
     </small>
     </figcaption>
 </figure>
-<h3 id="ipcp">IPCP<a class="headerlink" href="#ipcp" title="Permanent link">¶</a></h3>
+<h3 id="ipcp">IPCP<a class="headerlink" href="#ipcp" title="Permanent link">&para;</a></h3>
 <p>IP 控制协议（IP Control Protocol，IPCP）</p>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
@@ -4787,23 +3624,23 @@
 <p>IPCP 是 PPP 的一个 NCP，用于配置 IPv4 协议。协商内容包括 IP 地址、DNS 服务器地址等。</p>
 <figure>
     <center>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/ppp_ipcp.png" data-desc-position="bottom"><img align="center" alt="ppp_ipcp" src="../l2tp.assets/ppp_ipcp.png" width="80%"></a>
+    <img align="center" alt="ppp_ipcp" src="../l2tp.assets/ppp_ipcp.png" width="80%" />
     </center>
     <figcaption>
     IPCP 时序图
-    <br><small>
+    <br/><small>
     <a href="http://www.tcpipguide.com/free/t_PPPNetworkControlProtocolsIPCPIPXCPNBFCPandothers-2.htm">The TCP/IP Guide</a>
     </small>
     </figcaption>
 </figure>
-<h3 id="ppp-建链过程">PPP 建链过程<a class="headerlink" href="#ppp-建链过程" title="Permanent link">¶</a></h3>
+<h3 id="ppp-建链过程">PPP 建链过程<a class="headerlink" href="#ppp-建链过程" title="Permanent link">&para;</a></h3>
 <figure>
     <center>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/ppp_link.png" data-desc-position="bottom"><img alt="ppp_link" src="../l2tp.assets/ppp_link.png"></a>
+    <img alt="ppp_link" src="../l2tp.assets/ppp_link.png" />
     </center>
     <figcaption>
     PPP 状态图
-    <br><small>
+    <br/><small>
     <a href="https://support.huawei.com/enterprise/zh/doc/EDOC1100112418/935e3094">Huawei</a>
     </small>
     </figcaption>
@@ -4819,8 +3656,8 @@
 <li>NCP 协商成功后，PPP 链路将一直保持通信。PPP 运行过程中，可以随时中断连接，物理链路断开、认证失败、超时定时器时间到、管理员通过配置关闭连接等动作都可能导致链路进入 Terminate 阶段。</li>
 <li>在 Terminate 阶段，如果所有的资源都被释放，通信双方将回到 Dead 阶段，直到通信双方重新建立 PPP 连接，开始新的 PPP 链路建立。</li>
 </ol>
-<h2 id="l2tp-原理">L2TP 原理<a class="headerlink" href="#l2tp-原理" title="Permanent link">¶</a></h2>
-<h3 id="l2tp-组成部分">L2TP 组成部分<a class="headerlink" href="#l2tp-组成部分" title="Permanent link">¶</a></h3>
+<h2 id="l2tp-原理">L2TP 原理<a class="headerlink" href="#l2tp-原理" title="Permanent link">&para;</a></h2>
+<h3 id="l2tp-组成部分">L2TP 组成部分<a class="headerlink" href="#l2tp-组成部分" title="Permanent link">&para;</a></h3>
 <ul>
 <li>PPP 终端：L2TP 应用中，PPP 终端指发起拨号，将数据封装为 PPP 类型的设备，如远程用户 PC、企业分支网关等均可作为 PPP 终端。</li>
 <li>L2TP 访问集中器（L2TP Access Concentrator，LAC）：交换网络上具有 PPP 和 L2TP 协议处理能力的设备。LAC 根据 PPP 报文中所携带的用户名或者域名信息，和 LNS 建立 L2TP 隧道连接，将 PPP 协商延展到 LNS。<ul>
@@ -4837,15 +3674,15 @@
 <li>隧道（Tunnel）连接：L2TP 隧道在 LAC 和 LNS 之间建立，一对 LAC 和 LNS 可以建立多个 L2TP 隧道，一个 L2TP 隧道可以包含多个 L2TP 会话。</li>
 <li>会话（Session）连接：L2TP 会话发生在隧道连接成功之后，L2TP 会话承载在 L2TP 隧道之上，每个 L2TP 会话对应一个 PPP 会话，PPP 会话的数据帧通过 L2TP 会话所在的 L2TP 隧道传输。</li>
 </ul>
-<h3 id="l2tp-报文">L2TP 报文<a class="headerlink" href="#l2tp-报文" title="Permanent link">¶</a></h3>
+<h3 id="l2tp-报文">L2TP 报文<a class="headerlink" href="#l2tp-报文" title="Permanent link">&para;</a></h3>
 <p>在 L2TP 隧道中交换的的数据包可分类为控制数据包或是数据包。L2TP 提供控制数据包的可靠性，数据包则没有。</p>
 <figure>
     <center>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_packet.png" data-desc-position="bottom"><img align="center" alt="l2tp_packet" src="../l2tp.assets/l2tp_packet.png" width="80%"></a>
+    <img align="center" alt="l2tp_packet" src="../l2tp.assets/l2tp_packet.png" width="80%" />
     </center>
     <figcaption>
     L2TP 协议架构
-    <br><small>
+    <br/><small>
     <a href="https://support.huawei.com/enterprise/zh/doc/EDOC1100332366/1aec46c5">Huawei</a>
     </small>
     </figcaption>
@@ -4859,11 +3696,11 @@
 </ul>
 <figure>
     <center>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_packet_2.png" data-desc-position="bottom"><img align="center" alt="l2tp_packet_2" src="../l2tp.assets/l2tp_packet_2.png" width="80%"></a>
+    <img align="center" alt="l2tp_packet_2" src="../l2tp.assets/l2tp_packet_2.png" width="80%" />
     </center>
     <figcaption>
     L2TP 报文格式
-    <br><small>
+    <br/><small>
     <a href="https://support.huawei.com/enterprise/zh/doc/EDOC1100332366/1aec46c5">Huawei</a>
     </small>
     </figcaption>
@@ -4872,7 +3709,7 @@
 <p class="admonition-title">报文长度</p>
 <p>L2TP 报文进行了多次封装，比原始报文多出 38 个字节（如果需要携带序列号信息，则比原始报文多出 42 个字节），封装后报文的长度可能会超出接口的 MTU 值，而 L2TP 协议本身不支持报文分片功能，这时需要设备支持对 IP 报文的分片功能。当 L2TP 报文长度超出发送接口的 MTU 值时，在发送接口进行报文分片处理，接收端对收到分片报文进行还原，重组为 L2TP 报文。</p>
 </div>
-<h3 id="client-initiated-场景">Client-Initiated 场景<a class="headerlink" href="#client-initiated-场景" title="Permanent link">¶</a></h3>
+<h3 id="client-initiated-场景">Client-Initiated 场景<a class="headerlink" href="#client-initiated-场景" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>移动办公用户（即出差员工）通过以太网方式接入 Internet，LNS 是企业总部的出口网关。移动办公用户可以通过移动终端上的 VPN 软件与 LNS 设备直接建立 L2TP 隧道，而无需再经过一个单独的 NAS 设备。该场景下，用户远程访问企业内网资源可以不受地域限制，使得远程办公更为灵活方便。</p>
@@ -4880,11 +3717,11 @@
 <p>Client-Initiated 场景，移动办公用户在访问企业总部服务器之前，需要先通过 L2TP VPN 软件与 LNS 建立 L2TP 隧道。</p>
 <figure>
     <center>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_client_init_tunnel.png" data-desc-position="bottom"><img alt="l2tp_client_init_tunnel" src="../l2tp.assets/l2tp_client_init_tunnel.png"></a>
+    <img alt="l2tp_client_init_tunnel" src="../l2tp.assets/l2tp_client_init_tunnel.png" />
     </center>
     <figcaption>
     Client-Initiated 场景下 L2TP 隧道建立过程
-    <br><small>
+    <br/><small>
     <a href="https://support.huawei.com/enterprise/zh/doc/EDOC1100332366/f38fe3f0?idPath=24030814|21782164|7923148|256863201">Huawei</a>
     </small>
     </figcaption>
@@ -4898,11 +3735,11 @@
 <p>报文的封装和解封装过程：</p>
 <figure>
     <center>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_client_init_packet.png" data-desc-position="bottom"><img alt="l2tp_client_init_packet" src="../l2tp.assets/l2tp_client_init_packet.png"></a>
+    <img alt="l2tp_client_init_packet" src="../l2tp.assets/l2tp_client_init_packet.png" />
     </center>
     <figcaption>
     Client-Initiated 场景下报文的封装过程
-    <br><small>
+    <br/><small>
     <a href="https://support.huawei.com/enterprise/zh/doc/EDOC1100332366/f38fe3f0?idPath=24030814|21782164|7923148|256863201">Huawei</a>
     </small>
     </figcaption>
@@ -4912,7 +3749,7 @@
 <li>LNS 接收到报文以后，拆除报文的 L2TP 头和 PPP 头，然后按照到企业内网的路由将报文转发给企业总部服务器。</li>
 <li>企业总部服务器收到移动办公用户的报文后，向移动办公用户返回响应报文。</li>
 </ol>
-<h3 id="l2tp-client-initiated-场景">L2TP Client-Initiated 场景<a class="headerlink" href="#l2tp-client-initiated-场景" title="Permanent link">¶</a></h3>
+<h3 id="l2tp-client-initiated-场景">L2TP Client-Initiated 场景<a class="headerlink" href="#l2tp-client-initiated-场景" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>L2TP 除了可以为出差员工提供远程接入服务以外，还可以进行企业分支与总部的内网互联，实现分支用户与总部用户的互访。</p>
@@ -4922,11 +3759,11 @@
 <p>L2TP Client-Initiated 场景，L2TP Client 和 LNS 配置完 L2TP 以后，L2TP Client 会主动向 LNS 发起隧道协商请求。</p>
 <figure>
     <center>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_l2tp_client_init_tunnel.png" data-desc-position="bottom"><img alt="l2tp_l2tp_client_init_tunnel" src="../l2tp.assets/l2tp_l2tp_client_init_tunnel.png"></a>
+    <img alt="l2tp_l2tp_client_init_tunnel" src="../l2tp.assets/l2tp_l2tp_client_init_tunnel.png" />
     </center>
     <figcaption>
     L2TP Client-Initiated 场景下 L2TP 隧道建立过程
-    <br><small>
+    <br/><small>
     <a href="https://support.huawei.com/enterprise/zh/doc/EDOC1100332366/f38fe3f0?idPath=24030814|21782164|7923148|256863201">Huawei</a>
     </small>
     </figcaption>
@@ -4940,11 +3777,11 @@
 <p>报文的封装和解封装过程：</p>
 <figure>
     <center>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_l2tp_client_init_packet.png" data-desc-position="bottom"><img alt="l2tp_l2tp_client_init_packet" src="../l2tp.assets/l2tp_l2tp_client_init_packet.png"></a>
+    <img alt="l2tp_l2tp_client_init_packet" src="../l2tp.assets/l2tp_l2tp_client_init_packet.png" />
     </center>
     <figcaption>
     L2TP Client-Initiated 场景下报文的封装过程
-    <br><small>
+    <br/><small>
     <a href="https://support.huawei.com/enterprise/zh/doc/EDOC1100332366/f38fe3f0?idPath=24030814|21782164|7923148|256863201">Huawei</a>
     </small>
     </figcaption>
@@ -4955,7 +3792,7 @@
 <li>LNS 设备接收到报文以后，使用 VT 接口拆除报文的 L2TP 头和 PPP 头，然后按照到企业内网的路由将报文转发给总部内网服务器。</li>
 <li>企业总部服务器收到分支员工的报文后，向分支员工返回响应报文。</li>
 </ol>
-<h3 id="l2tp-安全性">L2TP 安全性<a class="headerlink" href="#l2tp-安全性" title="Permanent link">¶</a></h3>
+<h3 id="l2tp-安全性">L2TP 安全性<a class="headerlink" href="#l2tp-安全性" title="Permanent link">&para;</a></h3>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
@@ -4964,7 +3801,7 @@
 </div>
 <p>L2TP 隧道提供简单的隧道验证功能：LAC 与 LNS 的隧道验证通过之后，隧道才能建立成功。L2TP 隧道支持本地认证、远端（RADIUS）认证和 RADIUS 强制隧道验证。</p>
 <p>L2TP 协议自身不提供加密与可靠性验证的功能，可以和安全协议搭配使用，从而实现数据的加密传输。经常与 L2TP 协议搭配的加密协议是 IPsec，当这两个协议搭配使用时，通常合称 L2TP/IPsec。</p>
-<h3 id="l2tp-隧道建立过程">L2TP 隧道建立过程<a class="headerlink" href="#l2tp-隧道建立过程" title="Permanent link">¶</a></h3>
+<h3 id="l2tp-隧道建立过程">L2TP 隧道建立过程<a class="headerlink" href="#l2tp-隧道建立过程" title="Permanent link">&para;</a></h3>
 <p>L2TP 隧道建立过程中涉及的消息包括：</p>
 <ul>
 <li>SCCRQ（Start-Control-Connection-Request）：用来向对端请求建立控制连接。</li>
@@ -4977,11 +3814,11 @@
 <p>控制连接的建立先于会话连接。只有控制连接建立起来了，会话连接才可能建立起来。</p>
 <figure>
     <center>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_tunnel_start.png" data-desc-position="bottom"><img alt="l2tp_tunnel_start" src="../l2tp.assets/l2tp_tunnel_start.png"></a>
+    <img alt="l2tp_tunnel_start" src="../l2tp.assets/l2tp_tunnel_start.png" />
     </center>
     <figcaption>
     控制连接建立的三次握手
-    <br><small>
+    <br/><small>
     <a href="https://support.huawei.com/enterprise/zh/doc/EDOC1100332366/83e5177f?idPath=24030814|21782164|7923148|256863201">Huawei</a>
     </small>
     </figcaption>
@@ -5010,7 +3847,7 @@
 </ol>
 <p>L2TP 使用 Hello 报文检测隧道的连通性。LAC 和 LNS 定时向对端发送 Hello 报文，若在一段时间内未收到 Hello 报文的应答，则重复发送 Hello 报文。如果重复发送报文的次数超过 5 次，则认为 L2TP 隧道已经断开，该 PPP 会话将被清除。此时需要重新建立隧道。</p>
 <p>控制连接拆除的发起端可以是 LAC 或 LNS。发起端通过发送 StopCCN 消息报文到对端来通知对端拆除控制连接。对端收到后发送 ZLB ACK 消息作为回应，同时在一定时间内保持控制连接以防止 ZLB ACK 消息丢失。</p>
-<h3 id="l2tp-会话建立过程">L2TP 会话建立过程<a class="headerlink" href="#l2tp-会话建立过程" title="Permanent link">¶</a></h3>
+<h3 id="l2tp-会话建立过程">L2TP 会话建立过程<a class="headerlink" href="#l2tp-会话建立过程" title="Permanent link">&para;</a></h3>
 <p>L2TP 会话建立过程中涉及的消息包括：</p>
 <ul>
 <li>ICRQ（Incoming-Call-Request）：只有 LAC 才会发送；每当检测到用户的呼叫请求，LAC 就发送 ICRQ 消息给 LNS，请求建立会话连接。ICRQ 中携带会话参数。</li>
@@ -5022,11 +3859,11 @@
 <p>控制连接成功建立之后，一旦检测到用户呼叫，就请求建立会话连接。与控制连接不同的是，会话连接的建立具有方向性。L2TP 的会话建立由 PPP 触发。</p>
 <figure>
     <center>
-    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_session_start.png" data-desc-position="bottom"><img alt="l2tp_session_start" src="../l2tp.assets/l2tp_session_start.png"></a>
+    <img alt="l2tp_session_start" src="../l2tp.assets/l2tp_session_start.png" />
     </center>
     <figcaption>
     会话连接建立过程
-    <br><small>
+    <br/><small>
     <a href="https://support.huawei.com/enterprise/zh/doc/EDOC1100332366/83e5177f?idPath=24030814|21782164|7923148|256863201">Huawei</a>
     </small>
     </figcaption>
@@ -5038,7 +3875,7 @@
 <li>强制 CHAP 验证：如果只配置强制 CHAP 验证，则 LNS 对用户进行 CHAP 验证，如果验证不过的话，会话就不能建立成功。</li>
 <li>代理验证：如果既不配置 LCP 重协商，也不配置强制 CHAP 验证，则 LNS 对用户进行的是代理验证。代理验证就是 LAC 侧将 PAP 认证和 CHAP 认证的认证信息通过 ICCN 报文传给 LNS，LNS 侧会利用这些认证信息对用户进行认证。</li>
 </ul>
-<h3 id="l2tp-mtu-调优">L2TP MTU 调优<a class="headerlink" href="#l2tp-mtu-调优" title="Permanent link">¶</a></h3>
+<h3 id="l2tp-mtu-调优">L2TP MTU 调优<a class="headerlink" href="#l2tp-mtu-调优" title="Permanent link">&para;</a></h3>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
@@ -5052,16 +3889,16 @@
 <li>TCP MSS 为 1420。</li>
 </ul>
 <p>在下面的抓包实践中会看到，PPP LCP 负责协商 L2TP 链路 MTU。</p>
-<h2 id="l2tp-实践">L2TP 实践<a class="headerlink" href="#l2tp-实践" title="Permanent link">¶</a></h2>
+<h2 id="l2tp-实践">L2TP 实践<a class="headerlink" href="#l2tp-实践" title="Permanent link">&para;</a></h2>
 <p>本节我们通过抓包实践了解不同系统下 L2TP 的工作过程。</p>
-<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">¶</a></h3>
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
 <p>点击 VPN Connect 后，可以看到 Windows 立即向 LNS 建立 L2TP 隧道。</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_practice_windows_1.png" data-desc-position="bottom"><img alt="l2tp_practice_windows_1" src="../l2tp.assets/l2tp_practice_windows_1.png"></a></p>
+<p><img alt="l2tp_practice_windows_1" src="../l2tp.assets/l2tp_practice_windows_1.png" /></p>
 <p>LAC 的 ICCN 接着 LNS 的 ZLB 标志着 L2TP 隧道建立成功，接下来进入 PPP Establish 阶段。</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_practice_windows_2.png" data-desc-position="bottom"><img alt="l2tp_practice_windows_2" src="../l2tp.assets/l2tp_practice_windows_2.png"></a></p>
+<p><img alt="l2tp_practice_windows_2" src="../l2tp.assets/l2tp_practice_windows_2.png" /></p>
 <p>PPP Establish 阶段使用 PPP LCP 协商链路配置（MTU、压缩等）和验证方式，让我们来看看其中的一些报文内容：</p>
 <div class="admonition info">
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">来自客户端的 Configuration Request</label><label for="__tabbed_1_2">来自服务器的 Configuration Request</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">来自客户端的 Configuration Request</label><label for="__tabbed_1_2">来自服务器的 Configuration Request</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>PPP Link Control Protocol
@@ -5089,9 +3926,9 @@
 </div>
 </div>
 <p>Establish 成功后进入 Authenticate 阶段，由于服务器配置了 CHAP 验证，此处为三次 CHAP 握手。</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_practice_windows_3.png" data-desc-position="bottom"><img alt="l2tp_practice_windows_3" src="../l2tp.assets/l2tp_practice_windows_3.png"></a></p>
+<p><img alt="l2tp_practice_windows_3" src="../l2tp.assets/l2tp_practice_windows_3.png" /></p>
 <p>Authenticate 阶段成功后，进入 Network 阶段。可以看到客户端请求 IPV6CP 和 IPCP 协商，服务器拒绝了 IPV6CP，回复了 IPCP。</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_practice_windows_4.png" data-desc-position="bottom"><img alt="l2tp_practice_windows_4" src="../l2tp.assets/l2tp_practice_windows_4.png"></a></p>
+<p><img alt="l2tp_practice_windows_4" src="../l2tp.assets/l2tp_practice_windows_4.png" /></p>
 <p>让我们来看看最后一个从服务端发给客户端的 IPCP 报文内容：</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>PPP IP Control Protocol
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    Code: Configuration Ack (2)
@@ -5124,22 +3961,22 @@
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>Domain Name System (query)
 </span></code></pre></div>
 <p>按下 Disconnect 按钮后，PPP 和 L2TP 连接先后中断：</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_practice_windows_5.png" data-desc-position="bottom"><img alt="l2tp_practice_windows_5" src="../l2tp.assets/l2tp_practice_windows_5.png"></a></p>
-<h3 id="华为-ar-路由器ar101gw-lc-sar6121ec-w">华为 AR 路由器（AR101GW-Lc-S、AR6121EC-W）<a class="headerlink" href="#华为-ar-路由器ar101gw-lc-sar6121ec-w" title="Permanent link">¶</a></h3>
+<p><img alt="l2tp_practice_windows_5" src="../l2tp.assets/l2tp_practice_windows_5.png" /></p>
+<h3 id="华为-ar-路由器ar101gw-lc-sar6121ec-w">华为 AR 路由器（AR101GW-Lc-S、AR6121EC-W）<a class="headerlink" href="#华为-ar-路由器ar101gw-lc-sar6121ec-w" title="Permanent link">&para;</a></h3>
 <div class="admonition bug">
 <p class="admonition-title">Bug</p>
 <p>华为 AR 系列路由器的 L2TP 实现与浙江大学校园网 L2TP 配置存在兼容性问题。我们已经向华为反映过该问题，并得到答复，这是因为上游（校园网）配置不合理，应当由上游修改配置。</p>
 <p>经测试，TP-Link、RouterOS、OpenWRT 和 Windows 等系统/设备则没有兼容性问题。</p>
 </div>
 <p>本次实践以上面这个 Bug 为例，进行网络诊断。</p>
-<h4 id="华为的-l2tp-实现">华为的 L2TP 实现<a class="headerlink" href="#华为的-l2tp-实现" title="Permanent link">¶</a></h4>
+<h4 id="华为的-l2tp-实现">华为的 L2TP 实现<a class="headerlink" href="#华为的-l2tp-实现" title="Permanent link">&para;</a></h4>
 <ul>
 <li>华为通过虚拟模板接口（Virtual-Template）实现 L2TP 隧道。</li>
 <li>隧道建立后，可以将流量路由到虚拟模板接口上，这样流量就会被封装到 L2TP 报文中。</li>
 <li><strong>导致 Bug 的一点</strong>：自动为会话对端建立直连路由。</li>
 </ul>
 <p>这样的实现导致当隧道对端和会话对端相同时，数据包无法路由到隧道对端。</p>
-<h4 id="环境介绍">环境介绍<a class="headerlink" href="#环境介绍" title="Permanent link">¶</a></h4>
+<h4 id="环境介绍">环境介绍<a class="headerlink" href="#环境介绍" title="Permanent link">&para;</a></h4>
 <p>实验环境内有多台 LNS 服务器，使用负载均衡：</p>
 <ul>
 <li><code>10.0.2.72</code></li>
@@ -5153,7 +3990,7 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Destination/Mask    Proto   Pre  Cost      Flags NextHop         Interface
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>       10.0.0.0/8   Static  1    0           D   10.78.18.254    GigabitEthernet0/0/4
 </span></code></pre></div>
-<h4 id="命令操作">命令操作<a class="headerlink" href="#命令操作" title="Permanent link">¶</a></h4>
+<h4 id="命令操作">命令操作<a class="headerlink" href="#命令操作" title="Permanent link">&para;</a></h4>
 <ul>
 <li>首先测试网络连通情况：</li>
 </ul>
@@ -5385,20 +4222,20 @@
 </span><span id="__span-9-67"><a id="__codelineno-9-67" name="__codelineno-9-67" href="#__codelineno-9-67"></a>    0 packet(s) received
 </span><span id="__span-9-68"><a id="__codelineno-9-68" name="__codelineno-9-68" href="#__codelineno-9-68"></a>    100.00% packet loss
 </span></code></pre></div>
-<h4 id="抓包分析">抓包分析<a class="headerlink" href="#抓包分析" title="Permanent link">¶</a></h4>
+<h4 id="抓包分析">抓包分析<a class="headerlink" href="#抓包分析" title="Permanent link">&para;</a></h4>
 <p>对 WAN 口做镜像，使用 WireShark 监控网络流量，下面是华为路由器的表现：</p>
 <ul>
 <li>LNS 设置为 <code>10.5.1.9</code> 时：可以看到一切正常，L2TP 隧道建立后成功进行 PPP 拨号，IPCP 配置完成后开始出现业务流量，PPP LCP Echo/Request 也正常。</li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_practice_huawei_1.png" data-desc-position="bottom"><img alt="l2tp_practice_huawei_1" src="../l2tp.assets/l2tp_practice_huawei_1.png"></a></p>
+<p><img alt="l2tp_practice_huawei_1" src="../l2tp.assets/l2tp_practice_huawei_1.png" /></p>
 <ul>
 <li>LNS 设置为 <code>10.0.2.72</code> 时：到 IPCP 配置成功这里还是正常的，但随后可以看到，来自 LNS 的 PPP Echo Request 没有得到华为路由器的回应，也没有业务流量从 WAN 口转发出来。大致可以判定是路由问题。</li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_practice_huawei_2.png" data-desc-position="bottom"><img alt="l2tp_practice_huawei_2" src="../l2tp.assets/l2tp_practice_huawei_2.png"></a></p>
+<p><img alt="l2tp_practice_huawei_2" src="../l2tp.assets/l2tp_practice_huawei_2.png" /></p>
 <p>在 Web 管理页面可以看到隧道失败信息为：<code>There was no SCCCN response from the peer and the packet retransmission count reached the limit</code>。</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_practice_huawei_3.png" data-desc-position="bottom"><img alt="l2tp_practice_huawei_3" src="../l2tp.assets/l2tp_practice_huawei_3.png"></a></p>
+<p><img alt="l2tp_practice_huawei_3" src="../l2tp.assets/l2tp_practice_huawei_3.png" /></p>
 <p>这个失败信息也与抓包观测到的不符。我们已经看到隧道建立阶段成功，进入了会话建立阶段，因此这个报错也应该是有问题的。</p>
-<h4 id="分析问题">分析问题<a class="headerlink" href="#分析问题" title="Permanent link">¶</a></h4>
+<h4 id="分析问题">分析问题<a class="headerlink" href="#分析问题" title="Permanent link">&para;</a></h4>
 <p>对比两次 L2TP 拨号，可以发现：</p>
 <ul>
 <li>
@@ -5424,71 +4261,32 @@
 <li>随后开始新一轮 L2TP 拨号</li>
 </ul>
 <p>综合上面的表现可以推测，这是华为路由器自动生成会话对端的直连路由，造成隧道对端和会话对端地址相同时，任何通向隧道对端的数据包（包括 PPP LCP 和业务流量）都会进入 Virtual Template 接口循环，无法被发送到隧道对端，故也无法在 WAN 口抓包看到。示意图如下：</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../l2tp.assets/l2tp_practice_huawei_4.svg" data-desc-position="bottom"><img alt="l2tp_practice_huawei_4" src="../l2tp.assets/l2tp_practice_huawei_4.svg"></a></p>
+<p><img alt="l2tp_practice_huawei_4" src="../l2tp.assets/l2tp_practice_huawei_4.svg" /></p>
 <p>而一旦会话结束，该表项被删除，路由器马上又能正确转发到该地址的包，因此能够发送 StopCCN。</p>
 <p>在 TP-Link、RouterOS 和 Windows 设备上查看路由表，就没有看到为 L2TP 会话对端新建的条目。因此，可以判定路由问题就是导致华为设备在该情境下 L2TP 失败的原因。</p>
 
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">stable</span>
+      
+    
+  </nav>
+
+
+
 
 
 
 
 
   
-    
-  
-  
-    
   
 
-
-  <aside class="md-source-file">
-    
-      
-  <span class="md-source-file__fact">
-    <span class="md-icon" title="Last update">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
-    </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 15, 2025 08:22:08 UTC">July 15, 2025</span>
-  </span>
-
-    
-    
-      
-  <span class="md-source-file__fact">
-    <span class="md-icon" title="Created">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
-    </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 15, 2025 08:22:08 UTC">July 15, 2025</span>
-  </span>
-
-    
-    
-    
-      
-  <span class="md-source-file__fact">
-    
-      
-  <span class="md-icon" title="Contributors">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path></svg>
-  </span>
-  <span>GitHub</span>
-
-    
-    <nav>
-      
-        <a href="https://github.com/bowling233" class="md-author" title="@bowling233">
-          
-          <img src="https://avatars.githubusercontent.com/u/35755846?v=4&amp;size=72" alt="bowling233">
-        </a>
-      
-      
-      
-    </nav>
-  </span>
-
-    
-  </aside>
 
 
 
@@ -5504,7 +4302,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
   Back to top
 </button>
         
@@ -5524,8 +4322,8 @@
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
     </a>
   
 </div>
@@ -5543,10 +4341,14 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../..","features":["content.code.copy","content.code.select","content.code.annotate","navigation.footer","navigation.tabs","navigation.sections","navigation.expand","navigation.indexes","navigation.tracking","navigation.path","navigation.top","toc.follow","content.action.edit","search.suggest","search.highlight","search.share"],"search":"../../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.66be65ca.min.js"></script>
+      
+        <script src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+      
+        <script src="../../../../javascripts/drawio.js"></script>
       
         <script src="../../../../javascripts/mathjax.js"></script>
       
@@ -5561,7 +4363,5 @@
         <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
       
     
-  
-<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
-document$.subscribe(()=>{ lightbox.reload(); });
-</script></body></html>
+  </body>
+</html>

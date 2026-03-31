@@ -1,4 +1,7 @@
-<!DOCTYPE html><html lang="en" class="no-js"><head>
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -18,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/zjusct.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="zensical-0.0.30">
     
     
       
@@ -26,10 +29,15 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.3b031116.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
       
       
 
@@ -43,8 +51,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
     
@@ -56,23 +64,13 @@
     
       <link rel="stylesheet" href="../../../stylesheets/neoteroi-v1.1.2.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
     
     
-  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
-            html.glightbox-open { overflow: initial; height: 100%; }
-            .gslide-title { margin-top: 0px; user-select: text; }
-            .gslide-desc { color: #666; user-select: text; }
-            .gslide-image img { background: white; }
-            .gscrollbar-fixer { padding-right: 15px; }
-            .gdesc-inner { font-size: 0.75rem; }
-            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
-            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
-            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
-        </style></head>
+  </head>
   
   
     
@@ -87,7 +85,7 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
     <div data-md-component="skip">
       
         
@@ -106,13 +104,24 @@
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../../.." title="ZJUSCT" class="md-header__button md-logo" aria-label="ZJUSCT" data-md-component="logo">
-      
-  <img src="../../../assets/zjusct.svg" alt="logo">
-
+      <span class="md-logo__variant md-logo__variant--light">
+  <img
+    class="md-logo__image"
+    src="../../../assets/zjusct-wide-clear.svg"
+    alt="ZJUSCT"
+  >
+</span>
+<span class="md-logo__variant md-logo__variant--dark">
+  <img
+    class="md-logo__image"
+    src="../../../assets/zjusct-wide-dark-clear.svg"
+    alt="ZJUSCT"
+  >
+</span>
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -137,30 +146,30 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="切换至浅色模式" type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="zjusct" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="切换至深色模式" type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="zjusct" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_2" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="根据系统模式切换主题" type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="根据系统模式切换主题"  type="radio" name="__palette" id="__palette_2">
     
       <label class="md-header__button md-icon" title="根据系统模式切换主题" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
@@ -174,64 +183,30 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search">
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
         </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
-            
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
-          </a>
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
 </div>
       
     
-    
-      <div class="md-header__source">
+    <div class="md-header__source">
+      
         <a href="https://github.com/ZJUSCT/www.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     www.zjusct.io
   </div>
 </a>
-      </div>
-    
+      
+    </div>
   </nav>
   
 </header>
@@ -255,9 +230,6 @@
       <a href="../../.." class="md-tabs__link">
         
   
-  
-    
-  
   首页
 
       </a>
@@ -276,9 +248,6 @@
         <a href="../../../guideline/" class="md-tabs__link">
           
   
-  
-    
-  
   文档指引
 
         </a>
@@ -292,20 +261,14 @@
   
   
   
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../../competition/" class="md-tabs__link">
-          
-  
-  
-    
+    <li class="md-tabs__item">
+      <a href="../../../competition/" class="md-tabs__link">
+        
   
   🏆 竞赛
 
-        </a>
-      </li>
-    
+      </a>
+    </li>
   
 
       
@@ -319,9 +282,6 @@
       <li class="md-tabs__item">
         <a href="../../../falcon/" class="md-tabs__link">
           
-  
-  
-    
   
   🦅 Falcon
 
@@ -342,9 +302,6 @@
         <a href="../../../optimization/" class="md-tabs__link">
           
   
-  
-    
-  
   🔧 优化
 
         </a>
@@ -364,9 +321,6 @@
         <a href="../../" class="md-tabs__link">
           
   
-  
-    
-  
   ⚙️ 运维
 
         </a>
@@ -382,17 +336,24 @@
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../blog/" class="md-tabs__link">
-          
+      
+  
+  
   
   
     
+    
+      <li class="md-tabs__item">
+        <a href="../../../blog/2018/09-30-first/" class="md-tabs__link">
+          
   
   ✍️ 博客
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -408,7 +369,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -420,9 +381,20 @@
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="ZJUSCT" class="md-nav__button md-logo" aria-label="ZJUSCT" data-md-component="logo">
-      
-  <img src="../../../assets/zjusct.svg" alt="logo">
-
+      <span class="md-logo__variant md-logo__variant--light">
+  <img
+    class="md-logo__image"
+    src="../../../assets/zjusct-wide-clear.svg"
+    alt="ZJUSCT"
+  >
+</span>
+<span class="md-logo__variant md-logo__variant--dark">
+  <img
+    class="md-logo__image"
+    src="../../../assets/zjusct-wide-dark-clear.svg"
+    alt="ZJUSCT"
+  >
+</span>
     </a>
     ZJUSCT
   </label>
@@ -431,7 +403,7 @@
       <a href="https://github.com/ZJUSCT/www.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     www.zjusct.io
@@ -487,8 +459,6 @@
       
         
       
-        
-      
     
     
     
@@ -504,7 +474,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -602,8 +572,6 @@
               
             
               
-            
-              
                 
   
   
@@ -644,34 +612,9 @@
   
   
   
-    
-    
-      
+    <li class="md-nav__item">
+      <a href="../../../competition/" class="md-nav__link">
         
-          
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../../competition/" class="md-nav__link ">
-              
   
   
   <span class="md-ellipsis">
@@ -685,26 +628,7 @@
   
   
 
-            </a>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    🏆 竞赛
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-          </ul>
-        </nav>
-      
+      </a>
     </li>
   
 
@@ -728,8 +652,6 @@
       
         
       
-        
-      
     
     
     
@@ -745,7 +667,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -812,8 +734,6 @@
     </li>
   
 
-              
-            
               
             
               
@@ -911,7 +831,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -984,7 +904,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -1057,7 +977,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_2" >
         
           
           <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
@@ -1241,7 +1161,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3" >
         
           
           <label class="md-nav__link" for="__nav_5_2_3" id="__nav_5_2_3_label" tabindex="0">
@@ -1411,9 +1331,9 @@
     
       
         
-      
-        
           
+        
+      
         
       
         
@@ -1437,7 +1357,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -1477,6 +1397,8 @@
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
                 
   
   
@@ -1502,8 +1424,6 @@
     </li>
   
 
-              
-            
               
             
               
@@ -1564,7 +1484,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_4">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_4" >
         
           
           <label class="md-nav__link" for="__nav_5_3_4" id="__nav_5_3_4_label" tabindex="0">
@@ -1720,7 +1640,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_5">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_5" >
         
           
           <label class="md-nav__link" for="__nav_5_3_5" id="__nav_5_3_5_label" tabindex="0">
@@ -1921,7 +1841,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -1992,7 +1912,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
@@ -2142,7 +2062,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
         
           
           <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
@@ -2180,64 +2100,6 @@
   
   
   
-    
-    
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3_1">
-        
-          
-          <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ceph
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    ceph
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../../storage/ceph/object/" class="md-nav__link">
         
@@ -2246,7 +2108,7 @@
   <span class="md-ellipsis">
     
   
-    对象存储：RadosGW
+    ceph
   
 
     
@@ -2268,14 +2130,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
               
                 
   
@@ -2304,7 +2158,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
         
           
           <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
@@ -2342,64 +2196,6 @@
   
   
   
-    
-    
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4_1">
-        
-          
-          <label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    管理篇
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    管理篇
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../../k8s/mgmt/debug/" class="md-nav__link">
         
@@ -2408,7 +2204,7 @@
   <span class="md-ellipsis">
     
   
-    K8S 调试
+    管理篇
   
 
     
@@ -2422,14 +2218,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
               
                 
   
@@ -2460,7 +2248,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4_2" >
         
           
           <label class="md-nav__link" for="__nav_6_4_2" id="__nav_6_4_2_label" tabindex="0">
@@ -2609,10 +2397,6 @@
     
       
         
-          
-        
-      
-        
       
         
       
@@ -2633,12 +2417,11 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
         
           
-          <div class="md-nav__link md-nav__container">
-            <a href="../../../blog/" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -2652,14 +2435,8 @@
   
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
@@ -2673,100 +2450,6 @@
           <ul class="md-nav__list" data-md-scrollfix>
             
               
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2">
-        
-          
-          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    posts
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    posts
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/posts/.template/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
                 
   
   
@@ -2800,10 +2483,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_1" >
         
           
-          <label class="md-nav__link" for="__nav_7_2_2" id="__nav_7_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
             
   
   
@@ -2821,8 +2504,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2839,7 +2522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2018/09/30/%E6%B5%99%E6%B1%9F%E5%A4%A7%E5%AD%A6%E8%B6%85%E7%AE%97%E9%98%9F%E5%8D%9A%E5%AE%A2%E6%B4%BB%E4%BA%86/" class="md-nav__link">
+      <a href="../../../blog/2018/09-30-first/" class="md-nav__link">
         
   
   
@@ -2867,7 +2550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2018/11/25/cuda-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%80%BB%E7%BB%93-%E4%B8%80/" class="md-nav__link">
+      <a href="../../../blog/2018/11-25-cuda/" class="md-nav__link">
         
   
   
@@ -2895,7 +2578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2018/12/07/quick-guide-to-cuda-profiling/" class="md-nav__link">
+      <a href="../../../blog/2018/12-07-cuprof/" class="md-nav__link">
         
   
   
@@ -2923,7 +2606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2018/12/23/distributed-tensorflow/" class="md-nav__link">
+      <a href="../../../blog/2018/12-23-tensorflow/" class="md-nav__link">
         
   
   
@@ -2951,7 +2634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2018/12/24/bp-%E7%AE%97%E6%B3%95feed-forward-neural-network-and-back-propagation/" class="md-nav__link">
+      <a href="../../../blog/2018/12-24-bp/" class="md-nav__link">
         
   
   
@@ -3020,10 +2703,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2_3">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
         
           
-          <label class="md-nav__link" for="__nav_7_2_3" id="__nav_7_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
             
   
   
@@ -3041,8 +2724,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3059,7 +2742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/03/31/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%A2%99%E5%86%85%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2-centos-7-%E7%9A%84-mysql/" class="md-nav__link">
+      <a href="../../../blog/2019/03-31-Install-MySQL-on-CentOS7-Inside-GFW/" class="md-nav__link">
         
   
   
@@ -3087,7 +2770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/03/31/virtual-memory-and-tlb/" class="md-nav__link">
+      <a href="../../../blog/2019/03-31-Virtual-Memory-and-TLB/" class="md-nav__link">
         
   
   
@@ -3115,7 +2798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/05/11/%E5%9F%BA%E4%BA%8E-0-1-%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%9A%84%E6%9C%B4%E7%B4%A0%E5%9B%BE%E7%89%87%E9%99%8D%E5%99%AA/" class="md-nav__link">
+      <a href="../../../blog/2019/05-11-Image-Restoration-SimpleVersion/" class="md-nav__link">
         
   
   
@@ -3143,7 +2826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/05/27/20190526-%E4%BC%9A%E8%AE%AE%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+      <a href="../../../blog/2019/05-26-MeetingReport/" class="md-nav__link">
         
   
   
@@ -3171,7 +2854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/05/31/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      <a href="../../../blog/2019/05-31-GAN-Introduction/" class="md-nav__link">
         
   
   
@@ -3199,7 +2882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/06/14/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/" class="md-nav__link">
+      <a href="../../../blog/2019/06-14-GAN-theory/" class="md-nav__link">
         
   
   
@@ -3227,7 +2910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/06/16/%E5%9F%BA%E4%BA%8E-gan-%E7%9A%84%E5%8A%A8%E6%BC%AB%E5%A4%B4%E5%83%8F%E7%94%9F%E6%88%90/" class="md-nav__link">
+      <a href="../../../blog/2019/06-16-GAN-Anime-Avatar-Generation/" class="md-nav__link">
         
   
   
@@ -3255,7 +2938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/06/21/rsa-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8F%8A%E5%85%B6%E6%95%B0%E5%AD%A6%E6%80%9D%E6%83%B3/" class="md-nav__link">
+      <a href="../../../blog/2019/06-21-RSA/" class="md-nav__link">
         
   
   
@@ -3316,10 +2999,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2_4">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_3" >
         
           
-          <label class="md-nav__link" for="__nav_7_2_4" id="__nav_7_2_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
             
   
   
@@ -3337,8 +3020,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3355,7 +3038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2025/03/16/%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E5%85%A5%E4%BE%B5%E4%BA%8B%E4%BB%B6%E5%A7%8B%E6%9C%AB/" class="md-nav__link">
+      <a href="../../../blog/2025/03-16-virus/" class="md-nav__link">
         
   
   
@@ -3383,7 +3066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2025/05/01/%E7%AC%AC%E4%B8%89%E4%BB%A3%E9%95%9C%E5%83%8F%E7%AB%99%E5%BB%BA%E8%AE%BE%E4%B8%80%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/" class="md-nav__link">
+      <a href="../../../blog/2025/05-03-mirror-1-autoinstall/" class="md-nav__link">
         
   
   
@@ -3411,7 +3094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2025/06/01/%E7%AC%AC%E4%B8%89%E4%BB%A3%E9%95%9C%E5%83%8F%E7%AB%99%E5%BB%BA%E8%AE%BE%E4%BA%8C%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+      <a href="../../../blog/2025/05-10-mirror-2-storage/" class="md-nav__link">
         
   
   
@@ -3439,7 +3122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2025/05/19/-hello-hpc-world--2025-%E8%B6%85%E7%AE%97%E7%9F%AD%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B%E6%AD%A3%E5%BC%8F%E5%90%AF%E5%8A%A8/" class="md-nav__link">
+      <a href="../../../blog/2025/05-19-hpc101/" class="md-nav__link">
         
   
   
@@ -3447,846 +3130,6 @@
     
   
     🎓 Hello, HPC World | 2025 超算短学期课程正式启动！
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_3">
-        
-          
-          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Archive
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Archive
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/archive/2025/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2025
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/archive/2019/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2019
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/archive/2018/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2018
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_4">
-        
-          
-          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Categories
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Categories
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/ai/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    AI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/cuda/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    CUDA
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/centos/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    CentOS
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/ml/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ML
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/meetingreport/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    MeetingReport
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/mysql/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    MySQL
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/operating-susyem/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Operating Susyem
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/profile/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Profile
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/spc/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Spc
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/tlb/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TLB
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/tech/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Tech
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/tensorflow/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Tensorflow
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/virtual-memory/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Virtual Memory
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/zju/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ZJU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/zjusct/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ZJUSCT
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    密码学
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    数论
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/%E7%9F%AD%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    短学期课程
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/%E8%BF%90%E7%BB%B4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    运维
   
 
     
@@ -4323,12 +3166,19 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
+                    <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                    <div class="md-sidebar-button__wrapper">
+                      <label class="md-sidebar-button" for="__toc"></label>
+                    </div>
+                  
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
@@ -4337,7 +3187,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -4590,45 +3440,32 @@
               <article class="md-content__inner md-typeset">
                 
                   
-
-  <nav class="md-tags">
-    
-      
-      
-      
-      
-        <a href="../../../guideline/contribute/#tag:完善" class="md-tag">完善</a>
-      
-    
-  </nav>
-
-
   
     <a href="https://github.com/ZJUSCT/www.zjusct.io/blob/main/docs/operation/software/spack.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-file-pen" viewBox="0 0 24 24"><path d="M12.659 22H18a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v9.34"/><path d="M14 2v5a1 1 0 0 0 1 1h5M10.378 12.622a1 1 0 0 1 3 3.003L8.36 20.637a2 2 0 0 1-.854.506l-2.867.837a.5.5 0 0 1-.62-.62l.836-2.869a2 2 0 0 1 .506-.853z"/></svg>
     </a>
   
   
 
 
-<h1 id="包管理器spack">包管理器：Spack<a class="headerlink" href="#包管理器spack" title="Permanent link">¶</a></h1>
-<h2 id="spack-快速上手">Spack 快速上手<a class="headerlink" href="#spack-快速上手" title="Permanent link">¶</a></h2>
+<h1 id="包管理器spack">包管理器：Spack<a class="headerlink" href="#包管理器spack" title="Permanent link">&para;</a></h1>
+<h2 id="spack-快速上手">Spack 快速上手<a class="headerlink" href="#spack-快速上手" title="Permanent link">&para;</a></h2>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
 <li><a href="https://spack.readthedocs.io/en/latest/basic_usage.html">Basic Usage — Spack documentation</a></li>
 </ul>
 </div>
-<p>Spack 是 HPC 中最流行的包管理器。它帮助你自动完成拉取源码、 <code>configure</code>&nbsp;和 <code>make install</code>&nbsp;等构建流程，并负责维护环境变量如 <code>PATH</code>&nbsp;、 <code>LD_LIBRARY_PATH</code>&nbsp;等。</p>
-<h3 id="加载集群上的-spack">加载集群上的 Spack<a class="headerlink" href="#加载集群上的-spack" title="Permanent link">¶</a></h3>
+<p>Spack 是 HPC 中最流行的包管理器。它帮助你自动完成拉取源码、 <code>configure</code> 和 <code>make install</code> 等构建流程，并负责维护环境变量如 <code>PATH</code> 、 <code>LD_LIBRARY_PATH</code> 等。</p>
+<h3 id="加载集群上的-spack">加载集群上的 Spack<a class="headerlink" href="#加载集群上的-spack" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">区分集群级别（site level）和用户级别（user level）的 Spack 实例</p>
 </div>
 <p>集群上目前在 <code>/pxe/opt/spack</code> 目录下安装了 Spack（下称<strong>集群 Spack</strong>），提供了常用的编译工具如 <code>nvhpc</code>, <code>oneapi</code>, <code>aocc</code> 等。集群 Spack 已经写入了各个 Shell 系统级别的配置文件（如 <code>/etc/profile.d</code>），会在登陆 Shell 中<strong>自动加载</strong>。</p>
 <p><strong>但是集群 Spack 的目录仅有管理员可修改，普通用户只能使用而无法安装软件包。</strong>如果你希望安装集群上没有提供的软件包，请在家目录下自行安装 Spack 实例（下称<strong>用户 Spack</strong>），并将上游指向集群 Spack，见 <a href="#串联-spack-实例">串联 Spack 实例</a>。</p>
-<h3 id="查看软件包">查看软件包<a class="headerlink" href="#查看软件包" title="Permanent link">¶</a></h3>
-<p>使用 <code>spack find</code>&nbsp;可以查看已安装的包：</p>
+<h3 id="查看软件包">查看软件包<a class="headerlink" href="#查看软件包" title="Permanent link">&para;</a></h3>
+<p>使用 <code>spack find</code> 可以查看已安装的包：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>spack<span class="w"> </span>find
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>--<span class="w"> </span>linux-debian12-icelake<span class="w"> </span>/<span class="w"> </span>gcc@12.2.0<span class="w"> </span>--------------------------
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>gcc-runtime@12.2.0<span class="w">  </span>glibc@2.36<span class="w">  </span>gmake@4.3<span class="w">  </span>libiconv@1.17<span class="w">  </span>libxml2@2.10.3
@@ -4640,7 +3477,7 @@
 <blockquote>
 <p>A spec is like a name, but it has a version, compiler, architecture, and build options associated with it. In spack, you can have many installations of the same package with different specs.</p>
 </blockquote>
-<p>spec 是 Spack 中按特定选项构建的一个软件包，包含软件包名、版本、编译器、选项等信息。比如 <code>gcc@12.2.0</code>&nbsp;就是一个 spec。对于一个软件包，我们可以用不同的编译选项选项构建多个 Spec。</p>
+<p>spec 是 Spack 中按特定选项构建的一个软件包，包含软件包名、版本、编译器、选项等信息。比如 <code>gcc@12.2.0</code> 就是一个 spec。对于一个软件包，我们可以用不同的编译选项选项构建多个 Spec。</p>
 <p>使用 <code>spack find -dvf</code> 可以查看 spec 的详细信息：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>spack<span class="w"> </span>find<span class="w"> </span>-dfv
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>--<span class="w"> </span>linux-debian12-icelake<span class="w"> </span>/<span class="w"> </span>gcc@12.2.0<span class="w"> </span>--------------------------
@@ -4682,7 +3519,7 @@
 <tr>
 <td><code>+</code>、<code>-</code> 或 <code>~</code></td>
 <td><code>+mpi</code></td>
-<td>布尔类型选项<br> <code>~</code> 与 <code>-</code> 等价，用于某些情况下阻止 shell 解析</td>
+<td>布尔类型选项<br/> <code>~</code> 与 <code>-</code> 等价，用于某些情况下阻止 shell 解析</td>
 </tr>
 <tr>
 <td><code>++</code>、<code>--</code> 或 <code>~~</code></td>
@@ -4713,14 +3550,14 @@
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Matching<span class="w"> </span>packages:
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>ngtuhol<span class="w"> </span>cuda@11.8.0%gcc@12.2.0<span class="w"> </span><span class="nv">arch</span><span class="o">=</span>linux-debian12-icelake
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>bthqeln<span class="w"> </span>cuda@12.4.0%gcc@12.2.0<span class="w"> </span><span class="nv">arch</span><span class="o">=</span>linux-debian12-icelake
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>Use<span class="w"> </span>a<span class="w"> </span>more<span class="w"> </span>specific<span class="w"> </span>spec<span class="w"> </span><span class="o">(</span>e.g.,<span class="w"> </span>prepend<span class="w"> </span><span class="s1">'/'</span><span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span><span class="nb">hash</span><span class="o">)</span>.
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>Use<span class="w"> </span>a<span class="w"> </span>more<span class="w"> </span>specific<span class="w"> </span>spec<span class="w"> </span><span class="o">(</span>e.g.,<span class="w"> </span>prepend<span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span><span class="nb">hash</span><span class="o">)</span>.
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>$<span class="w"> </span>spack<span class="w"> </span>location<span class="w"> </span>--install-dir<span class="w"> </span>cuda/ngtuhol
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>/opt/spack/opt/spack/linux-debian12-icelake/gcc-12.2.0/cuda-11.8.0-ngtuholoe4xatxmphodttdett3rmhjrr
 </span></code></pre></div>
 <p>一些复杂的 Spec 可以使用引号括起作为一个参数传递，否则 Spack 会识别错误。例如 <code>spack diff &lt;spec&gt; &lt;spec&gt;</code>：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>spack<span class="w"> </span>diff<span class="w"> </span>intel-oneapi-compilers<span class="w"> </span><span class="nv">arch</span><span class="o">=</span>linux-debian12-icelake<span class="w"> </span>intel-oneapi-compilers<span class="w"> </span><span class="nv">arch</span><span class="o">=</span>linux-debian12-zen3
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">==</span>&gt;<span class="w"> </span>Error:<span class="w"> </span>You<span class="w"> </span>must<span class="w"> </span>provide<span class="w"> </span>two<span class="w"> </span>specs<span class="w"> </span>to<span class="w"> </span>diff.
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>$<span class="w"> </span>spack<span class="w"> </span>diff<span class="w"> </span><span class="s1">'intel-oneapi-compilers arch=linux-debian12-icelake'</span><span class="w"> </span><span class="s1">'intel-oneapi-compilers arch=linux-debian12-zen3'</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>$<span class="w"> </span>spack<span class="w"> </span>diff<span class="w"> </span><span class="s1">&#39;intel-oneapi-compilers arch=linux-debian12-icelake&#39;</span><span class="w"> </span><span class="s1">&#39;intel-oneapi-compilers arch=linux-debian12-zen3&#39;</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>---<span class="w"> </span>intel-oneapi-compilers@2025.0.4/jwh4nndynkcqhogdltdrxjkiilvulwyg
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>+++<span class="w"> </span>intel-oneapi-compilers@2025.0.4/zc7x2awdl3jriiydjaozmaizjhcsp2u5
@@ -4732,7 +3569,7 @@
 </span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>+<span class="w"> </span>intel-oneapi-compilers<span class="w"> </span>zen3
 </span></code></pre></div>
 </div>
-<h3 id="使用软件包">使用软件包<a class="headerlink" href="#使用软件包" title="Permanent link">¶</a></h3>
+<h3 id="使用软件包">使用软件包<a class="headerlink" href="#使用软件包" title="Permanent link">&para;</a></h3>
 <p>Spack 中的软件包有三种使用方式：</p>
 <ul>
 <li>
@@ -4756,7 +3593,7 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>spack<span class="w"> </span>find<span class="w"> </span>--loaded
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>spack<span class="w"> </span>list<span class="w"> </span>--loaded
 </span></code></pre></div>
-<h3 id="安装自己的-spack-实例">安装自己的 spack 实例<a class="headerlink" href="#安装自己的-spack-实例" title="Permanent link">¶</a></h3>
+<h3 id="安装自己的-spack-实例">安装自己的 spack 实例<a class="headerlink" href="#安装自己的-spack-实例" title="Permanent link">&para;</a></h3>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
@@ -4785,7 +3622,7 @@
 </span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="c1"># fish: ~/.config/fish/config.fish</span>
 </span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="nb">source</span><span class="w"> </span>spack/share/spack/setup-env.fish
 </span></code></pre></div>
-<h3 id="串联-spack-实例">串联 Spack 实例<a class="headerlink" href="#串联-spack-实例" title="Permanent link">¶</a></h3>
+<h3 id="串联-spack-实例">串联 Spack 实例<a class="headerlink" href="#串联-spack-实例" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">修改不同级别的配置</p>
 <ul>
@@ -4794,7 +3631,7 @@
 </ul>
 </div>
 <p><strong>用户 spack</strong> 安装完成后，可以将<strong>集群 spack</strong> 指定为上游 Spack 实例，从而复用<strong>集群 spack</strong> 已安装的软件包，节省安装时间。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">使用命令添加配置</label><label for="__tabbed_1_2">手动修改配置文件</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">使用命令添加配置</label><label for="__tabbed_1_2">手动修改配置文件</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>spack<span class="w"> </span>config<span class="w"> </span>add<span class="w"> </span>upstreams:zjusct-spack:install_tree:/pxe/opt/spack/opt/spack
@@ -4810,8 +3647,8 @@
 </div>
 </div>
 <p>这样，运行 <code>spack find</code> 命令就可以看到集群上的 Spack 安装的软件包了。与此同时，你也可以更改 Spack 的软件包配置，这些更改将会放在你手工安装的 Spack 目录下。</p>
-<h3 id="安装软件包">安装软件包<a class="headerlink" href="#安装软件包" title="Permanent link">¶</a></h3>
-<p>使用 <code>spack install &lt;spec&gt;</code>&nbsp;安装软件包。因为 spec 语法易错，所以在安装前建议使用 <code>spack spec -I &lt;spec&gt;</code>&nbsp;确认软件依赖和选项是否正确。例如：</p>
+<h3 id="安装软件包">安装软件包<a class="headerlink" href="#安装软件包" title="Permanent link">&para;</a></h3>
+<p>使用 <code>spack install &lt;spec&gt;</code> 安装软件包。因为 spec 语法易错，所以在安装前建议使用 <code>spack spec -I &lt;spec&gt;</code> 确认软件依赖和选项是否正确。例如：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$<span class="w"> </span>spack<span class="w"> </span>spec<span class="w"> </span>-I<span class="w"> </span>openblas
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w"> </span>-<span class="w">   </span>openblas@0.3.29%gcc@12.2.0~bignuma~consistent_fpcsr+dynamic_dispatch+fortran~ilp64+locking+pic+shared<span class="w"> </span><span class="nv">build_system</span><span class="o">=</span>makefile<span class="w"> </span><span class="nv">symbol_suffix</span><span class="o">=</span>none<span class="w"> </span><span class="nv">threads</span><span class="o">=</span>none<span class="w"> </span><span class="nv">arch</span><span class="o">=</span>linux-debian12-icelake
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="o">[</span>+<span class="o">]</span><span class="w">      </span>^gcc-runtime@12.2.0%gcc@12.2.0<span class="w"> </span><span class="nv">build_system</span><span class="o">=</span>generic<span class="w"> </span><span class="nv">arch</span><span class="o">=</span>linux-debian12-icelake
@@ -4826,23 +3663,23 @@
 <p><code>spack spec</code> 执行的就是 concretize 操作。</p>
 <p>更多信息建议阅读：<a href="https://spack.github.io/spack-cscs2024/">CSCS Spack Course 2024</a>。</p>
 </div>
-<p>使用 <code>spack list</code> 可以查询在线仓库中的软件包，使用 <code>spack info</code>&nbsp;可以查看软件包的详细信息。</p>
+<p>使用 <code>spack list</code> 可以查询在线仓库中的软件包，使用 <code>spack info</code> 可以查看软件包的详细信息。</p>
 <div class="admonition note">
 <p class="admonition-title">概念：虚包（Virtual Packages）</p>
 <p>比如 OpenMPI、IntelMPI、MPICH，它们是 MPI 的不同实现。因此它们都提供一个虚包 mpi，其他程序只会依赖于 mpi 这个包，而不会依赖于某个具体实现。
-使用 <code>spack info --all</code>&nbsp;可以查看提供的虚包，这里以 ATLAS 为例，可以看到：</p>
+使用 <code>spack info --all</code> 可以查看提供的虚包，这里以 ATLAS 为例，可以看到：</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">Virtual Packages</span><span class="p">:</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">atlas provides blas, lapack, lapack@3.6.1</span>
 </span></code></pre></div>
-<p>也就是说， <code>atlas</code>&nbsp;会自动取代 <code>blas/lapack</code>&nbsp;等的位置，提供它们的服务。</p>
+<p>也就是说， <code>atlas</code> 会自动取代 <code>blas/lapack</code> 等的位置，提供它们的服务。</p>
 </div>
-<h3 id="其它常用命令">其它常用命令<a class="headerlink" href="#其它常用命令" title="Permanent link">¶</a></h3>
+<h3 id="其它常用命令">其它常用命令<a class="headerlink" href="#其它常用命令" title="Permanent link">&para;</a></h3>
 <ul>
 <li>比较 spec 差异：<code>spack diff</code></li>
 <li>查找安装位置：<code>spack location --install-dir &lt;spec&gt;</code></li>
 <li>移动到安装位置：<code>spack cd -i &lt;spec&gt;</code></li>
 </ul>
-<h3 id="创建和使用-spack-环境该部分需要完善">创建和使用 Spack 环境（该部分需要完善）<a class="headerlink" href="#创建和使用-spack-环境该部分需要完善" title="Permanent link">¶</a></h3>
+<h3 id="创建和使用-spack-环境该部分需要完善">创建和使用 Spack 环境（该部分需要完善）<a class="headerlink" href="#创建和使用-spack-环境该部分需要完善" title="Permanent link">&para;</a></h3>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
@@ -4876,7 +3713,7 @@
 </ul>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>spack<span class="w"> </span>install
 </span></code></pre></div>
-<h3 id="处理头文件和依赖">处理头文件和依赖<a class="headerlink" href="#处理头文件和依赖" title="Permanent link">¶</a></h3>
+<h3 id="处理头文件和依赖">处理头文件和依赖<a class="headerlink" href="#处理头文件和依赖" title="Permanent link">&para;</a></h3>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
@@ -4914,26 +3751,26 @@
 <ul>
 <li>
 <p>使用 <code>spack location -i &lt;spec&gt;</code>：</p>
-<p>先 <code>spack cd -i &lt;spec&gt;</code>&nbsp;进入安装目录，使用 <code>fdfind | fzf</code> 等工具搜索头文件的相对路径，然后添加到编译选项中。例如：</p>
+<p>先 <code>spack cd -i &lt;spec&gt;</code> 进入安装目录，使用 <code>fdfind | fzf</code> 等工具搜索头文件的相对路径，然后添加到编译选项中。例如：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nv">C_INCLUDE_PATH</span><span class="o">=</span><span class="k">$(</span>spack<span class="w"> </span>location<span class="w"> </span>-i<span class="w"> </span>&lt;spec&gt;<span class="k">)</span>/include<span class="w"> </span>make
 </span></code></pre></div>
 </li>
 <li>
 <p>使用 <a href="https://www.freedesktop.org/wiki/Software/pkg-config/">pkg-config</a>：</p>
-<p><code>pkg-config</code> 是一个管理库文件和头文件路径的工具。它会搜索 <code>PKG_CONFIG_PATH</code>&nbsp;中的 <code>.pc</code> 文件，按指定要求返回编译选项。</p>
-<p>Spack 部分包加载时会修改 <code>PKG_CONFIG_PATH</code>，可以使用 <code>pkg-config</code>&nbsp;来获取头文件和库文件的路径。例如：</p>
+<p><code>pkg-config</code> 是一个管理库文件和头文件路径的工具。它会搜索 <code>PKG_CONFIG_PATH</code> 中的 <code>.pc</code> 文件，按指定要求返回编译选项。</p>
+<p>Spack 部分包加载时会修改 <code>PKG_CONFIG_PATH</code>，可以使用 <code>pkg-config</code> 来获取头文件和库文件的路径。例如：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>c++<span class="w"> </span>example.cpp<span class="w"> </span><span class="k">$(</span>pkg-config<span class="w"> </span>--cflags<span class="w"> </span>--libs<span class="w"> </span>gtk+-3.0<span class="w"> </span>webkit2gtk-4.0<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span>example
 </span></code></pre></div>
-<p><code>pkg-config</code>&nbsp;支持 <code>--static</code>、<code>--shared</code> 等选项，可以指定链接静态库或动态库。</p>
+<p><code>pkg-config</code> 支持 <code>--static</code>、<code>--shared</code> 等选项，可以指定链接静态库或动态库。</p>
 </li>
 <li>
 <p>使用 CMake：</p>
-<p>Spack 部分包加载时会修改 <code>CMAKE_PREFIX_PATH</code>，可以使用 <code>find_package</code>&nbsp;来查找头文件和库文件。例如：</p>
+<p>Spack 部分包加载时会修改 <code>CMAKE_PREFIX_PATH</code>，可以使用 <code>find_package</code> 来查找头文件和库文件。例如：</p>
 <div class="language-cmake highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">find_package</span><span class="p">(</span><span class="s">OpenMP</span><span class="p">)</span>
 </span></code></pre></div>
 </li>
 </ul>
-<h3 id="常用软件包">常用软件包<a class="headerlink" href="#常用软件包" title="Permanent link">¶</a></h3>
+<h3 id="常用软件包">常用软件包<a class="headerlink" href="#常用软件包" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a># 开源编译和构建系统
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>llvm gcc
 </span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a># NVIDIA
@@ -4951,27 +3788,27 @@
 </span><span id="__span-24-15"><a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a># MPI
 </span><span id="__span-24-16"><a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>mpich mvapich2 openmpi
 </span></code></pre></div>
-<h2 id="spack-配置与管理">Spack 配置与管理<a class="headerlink" href="#spack-配置与管理" title="Permanent link">¶</a></h2>
-<h3 id="添加系统已有的包">添加系统已有的包<a class="headerlink" href="#添加系统已有的包" title="Permanent link">¶</a></h3>
+<h2 id="spack-配置与管理">Spack 配置与管理<a class="headerlink" href="#spack-配置与管理" title="Permanent link">&para;</a></h2>
+<h3 id="添加系统已有的包">添加系统已有的包<a class="headerlink" href="#添加系统已有的包" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>配置编译器 <code>spack compiler</code></p>
 <ul>
-<li><code>list</code>&nbsp;<code>add=find</code>&nbsp;<code>info</code></li>
-<li><code>spack config edit compilers</code>&nbsp;可以进一步指定编译选项、设置环境变量。</li>
+<li><code>list</code> <code>add=find</code> <code>info</code></li>
+<li><code>spack config edit compilers</code> 可以进一步指定编译选项、设置环境变量。</li>
 </ul>
 </li>
 <li>
 <p><code>spack external find</code> 自动扫描系统中已有的包 <a href="https://spack.readthedocs.io/en/latest/packages_yaml.html#cmd-spack-external-find">Automatically Find External Packages</a></p>
 </li>
-<li><code>spack config edit packages</code>&nbsp;，以 CUDA 为例：</li>
+<li><code>spack config edit packages</code> ，以 CUDA 为例：</li>
 </ul>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nt">packages</span><span class="p">:</span>
 </span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">  </span><span class="nt">all</span><span class="p">:</span>
 </span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">    </span><span class="nt">variants</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">+cuda cuda_arch=80</span>
 </span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">  </span><span class="nt">cuda</span><span class="p">:</span>
 </span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">    </span><span class="nt">externals</span><span class="p">:</span>
-</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"> </span><span class="s">"cuda@12.3%gcc@12.2.0</span><span class="nv"> </span><span class="s">arch=linux-debian12-x86_64"</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cuda@12.3%gcc@12.2.0</span><span class="nv"> </span><span class="s">arch=linux-debian12-x86_64&quot;</span>
 </span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w">      </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/cuda-12.3</span>
 </span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="w">      </span><span class="nt">extra_attributes</span><span class="p">:</span>
 </span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="w">        </span><span class="nt">environment</span><span class="p">:</span>
@@ -4979,15 +3816,15 @@
 </span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="w">            </span><span class="nt">LD_LIBRAY_PATH</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/cuda-12.3/lib64</span>
 </span></code></pre></div>
 <ul>
-<li>Spack 建议如果系统中有这些包就写进去： <code>openssl</code>&nbsp; <code>git</code>&nbsp;。这些包确实很多系统都有附带，直接使用可以节省一些编译时间。当然很多时候我们用 Spack 就是不想自己解决依赖，希望一行命令解决所有事情，全都让 Spack 自己装一套也行。</li>
+<li>Spack 建议如果系统中有这些包就写进去： <code>openssl</code>  <code>git</code> 。这些包确实很多系统都有附带，直接使用可以节省一些编译时间。当然很多时候我们用 Spack 就是不想自己解决依赖，希望一行命令解决所有事情，全都让 Spack 自己装一套也行。</li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">有些包必须使用发行版提供的版本</p>
 <p>比如 OpenSSL，如果版本不一致，可能会导致 SSH 连接失败。这将直接导致 MPI 程序无法运行。</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../spack.assets/openssl_version_mismatch.webp" data-desc-position="bottom"><img alt="openssl_version_mismatch" src="../spack.assets/openssl_version_mismatch.webp"></a></p>
+<p><img alt="openssl_version_mismatch" src="../spack.assets/openssl_version_mismatch.webp" /></p>
 <p>对于 OpenSSL 这种基础包，每个系统应当固定版本，不要让 Spack 自行编译，很可能发生版本不一致问题。</p>
 </div>
-<h3 id="与-lmod-集成">与 Lmod 集成<a class="headerlink" href="#与-lmod-集成" title="Permanent link">¶</a></h3>
+<h3 id="与-lmod-集成">与 Lmod 集成<a class="headerlink" href="#与-lmod-集成" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>配置自动为所有安装的包生成 modulefile：</p>
@@ -4995,12 +3832,12 @@
 </span></code></pre></div>
 </li>
 <li>
-<p>在 <code>/etc/lmod/.modulespath</code>&nbsp;中添加 Spack 的 modulefile 路径：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"/opt/apps/spack/share/spack/lmod"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/lmod/.modulespath
+<p>在 <code>/etc/lmod/.modulespath</code> 中添加 Spack 的 modulefile 路径：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;/opt/apps/spack/share/spack/lmod&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/lmod/.modulespath
 </span></code></pre></div>
 </li>
 </ul>
-<h2 id="spack-软件包维护">Spack 软件包维护<a class="headerlink" href="#spack-软件包维护" title="Permanent link">¶</a></h2>
+<h2 id="spack-软件包维护">Spack 软件包维护<a class="headerlink" href="#spack-软件包维护" title="Permanent link">&para;</a></h2>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
@@ -5028,26 +3865,26 @@
 <ul>
 <li>
 <p>元数据：</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">homepaage</span> <span class="o">=</span> <span class="s2">"..."</span>
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="n">version</span><span class="p">(</span><span class="s2">"2.4.0"</span><span class="p">,</span> <span class="n">sha256</span><span class="o">=</span><span class="s2">"..."</span><span class="p">)</span>
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="n">variant</span><span class="p">(</span><span class="s2">"feature"</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">"..."</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">homepaage</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="n">version</span><span class="p">(</span><span class="s2">&quot;2.4.0&quot;</span><span class="p">,</span> <span class="n">sha256</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="n">variant</span><span class="p">(</span><span class="s2">&quot;feature&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </li>
 <li>
 <p>补丁：</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">patch</span><span class="p">(</span><span class="s2">"patchfile.patch"</span><span class="p">,</span> <span class="n">when</span><span class="o">=</span><span class="s2">"@1.2: +feature"</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">patch</span><span class="p">(</span><span class="s2">&quot;patchfile.patch&quot;</span><span class="p">,</span> <span class="n">when</span><span class="o">=</span><span class="s2">&quot;@1.2: +feature&quot;</span><span class="p">)</span>
 </span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">patch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>    <span class="o">...</span>  <span class="c1"># 自定义补丁</span>
 </span></code></pre></div>
 </li>
 <li>
 <p>依赖关系：</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">depends_on</span><span class="p">(</span><span class="s2">"libelf@0.8 +parser +pic"</span><span class="p">,</span>
-</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="n">when</span><span class="o">=</span><span class="s2">"@1.2: +feature"</span><span class="p">,</span>
-</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="nb">type</span><span class="o">=</span><span class="p">(</span><span class="s2">"build"</span><span class="p">,</span> <span class="s2">"link"</span><span class="p">,</span> <span class="s2">"run"</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">),</span>
-</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>    <span class="n">patches</span><span class="o">=</span><span class="p">[</span><span class="s2">"patchfile.patch"</span><span class="p">,</span>
-</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>        <span class="n">patch</span><span class="p">(</span><span class="s2">"https://github.com/spack/spack/pull/1234.patch"</span><span class="p">,</span>
-</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>            <span class="n">when</span><span class="o">=</span><span class="s2">"@1.2: +feature"</span><span class="p">)]</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">depends_on</span><span class="p">(</span><span class="s2">&quot;libelf@0.8 +parser +pic&quot;</span><span class="p">,</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="n">when</span><span class="o">=</span><span class="s2">&quot;@1.2: +feature&quot;</span><span class="p">,</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="nb">type</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;build&quot;</span><span class="p">,</span> <span class="s2">&quot;link&quot;</span><span class="p">,</span> <span class="s2">&quot;run&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">),</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>    <span class="n">patches</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;patchfile.patch&quot;</span><span class="p">,</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>        <span class="n">patch</span><span class="p">(</span><span class="s2">&quot;https://github.com/spack/spack/pull/1234.patch&quot;</span><span class="p">,</span>
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>            <span class="n">when</span><span class="o">=</span><span class="s2">&quot;@1.2: +feature&quot;</span><span class="p">)]</span>
 </span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>    <span class="p">)</span>
 </span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="n">provides</span><span class="p">()</span>
 </span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="n">conflicts</span><span class="p">()</span>
@@ -5056,9 +3893,9 @@
 </span></code></pre></div>
 <p>默认为 <code>type=("build","link")</code>。不同的依赖关系将在包的不同阶段起作用，主要是影响 <code>PATH</code> 和编译、链接器选项。</p>
 <p>这些指令可以用 <code>with</code> 语句来批量管理：</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">with</span> <span class="n">default_args</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="p">(</span><span class="s2">"build"</span><span class="p">,</span><span class="s2">"run"</span><span class="p">),</span> <span class="n">when</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)):</span>
-</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="n">depends_on</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span>
-</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="n">conflicts</span><span class="p">(</span><span class="s2">"..."</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">with</span> <span class="n">default_args</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;build&quot;</span><span class="p">,</span><span class="s2">&quot;run&quot;</span><span class="p">),</span> <span class="n">when</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)):</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="n">depends_on</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="n">conflicts</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </li>
 <li>
@@ -5075,25 +3912,25 @@
 <p>根据不同的构建系统，实现不同的函数。</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1"># before build</span>
 </span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">setup_build_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">):</span>
-</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="n">env</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"CXX"</span><span class="p">,</span> <span class="s2">"g++"</span><span class="p">)</span>
-</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="nd">@run_before</span><span class="p">(</span><span class="s2">"cmake"</span><span class="p">)</span> 
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="n">env</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;CXX&quot;</span><span class="p">,</span> <span class="s2">&quot;g++&quot;</span><span class="p">)</span>
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="nd">@run_before</span><span class="p">(</span><span class="s2">&quot;cmake&quot;</span><span class="p">)</span> 
 </span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>
 </span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="c1"># build</span>
 </span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">cmake_args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># CMakePackage</span>
-</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">spec</span><span class="p">[</span><span class="s2">"dependecy"</span><span class="p">]</span><span class="o">.</span><span class="n">prefix</span>
+</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">spec</span><span class="p">[</span><span class="s2">&quot;dependecy&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">prefix</span>
 </span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">configure_args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># AutotoolsPackage</span>
 </span><span id="__span-33-10"><a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>    <span class="n">args</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="__span-33-11"><a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">satisfies</span><span class="p">(</span><span class="s2">"+feature"</span><span class="p">):</span>
-</span><span id="__span-33-12"><a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a>        <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"--enable-feature"</span><span class="p">)</span>
-</span><span id="__span-33-13"><a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a>        <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"--with-libxml2=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">spec</span><span class="p">[</span><span class="s1">'libxml2'</span><span class="p">]</span><span class="o">.</span><span class="n">prefix</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-33-11"><a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">satisfies</span><span class="p">(</span><span class="s2">&quot;+feature&quot;</span><span class="p">):</span>
+</span><span id="__span-33-12"><a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a>        <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--enable-feature&quot;</span><span class="p">)</span>
+</span><span id="__span-33-13"><a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a>        <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;--with-libxml2=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">spec</span><span class="p">[</span><span class="s1">&#39;libxml2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">prefix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span id="__span-33-14"><a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a>    <span class="k">return</span> <span class="n">args</span>
 </span><span id="__span-33-15"><a id="__codelineno-33-15" name="__codelineno-33-15" href="#__codelineno-33-15"></a><span class="k">def</span><span class="w"> </span><span class="nf">build_targets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># MakefilePackage</span>
 </span><span id="__span-33-16"><a id="__codelineno-33-16" name="__codelineno-33-16" href="#__codelineno-33-16"></a><span class="k">def</span><span class="w"> </span><span class="nf">install_targets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># MakefilePackage</span>
 </span><span id="__span-33-17"><a id="__codelineno-33-17" name="__codelineno-33-17" href="#__codelineno-33-17"></a>
 </span><span id="__span-33-18"><a id="__codelineno-33-18" name="__codelineno-33-18" href="#__codelineno-33-18"></a><span class="c1"># after build</span>
 </span><span id="__span-33-19"><a id="__codelineno-33-19" name="__codelineno-33-19" href="#__codelineno-33-19"></a><span class="k">def</span><span class="w"> </span><span class="nf">install_missing_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="__span-33-20"><a id="__codelineno-33-20" name="__codelineno-33-20" href="#__codelineno-33-20"></a>    <span class="n">install_tree</span><span class="p">(</span><span class="s2">"extra_files"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="o">.</span><span class="n">bin</span><span class="p">)</span>
-</span><span id="__span-33-21"><a id="__codelineno-33-21" name="__codelineno-33-21" href="#__codelineno-33-21"></a><span class="nd">@run_after</span><span class="p">(</span><span class="s2">"install"</span><span class="p">,</span> <span class="n">when</span><span class="o">=</span><span class="s2">"..."</span><span class="p">)</span>
+</span><span id="__span-33-20"><a id="__codelineno-33-20" name="__codelineno-33-20" href="#__codelineno-33-20"></a>    <span class="n">install_tree</span><span class="p">(</span><span class="s2">&quot;extra_files&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="o">.</span><span class="n">bin</span><span class="p">)</span>
+</span><span id="__span-33-21"><a id="__codelineno-33-21" name="__codelineno-33-21" href="#__codelineno-33-21"></a><span class="nd">@run_after</span><span class="p">(</span><span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="n">when</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </li>
 <li>
@@ -5140,92 +3977,53 @@
 </span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>spack<span class="w"> </span>clean<span class="w"> </span>--stage
 </span></code></pre></div>
 </div>
-<h2 id="常见问题">常见问题<a class="headerlink" href="#常见问题" title="Permanent link">¶</a></h2>
-<h3 id="放弃过于老旧的包">放弃过于老旧的包<a class="headerlink" href="#放弃过于老旧的包" title="Permanent link">¶</a></h3>
+<h2 id="常见问题">常见问题<a class="headerlink" href="#常见问题" title="Permanent link">&para;</a></h2>
+<h3 id="放弃过于老旧的包">放弃过于老旧的包<a class="headerlink" href="#放弃过于老旧的包" title="Permanent link">&para;</a></h3>
 <p>构建过程的很多错误往往是因为代码太老、不符合新的语法规范、功能弃用。如果有可能，不要再使用该包，选择新的可替代的包，不然可能需要花很大精力调整编译选项。比如 ATLAS，其稳定的包已经是 2016 年的了，编译时爆出了很多弃用的函数、不能识别目前的 CPU 等等问题，因此还是放弃该包比较好。</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../spack.assets/too_old_pkgs.webp" data-desc-position="bottom"><img alt="too_old_pkgs" src="../spack.assets/too_old_pkgs.webp"></a></p>
+<p><img alt="too_old_pkgs" src="../spack.assets/too_old_pkgs.webp" /></p>
 <p>对于 BLAS，其实官网提供了 Vendor-Specific 的列表，可以找到：intel-oneapi-mkl 就是 Intel 平台上的优化实现，用它即可。</p>
-<h3 id="自行添加编译链接选项">自行添加编译、链接选项<a class="headerlink" href="#自行添加编译链接选项" title="Permanent link">¶</a></h3>
-<p>这些问题常常是由于编写安装脚本的人没有考虑完善导致的，没有指定链接某些库，导致编译过程中断。如果对 <code>ld</code>&nbsp;等链接工具熟悉，就能够自行添加相应的选项完成编译。下面记录几个例子：</p>
+<h3 id="自行添加编译链接选项">自行添加编译、链接选项<a class="headerlink" href="#自行添加编译链接选项" title="Permanent link">&para;</a></h3>
+<p>这些问题常常是由于编写安装脚本的人没有考虑完善导致的，没有指定链接某些库，导致编译过程中断。如果对 <code>ld</code> 等链接工具熟悉，就能够自行添加相应的选项完成编译。下面记录几个例子：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>spack<span class="w"> </span>install<span class="w"> </span>hwloc@2.9.1%oneapi<span class="w"> </span>^intel-oneapi-mpi%oneapi
 </span></code></pre></div>
-<p>使用 <code>intel-oneapi-mpi</code>&nbsp;依赖安装 <code>hwloc</code>&nbsp;，提示缺少 MPI 相关符号，很显然是没链接 MPI 库。</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../spack.assets/undefined_mpi_symbol.webp" data-desc-position="bottom"><img alt="undefined_mpi_symbol" src="../spack.assets/undefined_mpi_symbol.webp"></a></p>
+<p>使用 <code>intel-oneapi-mpi</code> 依赖安装 <code>hwloc</code> ，提示缺少 MPI 相关符号，很显然是没链接 MPI 库。</p>
+<p><img alt="undefined_mpi_symbol" src="../spack.assets/undefined_mpi_symbol.webp" /></p>
 <ul>
-<li>首先检查 786 行的编译命令，其实这里并没有指定链接 MPI 库，因此应当添加 <code>-lmpi</code>&nbsp;选项。更改为：</li>
+<li>首先检查 786 行的编译命令，其实这里并没有指定链接 MPI 库，因此应当添加 <code>-lmpi</code> 选项。更改为：</li>
 </ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>spack<span class="w"> </span>install<span class="w"> </span>hwloc@2.9.1%oneapi<span class="w"> </span><span class="nv">ldflags</span><span class="o">=</span><span class="s2">"-lmpi"</span><span class="w"> </span>^intel-oneapi-mpi%oneapi
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>spack<span class="w"> </span>install<span class="w"> </span>hwloc@2.9.1%oneapi<span class="w"> </span><span class="nv">ldflags</span><span class="o">=</span><span class="s2">&quot;-lmpi&quot;</span><span class="w"> </span>^intel-oneapi-mpi%oneapi
 </span></code></pre></div>
 <ul>
-<li>这个问题折腾了我一个多小时，才慢慢找到上面这个问题。一开始我认为可能是路径缺失，因此尝试以各种方式为 <code>ld</code>&nbsp;添加搜索路径，但最后发现它根本没指定链接。</li>
-<li>如果是路径问题， <code>ld</code>&nbsp;的报错应该是找不到某个库，而不是未定义符号，比如：</li>
+<li>这个问题折腾了我一个多小时，才慢慢找到上面这个问题。一开始我认为可能是路径缺失，因此尝试以各种方式为 <code>ld</code> 添加搜索路径，但最后发现它根本没指定链接。</li>
+<li>如果是路径问题， <code>ld</code> 的报错应该是找不到某个库，而不是未定义符号，比如：</li>
 </ul>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>/usr/bin/ld: cannot find -lzlib
 </span></code></pre></div>
-<h3 id="error-all-fetchers-failed-for">Error: All fetchers failed for<a class="headerlink" href="#error-all-fetchers-failed-for" title="Permanent link">¶</a></h3>
+<h3 id="error-all-fetchers-failed-for">Error: All fetchers failed for<a class="headerlink" href="#error-all-fetchers-failed-for" title="Permanent link">&para;</a></h3>
 <p>网络问题。有些包需要从 GitHub 等地拉取资源。加上代理解决。</p>
 
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">完善</span>
+      
+    
+  </nav>
+
+
+
 
 
 
 
 
   
-    
-  
-  
-    
   
 
-
-  <aside class="md-source-file">
-    
-      
-  <span class="md-source-file__fact">
-    <span class="md-icon" title="Last update">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
-    </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 22, 2025 12:59:02 UTC">July 22, 2025</span>
-  </span>
-
-    
-    
-      
-  <span class="md-source-file__fact">
-    <span class="md-icon" title="Created">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
-    </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 27, 2025 17:10:39 UTC">April 27, 2025</span>
-  </span>
-
-    
-    
-    
-      
-  <span class="md-source-file__fact">
-    
-      
-  <span class="md-icon" title="Contributors">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path></svg>
-  </span>
-  <span>GitHub</span>
-
-    
-    <nav>
-      
-        <a href="https://github.com/bowling233" class="md-author" title="@bowling233">
-          
-          <img src="https://avatars.githubusercontent.com/u/35755846?v=4&amp;size=72" alt="bowling233">
-        </a>
-      
-      
-      
-    </nav>
-  </span>
-
-    
-  </aside>
 
 
 
@@ -5241,7 +4039,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
   Back to top
 </button>
         
@@ -5261,8 +4059,8 @@
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
     </a>
   
 </div>
@@ -5280,10 +4078,14 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["content.code.copy","content.code.select","content.code.annotate","navigation.footer","navigation.tabs","navigation.sections","navigation.expand","navigation.indexes","navigation.tracking","navigation.path","navigation.top","toc.follow","content.action.edit","search.suggest","search.highlight","search.share"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.66be65ca.min.js"></script>
+      
+        <script src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+      
+        <script src="../../../javascripts/drawio.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
@@ -5298,7 +4100,5 @@
         <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
       
     
-  
-<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
-document$.subscribe(()=>{ lightbox.reload(); });
-</script></body></html>
+  </body>
+</html>

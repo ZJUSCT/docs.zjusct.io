@@ -1,4 +1,7 @@
-<!DOCTYPE html><html lang="en" class="no-js"><head>
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -18,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/zjusct.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="zensical-0.0.30">
     
     
       
@@ -26,10 +29,15 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.3b031116.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
       
       
 
@@ -43,8 +51,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
     
@@ -56,23 +64,13 @@
     
       <link rel="stylesheet" href="../../../stylesheets/neoteroi-v1.1.2.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
     
     
-  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
-            html.glightbox-open { overflow: initial; height: 100%; }
-            .gslide-title { margin-top: 0px; user-select: text; }
-            .gslide-desc { color: #666; user-select: text; }
-            .gslide-image img { background: white; }
-            .gscrollbar-fixer { padding-right: 15px; }
-            .gdesc-inner { font-size: 0.75rem; }
-            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
-            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
-            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
-        </style></head>
+  </head>
   
   
     
@@ -87,7 +85,7 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
     <div data-md-component="skip">
       
         
@@ -106,13 +104,24 @@
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../../.." title="ZJUSCT" class="md-header__button md-logo" aria-label="ZJUSCT" data-md-component="logo">
-      
-  <img src="../../../assets/zjusct.svg" alt="logo">
-
+      <span class="md-logo__variant md-logo__variant--light">
+  <img
+    class="md-logo__image"
+    src="../../../assets/zjusct-wide-clear.svg"
+    alt="ZJUSCT"
+  >
+</span>
+<span class="md-logo__variant md-logo__variant--dark">
+  <img
+    class="md-logo__image"
+    src="../../../assets/zjusct-wide-dark-clear.svg"
+    alt="ZJUSCT"
+  >
+</span>
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -137,30 +146,30 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="切换至浅色模式" type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="zjusct" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="切换至深色模式" type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="zjusct" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_2" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="根据系统模式切换主题" type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="根据系统模式切换主题"  type="radio" name="__palette" id="__palette_2">
     
       <label class="md-header__button md-icon" title="根据系统模式切换主题" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
   
@@ -174,64 +183,30 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search">
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
         </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
-            
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
-          </a>
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
 </div>
       
     
-    
-      <div class="md-header__source">
+    <div class="md-header__source">
+      
         <a href="https://github.com/ZJUSCT/www.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     www.zjusct.io
   </div>
 </a>
-      </div>
-    
+      
+    </div>
   </nav>
   
 </header>
@@ -255,9 +230,6 @@
       <a href="../../.." class="md-tabs__link">
         
   
-  
-    
-  
   首页
 
       </a>
@@ -276,9 +248,6 @@
         <a href="../../../guideline/" class="md-tabs__link">
           
   
-  
-    
-  
   文档指引
 
         </a>
@@ -292,20 +261,14 @@
   
   
   
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../../competition/" class="md-tabs__link">
-          
-  
-  
-    
+    <li class="md-tabs__item">
+      <a href="../../../competition/" class="md-tabs__link">
+        
   
   🏆 竞赛
 
-        </a>
-      </li>
-    
+      </a>
+    </li>
   
 
       
@@ -319,9 +282,6 @@
       <li class="md-tabs__item">
         <a href="../../../falcon/" class="md-tabs__link">
           
-  
-  
-    
   
   🦅 Falcon
 
@@ -342,9 +302,6 @@
         <a href="../../../optimization/" class="md-tabs__link">
           
   
-  
-    
-  
   🔧 优化
 
         </a>
@@ -364,9 +321,6 @@
         <a href="../../" class="md-tabs__link">
           
   
-  
-    
-  
   ⚙️ 运维
 
         </a>
@@ -382,17 +336,24 @@
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../blog/" class="md-tabs__link">
-          
+      
+  
+  
   
   
     
+    
+      <li class="md-tabs__item">
+        <a href="../../../blog/2018/09-30-first/" class="md-tabs__link">
+          
   
   ✍️ 博客
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -408,7 +369,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -420,9 +381,20 @@
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="ZJUSCT" class="md-nav__button md-logo" aria-label="ZJUSCT" data-md-component="logo">
-      
-  <img src="../../../assets/zjusct.svg" alt="logo">
-
+      <span class="md-logo__variant md-logo__variant--light">
+  <img
+    class="md-logo__image"
+    src="../../../assets/zjusct-wide-clear.svg"
+    alt="ZJUSCT"
+  >
+</span>
+<span class="md-logo__variant md-logo__variant--dark">
+  <img
+    class="md-logo__image"
+    src="../../../assets/zjusct-wide-dark-clear.svg"
+    alt="ZJUSCT"
+  >
+</span>
     </a>
     ZJUSCT
   </label>
@@ -431,7 +403,7 @@
       <a href="https://github.com/ZJUSCT/www.zjusct.io" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     www.zjusct.io
@@ -487,8 +459,6 @@
       
         
       
-        
-      
     
     
     
@@ -504,7 +474,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -602,8 +572,6 @@
               
             
               
-            
-              
                 
   
   
@@ -644,34 +612,9 @@
   
   
   
-    
-    
-      
+    <li class="md-nav__item">
+      <a href="../../../competition/" class="md-nav__link">
         
-          
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../../competition/" class="md-nav__link ">
-              
   
   
   <span class="md-ellipsis">
@@ -685,26 +628,7 @@
   
   
 
-            </a>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    🏆 竞赛
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-          </ul>
-        </nav>
-      
+      </a>
     </li>
   
 
@@ -728,8 +652,6 @@
       
         
       
-        
-      
     
     
     
@@ -745,7 +667,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -812,8 +734,6 @@
     </li>
   
 
-              
-            
               
             
               
@@ -911,7 +831,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -984,7 +904,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -1057,7 +977,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_2" >
         
           
           <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
@@ -1241,7 +1161,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3" >
         
           
           <label class="md-nav__link" for="__nav_5_2_3" id="__nav_5_2_3_label" tabindex="0">
@@ -1411,9 +1331,9 @@
     
       
         
-      
-        
           
+        
+      
         
       
         
@@ -1437,7 +1357,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -1477,6 +1397,8 @@
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
                 
   
   
@@ -1502,8 +1424,6 @@
     </li>
   
 
-              
-            
               
             
               
@@ -1564,7 +1484,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_4">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_4" >
         
           
           <label class="md-nav__link" for="__nav_5_3_4" id="__nav_5_3_4_label" tabindex="0">
@@ -1720,7 +1640,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_5">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_5" >
         
           
           <label class="md-nav__link" for="__nav_5_3_5" id="__nav_5_3_5_label" tabindex="0">
@@ -1921,7 +1841,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -1992,7 +1912,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_2" >
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
@@ -2142,7 +2062,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
         
           
           <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
@@ -2180,64 +2100,6 @@
   
   
   
-    
-    
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3_1">
-        
-          
-          <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ceph
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    ceph
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../../storage/ceph/object/" class="md-nav__link">
         
@@ -2246,7 +2108,7 @@
   <span class="md-ellipsis">
     
   
-    对象存储：RadosGW
+    ceph
   
 
     
@@ -2268,14 +2130,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
               
                 
   
@@ -2304,7 +2158,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4" >
         
           
           <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
@@ -2342,64 +2196,6 @@
   
   
   
-    
-    
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4_1">
-        
-          
-          <label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    管理篇
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    管理篇
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../../k8s/mgmt/debug/" class="md-nav__link">
         
@@ -2408,7 +2204,7 @@
   <span class="md-ellipsis">
     
   
-    K8S 调试
+    管理篇
   
 
     
@@ -2422,14 +2218,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
               
                 
   
@@ -2460,7 +2248,7 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_4_2" >
         
           
           <label class="md-nav__link" for="__nav_6_4_2" id="__nav_6_4_2_label" tabindex="0">
@@ -2609,10 +2397,6 @@
     
       
         
-          
-        
-      
-        
       
         
       
@@ -2633,12 +2417,11 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
         
           
-          <div class="md-nav__link md-nav__container">
-            <a href="../../../blog/" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -2652,14 +2435,8 @@
   
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
@@ -2673,100 +2450,6 @@
           <ul class="md-nav__list" data-md-scrollfix>
             
               
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2">
-        
-          
-          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    posts
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    posts
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/posts/.template/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
                 
   
   
@@ -2800,10 +2483,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2_2">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_1" >
         
           
-          <label class="md-nav__link" for="__nav_7_2_2" id="__nav_7_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
             
   
   
@@ -2821,8 +2504,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2839,7 +2522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2018/09/30/%E6%B5%99%E6%B1%9F%E5%A4%A7%E5%AD%A6%E8%B6%85%E7%AE%97%E9%98%9F%E5%8D%9A%E5%AE%A2%E6%B4%BB%E4%BA%86/" class="md-nav__link">
+      <a href="../../../blog/2018/09-30-first/" class="md-nav__link">
         
   
   
@@ -2867,7 +2550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2018/11/25/cuda-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%80%BB%E7%BB%93-%E4%B8%80/" class="md-nav__link">
+      <a href="../../../blog/2018/11-25-cuda/" class="md-nav__link">
         
   
   
@@ -2895,7 +2578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2018/12/07/quick-guide-to-cuda-profiling/" class="md-nav__link">
+      <a href="../../../blog/2018/12-07-cuprof/" class="md-nav__link">
         
   
   
@@ -2923,7 +2606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2018/12/23/distributed-tensorflow/" class="md-nav__link">
+      <a href="../../../blog/2018/12-23-tensorflow/" class="md-nav__link">
         
   
   
@@ -2951,7 +2634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2018/12/24/bp-%E7%AE%97%E6%B3%95feed-forward-neural-network-and-back-propagation/" class="md-nav__link">
+      <a href="../../../blog/2018/12-24-bp/" class="md-nav__link">
         
   
   
@@ -3020,10 +2703,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2_3">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
         
           
-          <label class="md-nav__link" for="__nav_7_2_3" id="__nav_7_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
             
   
   
@@ -3041,8 +2724,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3059,7 +2742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/03/31/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%A2%99%E5%86%85%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2-centos-7-%E7%9A%84-mysql/" class="md-nav__link">
+      <a href="../../../blog/2019/03-31-Install-MySQL-on-CentOS7-Inside-GFW/" class="md-nav__link">
         
   
   
@@ -3087,7 +2770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/03/31/virtual-memory-and-tlb/" class="md-nav__link">
+      <a href="../../../blog/2019/03-31-Virtual-Memory-and-TLB/" class="md-nav__link">
         
   
   
@@ -3115,7 +2798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/05/11/%E5%9F%BA%E4%BA%8E-0-1-%E4%B9%98%E6%80%A7%E5%99%AA%E5%A3%B0%E7%9A%84%E6%9C%B4%E7%B4%A0%E5%9B%BE%E7%89%87%E9%99%8D%E5%99%AA/" class="md-nav__link">
+      <a href="../../../blog/2019/05-11-Image-Restoration-SimpleVersion/" class="md-nav__link">
         
   
   
@@ -3143,7 +2826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/05/27/20190526-%E4%BC%9A%E8%AE%AE%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+      <a href="../../../blog/2019/05-26-MeetingReport/" class="md-nav__link">
         
   
   
@@ -3171,7 +2854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/05/31/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      <a href="../../../blog/2019/05-31-GAN-Introduction/" class="md-nav__link">
         
   
   
@@ -3199,7 +2882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/06/14/%E7%94%9F%E6%88%90%E5%BC%8F%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C%E7%90%86%E8%AE%BA/" class="md-nav__link">
+      <a href="../../../blog/2019/06-14-GAN-theory/" class="md-nav__link">
         
   
   
@@ -3227,7 +2910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/06/16/%E5%9F%BA%E4%BA%8E-gan-%E7%9A%84%E5%8A%A8%E6%BC%AB%E5%A4%B4%E5%83%8F%E7%94%9F%E6%88%90/" class="md-nav__link">
+      <a href="../../../blog/2019/06-16-GAN-Anime-Avatar-Generation/" class="md-nav__link">
         
   
   
@@ -3255,7 +2938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2019/06/21/rsa-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8F%8A%E5%85%B6%E6%95%B0%E5%AD%A6%E6%80%9D%E6%83%B3/" class="md-nav__link">
+      <a href="../../../blog/2019/06-21-RSA/" class="md-nav__link">
         
   
   
@@ -3316,10 +2999,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2_4">
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_3" >
         
           
-          <label class="md-nav__link" for="__nav_7_2_4" id="__nav_7_2_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
             
   
   
@@ -3337,8 +3020,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3355,7 +3038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2025/03/16/%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E5%85%A5%E4%BE%B5%E4%BA%8B%E4%BB%B6%E5%A7%8B%E6%9C%AB/" class="md-nav__link">
+      <a href="../../../blog/2025/03-16-virus/" class="md-nav__link">
         
   
   
@@ -3383,7 +3066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2025/05/01/%E7%AC%AC%E4%B8%89%E4%BB%A3%E9%95%9C%E5%83%8F%E7%AB%99%E5%BB%BA%E8%AE%BE%E4%B8%80%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/" class="md-nav__link">
+      <a href="../../../blog/2025/05-03-mirror-1-autoinstall/" class="md-nav__link">
         
   
   
@@ -3411,7 +3094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2025/06/01/%E7%AC%AC%E4%B8%89%E4%BB%A3%E9%95%9C%E5%83%8F%E7%AB%99%E5%BB%BA%E8%AE%BE%E4%BA%8C%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+      <a href="../../../blog/2025/05-10-mirror-2-storage/" class="md-nav__link">
         
   
   
@@ -3439,7 +3122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/2025/05/19/-hello-hpc-world--2025-%E8%B6%85%E7%AE%97%E7%9F%AD%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B%E6%AD%A3%E5%BC%8F%E5%90%AF%E5%8A%A8/" class="md-nav__link">
+      <a href="../../../blog/2025/05-19-hpc101/" class="md-nav__link">
         
   
   
@@ -3447,846 +3130,6 @@
     
   
     🎓 Hello, HPC World | 2025 超算短学期课程正式启动！
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_3">
-        
-          
-          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Archive
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Archive
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/archive/2025/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2025
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/archive/2019/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2019
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/archive/2018/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    2018
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_4">
-        
-          
-          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Categories
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Categories
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/ai/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    AI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/cuda/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    CUDA
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/centos/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    CentOS
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/ml/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ML
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/meetingreport/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    MeetingReport
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/mysql/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    MySQL
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/operating-susyem/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Operating Susyem
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/profile/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Profile
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/spc/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Spc
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/tlb/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    TLB
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/tech/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Tech
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/tensorflow/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Tensorflow
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/virtual-memory/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Virtual Memory
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/zju/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ZJU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/zjusct/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ZJUSCT
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    密码学
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/%E6%95%B0%E8%AE%BA/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    数论
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/%E7%9F%AD%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    短学期课程
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../blog/category/%E8%BF%90%E7%BB%B4/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    运维
   
 
     
@@ -4323,12 +3166,19 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
+                    <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                    <div class="md-sidebar-button__wrapper">
+                      <label class="md-sidebar-button" for="__toc"></label>
+                    </div>
+                  
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
@@ -4337,7 +3187,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -4585,32 +3435,19 @@
               <article class="md-content__inner md-typeset">
                 
                   
-
-  <nav class="md-tags">
-    
-      
-      
-      
-      
-        <a href="../../../guideline/contribute/#tag:完善" class="md-tag">完善</a>
-      
-    
-  </nav>
-
-
   
     <a href="https://github.com/ZJUSCT/www.zjusct.io/blob/main/docs/operation/observability/log.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-file-pen" viewBox="0 0 24 24"><path d="M12.659 22H18a2 2 0 0 0 2-2V8a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 14 2H6a2 2 0 0 0-2 2v9.34"/><path d="M14 2v5a1 1 0 0 0 1 1h5M10.378 12.622a1 1 0 0 1 3 3.003L8.36 20.637a2 2 0 0 1-.854.506l-2.867.837a.5.5 0 0 1-.62-.62l.836-2.869a2 2 0 0 1 .506-.853z"/></svg>
     </a>
   
   
 
 
-<h1 id="日志收集">日志收集<a class="headerlink" href="#日志收集" title="Permanent link">¶</a></h1>
+<h1 id="日志收集">日志收集<a class="headerlink" href="#日志收集" title="Permanent link">&para;</a></h1>
 <p>本文涉及日志格式、OpenTelemetry 日志采集与处理、ClickHouse 日志存储等内容。</p>
 <p>在阅读本文前，请先阅读 <a href="../opentelemetry/">OpenTelemetry</a>。</p>
-<h2 id="日志合规">日志合规<a class="headerlink" href="#日志合规" title="Permanent link">¶</a></h2>
+<h2 id="日志合规">日志合规<a class="headerlink" href="#日志合规" title="Permanent link">&para;</a></h2>
 <p><a href="https://itc.zju.edu.cn/2017/0930/c50213a2508335/page.htm">浙江大学网络与信息安全管理办法（2017 年）</a></p>
 <blockquote>
 <p>第五条 信息技术中心负责学校网络与信息系统的日常管理和维护，保障网络与信息系统的正常运行；<strong>保存网络运行日志，配合调查取证</strong>；负责入网单位和个人办理入网登记手续，签署相应的安全责任书。</p>
@@ -4627,7 +3464,7 @@
 <blockquote>
 <p>第十三条 互联网服务提供者和联网使用单位依照本规定落实的记录留存技术措施，应当具有至少<strong>保存六十天记录备份</strong>的功能。</p>
 </blockquote>
-<h2 id="日志通用知识和技能">日志通用知识和技能<a class="headerlink" href="#日志通用知识和技能" title="Permanent link">¶</a></h2>
+<h2 id="日志通用知识和技能">日志通用知识和技能<a class="headerlink" href="#日志通用知识和技能" title="Permanent link">&para;</a></h2>
 <p>如 <a href="https://www.fluentd.org/blog/unified-logging-layer">Unified Logging Layer: Turning Data into Action - Fluentd</a> 所说：</p>
 <blockquote>
 <p>In the last 10 years, <strong>the primary consumer of log data shifted from humans to machines.</strong></p>
@@ -4636,7 +3473,7 @@
 <p><strong>That's because legacy logging infrastructure was NOT designed to be "machine-first", and so much effort is wasted trying to make various backend systems understand log data.</strong></p>
 </blockquote>
 <p>传统的日志基础设施并不是为“机器优先”设计的，大量的工作都花在了让后端系统理解日志数据上。本章介绍几种常见的日志格式，并分析如何使用 OpenTelemetry Collector 进行日志处理。</p>
-<h3 id="正则表达式">正则表达式<a class="headerlink" href="#正则表达式" title="Permanent link">¶</a></h3>
+<h3 id="正则表达式">正则表达式<a class="headerlink" href="#正则表达式" title="Permanent link">&para;</a></h3>
 <p>日志消息十分依赖正则表达式进行解析。OpenTelemetry Collector 的正则表达式基于 Golang 风格。</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -4646,7 +3483,7 @@
 <li>使用 <a href="https://regex.rip/">regex.rip</a> 测试正则表达式是否脆弱、易受攻击。</li>
 </ul>
 </div>
-<h3 id="log-rotation">Log Rotation<a class="headerlink" href="#log-rotation" title="Permanent link">¶</a></h3>
+<h3 id="log-rotation">Log Rotation<a class="headerlink" href="#log-rotation" title="Permanent link">&para;</a></h3>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
@@ -4661,8 +3498,8 @@
 <p>tailer 这个名称来自于 <code>tail</code> 命令，程序员们经常使用 <code>tail -f</code> 命令来查看日志文件的末尾。</p>
 </div>
 <figure>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../log.assets/logrotation-copy-and-truncate.png" data-desc-position="bottom"><img alt="Copy and truncate log rotation" src="../log.assets/logrotation-copy-and-truncate.png" style="float: left;" width="50%"></a>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../log.assets/logrotation-rename-and-create.png" data-desc-position="bottom"><img alt="Rename and create log rotation" src="../log.assets/logrotation-rename-and-create.png" style="float: right;" width="50%"></a>
+<img alt="Copy and truncate log rotation" src="../log.assets/logrotation-copy-and-truncate.png" style="float: left;" width="50%" />
+<img alt="Rename and create log rotation" src="../log.assets/logrotation-rename-and-create.png" style="float: right;" width="50%" />
 </figure>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -4695,7 +3532,7 @@
 <p>现在，我们使用 OpenTelemetry Collector 的 FileLogReceiver 来读取日志。FileLogReceiver 支持日志轮转操作。</p>
 <details class="info">
 <summary>tailer 简析：以 fileconsumer 为例</summary>
-<p>OpenTelemetry 的 FileLogReceiver 使用 <code>pkg/stanza/fileconsumer</code> 实现日志文件的读取。<a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/fileconsumer/design.md"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></span> pkg/stanza/fileconsumer/design.md</a> 描述了其工作原理。</p>
+<p>OpenTelemetry 的 FileLogReceiver 使用 <code>pkg/stanza/fileconsumer</code> 实现日志文件的读取。<a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/fileconsumer/design.md"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span> pkg/stanza/fileconsumer/design.md</a> 描述了其工作原理。</p>
 <p>一些概念：</p>
 <ul>
 <li><strong>指纹</strong>：文件的前 <code>N</code> 个字节，用于标识文件，默认为 <code>1000</code> 即约 1KB。指纹相同的文件视为同一文件。<ul>
@@ -4737,8 +3574,8 @@
 <li>如果配置了持久化，保存 Reader 状态。</li>
 </ol>
 </details>
-<h2 id="日志格式分析与处理">日志格式分析与处理<a class="headerlink" href="#日志格式分析与处理" title="Permanent link">¶</a></h2>
-<h3 id="rfc-3164---the-bsd-syslog-protocol"><a href="https://tools.ietf.org/html/rfc3164">RFC 3164 - The BSD Syslog Protocol</a><a class="headerlink" href="#rfc-3164---the-bsd-syslog-protocol" title="Permanent link">¶</a></h3>
+<h2 id="日志格式分析与处理">日志格式分析与处理<a class="headerlink" href="#日志格式分析与处理" title="Permanent link">&para;</a></h2>
+<h3 id="rfc-3164---the-bsd-syslog-protocol"><a href="https://tools.ietf.org/html/rfc3164">RFC 3164 - The BSD Syslog Protocol</a><a class="headerlink" href="#rfc-3164---the-bsd-syslog-protocol" title="Permanent link">&para;</a></h3>
 <ul>
 <li>发布于 2001 年。目前几乎所有硬件设施都支持 RFC 3164。</li>
 <li>规定目标为 UDP 端口 514 的数据包为 syslog 消息。</li>
@@ -4772,10 +3609,10 @@
 <p class="admonition-title">华为日志</p>
 <p>华为设备的网络日志配置一般在 <strong>信息中心（info-center）</strong> 模块下。默认使用 UDP，可以配置 TCP SSL。</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>User Datagram Protocol, Src Port: 60936, Dst Port: 514
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Syslog message: LOCAL7.NOTICE: Aug  8 2024 11:44:37 Router %%01SHELL/5/CMDRECORD(l)[1]:Record command information. (Task=vt0, Ip=***.***.***.***, User=******, Command="return", Result=Success)
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Syslog message: LOCAL7.NOTICE: Aug  8 2024 11:44:37 Router %%01SHELL/5/CMDRECORD(l)[1]:Record command information. (Task=vt0, Ip=***.***.***.***, User=******, Command=&quot;return&quot;, Result=Success)
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    1011 1... = Facility: LOCAL7 - reserved for local use (23)
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    .... .101 = Level: NOTICE - normal but significant condition (5)
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    Message: Aug  8 2024 11:44:37 Router %%01SHELL/5/CMDRECORD(l)[1]:Record command information. (Task=vt0, Ip=***.***.***.***, User=******, Command="return", Result=Success)
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    Message: Aug  8 2024 11:44:37 Router %%01SHELL/5/CMDRECORD(l)[1]:Record command information. (Task=vt0, Ip=***.***.***.***, User=******, Command=&quot;return&quot;, Result=Success)
 </span></code></pre></div>
 <p>可以看到这也是 RFC 3164 的格式。</p>
 </div>
@@ -4799,7 +3636,7 @@
 <p class="admonition-title">坑人的产商</p>
 <p>华子，说的就是你。</p>
 <p>华为的 syslog 消息中，TIMESTAMP 并不严格遵循 RFC 的格式。默认为 <code>Aug  8 2024 11:44:37</code>，多了一个年份。这样的消息在一些日志分析工具中会被识别为错误格式，导致无法解析。</p>
-<p>我们在配置 OTel Collector Receiver 时碰到了这样的问题，见 <a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/33344"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></span> syslog receiver Error expecting a Stamp timestamp [col 5] · Issue #33344 · open-telemetry/opentelemetry-collector-contrib</a>。</p>
+<p>我们在配置 OTel Collector Receiver 时碰到了这样的问题，见 <a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/33344"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span> syslog receiver Error expecting a Stamp timestamp [col 5] · Issue #33344 · open-telemetry/opentelemetry-collector-contrib</a>。</p>
 <blockquote>
 <p>After reading RFC 3164, I found that the issue occurs because HUAWEI does not follow the TIMESTAMP field format as defined in the RFC. According to RFC 3164, the TIMESTAMP field should be in the format <code>Mmm dd hh:mm:ss</code>, but HUAWEI adds the year (<code>YYYY</code>) between <code>Mmm</code> and <code>dd</code>, which causes the FSM (Finite State Machine) in <code>go-syslog</code> to fail.</p>
 <p>HUAWEI defines multiple timestamp formats: <code>mm dd yyyy hh:mm:ss</code> is referred to as the "date" type and is set as the default. However, they also provide a "short-date" type that adheres to RFC 3164. After configuring it to use the "short-date" format, the error was resolved.</p>
@@ -4824,7 +3661,7 @@
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Timestamp: 2024-10-04 15:46:14 +0000 UTC
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>SeverityText: notice
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>SeverityNumber: Info2(10)
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Body: Str(&lt;189&gt;Oct  4 23:46:14 Huawei %%01SHELL/5/CMDRECORD(l)[324]:Record command information. (Task=vt0, Ip=192.168.1.178, User=admin, Command="log off (ssh user)", Result=Success) )
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Body: Str(&lt;189&gt;Oct  4 23:46:14 Huawei %%01SHELL/5/CMDRECORD(l)[324]:Record command information. (Task=vt0, Ip=192.168.1.178, User=admin, Command=&quot;log off (ssh user)&quot;, Result=Success) )
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>Attributes:
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>     -&gt; net.host.port: Str(514)
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>     -&gt; net.peer.name: Str(192.168.1.1)
@@ -4835,7 +3672,7 @@
 </span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>     -&gt; proc_id: Str(324)
 </span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>     -&gt; hostname: Str(Huawei)
 </span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>     -&gt; net.host.ip: Str(172.21.0.2)
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>     -&gt; message: Str(324]:Record command information. (Task=vt0, Ip=192.168.1.178, User=admin, Command="log off (ssh user)", Result=Success) )
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>     -&gt; message: Str(324]:Record command information. (Task=vt0, Ip=192.168.1.178, User=admin, Command=&quot;log off (ssh user)&quot;, Result=Success) )
 </span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>     -&gt; priority: Int(189)
 </span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>     -&gt; net.peer.ip: Str(192.168.1.1)
 </span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>     -&gt; facility: Int(23)
@@ -4888,7 +3725,7 @@
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nt">routes</span><span class="p">:</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">huawei_add_resource</span>
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="c1"># before escape: %%\d+[^\/]+\/\d+\/.+\(.+\)</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="s">'attributes.appname</span><span class="nv"> </span><span class="s">matches</span><span class="nv"> </span><span class="s">"%%\\d+[^\\/]+\\/\\d+\\/.+\\(.+\\)"'</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;attributes.appname</span><span class="nv"> </span><span class="s">matches</span><span class="nv"> </span><span class="s">&quot;%%\\d+[^\\/]+\\/\\d+\\/.+\\(.+\\)&quot;&#39;</span>
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noop</span>
 </span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">huawei_add_resource</span>
 </span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">add</span>
@@ -4899,18 +3736,18 @@
 </span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">regex_parser</span>
 </span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="nt">parse_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attributes.appname</span>
 </span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span><span class="nt">parse_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attributes.huawei</span>
-</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">    </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="s">'%%(?P&lt;version&gt;\d+)(?P&lt;module_name&gt;[^\/]+)\/(?P&lt;serverity&gt;\d+)\/(?P&lt;brief&gt;.+)\((?P&lt;type&gt;.+)\)'</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">    </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;%%(?P&lt;version&gt;\d+)(?P&lt;module_name&gt;[^\/]+)\/(?P&lt;serverity&gt;\d+)\/(?P&lt;brief&gt;.+)\((?P&lt;type&gt;.+)\)&#39;</span>
 </span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noop</span>
 </span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noop</span>
 </span></code></pre></div>
 <p>提取结果如下：</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>-&gt; huawei: Map({"brief":"USER_OFFLINERESULT","module_name":"CM","serverity":"5","type":"s","version":"01"})
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>-&gt; huawei: Map({&quot;brief&quot;:&quot;USER_OFFLINERESULT&quot;,&quot;module_name&quot;:&quot;CM&quot;,&quot;serverity&quot;:&quot;5&quot;,&quot;type&quot;:&quot;s&quot;,&quot;version&quot;:&quot;01&quot;})
 </span></code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">华子真挺坑的</p>
 <p>华为不同设备不同系统版本日志结构可能不一样，需要根据实际情况调整解析规则。</p>
 </div>
-<h3 id="rfc-5424---the-syslog-protocol"><a href="https://tools.ietf.org/html/rfc5424">RFC 5424 - The Syslog Protocol</a><a class="headerlink" href="#rfc-5424---the-syslog-protocol" title="Permanent link">¶</a></h3>
+<h3 id="rfc-5424---the-syslog-protocol"><a href="https://tools.ietf.org/html/rfc5424">RFC 5424 - The Syslog Protocol</a><a class="headerlink" href="#rfc-5424---the-syslog-protocol" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">本节可以跳过</p>
 <p>我们还没接触过使用 RFC 5424 的设备。</p>
@@ -4936,7 +3773,7 @@
 <li><a href="https://datatracker.ietf.org/doc/html/rfc5426">RFC 5426 - Transmission of Syslog Messages over UDP</a> 主要是说了分段传输的问题（比如 MTU），没什么好看的。</li>
 <li><a href="https://datatracker.ietf.org/doc/html/rfc5425">RFC 5425 - Transport Layer Security (TLS) Transport Mapping for Syslog</a> 定义了 syslog over TLS 的传输方式，端口为 6514。</li>
 </ul>
-<h3 id="linux-日志系统">Linux 日志系统<a class="headerlink" href="#linux-日志系统" title="Permanent link">¶</a></h3>
+<h3 id="linux-日志系统">Linux 日志系统<a class="headerlink" href="#linux-日志系统" title="Permanent link">&para;</a></h3>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
@@ -4944,7 +3781,7 @@
 </ul>
 </div>
 <p>在 Linux 系统中，<strong>内核与普通应用的日志系统是分开的</strong>。内核日志由 klogd 守护进程收集，普通应用日志由 syslogd 守护进程收集。在现代 Linux 发行版中，klogd 和 syslogd 都已经被 systemd-journald 取代。</p>
-<h4 id="极限情况netconsole">极限情况：netconsole<a class="headerlink" href="#极限情况netconsole" title="Permanent link">¶</a></h4>
+<h4 id="极限情况netconsole">极限情况：netconsole<a class="headerlink" href="#极限情况netconsole" title="Permanent link">&para;</a></h4>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
@@ -4952,7 +3789,7 @@
 </ul>
 </div>
 <p>当磁盘无法写入日志且无法进行串口调试时，可以使用 netconsole 内核模块将日志通过网络发送到另一台机器。然而，它的使用限制也不少，比如不会等待网络接口 up。大多数交换机启用生成树功能，网口 up 时都会有一段等待时间，且 DHCP 响应也没有那么快，很容易错过系统启动时密集的信息。</p>
-<h4 id="bsd-风格klogd-与-syslog2">BSD 风格：klogd 与 syslog(2)<a class="headerlink" href="#bsd-风格klogd-与-syslog2" title="Permanent link">¶</a></h4>
+<h4 id="bsd-风格klogd-与-syslog2">BSD 风格：klogd 与 syslog(2)<a class="headerlink" href="#bsd-风格klogd-与-syslog2" title="Permanent link">&para;</a></h4>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
@@ -4978,21 +3815,21 @@
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">setlogmask</span><span class="w"> </span><span class="p">(</span><span class="n">LOG_UPTO</span><span class="w"> </span><span class="p">(</span><span class="n">LOG_NOTICE</span><span class="p">));</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="n">openlog</span><span class="w"> </span><span class="p">(</span><span class="s">"exampleprog"</span><span class="p">,</span><span class="w"> </span><span class="n">LOG_CONS</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">LOG_PID</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">LOG_NDELAY</span><span class="p">,</span><span class="w"> </span><span class="n">LOG_LOCAL1</span><span class="p">);</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="n">openlog</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;exampleprog&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">LOG_CONS</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">LOG_PID</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">LOG_NDELAY</span><span class="p">,</span><span class="w"> </span><span class="n">LOG_LOCAL1</span><span class="p">);</span>
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">syslog</span><span class="w"> </span><span class="p">(</span><span class="n">LOG_NOTICE</span><span class="p">,</span><span class="w"> </span><span class="s">"Program started by User %d"</span><span class="p">,</span><span class="w"> </span><span class="n">getuid</span><span class="w"> </span><span class="p">());</span>
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="n">syslog</span><span class="w"> </span><span class="p">(</span><span class="n">LOG_INFO</span><span class="p">,</span><span class="w"> </span><span class="s">"A tree falls in a forest"</span><span class="p">);</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">syslog</span><span class="w"> </span><span class="p">(</span><span class="n">LOG_NOTICE</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Program started by User %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">getuid</span><span class="w"> </span><span class="p">());</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="n">syslog</span><span class="w"> </span><span class="p">(</span><span class="n">LOG_INFO</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;A tree falls in a forest&quot;</span><span class="p">);</span>
 </span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
 </span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="n">closelog</span><span class="w"> </span><span class="p">();</span>
 </span></code></pre></div>
 </li>
 <li>
 <p>logger(1) 命令：用于向 syslog 发送消息</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>logger<span class="w"> </span>-p<span class="w"> </span>user.notice<span class="w"> </span><span class="s2">"Hello, world!"</span>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>logger<span class="w"> </span>-p<span class="w"> </span>user.notice<span class="w"> </span><span class="s2">&quot;Hello, world!&quot;</span>
 </span></code></pre></div>
 </li>
 </ul>
-<h4 id="大一统systemd-journal">大一统：systemd-journal<a class="headerlink" href="#大一统systemd-journal" title="Permanent link">¶</a></h4>
+<h4 id="大一统systemd-journal">大一统：systemd-journal<a class="headerlink" href="#大一统systemd-journal" title="Permanent link">&para;</a></h4>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
@@ -5065,66 +3902,66 @@
 </span></code></pre></div>
 </li>
 </ul>
-<h4 id="opentelemetry-收集-journal-日志">OpenTelemetry 收集 Journal 日志<a class="headerlink" href="#opentelemetry-收集-journal-日志" title="Permanent link">¶</a></h4>
+<h4 id="opentelemetry-收集-journal-日志">OpenTelemetry 收集 Journal 日志<a class="headerlink" href="#opentelemetry-收集-journal-日志" title="Permanent link">&para;</a></h4>
 <p>OpenTelemetry 提供 <a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/journaldreceiver">Journald Receiver</a>，从指定位置（<code>/run/log/journal</code>）以文件方式采集 journal。Journald Receiver 依赖 stanza 中的 <a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/journald_input.md"><code>journald_input</code> Operator</a>。</p>
 <p>Journald Receiver 将 <code>__REALTIME_TIMESTAMP</code> 解析为时间戳，其他字段解析到 <code>body</code>。</p>
 <details class="example">
 <summary>Example</summary>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">{</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="nt">"MESSAGE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uid 1000 is trying to obtain org.freedesktop.packagekit.system-sources-refresh auth (only_trusted:0)"</span><span class="p">,</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="nt">"PRIORITY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6"</span><span class="p">,</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="nt">"SYSLOG_FACILITY"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="nt">"SYSLOG_IDENTIFIER"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PackageKit"</span><span class="p">,</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="nt">"SYSLOG_TIMESTAMP"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oct  4 11:22:56 "</span><span class="p">,</span>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">    </span><span class="nt">"_BOOT_ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0907452f07224388b86d177c9bcba765"</span><span class="p">,</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">    </span><span class="nt">"_CAP_EFFECTIVE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1ffffffffff"</span><span class="p">,</span>
-</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">    </span><span class="nt">"_CMDLINE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/usr/libexec/packagekitd"</span><span class="p">,</span>
-</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">    </span><span class="nt">"_COMM"</span><span class="p">:</span><span class="w"> </span><span class="s2">"packagekitd"</span><span class="p">,</span>
-</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">    </span><span class="nt">"_EXE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/usr/libexec/packagekitd"</span><span class="p">,</span>
-</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">    </span><span class="nt">"_GID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
-</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="w">    </span><span class="nt">"_HOSTNAME"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bowling-pc"</span><span class="p">,</span>
-</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">    </span><span class="nt">"_MACHINE_ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39242ca0196f43d9a28b324ea19f63b0"</span><span class="p">,</span>
-</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="w">    </span><span class="nt">"_PID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23670"</span><span class="p">,</span>
-</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="w">    </span><span class="nt">"_RUNTIME_SCOPE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system"</span><span class="p">,</span>
-</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="w">    </span><span class="nt">"_SELINUX_CONTEXT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unconfined\n"</span><span class="p">,</span>
-</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="w">    </span><span class="nt">"_SOURCE_REALTIME_TIMESTAMP"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1728012176868714"</span><span class="p">,</span>
-</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="w">    </span><span class="nt">"_SYSTEMD_CGROUP"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/system.slice/packagekit.service"</span><span class="p">,</span>
-</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="w">    </span><span class="nt">"_SYSTEMD_INVOCATION_ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67439263558c436c94d6c87449f7fe9c"</span><span class="p">,</span>
-</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="w">    </span><span class="nt">"_SYSTEMD_SLICE"</span><span class="p">:</span><span class="w"> </span><span class="s2">"system.slice"</span><span class="p">,</span>
-</span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="w">    </span><span class="nt">"_SYSTEMD_UNIT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"packagekit.service"</span><span class="p">,</span>
-</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="w">    </span><span class="nt">"_TRANSPORT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"syslog"</span><span class="p">,</span>
-</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="w">    </span><span class="nt">"_UID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
-</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a><span class="w">    </span><span class="nt">"__CURSOR"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s=05e12a7b0f87409384f87fd68c304adb;i=c29c;b=0907452f07224388b86d177c9bcba765;m=151a3935;t=6239e2ff84597;x=b0b45b19b90a570f"</span><span class="p">,</span>
-</span><span id="__span-16-26"><a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a><span class="w">    </span><span class="nt">"__MONOTONIC_TIMESTAMP"</span><span class="p">:</span><span class="w"> </span><span class="s2">"354040117"</span><span class="p">,</span>
-</span><span id="__span-16-27"><a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a><span class="w">    </span><span class="nt">"__SEQNUM"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49820"</span><span class="p">,</span>
-</span><span id="__span-16-28"><a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a><span class="w">    </span><span class="nt">"__SEQNUM_ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05e12a7b0f87409384f87fd68c304adb"</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="nt">&quot;MESSAGE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uid 1000 is trying to obtain org.freedesktop.packagekit.system-sources-refresh auth (only_trusted:0)&quot;</span><span class="p">,</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="nt">&quot;PRIORITY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6&quot;</span><span class="p">,</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="nt">&quot;SYSLOG_FACILITY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4&quot;</span><span class="p">,</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="nt">&quot;SYSLOG_IDENTIFIER&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PackageKit&quot;</span><span class="p">,</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="nt">&quot;SYSLOG_TIMESTAMP&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Oct  4 11:22:56 &quot;</span><span class="p">,</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">    </span><span class="nt">&quot;_BOOT_ID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0907452f07224388b86d177c9bcba765&quot;</span><span class="p">,</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">    </span><span class="nt">&quot;_CAP_EFFECTIVE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1ffffffffff&quot;</span><span class="p">,</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">    </span><span class="nt">&quot;_CMDLINE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/libexec/packagekitd&quot;</span><span class="p">,</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">    </span><span class="nt">&quot;_COMM&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;packagekitd&quot;</span><span class="p">,</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">    </span><span class="nt">&quot;_EXE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/libexec/packagekitd&quot;</span><span class="p">,</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">    </span><span class="nt">&quot;_GID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="w">    </span><span class="nt">&quot;_HOSTNAME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bowling-pc&quot;</span><span class="p">,</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">    </span><span class="nt">&quot;_MACHINE_ID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;39242ca0196f43d9a28b324ea19f63b0&quot;</span><span class="p">,</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="w">    </span><span class="nt">&quot;_PID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;23670&quot;</span><span class="p">,</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="w">    </span><span class="nt">&quot;_RUNTIME_SCOPE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;system&quot;</span><span class="p">,</span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="w">    </span><span class="nt">&quot;_SELINUX_CONTEXT&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unconfined\n&quot;</span><span class="p">,</span>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="w">    </span><span class="nt">&quot;_SOURCE_REALTIME_TIMESTAMP&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1728012176868714&quot;</span><span class="p">,</span>
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="w">    </span><span class="nt">&quot;_SYSTEMD_CGROUP&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/system.slice/packagekit.service&quot;</span><span class="p">,</span>
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="w">    </span><span class="nt">&quot;_SYSTEMD_INVOCATION_ID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;67439263558c436c94d6c87449f7fe9c&quot;</span><span class="p">,</span>
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="w">    </span><span class="nt">&quot;_SYSTEMD_SLICE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;system.slice&quot;</span><span class="p">,</span>
+</span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="w">    </span><span class="nt">&quot;_SYSTEMD_UNIT&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;packagekit.service&quot;</span><span class="p">,</span>
+</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="w">    </span><span class="nt">&quot;_TRANSPORT&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;syslog&quot;</span><span class="p">,</span>
+</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="w">    </span><span class="nt">&quot;_UID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a><span class="w">    </span><span class="nt">&quot;__CURSOR&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s=05e12a7b0f87409384f87fd68c304adb;i=c29c;b=0907452f07224388b86d177c9bcba765;m=151a3935;t=6239e2ff84597;x=b0b45b19b90a570f&quot;</span><span class="p">,</span>
+</span><span id="__span-16-26"><a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a><span class="w">    </span><span class="nt">&quot;__MONOTONIC_TIMESTAMP&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;354040117&quot;</span><span class="p">,</span>
+</span><span id="__span-16-27"><a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a><span class="w">    </span><span class="nt">&quot;__SEQNUM&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;49820&quot;</span><span class="p">,</span>
+</span><span id="__span-16-28"><a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a><span class="w">    </span><span class="nt">&quot;__SEQNUM_ID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;05e12a7b0f87409384f87fd68c304adb&quot;</span>
 </span><span id="__span-16-29"><a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a><span class="p">}</span>
 </span></code></pre></div>
 </details>
 <div class="admonition todo">
 <p class="admonition-title">跟踪 Issue 解决情况</p>
-<p><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/7298"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></span> journald - Consider parsing more known fields from logs · Issue #7298 · open-telemetry/opentelemetry-collector-contrib</a> 从 2022 年初开始追踪这个问题，现在仍在等待 Log 的语义约定进一步明确。</p>
+<p><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/7298"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span> journald - Consider parsing more known fields from logs · Issue #7298 · open-telemetry/opentelemetry-collector-contrib</a> 从 2022 年初开始追踪这个问题，现在仍在等待 Log 的语义约定进一步明确。</p>
 <p>该 Issue 解决后，就无需自定义 Operator 了。</p>
 </div>
 <p>目前我们用自定义 Operator 将 Body 中除 <code>MESSAGE</code> 外的字段移动到 Attributes，并识别已有明确语义的字段。在解析时需要注意并不是所有字段都在任何情况下存在。kernel 日志就没有 <code>SYSTEMD_UNIT</code>、<code>_CMDLINE</code> 等字段。</p>
 <details class="example">
 <summary>Example</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>{
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    "_TRANSPORT": "kernel",
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    "_HOSTNAME": "bowling-pc",
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    "MESSAGE": "usbcore: registered new device driver apple-mfi-fastcharge",
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    "SYSLOG_IDENTIFIER": "kernel",
-</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    "_MACHINE_ID": "39242ca0196f43d9a28b324ea19f63b0",
-</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    "__REALTIME_TIMESTAMP": "1728053826689649",
-</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    "_BOOT_ID": "0bc0ee799eb84fc3b44aab1fca1eb25d",
-</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    "__CURSOR": "s=57e0884c55414fdaa457d6c3a187f3e0;i=2198;b=0bc0ee799eb84fc3b44aab1fca1eb25d;m=3b05b3;t=623a7e27e1a71;x=5b4af5d3f49495e2",
-</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    "_SOURCE_MONOTONIC_TIMESTAMP": "3867428",
-</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>    "__SEQNUM": "8600",
-</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>    "PRIORITY": "6",
-</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>    "_RUNTIME_SCOPE": "system",
-</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>    "__SEQNUM_ID": "57e0884c55414fdaa457d6c3a187f3e0",
-</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>    "__MONOTONIC_TIMESTAMP": "3868083",
-</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>    "SYSLOG_FACILITY": "0"
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    &quot;_TRANSPORT&quot;: &quot;kernel&quot;,
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    &quot;_HOSTNAME&quot;: &quot;bowling-pc&quot;,
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    &quot;MESSAGE&quot;: &quot;usbcore: registered new device driver apple-mfi-fastcharge&quot;,
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    &quot;SYSLOG_IDENTIFIER&quot;: &quot;kernel&quot;,
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    &quot;_MACHINE_ID&quot;: &quot;39242ca0196f43d9a28b324ea19f63b0&quot;,
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    &quot;__REALTIME_TIMESTAMP&quot;: &quot;1728053826689649&quot;,
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    &quot;_BOOT_ID&quot;: &quot;0bc0ee799eb84fc3b44aab1fca1eb25d&quot;,
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    &quot;__CURSOR&quot;: &quot;s=57e0884c55414fdaa457d6c3a187f3e0;i=2198;b=0bc0ee799eb84fc3b44aab1fca1eb25d;m=3b05b3;t=623a7e27e1a71;x=5b4af5d3f49495e2&quot;,
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    &quot;_SOURCE_MONOTONIC_TIMESTAMP&quot;: &quot;3867428&quot;,
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>    &quot;__SEQNUM&quot;: &quot;8600&quot;,
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>    &quot;PRIORITY&quot;: &quot;6&quot;,
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>    &quot;_RUNTIME_SCOPE&quot;: &quot;system&quot;,
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>    &quot;__SEQNUM_ID&quot;: &quot;57e0884c55414fdaa457d6c3a187f3e0&quot;,
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>    &quot;__MONOTONIC_TIMESTAMP&quot;: &quot;3868083&quot;,
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>    &quot;SYSLOG_FACILITY&quot;: &quot;0&quot;
 </span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>    }
 </span></code></pre></div>
 </details>
@@ -5140,27 +3977,27 @@
 </span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">move</span>
 </span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attributes.journal.SYSLOG_IDENTIFIER</span>
 </span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resource.service.name</span>
-</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">'type(attributes.journal.SYSLOG_IDENTIFIER)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">"nil"'</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;type(attributes.journal.SYSLOG_IDENTIFIER)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">&quot;nil&quot;&#39;</span>
 </span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">move</span>
 </span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attributes.journal._PID</span>
 </span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resource.process.pid</span>
-</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">'type(attributes.journal._PID)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">"nil"'</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;type(attributes.journal._PID)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">&quot;nil&quot;&#39;</span>
 </span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">move</span>
 </span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attributes.journal._COMM</span>
 </span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resource.process.executable.name</span>
-</span><span id="__span-18-19"><a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">'type(attributes.journal._COMM)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">"nil"'</span>
+</span><span id="__span-18-19"><a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;type(attributes.journal._COMM)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">&quot;nil&quot;&#39;</span>
 </span><span id="__span-18-20"><a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">move</span>
 </span><span id="__span-18-21"><a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attributes.journal._EXE</span>
 </span><span id="__span-18-22"><a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resource.process.executable.path</span>
-</span><span id="__span-18-23"><a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">'type(attributes.journal._EXE)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">"nil"'</span>
+</span><span id="__span-18-23"><a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;type(attributes.journal._EXE)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">&quot;nil&quot;&#39;</span>
 </span><span id="__span-18-24"><a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">move</span>
 </span><span id="__span-18-25"><a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attributes.journal._CMDLINE</span>
 </span><span id="__span-18-26"><a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resource.process.command_line</span>
-</span><span id="__span-18-27"><a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">'type(attributes.journal._CMDLINE)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">"nil"'</span>
+</span><span id="__span-18-27"><a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;type(attributes.journal._CMDLINE)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">&quot;nil&quot;&#39;</span>
 </span><span id="__span-18-28"><a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">move</span>
 </span><span id="__span-18-29"><a id="__codelineno-18-29" name="__codelineno-18-29" href="#__codelineno-18-29"></a><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attributes.journal._UID</span>
 </span><span id="__span-18-30"><a id="__codelineno-18-30" name="__codelineno-18-30" href="#__codelineno-18-30"></a><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resource.process.owner</span>
-</span><span id="__span-18-31"><a id="__codelineno-18-31" name="__codelineno-18-31" href="#__codelineno-18-31"></a><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">'type(attributes.journal._UID)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">"nil"'</span>
+</span><span id="__span-18-31"><a id="__codelineno-18-31" name="__codelineno-18-31" href="#__codelineno-18-31"></a><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;type(attributes.journal._UID)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">&quot;nil&quot;&#39;</span>
 </span><span id="__span-18-32"><a id="__codelineno-18-32" name="__codelineno-18-32" href="#__codelineno-18-32"></a><span class="c1"># 下面的字段所有情况都有</span>
 </span><span id="__span-18-33"><a id="__codelineno-18-33" name="__codelineno-18-33" href="#__codelineno-18-33"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">move</span>
 </span><span id="__span-18-34"><a id="__codelineno-18-34" name="__codelineno-18-34" href="#__codelineno-18-34"></a><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attributes.journal._HOSTNAME</span>
@@ -5180,8 +4017,8 @@
 </span><span id="__span-18-48"><a id="__codelineno-18-48" name="__codelineno-18-48" href="#__codelineno-18-48"></a><span class="w">    </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7</span>
 </span></code></pre></div>
 </details>
-<h3 id="应用日志适配">应用日志适配<a class="headerlink" href="#应用日志适配" title="Permanent link">¶</a></h3>
-<h4 id="sssd">sssd<a class="headerlink" href="#sssd" title="Permanent link">¶</a></h4>
+<h3 id="应用日志适配">应用日志适配<a class="headerlink" href="#应用日志适配" title="Permanent link">&para;</a></h3>
+<h4 id="sssd">sssd<a class="headerlink" href="#sssd" title="Permanent link">&para;</a></h4>
 <p>sssd 是典型的把日志放在 <code>/var/log</code> 目录下的服务，而且不会自己创文件夹。无盘系统下挂载 <code>/var/log</code> 到 tmpfs 后，sssd 每次启动都会报错，而且还是广播，非常烦人：</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Broadcast message from systemd-journald@ZJUSCT-HPC101-LOGIN (Fri 2024-08-09 22:32:29 CST):
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>sssd[18443]: Could not open file [/var/log/sssd/sssd.log]. Error: [2][No such file or directory]
@@ -5190,7 +4027,7 @@
 </span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>Broadcast message from systemd-journald@ZJUSCT-HPC101-LOGIN (Fri 2024-08-09 22:32:29 CST):
 </span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>sssd_pam[18460]: Could not open file [/var/log/sssd/sssd_pam.log]. Error: [2][No such file or directory]
 </span></code></pre></div>
-<p>根据 <a href="https://github.com/SSSD/sssd/issues/7078"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></span> Hardcoded DEBUG_LOGGER=--logger=files is sssd service scripts #7078</a> 的解释，重要的日志始终是通过 <code>sd_journal_send()</code> 或 <code>vsyslog()</code> 发送的，存储到文件中的是普通信息，这是为了减轻对 journal 的压力（在大集群中比较重要）。</p>
+<p>根据 <a href="https://github.com/SSSD/sssd/issues/7078"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span> Hardcoded DEBUG_LOGGER=--logger=files is sssd service scripts #7078</a> 的解释，重要的日志始终是通过 <code>sd_journal_send()</code> 或 <code>vsyslog()</code> 发送的，存储到文件中的是普通信息，这是为了减轻对 journal 的压力（在大集群中比较重要）。</p>
 <p>一个解决办法是修改出现问题的三个服务，添加下面配置：</p>
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>systemctl<span class="w"> </span>edit<span class="w"> </span>sssd
 </span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>systemctl<span class="w"> </span>edit<span class="w"> </span>sssd_nss
@@ -5200,17 +4037,17 @@
 </span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>Environment=DEBUG_LOGGER=--logger=journald
 </span></code></pre></div>
 <p>这样调试信息也会发送到 journal，不会因为本地日志文件不存在而报错，利于统一收集日志信息。</p>
-<h4 id="munge">munge<a class="headerlink" href="#munge" title="Permanent link">¶</a></h4>
-<p>munge 也是这样的程序，会将自己的日志写入 <code>/var/log/munge/munged.log</code>，并且对文件权限极其敏感。<a href="https://github.com/openhpc/ohpc/issues/943"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></span> Make munge log to syslog · Issue #943 · openhpc/ohpc</a> 解决了这一问题。可以看到，很多 HPC 集群都选择将日志发送到统一的服务器：</p>
+<h4 id="munge">munge<a class="headerlink" href="#munge" title="Permanent link">&para;</a></h4>
+<p>munge 也是这样的程序，会将自己的日志写入 <code>/var/log/munge/munged.log</code>，并且对文件权限极其敏感。<a href="https://github.com/openhpc/ohpc/issues/943"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span> Make munge log to syslog · Issue #943 · openhpc/ohpc</a> 解决了这一问题。可以看到，很多 HPC 集群都选择将日志发送到统一的服务器：</p>
 <blockquote>
 <p>By default munge writes logs by itself to /var/long/munge/munged.log. This prevents those logs from being forwarded to the log server (e.g. the OpenHPC SMS/admin machine), and in case those logs for one reason or another grows rapidly (e.g. dun/munge#26 ) it can be a problem for diskless nodes (or compute nodes with small partitions where /var/log reside).</p>
 </blockquote>
 <p>修改 munge 配置文件添加启动参数 <code>--syslog</code> 即可。</p>
-<h4 id="exim4">exim4<a class="headerlink" href="#exim4" title="Permanent link">¶</a></h4>
+<h4 id="exim4">exim4<a class="headerlink" href="#exim4" title="Permanent link">&para;</a></h4>
 <p>exim4 是一个邮件服务器，它的日志默认写入 <code>/var/log/exim4/mainlog</code>，无法写入日志将导致服务失败。可以通过修改 <code>/etc/exim4/exim4.conf</code> 文件中的 <code>log_file_path</code> 参数来更改日志文件路径。</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>log_file_path = syslog
 </span></code></pre></div>
-<h4 id="nginx">Nginx<a class="headerlink" href="#nginx" title="Permanent link">¶</a></h4>
+<h4 id="nginx">Nginx<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h4>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
@@ -5224,74 +4061,74 @@
 <details class="note">
 <summary>Nginx 访问日志配置</summary>
 <div class="language-text highlight"><span class="filename">/etc/nginx/nginx.conf</span><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a># http://nginx.org/en/docs/varindex.html
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>log_format otel_json escape=json '{'
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>log_format otel_json escape=json &#39;{&#39;
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a># https://opentelemetry.io/docs/specs/semconv/attributes-registry/http/
-</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>'"http": {'
-</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    '"request": {'
-</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    '"header": {'
-</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>        '"x-forwarded-for": "$http_x_forwarded_for", '
-</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>        '"user-agent": "$http_user_agent", '
-</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>        '"host": "$http_host", '
-</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>        '"referer": "$http_referer", '
-</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>        '"content-length": "$content_length", '
-</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>        '"content-type": "$content_type"'
-</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>    '}, '
-</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>    '"method": "$request_method", '
-</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>    '"size": "$request_length"'
-</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>    '}, '
-</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>    '"response": {'
-</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>    '"body": {'
-</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>        '"size": "$bytes_sent"'
-</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>    '}, '
-</span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>    '"status_code": "$status"'
-</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>    '}'
-</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>'}, '
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>&#39;&quot;http&quot;: {&#39;
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>    &#39;&quot;request&quot;: {&#39;
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    &#39;&quot;header&quot;: {&#39;
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>        &#39;&quot;x-forwarded-for&quot;: &quot;$http_x_forwarded_for&quot;, &#39;
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>        &#39;&quot;user-agent&quot;: &quot;$http_user_agent&quot;, &#39;
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>        &#39;&quot;host&quot;: &quot;$http_host&quot;, &#39;
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>        &#39;&quot;referer&quot;: &quot;$http_referer&quot;, &#39;
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>        &#39;&quot;content-length&quot;: &quot;$content_length&quot;, &#39;
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>        &#39;&quot;content-type&quot;: &quot;$content_type&quot;&#39;
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>    &#39;}, &#39;
+</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>    &#39;&quot;method&quot;: &quot;$request_method&quot;, &#39;
+</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>    &#39;&quot;size&quot;: &quot;$request_length&quot;&#39;
+</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>    &#39;}, &#39;
+</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>    &#39;&quot;response&quot;: {&#39;
+</span><span id="__span-23-18"><a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>    &#39;&quot;body&quot;: {&#39;
+</span><span id="__span-23-19"><a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>        &#39;&quot;size&quot;: &quot;$bytes_sent&quot;&#39;
+</span><span id="__span-23-20"><a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>    &#39;}, &#39;
+</span><span id="__span-23-21"><a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>    &#39;&quot;status_code&quot;: &quot;$status&quot;&#39;
+</span><span id="__span-23-22"><a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>    &#39;}&#39;
+</span><span id="__span-23-23"><a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>&#39;}, &#39;
 </span><span id="__span-23-24"><a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a># https://opentelemetry.io/docs/specs/semconv/attributes-registry/url/
-</span><span id="__span-23-25"><a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>'"url": {'
-</span><span id="__span-23-26"><a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>    '"domain": "$host", '
-</span><span id="__span-23-27"><a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>    #'"original": "$scheme://$host$request_uri", '
-</span><span id="__span-23-28"><a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>    '"scheme": "$scheme", '
-</span><span id="__span-23-29"><a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>    '"path": "$uri", '
-</span><span id="__span-23-30"><a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>    '"query": "$args"'
-</span><span id="__span-23-31"><a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>'}, '
+</span><span id="__span-23-25"><a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>&#39;&quot;url&quot;: {&#39;
+</span><span id="__span-23-26"><a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>    &#39;&quot;domain&quot;: &quot;$host&quot;, &#39;
+</span><span id="__span-23-27"><a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>    #&#39;&quot;original&quot;: &quot;$scheme://$host$request_uri&quot;, &#39;
+</span><span id="__span-23-28"><a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>    &#39;&quot;scheme&quot;: &quot;$scheme&quot;, &#39;
+</span><span id="__span-23-29"><a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>    &#39;&quot;path&quot;: &quot;$uri&quot;, &#39;
+</span><span id="__span-23-30"><a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>    &#39;&quot;query&quot;: &quot;$args&quot;&#39;
+</span><span id="__span-23-31"><a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>&#39;}, &#39;
 </span><span id="__span-23-32"><a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a># https://opentelemetry.io/docs/specs/semconv/attributes-registry/client/
-</span><span id="__span-23-33"><a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>'"client": {'
-</span><span id="__span-23-34"><a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a>    '"address": "$remote_addr", '
-</span><span id="__span-23-35"><a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a>    '"port": "$remote_port"'
-</span><span id="__span-23-36"><a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a>'}, '
+</span><span id="__span-23-33"><a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>&#39;&quot;client&quot;: {&#39;
+</span><span id="__span-23-34"><a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a>    &#39;&quot;address&quot;: &quot;$remote_addr&quot;, &#39;
+</span><span id="__span-23-35"><a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a>    &#39;&quot;port&quot;: &quot;$remote_port&quot;&#39;
+</span><span id="__span-23-36"><a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a>&#39;}, &#39;
 </span><span id="__span-23-37"><a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a># https://opentelemetry.io/docs/specs/semconv/attributes-registry/server/
-</span><span id="__span-23-38"><a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a>'"server": {'
-</span><span id="__span-23-39"><a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a>    '"address": "$server_addr", '
-</span><span id="__span-23-40"><a id="__codelineno-23-40" name="__codelineno-23-40" href="#__codelineno-23-40"></a>    '"port": "$server_port"'
-</span><span id="__span-23-41"><a id="__codelineno-23-41" name="__codelineno-23-41" href="#__codelineno-23-41"></a>'}, '
+</span><span id="__span-23-38"><a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a>&#39;&quot;server&quot;: {&#39;
+</span><span id="__span-23-39"><a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a>    &#39;&quot;address&quot;: &quot;$server_addr&quot;, &#39;
+</span><span id="__span-23-40"><a id="__codelineno-23-40" name="__codelineno-23-40" href="#__codelineno-23-40"></a>    &#39;&quot;port&quot;: &quot;$server_port&quot;&#39;
+</span><span id="__span-23-41"><a id="__codelineno-23-41" name="__codelineno-23-41" href="#__codelineno-23-41"></a>&#39;}, &#39;
 </span><span id="__span-23-42"><a id="__codelineno-23-42" name="__codelineno-23-42" href="#__codelineno-23-42"></a># https://opentelemetry.io/docs/specs/semconv/attributes-registry/process/
-</span><span id="__span-23-43"><a id="__codelineno-23-43" name="__codelineno-23-43" href="#__codelineno-23-43"></a>'"resource": {'
-</span><span id="__span-23-44"><a id="__codelineno-23-44" name="__codelineno-23-44" href="#__codelineno-23-44"></a>    '"process": {'
-</span><span id="__span-23-45"><a id="__codelineno-23-45" name="__codelineno-23-45" href="#__codelineno-23-45"></a>    '"pid": "$pid"'
-</span><span id="__span-23-46"><a id="__codelineno-23-46" name="__codelineno-23-46" href="#__codelineno-23-46"></a>    '}'
-</span><span id="__span-23-47"><a id="__codelineno-23-47" name="__codelineno-23-47" href="#__codelineno-23-47"></a>'}, '
+</span><span id="__span-23-43"><a id="__codelineno-23-43" name="__codelineno-23-43" href="#__codelineno-23-43"></a>&#39;&quot;resource&quot;: {&#39;
+</span><span id="__span-23-44"><a id="__codelineno-23-44" name="__codelineno-23-44" href="#__codelineno-23-44"></a>    &#39;&quot;process&quot;: {&#39;
+</span><span id="__span-23-45"><a id="__codelineno-23-45" name="__codelineno-23-45" href="#__codelineno-23-45"></a>    &#39;&quot;pid&quot;: &quot;$pid&quot;&#39;
+</span><span id="__span-23-46"><a id="__codelineno-23-46" name="__codelineno-23-46" href="#__codelineno-23-46"></a>    &#39;}&#39;
+</span><span id="__span-23-47"><a id="__codelineno-23-47" name="__codelineno-23-47" href="#__codelineno-23-47"></a>&#39;}, &#39;
 </span><span id="__span-23-48"><a id="__codelineno-23-48" name="__codelineno-23-48" href="#__codelineno-23-48"></a># other attributes
-</span><span id="__span-23-49"><a id="__codelineno-23-49" name="__codelineno-23-49" href="#__codelineno-23-49"></a>'"timestamp": "$msec", '
-</span><span id="__span-23-50"><a id="__codelineno-23-50" name="__codelineno-23-50" href="#__codelineno-23-50"></a>'"body": "$request", '
-</span><span id="__span-23-51"><a id="__codelineno-23-51" name="__codelineno-23-51" href="#__codelineno-23-51"></a>'"nginx": {'
-</span><span id="__span-23-52"><a id="__codelineno-23-52" name="__codelineno-23-52" href="#__codelineno-23-52"></a>    '"connection_requests": "$connection_requests", '
-</span><span id="__span-23-53"><a id="__codelineno-23-53" name="__codelineno-23-53" href="#__codelineno-23-53"></a>    '"request_id": "$request_id", '
-</span><span id="__span-23-54"><a id="__codelineno-23-54" name="__codelineno-23-54" href="#__codelineno-23-54"></a>    '"request_time": "$request_time", '
-</span><span id="__span-23-55"><a id="__codelineno-23-55" name="__codelineno-23-55" href="#__codelineno-23-55"></a>    '"upstream": "$upstream_addr", '
-</span><span id="__span-23-56"><a id="__codelineno-23-56" name="__codelineno-23-56" href="#__codelineno-23-56"></a>    '"upstream_connect_time": "$upstream_connect_time", '
-</span><span id="__span-23-57"><a id="__codelineno-23-57" name="__codelineno-23-57" href="#__codelineno-23-57"></a>    '"upstream_header_time": "$upstream_header_time", '
-</span><span id="__span-23-58"><a id="__codelineno-23-58" name="__codelineno-23-58" href="#__codelineno-23-58"></a>    '"upstream_response_time": "$upstream_response_time", '
-</span><span id="__span-23-59"><a id="__codelineno-23-59" name="__codelineno-23-59" href="#__codelineno-23-59"></a>    '"upstream_response_length": "$upstream_response_length", '
-</span><span id="__span-23-60"><a id="__codelineno-23-60" name="__codelineno-23-60" href="#__codelineno-23-60"></a>    '"upstream_cache_status": "$upstream_cache_status", '
-</span><span id="__span-23-61"><a id="__codelineno-23-61" name="__codelineno-23-61" href="#__codelineno-23-61"></a>    '"ssl_protocol": "$ssl_protocol", '
-</span><span id="__span-23-62"><a id="__codelineno-23-62" name="__codelineno-23-62" href="#__codelineno-23-62"></a>    '"ssl_cipher": "$ssl_cipher", '
-</span><span id="__span-23-63"><a id="__codelineno-23-63" name="__codelineno-23-63" href="#__codelineno-23-63"></a>    #'"server_protocol": "$server_protocol", '
-</span><span id="__span-23-64"><a id="__codelineno-23-64" name="__codelineno-23-64" href="#__codelineno-23-64"></a>    '"pipe": "$pipe", '
-</span><span id="__span-23-65"><a id="__codelineno-23-65" name="__codelineno-23-65" href="#__codelineno-23-65"></a>    '"bad_req": "$bad_req", '
-</span><span id="__span-23-66"><a id="__codelineno-23-66" name="__codelineno-23-66" href="#__codelineno-23-66"></a>    '"bad_ip": "$badip_ip", '
-</span><span id="__span-23-67"><a id="__codelineno-23-67" name="__codelineno-23-67" href="#__codelineno-23-67"></a>    #'"geoip_country_code": "$geoip_country_code"'
-</span><span id="__span-23-68"><a id="__codelineno-23-68" name="__codelineno-23-68" href="#__codelineno-23-68"></a>'}'
-</span><span id="__span-23-69"><a id="__codelineno-23-69" name="__codelineno-23-69" href="#__codelineno-23-69"></a>'}';
+</span><span id="__span-23-49"><a id="__codelineno-23-49" name="__codelineno-23-49" href="#__codelineno-23-49"></a>&#39;&quot;timestamp&quot;: &quot;$msec&quot;, &#39;
+</span><span id="__span-23-50"><a id="__codelineno-23-50" name="__codelineno-23-50" href="#__codelineno-23-50"></a>&#39;&quot;body&quot;: &quot;$request&quot;, &#39;
+</span><span id="__span-23-51"><a id="__codelineno-23-51" name="__codelineno-23-51" href="#__codelineno-23-51"></a>&#39;&quot;nginx&quot;: {&#39;
+</span><span id="__span-23-52"><a id="__codelineno-23-52" name="__codelineno-23-52" href="#__codelineno-23-52"></a>    &#39;&quot;connection_requests&quot;: &quot;$connection_requests&quot;, &#39;
+</span><span id="__span-23-53"><a id="__codelineno-23-53" name="__codelineno-23-53" href="#__codelineno-23-53"></a>    &#39;&quot;request_id&quot;: &quot;$request_id&quot;, &#39;
+</span><span id="__span-23-54"><a id="__codelineno-23-54" name="__codelineno-23-54" href="#__codelineno-23-54"></a>    &#39;&quot;request_time&quot;: &quot;$request_time&quot;, &#39;
+</span><span id="__span-23-55"><a id="__codelineno-23-55" name="__codelineno-23-55" href="#__codelineno-23-55"></a>    &#39;&quot;upstream&quot;: &quot;$upstream_addr&quot;, &#39;
+</span><span id="__span-23-56"><a id="__codelineno-23-56" name="__codelineno-23-56" href="#__codelineno-23-56"></a>    &#39;&quot;upstream_connect_time&quot;: &quot;$upstream_connect_time&quot;, &#39;
+</span><span id="__span-23-57"><a id="__codelineno-23-57" name="__codelineno-23-57" href="#__codelineno-23-57"></a>    &#39;&quot;upstream_header_time&quot;: &quot;$upstream_header_time&quot;, &#39;
+</span><span id="__span-23-58"><a id="__codelineno-23-58" name="__codelineno-23-58" href="#__codelineno-23-58"></a>    &#39;&quot;upstream_response_time&quot;: &quot;$upstream_response_time&quot;, &#39;
+</span><span id="__span-23-59"><a id="__codelineno-23-59" name="__codelineno-23-59" href="#__codelineno-23-59"></a>    &#39;&quot;upstream_response_length&quot;: &quot;$upstream_response_length&quot;, &#39;
+</span><span id="__span-23-60"><a id="__codelineno-23-60" name="__codelineno-23-60" href="#__codelineno-23-60"></a>    &#39;&quot;upstream_cache_status&quot;: &quot;$upstream_cache_status&quot;, &#39;
+</span><span id="__span-23-61"><a id="__codelineno-23-61" name="__codelineno-23-61" href="#__codelineno-23-61"></a>    &#39;&quot;ssl_protocol&quot;: &quot;$ssl_protocol&quot;, &#39;
+</span><span id="__span-23-62"><a id="__codelineno-23-62" name="__codelineno-23-62" href="#__codelineno-23-62"></a>    &#39;&quot;ssl_cipher&quot;: &quot;$ssl_cipher&quot;, &#39;
+</span><span id="__span-23-63"><a id="__codelineno-23-63" name="__codelineno-23-63" href="#__codelineno-23-63"></a>    #&#39;&quot;server_protocol&quot;: &quot;$server_protocol&quot;, &#39;
+</span><span id="__span-23-64"><a id="__codelineno-23-64" name="__codelineno-23-64" href="#__codelineno-23-64"></a>    &#39;&quot;pipe&quot;: &quot;$pipe&quot;, &#39;
+</span><span id="__span-23-65"><a id="__codelineno-23-65" name="__codelineno-23-65" href="#__codelineno-23-65"></a>    &#39;&quot;bad_req&quot;: &quot;$bad_req&quot;, &#39;
+</span><span id="__span-23-66"><a id="__codelineno-23-66" name="__codelineno-23-66" href="#__codelineno-23-66"></a>    &#39;&quot;bad_ip&quot;: &quot;$badip_ip&quot;, &#39;
+</span><span id="__span-23-67"><a id="__codelineno-23-67" name="__codelineno-23-67" href="#__codelineno-23-67"></a>    #&#39;&quot;geoip_country_code&quot;: &quot;$geoip_country_code&quot;&#39;
+</span><span id="__span-23-68"><a id="__codelineno-23-68" name="__codelineno-23-68" href="#__codelineno-23-68"></a>&#39;}&#39;
+</span><span id="__span-23-69"><a id="__codelineno-23-69" name="__codelineno-23-69" href="#__codelineno-23-69"></a>&#39;}&#39;;
 </span></code></pre></div>
 </details>
 <p>错误日志格式并不清晰，<a href="https://stackoverflow.com/questions/16711573/nginx-error-log-format-documentation">logging - NGINX error log format documentation - Stack Overflow</a> 作了一些解释。我们使用下面的正则表达式来解析错误日志：</p>
@@ -5299,12 +4136,12 @@
 <summary>Nginx 错误日志解析</summary>
 <div class="language-text highlight"><span class="filename">otelcol.yaml</span><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>operators:
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    - type: regex_parser
-</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    regex: '(?P&lt;timestamp&gt;\d{4}/\d{2}/\d{2} \d{2}:\d{2}:\d{2}) \[(?P&lt;severity&gt;\w+)\] (?P&lt;pid&gt;\d+)#(?P&lt;tid&gt;\d+): (?:\*(?P&lt;cid&gt;\d+) )?(?P&lt;message&gt;[^,]+)(?:, (?P&lt;kv&gt;.+))?'
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>    regex: &#39;(?P&lt;timestamp&gt;\d{4}/\d{2}/\d{2} \d{2}:\d{2}:\d{2}) \[(?P&lt;severity&gt;\w+)\] (?P&lt;pid&gt;\d+)#(?P&lt;tid&gt;\d+): (?:\*(?P&lt;cid&gt;\d+) )?(?P&lt;message&gt;[^,]+)(?:, (?P&lt;kv&gt;.+))?&#39;
 </span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    timestamp:
-</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>        layout: "%Y/%m/%d %H:%M:%S"
-</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>        parse_from: attributes["timestamp"]
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>        layout: &quot;%Y/%m/%d %H:%M:%S&quot;
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>        parse_from: attributes[&quot;timestamp&quot;]
 </span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>    severity:
-</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>        parse_from: attributes["severity"]
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>        parse_from: attributes[&quot;severity&quot;]
 </span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>        # nginx error level: debug, info, notice, warn, error, crit, alert, or emerg
 </span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>        overwrite_text: true
 </span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>        mapping:
@@ -5317,46 +4154,46 @@
 </span><span id="__span-24-18"><a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a>        INFO: info
 </span><span id="__span-24-19"><a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>        DEBUG: debug
 </span><span id="__span-24-20"><a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a>    - type: remove
-</span><span id="__span-24-21"><a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a>    field: attributes["timestamp"]
+</span><span id="__span-24-21"><a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a>    field: attributes[&quot;timestamp&quot;]
 </span><span id="__span-24-22"><a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a>    - type: remove
-</span><span id="__span-24-23"><a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a>    field: attributes["severity"]
+</span><span id="__span-24-23"><a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a>    field: attributes[&quot;severity&quot;]
 </span><span id="__span-24-24"><a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a>    - type: move
-</span><span id="__span-24-25"><a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a>    from: attributes["message"]
+</span><span id="__span-24-25"><a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a>    from: attributes[&quot;message&quot;]
 </span><span id="__span-24-26"><a id="__codelineno-24-26" name="__codelineno-24-26" href="#__codelineno-24-26"></a>    to: body
 </span><span id="__span-24-27"><a id="__codelineno-24-27" name="__codelineno-24-27" href="#__codelineno-24-27"></a>    - type: move
-</span><span id="__span-24-28"><a id="__codelineno-24-28" name="__codelineno-24-28" href="#__codelineno-24-28"></a>    from: attributes["pid"]
-</span><span id="__span-24-29"><a id="__codelineno-24-29" name="__codelineno-24-29" href="#__codelineno-24-29"></a>    to: resource["process.pid"]
+</span><span id="__span-24-28"><a id="__codelineno-24-28" name="__codelineno-24-28" href="#__codelineno-24-28"></a>    from: attributes[&quot;pid&quot;]
+</span><span id="__span-24-29"><a id="__codelineno-24-29" name="__codelineno-24-29" href="#__codelineno-24-29"></a>    to: resource[&quot;process.pid&quot;]
 </span><span id="__span-24-30"><a id="__codelineno-24-30" name="__codelineno-24-30" href="#__codelineno-24-30"></a>    - type: move
-</span><span id="__span-24-31"><a id="__codelineno-24-31" name="__codelineno-24-31" href="#__codelineno-24-31"></a>    from: attributes["tid"]
-</span><span id="__span-24-32"><a id="__codelineno-24-32" name="__codelineno-24-32" href="#__codelineno-24-32"></a>    to: resource["thread.id"]
+</span><span id="__span-24-31"><a id="__codelineno-24-31" name="__codelineno-24-31" href="#__codelineno-24-31"></a>    from: attributes[&quot;tid&quot;]
+</span><span id="__span-24-32"><a id="__codelineno-24-32" name="__codelineno-24-32" href="#__codelineno-24-32"></a>    to: resource[&quot;thread.id&quot;]
 </span><span id="__span-24-33"><a id="__codelineno-24-33" name="__codelineno-24-33" href="#__codelineno-24-33"></a>    - type: move
-</span><span id="__span-24-34"><a id="__codelineno-24-34" name="__codelineno-24-34" href="#__codelineno-24-34"></a>    from: attributes["cid"]
-</span><span id="__span-24-35"><a id="__codelineno-24-35" name="__codelineno-24-35" href="#__codelineno-24-35"></a>    to: resource["correlation.id"]
-</span><span id="__span-24-36"><a id="__codelineno-24-36" name="__codelineno-24-36" href="#__codelineno-24-36"></a>    if: 'type(attributes["cid"]) != "nil"'
+</span><span id="__span-24-34"><a id="__codelineno-24-34" name="__codelineno-24-34" href="#__codelineno-24-34"></a>    from: attributes[&quot;cid&quot;]
+</span><span id="__span-24-35"><a id="__codelineno-24-35" name="__codelineno-24-35" href="#__codelineno-24-35"></a>    to: resource[&quot;correlation.id&quot;]
+</span><span id="__span-24-36"><a id="__codelineno-24-36" name="__codelineno-24-36" href="#__codelineno-24-36"></a>    if: &#39;type(attributes[&quot;cid&quot;]) != &quot;nil&quot;&#39;
 </span><span id="__span-24-37"><a id="__codelineno-24-37" name="__codelineno-24-37" href="#__codelineno-24-37"></a>    # kv
 </span><span id="__span-24-38"><a id="__codelineno-24-38" name="__codelineno-24-38" href="#__codelineno-24-38"></a>    - type: key_value_parser
-</span><span id="__span-24-39"><a id="__codelineno-24-39" name="__codelineno-24-39" href="#__codelineno-24-39"></a>    parse_from: attributes["kv"]
-</span><span id="__span-24-40"><a id="__codelineno-24-40" name="__codelineno-24-40" href="#__codelineno-24-40"></a>    parse_to: attributes["nginx"]
-</span><span id="__span-24-41"><a id="__codelineno-24-41" name="__codelineno-24-41" href="#__codelineno-24-41"></a>    delimiter: ':'
-</span><span id="__span-24-42"><a id="__codelineno-24-42" name="__codelineno-24-42" href="#__codelineno-24-42"></a>    pair_delimiter: ','
+</span><span id="__span-24-39"><a id="__codelineno-24-39" name="__codelineno-24-39" href="#__codelineno-24-39"></a>    parse_from: attributes[&quot;kv&quot;]
+</span><span id="__span-24-40"><a id="__codelineno-24-40" name="__codelineno-24-40" href="#__codelineno-24-40"></a>    parse_to: attributes[&quot;nginx&quot;]
+</span><span id="__span-24-41"><a id="__codelineno-24-41" name="__codelineno-24-41" href="#__codelineno-24-41"></a>    delimiter: &#39;:&#39;
+</span><span id="__span-24-42"><a id="__codelineno-24-42" name="__codelineno-24-42" href="#__codelineno-24-42"></a>    pair_delimiter: &#39;,&#39;
 </span><span id="__span-24-43"><a id="__codelineno-24-43" name="__codelineno-24-43" href="#__codelineno-24-43"></a>    # kv is always a string even if it is empty, so do not use
-</span><span id="__span-24-44"><a id="__codelineno-24-44" name="__codelineno-24-44" href="#__codelineno-24-44"></a>    # type(attributes["kv"]) != "nil"
-</span><span id="__span-24-45"><a id="__codelineno-24-45" name="__codelineno-24-45" href="#__codelineno-24-45"></a>    if: 'attributes["kv"] != ""'
+</span><span id="__span-24-44"><a id="__codelineno-24-44" name="__codelineno-24-44" href="#__codelineno-24-44"></a>    # type(attributes[&quot;kv&quot;]) != &quot;nil&quot;
+</span><span id="__span-24-45"><a id="__codelineno-24-45" name="__codelineno-24-45" href="#__codelineno-24-45"></a>    if: &#39;attributes[&quot;kv&quot;] != &quot;&quot;&#39;
 </span><span id="__span-24-46"><a id="__codelineno-24-46" name="__codelineno-24-46" href="#__codelineno-24-46"></a>    - type: remove
-</span><span id="__span-24-47"><a id="__codelineno-24-47" name="__codelineno-24-47" href="#__codelineno-24-47"></a>    field: attributes["kv"]
+</span><span id="__span-24-47"><a id="__codelineno-24-47" name="__codelineno-24-47" href="#__codelineno-24-47"></a>    field: attributes[&quot;kv&quot;]
 </span></code></pre></div>
 </details>
 <details class="example">
 <summary>Nginx 错误日志样例</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>2024/10/06 00:16:21 [error] 1285318#1285318: *3020238683 limiting requests, excess: 0.356 by zone "badreqlimit", client: 221.11.39.67, server: mirror.zju.edu.cn, request: "GET /debian-cd/11.6.0/s390x/iso-dvd/debian-11.6.0-s390x-DVD-1.iso HTTP/1.1", host: "mirrors.zju.edu.cn"
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>2024/10/06 00:42:49 [error] 1285316#1285316: *3020285623 open() "/data/storage/direct/favicon.ico" failed (2: No such file or directory), client: 45.251.240.168, server: mirror.zju.edu.cn, request: "GET /favicon.ico HTTP/1.0", host: "mirrors.zju.edu.cn"
-</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>2024/10/06 00:42:02 [warn] 1285318#1285318: *3020284230 upstream server temporarily disabled while connecting to upstream, client: 2001:250:4:100::2, server: mirror.zju.edu.cn, request: "GET /api/mirrorz.json HTTP/1.1", upstream: "http://[::1]:6003/mirrorz.json", host: "mirrors.zju.edu.cn"
-</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>2024/10/06 00:42:02 [error] 1285318#1285318: *3020284230 connect() failed (111: Connection refused) while connecting to upstream, client: 2001:250:4:100::2, server: mirror.zju.edu.cn, request: "GET /api/mirrorz.json HTTP/1.1", upstream: "http://[::1]:6003/mirrorz.json", host: "mirrors.zju.edu.cn"
-</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>2024/10/06 00:29:03 [alert] 1285318#1285318: *3020261617 could not allocate new session in SSL session shared cache "MozSSL" while SSL handshaking, client: 2409:8934:9e08:62d3::1, server: [::]:443
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>2024/10/06 00:16:21 [error] 1285318#1285318: *3020238683 limiting requests, excess: 0.356 by zone &quot;badreqlimit&quot;, client: 221.11.39.67, server: mirror.zju.edu.cn, request: &quot;GET /debian-cd/11.6.0/s390x/iso-dvd/debian-11.6.0-s390x-DVD-1.iso HTTP/1.1&quot;, host: &quot;mirrors.zju.edu.cn&quot;
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>2024/10/06 00:42:49 [error] 1285316#1285316: *3020285623 open() &quot;/data/storage/direct/favicon.ico&quot; failed (2: No such file or directory), client: 45.251.240.168, server: mirror.zju.edu.cn, request: &quot;GET /favicon.ico HTTP/1.0&quot;, host: &quot;mirrors.zju.edu.cn&quot;
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>2024/10/06 00:42:02 [warn] 1285318#1285318: *3020284230 upstream server temporarily disabled while connecting to upstream, client: 2001:250:4:100::2, server: mirror.zju.edu.cn, request: &quot;GET /api/mirrorz.json HTTP/1.1&quot;, upstream: &quot;http://[::1]:6003/mirrorz.json&quot;, host: &quot;mirrors.zju.edu.cn&quot;
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>2024/10/06 00:42:02 [error] 1285318#1285318: *3020284230 connect() failed (111: Connection refused) while connecting to upstream, client: 2001:250:4:100::2, server: mirror.zju.edu.cn, request: &quot;GET /api/mirrorz.json HTTP/1.1&quot;, upstream: &quot;http://[::1]:6003/mirrorz.json&quot;, host: &quot;mirrors.zju.edu.cn&quot;
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>2024/10/06 00:29:03 [alert] 1285318#1285318: *3020261617 could not allocate new session in SSL session shared cache &quot;MozSSL&quot; while SSL handshaking, client: 2409:8934:9e08:62d3::1, server: [::]:443
 </span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>2024/10/06 00:07:16 [crit] 1285318#1285318: *3020215598 SSL_do_handshake() failed (SSL: error:141CF06C:SSL routines:tls_parse_ctos_key_share:bad key share) while SSL handshaking, client: 49.7.224.233, server: 0.0.0.0:443
 </span></code></pre></div>
 </details>
-<h4 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">¶</a></h4>
+<h4 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h4>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
 <ul>
@@ -5373,8 +4210,8 @@
 <li><code>container.runtime</code></li>
 </ul>
 <div class="language-json highlight"><span class="filename">/etc/docker/daemon.json</span><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="p">{</span>
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span><span class="nt">"log-opts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span><span class="nt">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"container.name={{.Name}} container.id={{.ID}} container.image.name={{.ImageName}} container.runtime={{.DaemonName}}"</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span><span class="nt">&quot;log-opts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;container.name={{.Name}} container.id={{.ID}} container.image.name={{.ImageName}} container.runtime={{.DaemonName}}&quot;</span>
 </span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="p">}</span>
 </span></code></pre></div>
@@ -5383,12 +4220,12 @@
 </div>
 <p>修改后的日志格式如下：</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">{</span>
-</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">  </span><span class="nt">"log"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[2024-10-14 12:58:52.07328] [33867] [info] Worker 33867 started\n"</span><span class="p">,</span>
-</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">  </span><span class="nt">"stream"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stderr"</span><span class="p">,</span>
-</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">  </span><span class="nt">"attrs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">    </span><span class="nt">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"container.name=lanraragi container.id=3a6d0edc99f29a114a93dfe31a71cb4322cbb7a9b4dd9655dc8aecef2b8248e4 container.image.name=docker.io/difegue/lanraragi container.runtime=docker"</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">  </span><span class="nt">&quot;log&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[2024-10-14 12:58:52.07328] [33867] [info] Worker 33867 started\n&quot;</span><span class="p">,</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">  </span><span class="nt">&quot;stream&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stderr&quot;</span><span class="p">,</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">  </span><span class="nt">&quot;attrs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">    </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;container.name=lanraragi container.id=3a6d0edc99f29a114a93dfe31a71cb4322cbb7a9b4dd9655dc8aecef2b8248e4 container.image.name=docker.io/difegue/lanraragi container.runtime=docker&quot;</span>
 </span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">  </span><span class="p">},</span>
-</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="w">  </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-14T12:58:52.073349989Z"</span>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="w">  </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-10-14T12:58:52.073349989Z&quot;</span>
 </span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>使用 <code>filelogreceiver</code> 搭配 <code>container</code> operator 可以完成容器日志的收集。</p>
@@ -5402,73 +4239,34 @@
 </span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">key_value_parser</span>
 </span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="w">      </span><span class="nt">parse_from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attributes.attrs.tag</span>
 </span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="w">      </span><span class="nt">parse_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resource</span>
-</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="w">      </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">'type(attributes.attrs)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">"nil"'</span>
+</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="w">      </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;type(attributes.attrs)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">&quot;nil&quot;&#39;</span>
 </span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">remove</span>
 </span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="w">      </span><span class="nt">field</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attributes.attrs</span>
-</span><span id="__span-28-14"><a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="w">      </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">'type(attributes.attrs)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">"nil"'</span>
+</span><span id="__span-28-14"><a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="w">      </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;type(attributes.attrs)</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">&quot;nil&quot;&#39;</span>
 </span></code></pre></div>
 
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">完善</span>
+      
+    
+  </nav>
+
+
+
 
 
 
 
 
   
-    
-  
-  
-    
   
 
-
-  <aside class="md-source-file">
-    
-      
-  <span class="md-source-file__fact">
-    <span class="md-icon" title="Last update">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
-    </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2025 09:15:53 UTC">April 25, 2025</span>
-  </span>
-
-    
-    
-      
-  <span class="md-source-file__fact">
-    <span class="md-icon" title="Created">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
-    </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 25, 2025 09:15:53 UTC">April 25, 2025</span>
-  </span>
-
-    
-    
-    
-      
-  <span class="md-source-file__fact">
-    
-      
-  <span class="md-icon" title="Contributors">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path></svg>
-  </span>
-  <span>GitHub</span>
-
-    
-    <nav>
-      
-        <a href="https://github.com/bowling233" class="md-author" title="@bowling233">
-          
-          <img src="https://avatars.githubusercontent.com/u/35755846?v=4&amp;size=72" alt="bowling233">
-        </a>
-      
-      
-      
-    </nav>
-  </span>
-
-    
-  </aside>
 
 
 
@@ -5484,7 +4282,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
   Back to top
 </button>
         
@@ -5504,8 +4302,8 @@
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
     </a>
   
 </div>
@@ -5523,10 +4321,14 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "navigation.footer", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.tracking", "navigation.path", "navigation.top", "toc.follow", "content.action.edit", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["content.code.copy","content.code.select","content.code.annotate","navigation.footer","navigation.tabs","navigation.sections","navigation.expand","navigation.indexes","navigation.tracking","navigation.path","navigation.top","toc.follow","content.action.edit","search.suggest","search.highlight","search.share"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.66be65ca.min.js"></script>
+      
+        <script src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+      
+        <script src="../../../javascripts/drawio.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
@@ -5541,7 +4343,5 @@
         <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
       
     
-  
-<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
-document$.subscribe(()=>{ lightbox.reload(); });
-</script></body></html>
+  </body>
+</html>
