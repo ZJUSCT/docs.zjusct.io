@@ -41,3 +41,22 @@
 .md-logo__variant .md-logo__image {
     display: block;
 }
+
+[data-md-color-scheme="slate"] .md-content iframe,
+[data-md-color-scheme="slate"] .md-content .mxgraph {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+.competition-ranking-embed {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.competition-ranking-embed iframe {
+    display: block;
+    width: 930px;
+    max-width: none;
+    border: 0;
+}
