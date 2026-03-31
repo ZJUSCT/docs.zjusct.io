@@ -1,10 +1,16 @@
 ---
 title: 浙江大学超算队博客...活了？
-date:
-  created: 2018-09-30 21:25:55
-authors: [TTfish]
-categories: [Tech, Spc, ZJU]
+date: '2018-09-30T21:25:55'
+author: TTfish
+tags:
+- Tech
+- Spc
+- ZJU
 ---
+
+> 发布：2018-09-30T21:25:55  
+> 作者：TTfish  
+> 标签：Tech、Spc、ZJU
 
 这里是浙江大学超算队的官方博客
 

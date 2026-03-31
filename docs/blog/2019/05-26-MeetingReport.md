@@ -1,18 +1,21 @@
 ---
 title: 2019.05.26 会议记录
-categories:
-  - MeetingReport
-  - ZJUSCT
-date:
-  created: 2019-05-27 11:24:31
-authors: [王克]
+date: '2019-05-27T11:24:31'
+author: 王克
+tags:
+- MeetingReport
+- ZJUSCT
 ---
+
+> 发布：2019-05-27T11:24:31  
+> 作者：王克  
+> 标签：MeetingReport、ZJUSCT
 
 !!! abstract "AI Generated Abstract"
 
     本篇博客总结了 2018-2019 学年浙大超算队的工作情况与 ASC19 决赛观摩学习的经验教训，分析了团队在比赛准备、硬件维护、策略制定等方面的不足，并提出了改进建议。同时，博客还对超算队的目标、结构、任务分工及管理机制进行了梳理，旨在通过兴趣驱动和知识传承，推动团队的持续发展。
 
-<!-- more -->
+
 
 ## 2018-2019 学年总结
 

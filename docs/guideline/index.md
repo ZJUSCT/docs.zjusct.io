@@ -18,9 +18,9 @@ h5:before {content: unset;}
 
     ZJU Mirror 和镜像站文档。
 
-!!! abstract "[Blog](../blog/index.md)"
+!!! abstract "Blog"
 
-    ZJUSCT 博客。
+    ZJUSCT 博客，可通过顶部导航进入。
 
 !!! question "[竞赛](../competition/index.md)"
 

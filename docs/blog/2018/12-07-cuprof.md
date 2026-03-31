@@ -1,16 +1,22 @@
 ---
 title: Quick Guide to CUDA Profiling
-date:
-  created: 2018-12-07 23:48:33
-authors: [小妹妹]
-categories: [Tech, CUDA, Profile]
+date: '2018-12-07T23:48:33'
+author: 小妹妹
+tags:
+- Tech
+- CUDA
+- Profile
 ---
+
+> 发布：2018-12-07T23:48:33  
+> 作者：小妹妹  
+> 标签：Tech、CUDA、Profile
 
 在并行计算领域，很难通过纯理论的分析来确定程序的性能，`GPGPU`这种基于特定计算架构的计算任务更甚。事实上，很多制约并行算法性能的瓶颈很可能不在算法本身（比如资源调度障碍）。因此，对给定程序进行充分的性能测试与后续分析是相当必要的调优方法。
 
 `Nvidia`提供了`nvprof`，`nvvp`，`Nsight`三种 cuda 可用的性能分析工具，本文将简述配合使用`nvprof`与`nvvp`的 cuda 程序性能分析方法。
 
-<!-- more -->
+
 
 ## Check Out Device Properties
 

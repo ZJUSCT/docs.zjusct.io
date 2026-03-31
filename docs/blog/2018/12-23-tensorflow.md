@@ -1,16 +1,21 @@
 ---
 title: Distributed Tensorflow
-date:
-  created: 2018-12-23 19:57:25
-authors: [陈岩]
-categories: [Tech, Tensorflow]
+date: '2018-12-23T19:57:25'
+author: 陈岩
+tags:
+- Tech
+- Tensorflow
 ---
+
+> 发布：2018-12-23T19:57:25  
+> 作者：陈岩  
+> 标签：Tech、Tensorflow
 
 !!! abstract "AI Generated Abstract"
 
     本文介绍了 TensorFlow 的分布式计算方法，包括单机和多机场景下的配置与优化。在单机模式中，讲解了如何通过 log_device_placement 参数查看设备分配、使用 tf.device 指定设备，以及通过设置 CUDA_VISIBLE_DEVICES 环境变量优化显存使用。在多机模式中，分析了 In-graph 和 Between-graph 两种分布式训练模式的特点及应用场景。
 
-<!-- more -->
+
 
 ## 单机
 

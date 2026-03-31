@@ -8,7 +8,18 @@
 
 <style>
     .md-main__inner {
+        margin-top: 0 !important;
+    }
+
+    .md-content,
+    .md-sidebar--secondary {
         display: none !important;
+    }
+
+    @media screen and (min-width: 76.25em) {
+        .md-sidebar--primary {
+            display: none !important;
+        }
     }
 
     #zjusct-container {

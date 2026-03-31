@@ -8,28 +8,80 @@ site_author: ZJUSCT
 copyright: ZJUSCT
 
 nav:
-  # 已启用 include_dir_to_nav 插件，可使用目录名添加该目录下所有文件
-  # 文件按字母序排列，如果同级有其他文件，就需要专门把 index.md 放在最前面
   - 首页: index.md
   - 文档指引:
     - guideline/index.md
-    - guideline
-  - 🏆 竞赛: competition
+    - guideline/contribute.md
+    - guideline/history.md
+    - guideline/newcomer.md
+  - 🏆 竞赛: competition/index.md
   - 🦅 Falcon:
     - falcon/index.md
-    - falcon
+    - falcon/git.md
+    - falcon/mirror-history.md
+    - falcon/mirror.md
   - 🔧 优化:
     - optimization/index.md
-    - 并行编程: optimization/parallel
-    - 高性能网络: optimization/HPN
+    - 并行编程:
+      - optimization/parallel/index.md
+      - cpu:
+        - optimization/parallel/cpu/model.md
+        - optimization/parallel/cpu/mpi.md
+        - optimization/parallel/cpu/openmp.md
+        - optimization/parallel/cpu/others.md
+      - gpu:
+        - optimization/parallel/gpu/cuda.md
+        - optimization/parallel/gpu/hip.md
+        - optimization/parallel/gpu/model.md
+        - optimization/parallel/gpu/others.md
+    - 高性能网络:
+      - optimization/HPN/index.md
+      - optimization/HPN/algorithm.md
+      - optimization/HPN/mpi.md
+      - 源码阅读:
+        - optimization/HPN/源码阅读/libfabric.md
+        - optimization/HPN/源码阅读/rdma-core.md
+        - optimization/HPN/源码阅读/ucx.md
+      - 编程:
+        - optimization/HPN/编程/dpdk.md
+        - optimization/HPN/编程/ibverbs.md
+        - optimization/HPN/编程/mlx5dv.md
+        - optimization/HPN/编程/rdmacm.md
   - ⚙️ 运维:
     - operation/index.md
-    - 🐧 系统软件: operation/system
-    - 💾 存储: operation/storage
+    - 🐧 系统软件:
+      - operation/system/macOS.md
+      - operation/system/metal3.md
+      - operation/system/packer.md
+    - 💾 存储:
+      - ceph: operation/storage/ceph/object.md
     - ⚓ K8S:
-      - 管理篇: operation/k8s/mgmt
-      - 服务篇: operation/k8s/svc
-  - ✍️ 博客: blog
+      - 管理篇: operation/k8s/mgmt/debug.md
+      - 服务篇:
+        - operation/k8s/svc/ai.md
+        - operation/k8s/svc/jenkins.md
+        - operation/k8s/svc/tools.md
+  - ✍️ 博客:
+    - "2018":
+      - blog/2018/09-30-first.md
+      - blog/2018/11-25-cuda.md
+      - blog/2018/12-07-cuprof.md
+      - blog/2018/12-23-tensorflow.md
+      - blog/2018/12-24-bp.md
+    - "2019":
+      - blog/2019/03-31-Install-MySQL-on-CentOS7-Inside-GFW.md
+      - blog/2019/03-31-Virtual-Memory-and-TLB.md
+      - blog/2019/05-11-Image-Restoration-SimpleVersion.md
+      - blog/2019/05-26-MeetingReport.md
+      - blog/2019/05-31-GAN-Introduction.md
+      - blog/2019/06-14-GAN-theory.md
+      - blog/2019/06-16-GAN-Anime-Avatar-Generation.md
+      - blog/2019/06-21-RSA.md
+    - "2025":
+      - blog/2025/03-16-virus.md
+      - blog/2025/05-03-mirror-1-autoinstall.md
+      - blog/2025/05-10-mirror-2-storage.md
+      - blog/2025/05-19-hpc101.md
 
 
 theme:
@@ -131,6 +183,8 @@ markdown_extensions:
   - neoteroi.projects
 
 extra_javascript:
+  - https://viewer.diagrams.net/js/viewer-static.min.js
+  - javascripts/drawio.js
   # MathJax
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/polyfill/index.min.js
@@ -149,7 +203,6 @@ extra_css:
   - stylesheets/neoteroi-v1.1.2.css
 
 plugins:
-  - blog
   - git-revision-date-localized:
       enable_creation_date: true
       enable_git_follow: false
@@ -159,8 +212,5 @@ plugins:
       repository: zjusct/www.zjusct.io
       branch: main
   - glightbox
-  - drawio
   - tags
   - search
-  - include_dir_to_nav:
-      recurse: false

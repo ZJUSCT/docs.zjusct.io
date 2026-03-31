@@ -1,17 +1,20 @@
 ---
 title: 生成式对抗网络——理论
-date:
-  created: 2019-06-14
-authors: [漆翔宇]
-categories: [AI]
+date: '2019-06-14'
+author: 漆翔宇
+tags:
+- AI
 ---
 
+> 发布：2019-06-14  
+> 作者：漆翔宇  
+> 标签：AI
 
 在 [对抗式生成网络 - 基础](./05-31-GAN-Introduction.md) 这篇文章中，我们介绍了对抗式生成网络（Generative Adversarial Networks, GAN）的基本思想。我们已经知道，与最经典的 Reflection Model 不一样，GAN 是通过一组用于生成的 generator 和用于判别的 discriminator 互相对抗来实现生成能力的自强化。上一篇文章中，我们只是很简单的介绍了它的 intuition，但 GAN 本质上还是一个数学模型，为什么能实现自强化，为什么模型最后会向我们希望的方向收敛，它还需要一些更加严谨的理论推导。
 
 这篇文章中，我们将根据[《TOWARDS PRINCIPLED METHODS FOR TRAINING GENERATIVE ADVERSARIAL NETWORKS》(Arjovsky et al. 2017)](https://arxiv.org/pdf/1701.04862.pdf) 和 [《Wasserstein GAN》(Arjovsky et al. 2017)](https://arxiv.org/pdf/1701.07875.pdf) 这两篇论文的推导和论述，简单的讨论一下 GAN 的数学理论。
 
-<!-- more -->
+
 
 在展开 GAN 的讨论之前，我们将会先简单的介绍几个需要用到的前置概念和知识。在这之后我们会介绍原始 GAN 的 loss function 的实际数学意义，并简单讨论其存在的问题，最后讨论解决的方法。
 

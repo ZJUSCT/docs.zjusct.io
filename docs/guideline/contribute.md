@@ -19,12 +19,17 @@ h5:before {content: unset;}
 
 ## 🚀 本地构建
 
-本文档使用 [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) 构建。Clone 本仓库后，你可使用下面的命令在本地启动文档服务：
+本文档主体使用 [Zensical](https://zensical.org/) 构建，并保持对 Material 风格模板的兼容；首页仍然由 `zjusct-home` 中的 React 组件提供。Clone 本仓库后，你可使用下面的命令在本地启动文档服务：
 
 ```bash
-pip install -r requirements.txt
-mkdocs serve
+uv sync
+pnpm --dir zjusct-home install
+pnpm --dir zjusct-home build
+cp -R zjusct-home/dist/assets/* docs/assets/
+uv run zensical serve
 ```
+
+如果只修改文档正文、不关心首页预览，可跳过 `zjusct-home` 的构建步骤。
 
 ## ✍️ 写作规范
 
@@ -72,15 +77,20 @@ mkdocs serve
 
 !!! tip "关于 draw.io 图片"
 
-    本文档已启用 [mkdocs-drawio](https://github.com/tuunit/mkdocs-drawio) 插件，能够渲染 `.drawio` 文件。
+    当前站点按 `mkdocs-drawio` 等效逻辑直接渲染 `.drawio` 文件，因此可以直接引用 `.drawio` 源文件。
 
     ```markdown
     ![示例图片](path/to/image.drawio)
     ```
 
-    我们推荐直接插入 `.drawio` 文件，以便后续修改。
+    多页图可直接用 alt 文本或 `page` 属性指定页面，例如：
 
-为了减小图片体积，建议使用下面的命令转换为 WebP 格式：
+    ```markdown
+    ![Page-2](path/to/image.drawio)
+    ![示例图片](path/to/image.drawio){ page="Page-2" }
+    ```
+
+为了减小普通图片体积，建议使用下面的命令转换为 WebP 格式：
 
 ```bash
 for f in *.jpg *.jpeg *.png; do [ -f "$f" ] && cwebp "$f" -o "${f%.*}.webp" && rm "$f"; done
@@ -100,9 +110,21 @@ for f in *.jpg *.jpeg *.png; do [ -f "$f" ] && cwebp "$f" -o "${f%.*}.webp" && r
 
 ## 📝 博客规范
 
-本文档已启用 [Basic blogs - Material for MkDocs](https://squidfunk.github.io/mkdocs-material/tutorials/blogs/basic)。要新增博客，请在 `docs/blog/posts/<year>` 目录下创建新的 Markdown 文件，命名为 `<month>-<day>-<title>.md`，内容参考 `docs/blog/posts/.template.md`。
+博客目录现在就是普通的 Zensical 文档目录。要新增博客，请在 `docs/blog/<year>` 目录下创建新的 Markdown 文件，命名为 `<month>-<day>-<title>.md`，内容参考 `templates/blog-post.md`。
 
-然后在 `docs/blog/.authors.yml` 中添加作者信息即可。
+文章头部请直接使用简单 front matter：
+
+```yaml
+---
+title: 博客标题
+date: 2026-03-31
+author: 你的名字
+tags:
+  - 分类
+---
+```
+
+如果需要展示作者、日期、标签或外链，请直接写在正文开头的引用块中。
 
 ## 📊 文档状态
 

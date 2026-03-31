@@ -1,16 +1,23 @@
 ---
 title: Virtual Memory and TLB
-date:
-  created: 2019-03-31 14:05:11
-categories: [Tech, Operating Susyem, Virtual Memory, TLB]
-authors: [王克]
+date: '2019-03-31T14:05:11'
+author: 王克
+tags:
+- Tech
+- Operating Susyem
+- Virtual Memory
+- TLB
 ---
+
+> 发布：2019-03-31T14:05:11  
+> 作者：王克  
+> 标签：Tech、Operating Susyem、Virtual Memory、TLB
 
 !!! abstract "AI Generated Abstract"
 
     本篇博客详细介绍了虚拟内存和地址转换的相关概念，包括虚拟地址空间的划分、保护模式下的进程运行机制、地址转化的具体步骤（逻辑地址到线性地址、线性地址到物理地址）、TLB 的作用及其工作原理，并简要说明了 Linux 系统对段式管理的处理方式。通过图文结合的方式，帮助读者更好地理解虚拟内存和 TLB 的核心原理。
 
-<!-- more -->
+
 
 ## 虚拟地址空间
 

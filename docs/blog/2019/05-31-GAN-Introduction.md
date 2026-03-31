@@ -1,10 +1,14 @@
 ---
 title: 生成式对抗网络——基础
-date:
-  created: 2019-05-31
-authors: [漆翔宇]
-categories: [AI]
+date: '2019-05-31'
+author: 漆翔宇
+tags:
+- AI
 ---
+
+> 发布：2019-05-31  
+> 作者：漆翔宇  
+> 标签：AI
 
 Reference: [Machine Learning and having it deep and structured (2018,Spring)](http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLDS18.html) （李宏毅）
 
@@ -16,7 +20,7 @@ Reference: [Machine Learning and having it deep and structured (2018,Spring)](ht
 
 这篇文章将会对 GAN 做一个直观的介绍，帮助读者理解 GAN 的 Basic Idea。
 
-<!-- more -->
+
 
 第一节中，我们将简单对机器学习的 Basic Ideas 做一个回顾。第二节和第三节会简单介绍一下什么是生成（Generation）。第四节和第五节会介绍两种生成模型。第六节我们将会看到 GAN 是如何结合这两种模型从而达到优秀的表现。
 

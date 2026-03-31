@@ -1,10 +1,15 @@
 ---
 title: 如何在墙内快速部署 CentOS 7 的 MySQL
-date:
-  created: 2019-03-31 10:45:19
-categories: [MySQL, CentOS]
-authors: [王克]
+date: '2019-03-31T10:45:19'
+author: 王克
+tags:
+- MySQL
+- CentOS
 ---
+
+> 发布：2019-03-31T10:45:19  
+> 作者：王克  
+> 标签：MySQL、CentOS
 
 MySQL 被 Oracle 收购后，CentOS 的镜像仓库中提供的默认的数据库也变为了 MariaDB，所以默认没有 MySQL，需要手动安装。
 
@@ -12,7 +17,7 @@ MySQL 被 Oracle 收购后，CentOS 的镜像仓库中提供的默认的数据�
 
 本文实际在讲的是，如何利用各种手段，加速和改善 yum 的安装过程。
 
-<!-- more -->
+
 
 ## 传统方案……慢到怀疑人生
 

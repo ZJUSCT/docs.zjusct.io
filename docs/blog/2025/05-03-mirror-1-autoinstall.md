@@ -1,17 +1,20 @@
 ---
 title: 第三代镜像站建设（一）：服务器自动化部署
-date:
-  created: 2025-05-01
-authors: [朱宝林]
-categories:
-  - 运维
+date: '2025-05-01'
+author: 朱宝林
+tags:
+- 运维
 ---
 
-ZJU 第三代镜像站基础设施详见 [ZJU Mirror 镜像站](../../../falcon/mirror.md)。
+> 发布：2025-05-01  
+> 作者：朱宝林  
+> 标签：运维
+
+ZJU 第三代镜像站基础设施详见 [ZJU Mirror 镜像站](../../falcon/mirror.md)。
 
 在测试阶段，我们需要频繁地为多台服务器重装系统。本文将介绍一种基于 Ansible 的自动化服务器部署方案，涵盖带外管理（Redfish）、网络引导（PXE）以及发行版安装程序（支持 Debian 和 Ubuntu）的完整流程。
 
-<!-- more -->
+
 
 ## 综述
 
@@ -48,7 +51,7 @@ ZJU 第三代镜像站基础设施详见 [ZJU Mirror 镜像站](../../../falcon/
 
 ## 带外管理
 
-有关带外管理的基础知识，请参考 [硬件运维/带外管理](../../../operation/hardware/oobm.md)。
+有关带外管理的基础知识，请参考 [硬件运维/带外管理](../../operation/hardware/oobm.md)。
 
 ### API
 
