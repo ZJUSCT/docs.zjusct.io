@@ -108,7 +108,9 @@
 
 HPC Advisory Council 维护了全球高校在三大超算竞赛的排名，见 [Worldwide Leadership List - HPC Advisory Council](https://www.hpcadvisorycouncil.com/worldwide-leadership-list.php)。
 
-<iframe src="https://www.hpcadvisorycouncil.com/worldwide-leadership-list-frame.html" width="100%" height="600" frameborder="0"></iframe>
+<div class="competition-ranking-embed">
+  <iframe src="https://www.hpcadvisorycouncil.com/worldwide-leadership-list-frame.html" width="930" height="600" frameborder="0"></iframe>
+</div>
 
 ## 竞赛总览
 
